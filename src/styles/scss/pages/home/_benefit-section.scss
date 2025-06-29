@@ -1,0 +1,94 @@
+@use '../../abstracts/variables' as *;
+
+.benefit-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+
+  &__list {
+    margin-right: $spacing-64;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid rgba(191, 191, 191, 0.5);
+    padding: $spacing-24 0 $spacing-32 0;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: linear-gradient(to right, #FC8551 70%, transparent);
+      z-index: 1;
+    }
+
+    &-icon {
+      height: 5rem;
+      margin-right: $spacing-12;
+
+      img {
+        height: 5rem;
+      }
+    }
+
+    &-title {
+      font-size: $font-size-24;
+      font-weight: $font-weight-bold;
+      font-family: $font-primary;
+    }
+
+    &-description {
+      font-size: $font-size-16;
+      font-weight: $font-weight-light;
+      font-family: $font-secondary;
+      max-width: 50rem;
+      height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: height 0.6s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    &.active {
+      &::after {
+        width: 100%;
+        transition: width 7s linear;
+      }
+
+      .benefit-section__list-item-description {
+        height: auto;
+        opacity: 1;
+        transform: translateY(0);
+        padding-top: $spacing-12;
+      }
+    }
+
+    &.reset {
+      &::after {
+        width: 0;
+        transition: none;
+      }
+    }
+  }
+
+  &__img {
+    position: relative;
+    
+    img {
+      width: 35rem;
+      height: 52.5rem;
+      border-radius: 2.4rem;
+      object-fit: cover;
+      transition: opacity 0.8s ease-in-out;
+    }
+  }
+}

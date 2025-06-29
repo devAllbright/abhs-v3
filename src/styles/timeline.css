@@ -1,0 +1,38 @@
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: #ddd;
+  transform: translateX(-50%);
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 0;
+  background: #ff7f50;
+  transform: translateX(-50%);
+  transition: height 0.4s ease-out;
+}
+
+.timeline__item {
+  position: relative;
+  width: 100%;
+  margin: 50px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity
+}

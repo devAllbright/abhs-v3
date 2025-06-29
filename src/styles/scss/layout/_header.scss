@@ -1,0 +1,135 @@
+@use '../abstracts/variables' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 $spacing-64;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: $background-light;
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    &-img img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    &-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+
+    &-text {
+      font-size: $font-size-28;
+      font-weight: $font-weight-bold;
+      color: $primary-text;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-item {
+      font-size: $font-size-16;
+      position: relative;
+
+      a {
+        text-decoration: none;
+        color: $primary-text;
+        padding: $spacing-8 $spacing-12;
+        display: block;
+      }
+    }
+
+    &-item:not(:last-child) {
+      margin-right: $spacing-32;
+    }
+  }
+
+  &__cta {
+    display: flex;
+
+    &-number {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      margin-right: $spacing-12;
+
+      &-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      a {
+        color: $primary-text;
+      }
+
+      img {
+        height: 2.5rem;
+        margin-right: $spacing-4;
+      }
+
+      span {
+        font-size: $font-size-16;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+}
+
+// MegaMenu Styles
+.mega-menu {
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  transition: height 0.5s ease, opacity 0.3s ease;
+
+  &--visible {
+    height: 100vh;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &__content {
+    height: 50vh;
+    background-color: $background-light;
+    padding: $spacing-64;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-20px);
+    transition: transform 0.5s ease;
+  }
+
+  &--visible &__content {
+    transform: translateY(0);
+  }
+
+  &__overlay {
+    height: 50vh;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  &--visible &__overlay {
+    opacity: 1;
+  }
+}

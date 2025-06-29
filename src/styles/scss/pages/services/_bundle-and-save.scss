@@ -1,0 +1,11 @@
+@use '../../abstracts/variables' as *;
+
+.bundle-and-save{
+  height: 100vh;
+
+  .card-container{
+    display: flex;
+    justify-content: center;
+  }
+}
+

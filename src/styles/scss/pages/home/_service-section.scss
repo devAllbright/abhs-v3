@@ -1,0 +1,137 @@
+@use '../../abstracts/variables' as *;
+
+.service-section {
+  height: 100vh;
+
+  .all-services {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: $spacing-64;
+
+    .service__text{
+      display: flex;
+      align-items: center;
+      width: 45rem;
+      margin-right: 10rem;
+
+      &-title h3{
+        font-size: $font-size-42;
+        font-weight: $font-weight-light;
+        line-height: $line-height-13;
+        font-family: $font-primary;
+
+        span{
+          font-weight: $font-weight-bold;
+        };
+      }
+
+      &-description{
+        width: 40rem;
+        font-size: $font-size-20;
+        font-weight: $font-weight-light;
+        line-height: $line-height-13;
+        font-family: $font-secondary;
+        margin-top: $spacing-24;
+        font-style: italic;
+      }
+    }
+
+    .service__img{
+      img{
+        height: 47.5rem;
+      }
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, auto);
+      gap: 7.5rem;
+      padding: 2rem;
+      width: max-content;
+    }
+
+    &-selection-buttons {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+
+      button {
+        all: unset;
+        font-family: $font-primary;
+        font-size: $font-size-16;
+        font-weight: $font-weight-bold;
+        color: $primary-text;
+        background-color: $background-light;
+        border-radius: 1.2rem;
+        padding: $spacing-8 $spacing-16;
+        border: 1px solid #303030;
+        cursor: pointer;
+
+      }
+
+      button:not(:last-child) {
+        margin-right: $spacing-32;
+      }
+
+      .active {
+        color: $secondary-text;
+        background-color: $background-positive-b;
+      }
+    }
+
+    &__item {
+      width: 25rem;
+      background: #f9f9f9;
+      padding: 1.5rem;
+
+      &-icon {
+        img {
+          height: 7.5rem;
+        }
+      }
+
+      &-title {
+        font-family: $font-primary;
+        font-size: $font-size-16;
+        font-weight: $font-weight-bold;
+        margin-top: $spacing-8;
+      }
+
+      &-description {
+        font-family: $font-secondary;
+        font-size: $font-size-12;
+        font-weight: $font-weight-light;
+        margin-top: $spacing-8;
+      }
+
+      &-more-info {
+        margin-top: $spacing-12;
+        a{
+          font-family: $font-secondary;
+          font-size: $font-size-12;
+          font-weight: $font-weight-bold;
+          margin-top: $spacing-24;
+          color: $primary-text;
+          text-decoration: none;
+        }
+      }
+
+    }
+  }
+
+  .bundles{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: $spacing-64;
+  }
+
+  .maintenance-plans{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: $spacing-64;
+  }
+}

@@ -1,0 +1,15 @@
+---
+import SectionHeading from "../../SectionHeading";
+import ServiceSelection from "./ServiceSelection";
+
+
+const title = `Our Services`
+const subtitle = `Easy as 1,2,3 — CHOOSE,  REQUEST & ENJOY With efforteless, 
+                  scheduling,  flawless results, and lasting satisfaction—so 
+                  you can focus on what  matters most.`
+---
+
+<div class="service-section">
+  <SectionHeading title={title} subtitle={subtitle} />
+  <ServiceSelection client:only="react"/>
+</div>

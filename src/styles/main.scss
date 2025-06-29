@@ -1,0 +1,34 @@
+// 1. Abstracts (Variables, Mixins, Functions)
+@use "./scss/abstracts/variables";
+
+
+// 2. Base Styles (Global styles, Reset, Typography)
+@use "./scss/base/base";
+@use "./scss/base/reset";
+@use "./scss/base/typography";
+
+// 3. Layout (Header, Footer, Grid, etc.)
+@use "./scss/layout/header";
+@use "./scss/layout/footer";
+@use "./scss/layout/base-layout";
+@use "./scss/layout/hero";
+
+// 4. Components (Buttons, Cards, Forms, etc.)
+@use "./scss/components/button";
+@use "./scss/components/card";
+@use "./scss/components/reviews";
+@use "./scss/components/post-carousel";
+@use "./scss/components/section-heading";
+
+// 5. Pages (Specific page styles)
+@use "./scss/pages/index";
+@use "./scss/pages/home/benefit-section";
+@use "./scss/pages/home/service-section";
+@use "./scss/pages/home/why-choose-us-section";
+@use "./scss/pages/home/faq-section";
+@use "./scss/pages/home/final-cta-section";
+@use "./scss/pages/services/bundle-and-save";
+@use "./scss/pages/services/service-description";
+
+// 6. Themes (Light and Dark mode)
+// 7. Vendors (Third-party styles)

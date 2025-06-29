@@ -1,0 +1,56 @@
+@use '../../abstracts/variables' as *;
+
+.service-description{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+
+  &__img{
+    display: flex;
+    align-items: center;
+    margin-right: $spacing-64;
+
+    img{
+      width: 40rem;
+      height: 65rem;
+      border-radius: $spacing-12;
+    }
+  }
+
+  &__text{
+    display: flex;
+    align-items: center;
+    width: 55rem;
+
+    div{
+      margin-top: $spacing-24;
+    }
+  }
+
+  &__title{
+    font-size: $font-size-36;
+    font-weight: $font-weight-bold;
+    font-family: $font-primary;
+    width: 45rem;
+  }
+
+  &__subtitle{
+    font-size: $font-size-24;
+    font-weight: $font-weight-regular;
+    font-family: $font-primary;
+    font-style: italic;
+  }
+
+  &__subtitle{
+    font-size: $font-size-24;
+    font-weight: $font-weight-regular;
+    font-family: $font-primary;
+    font-style: italic;
+  }
+
+  &__brief{
+    font-size: $font-size-16;
+    font-weight: $font-weight-light;
+    font-family: $font-secondary;
+  }
+}

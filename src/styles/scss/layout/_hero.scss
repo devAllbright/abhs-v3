@@ -1,0 +1,103 @@
+@use '../abstracts/variables' as *;
+
+.primary-banner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+
+  &__content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: $spacing-64;
+
+    div{
+      width: 50rem;
+    }
+  }
+
+  &__reviews{
+    display: flex;
+    align-items: center;
+    margin-bottom: $spacing-24;
+
+    &-icon{
+      height: 2.5rem;
+      margin-right: $spacing-4;
+    }
+
+    &-text{
+      font-size: $font-size-16;
+      font-family: $font-secondary;
+    }
+  }
+
+  &__title{
+    font-size: $font-size-42;
+    font-weight: $font-weight-light;
+    line-height: $line-height-13;
+    font-family: $font-primary;
+
+    span{
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  &__description{
+    width: 40rem;
+    font-size: $font-size-20;
+    font-weight: $font-weight-light;
+    line-height: $line-height-13;
+    font-family: $font-secondary;
+    margin-top: $spacing-24;
+    font-style: italic;
+
+  }
+
+  &__social-proof{ 
+    margin-top: $spacing-24;
+
+    &-item{
+      display: flex;
+      align-items: center;
+      margin-top: $spacing-12;
+    }
+
+    &-icon{
+      height: 2.5rem;
+      margin-right: $spacing-12;
+    }
+
+    &-text{
+      font-family: $font-secondary;
+      font-size: $font-size-16;
+    }
+
+  }
+
+  &__cta{
+    margin-top: $spacing-24;
+  }
+
+  &__img{
+
+    &--main{
+      width: 50%;
+      height: 100%;
+
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &--secondary{
+      img{
+        width: 65rem;
+        height: 60rem;
+      }
+    }
+  }
+
+}

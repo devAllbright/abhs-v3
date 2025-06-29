@@ -1,0 +1,139 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import Hero from '../../components/Hero'
+import ServiceDescription from '../../components/pages/services/ServiceDescription'
+import HowItWorks from "../../components/pages/services/HowItWorks.astro"
+import BundleAndSave from '../../components/pages/services/BundleAndSave'
+import ReviewsWidget from "../../components/pages/ReviewsWidget.astro"
+import PostCarousel from "../../components/layout/PostCarousel"
+import FAQSection from "../../components/pages/home/FAQSection.astro"
+import FinalCTASection from "../../components/pages/home/FinalCTASection.astro"
+
+const bannerData = {
+  ratingText: "4.9 AVERAGE RATING",
+  title: "Reliable Maid Services for a Spotless, Stress-Free Home",
+  subtitle: "Book in seconds!",
+  description: `Dust, clutter, and mess? We make your home shine—fast 
+                and hassle-free! With nearly 50 years of expertise, 
+                we’re your #1 choice for a cleaner, more comfortable 
+                living space.`,
+  socialProof: [
+    "5,000+ customers trust in Allbright Home Services",
+    "200,000+ services completed"
+  ],
+  images: {
+    googleLogo: "/google-logo.png",
+    ratingStars: "/rating-stars.svg",
+    checkIcon: "/check.png",
+    heroImage: "/services/maid-services/hero-img.png"
+  },
+
+  imgClass: "--secondary"
+}
+
+const descriptionData = {
+  title: "Come Home to Freshness with Expert Maid Services",
+  imageUrl: "/services/maid-services/description-img.png",
+  paragraphs: [
+    {
+      subtitle: "Reliable Maid Services for a Stress-Free Home",
+      brief: `Keeping up with household chores can be overwhelming. 
+              Our professional maid services take care of the dusting, 
+              scrubbing, and tidying, so you can enjoy a spotless home 
+              without lifting a finger.`
+    },
+    {
+      subtitle: "Thorough Cleaning, Every Time",
+      brief: `Our expert cleaning process removes tough stains and lingering 
+              odors, leaving your carpets looking and smelling like new.`
+    }
+  ]
+};
+
+const reasonsData = [
+  { icon: '/why-us/experience.png', reasonsTitle: 'Nearly 50 Years of Expertise', description: "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first." },
+  { icon: '/why-us/home.png', reasonsTitle: 'Comprehensive Home Care', description: 'From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional.' },
+  { icon: '/why-us/sustainability.png', reasonsTitle: 'Sustainable and Precise', description: '"Maintenance and Cleaning for Better living" is our promise. We use eco-friendly products and expert techniques for lasting quality.' }
+];
+
+const bundleData = [
+    {
+      title: "Carpet Bundle",
+      discount: "15% OFF!",
+      price: "$299",
+      brief: "Lorem ipsum dolor",
+      features: ["Deep cleaning", "Carpet Cleaning"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+    {
+      title: "Carpets and Windows",
+      discount: "20% OFF!",
+      price: "$499",
+      brief: "Lorem ipsum dolor",
+      features: ["Carpet CLeaning", "Window Washing"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+];
+
+const blogPosts = [
+  {
+    image: "/services/maid-services/blog-post-1.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-2.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-3.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-4.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  }
+];
+
+const finalCTAData = {
+  imgSrc: "/services/maid-services/final-cta.png",
+  imgAlt: "Final Call to Action",
+  title: "A Spotless Home, More Time for You",
+  brief: `Say goodbye to dust, clutter, and endless chores! 
+          Our expert maid services keep your home fresh and 
+          clean—quickly, thoroughly, and hassle-free.`,
+  callToActionText: "",
+  contactText: "Let’s make your home shine!",
+};
+
+const faqs = [
+  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
+  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
+  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
+  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
+  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
+]
+
+
+---
+
+<BaseLayout>
+  <Hero bannerData={ bannerData }/>
+  <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
+  <HowItWorks reasons={ reasonsData }/>
+  <BundleAndSave bundleData={ bundleData } client:only="react"/>
+  <ReviewsWidget />
+  <PostCarousel posts={ blogPosts } client:only="react"/>
+  <FAQSection faqs={ faqs }/>
+  <FinalCTASection finalCTAData={ finalCTAData }/>
+
+</BaseLayout>

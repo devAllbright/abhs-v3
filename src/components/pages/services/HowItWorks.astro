@@ -1,0 +1,29 @@
+---
+import SectionHeading from '../../SectionHeading';
+
+const { reasons } = Astro.props;
+
+const title = `How it Works`
+const subtitle = `Our carpet steam cleaning service is designed 
+                  to bring out the best in your carpets. Here’s 
+                  why it’s the ultimate choice:`
+---
+
+<div class="why-choose-us">
+  <SectionHeading title={title} subtitle={subtitle} client:only="react" />
+  <div class="reasons">
+    {reasons.map((reason: any) => (
+      <div class="reasons__item">
+        <div class="reasons__item-icon">
+          <img src={reason.icon} alt={reason.reasonsTitle} />
+        </div>
+        <div class="reasons__item-title">
+          <p>{reason.reasonsTitle}</p>
+        </div>
+        <div class="reasons__item-description">
+          <p>{reason.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

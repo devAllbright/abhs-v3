@@ -1,0 +1,43 @@
+---
+const { faqs = [] } = Astro.props;
+---
+
+<div class="faq-section">
+  <div class="faq-section__content">
+    <div>
+      <h2 class="faq-section__left-title">Frequently Asked Questions</h2>
+      <p class="faq-section__left-subtitle">Let us know if you have any other questions, our team is always happy to help!</p>
+    </div>
+    <ul class="faq-section__list">
+      {faqs.map((faq: any) => (
+        <li class="faq-section__item">
+          <div class="faq-section__question">
+            <h3>{faq.question}</h3>
+            <img src="/dropdown.png" alt="Toggle answer" />
+          </div>
+          <p class="faq-section__answer">{faq.answer}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const faqItems = document.querySelectorAll(".faq-section__item");
+
+  faqItems.forEach((item) => {
+    const question = item.querySelector(".faq-section__question");
+
+    question?.addEventListener("click", () => {
+      const isActive = item.classList.contains("faq-section__item--active");
+      faqItems.forEach((faq) => faq.classList.remove("faq-section__item--active"));
+
+      if (!isActive) {
+        item.classList.add("faq-section__item--active");
+      }
+    });
+  });
+});
+</script>

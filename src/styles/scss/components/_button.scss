@@ -1,0 +1,32 @@
+@use '../abstracts/variables' as *;
+
+.primary-cta{
+  background-color: $primary-color-dark;
+  font-size: $font-size-16;
+  font-weight: $font-weight-bold;
+  padding: $spacing-8 $spacing-12;
+  text-decoration: none;
+  color: $secondary-text;
+  cursor: pointer;
+}
+
+.secondary-cta{
+  background-color: $background-dark;
+  font-size: $font-size-16;
+  font-weight: $font-weight-bold;
+  padding: $spacing-8 $spacing-12;
+  text-decoration: none;
+  color: $secondary-text;
+  cursor: pointer;
+}
+
+.tertiary-cta{
+  background-color: transparent;
+  font-size: $font-size-16;
+  font-weight: $font-weight-bold;
+  padding: $spacing-8 $spacing-12;
+  text-decoration: none;
+  color: $primary-text;
+  cursor: pointer;
+  border: 1px solid $background-dark;
+}
