@@ -1,50 +1,50 @@
 @use '../abstracts/variables' as *;
 
-.primary-banner{
+.primary-banner {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 90vh;
 
-  &__content{
+  &__content {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: $spacing-64;
 
-    div{
+    div {
       width: 50rem;
     }
   }
 
-  &__reviews{
+  &__reviews {
     display: flex;
     align-items: center;
     margin-bottom: $spacing-24;
 
-    &-icon{
+    &-icon {
       height: 2.5rem;
       margin-right: $spacing-4;
     }
 
-    &-text{
+    &-text {
       font-size: $font-size-16;
       font-family: $font-secondary;
     }
   }
 
-  &__title{
+  &__title {
     font-size: $font-size-42;
     font-weight: $font-weight-light;
     line-height: $line-height-13;
     font-family: $font-primary;
 
-    span{
+    span {
       font-weight: $font-weight-bold;
     }
   }
 
-  &__description{
+  &__description {
     width: 40rem;
     font-size: $font-size-20;
     font-weight: $font-weight-light;
@@ -52,52 +52,111 @@
     font-family: $font-secondary;
     margin-top: $spacing-24;
     font-style: italic;
-
   }
 
-  &__social-proof{ 
+  &__social-proof {
     margin-top: $spacing-24;
 
-    &-item{
+    &-item {
       display: flex;
       align-items: center;
       margin-top: $spacing-12;
     }
 
-    &-icon{
+    &-icon {
       height: 2.5rem;
       margin-right: $spacing-12;
     }
 
-    &-text{
+    &-text {
       font-family: $font-secondary;
       font-size: $font-size-16;
     }
-
   }
 
-  &__cta{
+  &__cta {
     margin-top: $spacing-24;
   }
 
-  &__img{
+  &__collage {
+    position: relative;
+    overflow: hidden;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    &--main{
-      width: 50%;
-      height: 100%;
+    &-container {
+      display: flex;
+      gap: $spacing-24;
+      justify-content: center;
+      align-items: flex-start;
+      height: 45vh;
+      padding: $spacing-24;
+      overflow: hidden;
+      position: relative;
 
-      img{
-        width: 100%;
-        height: 100%;
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 6rem;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      &::before {
+        top: 0;
+        background: linear-gradient(
+          to bottom,
+          $background-light 0%,
+          rgba($background-light, 0.7) 30%,
+          rgba($background-light, 0.3) 70%,
+          transparent 100%
+        );
+      }
+
+      &::after {
+        bottom: 0;
+        background: linear-gradient(
+          to top,
+          $background-light 0%,
+          rgba($background-light, 0.7) 30%,
+          rgba($background-light, 0.3) 70%,
+          transparent 100%
+        );
       }
     }
 
-    &--secondary{
-      img{
-        width: 65rem;
-        height: 60rem;
+    &-column-wrapper {
+      overflow: hidden;
+      height: 100%;
+    }
+
+    &-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-image {
+      &--type-a,
+      &--type-b {
+        border-radius: $spacing-12;
+        margin-bottom: $spacing-16;
+        object-fit: cover;
+        width: 20rem;
+        display: block;
+      }
+
+      &--type-a {
+        height: 25rem;
+      }
+
+      &--type-b {
+        height: 15rem;
       }
     }
   }
-
 }

@@ -1,0 +1,109 @@
+@use '../abstracts/variables' as *;
+
+.mega-menu {
+
+  &__content{
+    display: flex;
+    padding: $spacing-24 $spacing-48;
+  }
+
+  &__section {
+    &-title {
+      margin-bottom: $spacing-12;
+      font-size: $font-size-18;
+    }
+  }
+
+  &__service-type {
+    display: flex;
+    margin-bottom: $spacing-24;
+    width: 40rem;
+    height: 8rem;
+    background-color: $background-neutral;
+    cursor: pointer;
+
+    &-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 8rem;
+      height: 8rem;
+      background-color: $background-neutral;
+
+      &-wrapper{
+        background-color: $primary-color-dark;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+        width: 4rem;
+        height: 4rem;
+        }
+
+      }
+      
+    }
+
+    &-text {
+      display: flex;
+      align-items: center;
+      color: $primary-text;
+
+      &-name{
+        font-size: $font-size-18;
+      }
+
+      &-description{
+        font-size: $font-size-12;
+      }
+    }
+  }
+
+  &__category{
+    width: 100%;
+    margin-left: $spacing-48;
+
+    &-title{
+      font-size: $font-size-18;
+    }
+  }
+
+  &__category:nth-child(2){
+
+    margin-top: $spacing-12;
+
+  }
+
+  &__services{
+    display: flex;
+  }
+
+  &__service{
+    width: 20rem;
+    height: 16rem;
+    margin-right: $spacing-24;
+    background-color: $background-neutral;
+    border-radius: $spacing-6;
+
+    &-img img{
+      width: 20rem;
+      height: 10rem;
+      border-radius: $spacing-6 $spacing-6 0 0;
+    }
+
+    &-name{
+      font-size: $font-size-16;
+      padding: 0 $spacing-12;
+      font-weight: $font-weight-bold
+    }
+
+    &-price{
+      font-size: $font-size-12;
+      padding: 0 $spacing-12;
+      font-weight: $font-weight-light;
+    }
+
+  }
+
+}

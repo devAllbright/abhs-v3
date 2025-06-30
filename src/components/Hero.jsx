@@ -1,7 +1,32 @@
+import React from "react";
 import CTAButton from "./buttons/CTAButton";
 
+const IMAGE_LIST = [
+  { type: "a", src: "/collage/collage-img-1.jpg" },
+  { type: "b", src: "/collage/collage-img-2.jpg" },
+  { type: "a", src: "/collage/collage-img-3.jpg" },
+  { type: "b", src: "/collage/collage-img-4.jpg" },
+  { type: "a", src: "/collage/collage-img-5.jpg" },
+  { type: "b", src: "/collage/collage-img-6.jpg" },
+  { type: "a", src: "/collage/collage-img-7.jpg" },
+  { type: "b", src: "/collage/collage-img-8.jpg" },
+];
+
+const StaticColumn = ({ images }) => (
+  <div className="primary-banner__collage-column">
+    {images.map((item, i) => (
+      <img
+        key={i}
+        src={item.src}
+        alt={`Collage ${i + 1}`}
+        className={`primary-banner__collage-image primary-banner__collage-image--type-${item.type}`}
+      />
+    ))}
+  </div>
+);
+
 const PrimaryBanner = ({ bannerData }) => {
-  const { ratingText, title, subtitle, description, socialProof, images, imgClass } = bannerData;
+  const { ratingText, title, subtitle, description, socialProof, images } = bannerData;
 
   return (
     <div className="primary-banner">
@@ -30,8 +55,12 @@ const PrimaryBanner = ({ bannerData }) => {
           </div>
         </div>
       </div>
-      <div className={ "primary-banner__img" + imgClass }>
-        <img src={images.heroImage} alt="Hero Image" />
+
+      <div className="primary-banner__collage">
+        <div className="primary-banner__collage-container">
+          <StaticColumn images={IMAGE_LIST} />
+          <StaticColumn images={[...IMAGE_LIST].reverse()} />
+        </div>
       </div>
     </div>
   );
