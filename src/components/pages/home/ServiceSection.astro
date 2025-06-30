@@ -1,6 +1,8 @@
 ---
 import SectionHeading from "../../SectionHeading";
-import ServiceSelection from "./ServiceSelection";
+/* import ServiceSelection from "./ServiceSelection"; */
+import ServiceFilter from "./ServiceFilter"
+
 
 
 const title = `Our Services`
@@ -11,5 +13,7 @@ const subtitle = `Easy as 1,2,3 — CHOOSE,  REQUEST & ENJOY With efforteless,
 
 <div class="service-section">
   <SectionHeading title={title} subtitle={subtitle} />
-  <ServiceSelection client:only="react"/>
+  <!-- <ServiceSelection client:only="react"/> -->
+   <ServiceFilter client:only="react">
+
 </div>
