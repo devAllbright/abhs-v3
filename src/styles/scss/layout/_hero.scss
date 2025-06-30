@@ -133,11 +133,16 @@
     &-column-wrapper {
       overflow: hidden;
       height: 100%;
+      position: relative;
     }
 
     &-column {
       display: flex;
       flex-direction: column;
+
+      &--animated {
+        animation: scrollUp 50s linear infinite;
+      }
     }
 
     &-image {
@@ -158,5 +163,14 @@
         height: 15rem;
       }
     }
+  }
+}
+
+@keyframes scrollUp {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
   }
 }

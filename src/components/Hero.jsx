@@ -13,15 +13,18 @@ const IMAGE_LIST = [
 ];
 
 const StaticColumn = ({ images }) => (
-  <div className="primary-banner__collage-column">
-    {images.map((item, i) => (
-      <img
-        key={i}
-        src={item.src}
-        alt={`Collage ${i + 1}`}
-        className={`primary-banner__collage-image primary-banner__collage-image--type-${item.type}`}
-      />
-    ))}
+  <div className="primary-banner__collage-column-wrapper">
+    <div className="primary-banner__collage-column primary-banner__collage-column--animated">
+      {[...images, ...images].map((item, i) => (
+        <img
+          key={i}
+          src={item.src}
+          alt={`Collage ${i + 1}`}
+          className={`primary-banner__collage-image primary-banner__collage-image--type-${item.type}`}
+          loading="lazy"
+        />
+      ))}
+    </div>
   </div>
 );
 
