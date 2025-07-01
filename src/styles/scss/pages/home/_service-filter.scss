@@ -17,7 +17,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid $background-dark;
+    border-bottom: 2px solid $background-neutral;
     padding-bottom: $spacing-12;
   }
 
@@ -57,8 +57,8 @@
   &__services {
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-24;
-    padding: $spacing-16;
+    gap: $spacing-16;
+    padding: $spacing-32;
     border-radius: $spacing-12;
     background-color: $secondary-color-light;
     min-height: 40rem;

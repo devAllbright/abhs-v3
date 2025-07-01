@@ -47,7 +47,7 @@ export default function Header() {
           </div>
 
           <div className="header__nav-item" onMouseEnter={handleMouseEnterServices}>
-            <a href="#">Our Services</a>
+            <a href="/our-services">Our Services</a>
           </div>
 
           <div className="header__nav-item" onMouseEnter={() => setIsVisible(false)}>

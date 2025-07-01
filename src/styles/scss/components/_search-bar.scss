@@ -1,0 +1,73 @@
+@use '../abstracts/variables' as *;
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+
+  &__section {
+    margin-top: -10vh;
+  }
+
+  &__title {
+    font-size: $font-size-42;
+    margin-bottom: $spacing-12;
+  }
+
+  &__form { }
+
+  &__input-group {
+    position: relative;
+    width: 100%;
+  }
+
+  &__input {
+    all: unset;
+    box-sizing: border-box;
+    width: 100%;
+    height: 1.5rem;
+    padding: 2.5rem;
+    border-radius: 50rem;
+    border: 1px solid rgba(0, 0, 0, 0.31);
+    font: inherit;
+  }
+
+  &__results {
+    position: absolute;
+    top: calc(100% + $spacing-8);
+    left: 0;
+    right: 0;
+    z-index: 10;
+    max-height: 18.75rem;
+    overflow-y: auto;
+    background-color: $background-light;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
+  }
+
+  &__result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-16 $spacing-24;
+    text-decoration: none;
+    color: $primary-text;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+
+  &__result-name {
+    font-weight: $font-weight-bold;
+  }
+
+  &__result-price {
+    font-style: italic;
+    color: $neutral-text;
+  }
+}
