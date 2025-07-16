@@ -9,7 +9,7 @@
   top: 0;
   z-index: 1000;
   padding: 0 $spacing-64;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 $spacing-4 $spacing-12 rgba(0, 0, 0, 0.1);
   background-color: $background-light;
 
   &__logo {
@@ -90,7 +90,7 @@
 
 // MegaMenu Styles
 .mega-menu {
-  position: absolute;
+  position: fixed;
   top: 10vh;
   left: 0;
   width: 100%;
@@ -111,19 +111,47 @@
     height: 50vh;
     background-color: $background-light;
     padding: $spacing-64;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    transform: translateY(-20px);
+    box-shadow: 0 $spacing-4 $spacing-24 rgba(0, 0, 0, 0.15);
+    transform: translateY(-$spacing-24);
     transition: transform 0.5s ease;
+    display: flex;
+    gap: $spacing-64;
   }
 
   &--visible &__content {
     transform: translateY(0);
   }
 
+  // Left column: Service Types
+  &__section:first-child {
+    flex: 0 0 30rem;
+  }
+
+  // Right column: Category Services
+  &__section:last-child {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 100%;
+
+    &::-webkit-scrollbar {
+      width: $spacing-6;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: $spacing-6;
+    }
+  }
+
+  &__category {
+    padding-bottom: $spacing-24;
+  }
+
   &__overlay {
     height: 50vh;
     width: 100%;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur($spacing-4);
     background-color: rgba(0, 0, 0, 0.25);
     opacity: 0;
     transition: opacity 0.5s ease;
