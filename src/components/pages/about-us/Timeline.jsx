@@ -1,6 +1,9 @@
-import { useEffect } from "react";
-import TimelineItem from "./TimelineItem.jsx";
-import "../../../styles/timeline.css";
+import React from 'react';
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
 
 const milestones = [
   { title: "Milestone 1", subtitle: "Milestone Subtitle", date: "Oct 05 1976", images: ["img1.jpg", "img2.jpg"], side: "left" },
@@ -13,44 +16,58 @@ const milestones = [
 ];
 
 const Timeline = () => {
-  useEffect(() => {
-    const items = document.querySelectorAll(".timeline__item");
-    const progressLine = document.querySelector(".timeline::before");
-
-    const updateTimeline = () => {
-      let scrollY = window.scrollY + window.innerHeight * 0.75;
-      let visibleCount = 0;
-
-      items.forEach((item, index) => {
-        const top = item.offsetTop;
-        if (scrollY > top) {
-          item.classList.add("visible");
-          visibleCount = index + 1;
-        } else {
-          item.classList.remove("visible");
-        }
-      });
-
-      // Update progress line height
-      const totalItems = items.length;
-      const percentage = (visibleCount / totalItems) * 100;
-      if (progressLine) progressLine.style.height = `${percentage}%`;
-    };
-
-    window.addEventListener("scroll", updateTimeline);
-    updateTimeline();
-
-    return () => {
-      window.removeEventListener("scroll", updateTimeline);
-    };
-  }, []);
-
   return (
-    <div className="timeline">
+    <VerticalTimeline lineColor="#FC8551">
       {milestones.map((milestone, index) => (
-        <TimelineItem key={index} {...milestone} />
+        <VerticalTimelineElement
+          key={index}
+          date={milestone.date}
+          position={milestone.side}
+          contentStyle={{
+            background: '#fffaf5',
+            color: '#303030',
+            boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+            borderRadius: '8px',
+          }}
+          contentArrowStyle={{ borderRight: '7px solid #fffaf5' }}
+          iconStyle={{
+            background: '#FC8551',
+            width: '14px',
+            height: '14px',
+            marginLeft: '-7px',
+            top: '16px',
+            boxShadow: 'none',
+          }}
+          icon={<div />} // just a dot, no actual icon
+        >
+          <h3 style={{ marginBottom: '0.25rem' }}>{milestone.title}</h3>
+          {milestone.subtitle && (
+            <h4 style={{ margin: '0 0 0.75rem', fontWeight: 400 }}>{milestone.subtitle}</h4>
+          )}
+          {milestone.description && (
+            <p style={{ marginBottom: milestone.images ? '1rem' : '0' }}>{milestone.description}</p>
+          )}
+          {milestone.images && (
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              {milestone.images.map((src, i) => (
+                <img
+                  key={i}
+                  src={src}
+                  alt={`milestone-${index}-img-${i}`}
+                  style={{
+                    width: '80px',
+                    height: '50px',
+                    objectFit: 'cover',
+                    borderRadius: '4px',
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
+                  }}
+                />
+              ))}
+            </div>
+          )}
+        </VerticalTimelineElement>
       ))}
-    </div>
+    </VerticalTimeline>
   );
 };
 

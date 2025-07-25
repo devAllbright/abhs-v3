@@ -1,0 +1,62 @@
+@use '../abstracts/variables' as *;
+
+.quiz-container{
+  display: flex;
+	justify-content: center;
+	align-items: center;
+  width: 100%;
+  height: 120vh;
+}
+
+.quiz{
+	display: flex;
+	width: 75rem;
+	height: 30rem;
+	border-radius: 1.2rem;
+	background-color: #ffe9dfb2;
+	border-radius: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); // ✅ smooth soft shadow
+
+	&__content, &__img{
+		width: 50%;
+		height: 100%;
+		padding: $spacing-32 $spacing-40;
+	}
+
+	&__name{
+		font-size: $font-size-18;
+		font-weight: $font-weight-bold;
+		color: #E97E5D;
+	}
+
+	&__title{
+		margin-top: $spacing-24;
+		font-size: $font-size-28;
+		color: $primary-text;
+		line-height: $line-height-13;
+	}
+
+	&__description{
+		margin-top: $spacing-12;
+		font-weight: $font-weight-light;
+		color: $primary-text;
+		font-size: $font-size-12;
+	}
+
+	&__cta{
+		margin-top: $spacing-12;
+	}
+
+	&__img{
+		display: flex;
+		justify-content: center;
+		align-items: flex-end;
+		height: 100%;
+		padding-bottom: 0;
+
+		img{
+			max-height: 100%;
+      object-fit: contain;
+		}
+	}
+}

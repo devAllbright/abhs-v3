@@ -21,6 +21,7 @@
 @use "./scss/components/section-heading";
 @use "./scss/components/mega-menu";
 @use "./scss/components/search-bar";
+@use "./scss/components/quiz-cta";
 
 // 5. Pages (Specific page styles)
 @use "./scss/pages/index";
@@ -32,6 +33,7 @@
 @use "./scss/pages/services/bundle-and-save";
 @use "./scss/pages/services/service-description";
 @use "./scss/pages/home/service-filter";
+@use "./scss/pages/about-us/brief";
 
 // 6. Themes (Light and Dark mode)
 // 7. Vendors (Third-party styles)

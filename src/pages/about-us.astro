@@ -1,9 +1,43 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Timeline from "../components/pages/about-us/Timeline";
+import HeroText from "../components/HeroText";
+import Brief from "../components/pages/about-us/Brief";
+
+const briefData = {
+  title: "A brief story",
+  imageUrl: "/about-us-brief.jpg",
+  paragraphs: [
+    {
+      brief: `Founded in 1976, Allbright Home Services began 
+              with a simple mission: to make homes and businesses 
+              cleaner, healthier, and more inviting. 
+              What started as a small, family-run cleaning service 
+              quickly grew into a trusted name, known for exceptional 
+              quality, reliability, and customer care.`
+    },
+    {
+      brief: `For over four decades, we’ve helped thousands of homeowners 
+              and businesses enjoy spotless spaces, using eco-friendly 
+              products and meticulous cleaning standards. Our team is 
+              built on professionalism, integrity, and a commitment to 
+              excellence, ensuring every client experiences the Allbright 
+              difference.`
+    },
+    {
+      brief: `Today, we continue to uphold our founding belief—cleaning for 
+              better living—by delivering top-tier services tailored to modern 
+              homes and businesses. Whether it’s a deep clean, routine maintenance, 
+              or specialty cleaning, we’re here to make your space shine.
+              Allbright Home Services – Cleaning for Better Living Since 1976.`
+    }
+  ]
+};
 ---
 
 <BaseLayout>
+  <HeroText />
+  <Brief briefData={briefData} />
   <Timeline client:only="react"/>
 </BaseLayout>
 
