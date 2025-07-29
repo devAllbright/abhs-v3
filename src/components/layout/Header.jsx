@@ -77,7 +77,7 @@ export default function Header() {
             className="header__cta-button"
             onMouseEnter={() => setIsVisible(false)}
           >
-            <a href="#" className="primary-cta">Check Prices</a>
+            <a href="/pricing/location" className="primary-cta">Check Prices</a>
           </div>
         </div>
       </header>

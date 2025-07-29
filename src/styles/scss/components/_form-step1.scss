@@ -1,0 +1,106 @@
+.user-info{
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+.form-control{
+  display: block !important;
+}
+
+.form-control div{
+  margin-top: 6px;
+}
+
+.form-control input, .form-control select{
+  width: 260px;
+  height: 30px;
+  border: solid 2px #DFAA59;
+  border-radius: 6px;
+} 
+
+.form-control select{
+  padding-left: 12px;
+  background-color: #FBFCF8;
+}
+
+.house-type{
+  margin-top: 48px;
+}
+
+.type-title{
+  text-align: center;
+  font-weight: bold;
+}
+
+.house-icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.type-element{
+  padding: 24px;
+  margin-right: 24px;
+  border: solid 2px #DFAA59;
+  /* border-radius: 6px; */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.type-element:nth-child(4){
+  margin-right: 0px;
+}
+
+.type-element:hover{
+  background-color: #DFAA59
+}
+
+.type-active{
+  background-color: #DFAA59
+}
+
+.type-inactive{
+  background-color: transparent;
+}
+
+.house-icon{
+  display: flex;
+  justify-content: center;
+}
+
+.type-element img{
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 0 auto;
+}
+
+.type-text{
+  font-weight: bold;
+}
+
+.navigation-buttons{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.nav-button{
+  all: unset;
+  width: 60px;
+  height: 25px;
+  border-radius: 6px;
+  background-color: #F5B452;
+  color: #FBFCF8;
+  text-align: center;
+}
+
+.nav-button:nth-child(1){
+  margin-right: 24px;
+}
+
+.navigation-buttons a{
+  text-decoration: none;
+}

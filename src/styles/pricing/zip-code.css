@@ -1,0 +1,68 @@
+
+  /* ---------- FORM STYLES ------------ */
+  .form-container{
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+    margin-top: 36px;
+  }
+  .input-container{
+    display: flex;
+    align-items: center;
+  }
+
+  .img-container {
+    display: flex;
+    align-items: center;
+    height: 52px;
+    border: solid 1px rgb(201, 201, 201);
+    border-right: none;
+
+  }
+
+  .input-container img{
+    width: 25px;
+    height: 25px;
+  }
+
+  #postal-code{
+    all: unset;
+    width: 300px;
+    height: 50px;
+    border: solid 1px rgb(201, 201, 201);
+    border-left: none;
+    font-size: 18px;
+    color: rgb(175, 175, 175);
+
+  }
+
+  #submit-button{
+    all: unset;
+    width: 75px;
+    height: 51px;
+    background-color: #F5B452;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .submit-enabled{
+    background-color: #F5B452;
+  }
+
+  .submit-disabled{
+    background-color: #b9b9b9 !important;
+  }
+
+  /* --------------------------------- */
+
+  .location-container{
+    margin-top: 12px;
+    margin-left: 108px;
+  }
+
+  .location-container p{
+    font-weight: bold;
+    color: #F5B452;
+  }
