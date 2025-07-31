@@ -1,0 +1,63 @@
+.your-quote{
+  background-color: #e2e2e2;
+  width: 500px;
+  margin: 0px auto;
+  padding: 24px;
+}
+
+.quote-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  color: #444;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.quote-line{
+  margin-bottom: 12px;
+}
+
+.quote-service, .quote-subtotal{
+  display: flex;
+  justify-content: space-between;
+  font-size: 22px;
+  font-weight: bold;
+  color: #303030;
+}
+
+.quote-extras{
+  padding-left: 12px;
+}
+
+.quote-extras .extra-item{
+  display: flex;
+  justify-content: space-between;
+  font-weight: lighter;
+  color:#303030;
+  font-size: 18px;
+}
+
+.extra-text{
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.bundle-discount{
+  display: flex;
+  justify-content: space-between;
+}
+
+.quote-frequency,.quote-subtotal, 
+.quote-total{
+  display: flex;
+  justify-content: space-between;
+}
+
+.quote-total{
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 24px;
+  color: #303030;
+}

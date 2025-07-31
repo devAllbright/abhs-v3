@@ -1,0 +1,119 @@
+.scroll-your-home{
+  min-height: 500px;
+  width: 600px;
+  margin: 0px auto;
+  /* border: solid 1px black; */
+}
+
+.scroll-title{
+  font-size: 40px;
+  font-weight: bold;
+  color: #303030;
+}
+
+.details-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 600px;
+  margin: 0px auto; 
+  padding-bottom: 48px;
+}
+
+.detail-box{
+  margin-top: 48px;
+}
+
+.detail-box:nth-child(1),
+.detail-box:nth-child(3){
+  margin-right: 96px;
+}
+
+
+.detail-element{
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+}
+
+.detail-box:nth-child(1) .detail-element,
+.detail-box:nth-child(2) .detail-element {
+  background-image: url('/shopping-cart-v2/square-footage.png');
+}
+
+.detail-box:nth-child(3) .detail-element,
+.detail-box:nth-child(4) .detail-element {
+  background-image: url('/shopping-cart-v2/levels.png');
+}
+
+.detail-name{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+  font-size: 18px;
+  font-weight: bold;
+  height: 50px;
+  text-align: center;
+  background-color: #ec6b33;
+  color: #fff;
+}
+
+.detail-input{
+  width: 200px;
+  margin-top: 12px;
+  border: solid 3px #ec6b33;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 48px;
+  z-index: 1000;
+}
+
+.modal-options {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.modal-option {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  border: solid 2px #ec6b33;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-option:hover {
+  background-color: #d9d9d9;
+}
+
+.modal p{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+
+
+

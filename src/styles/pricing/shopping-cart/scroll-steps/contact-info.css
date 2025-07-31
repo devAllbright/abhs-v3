@@ -1,0 +1,53 @@
+.scroll-contact-info{
+  min-height: 500px;
+  width: 600px;
+  margin: 0px auto;
+}
+
+.scroll-title{
+  font-size: 40px;
+  font-weight: bold;
+  color: #303030;
+}
+
+.info-container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  margin-top: 48px;
+}
+
+.form-group:nth-child(1),
+.form-group:nth-child(2),
+.form-group:nth-child(3),
+.form-group:nth-child(4){
+  width: 50%;
+}
+
+.form-group:nth-child(5){
+  width: 100%
+}
+
+.MuiInputBase-input{
+  height: 30px !important;
+}
+
+
+
+
+.form-group input,
+.form-group textarea{
+  width: 100%;
+  padding: 12px;
+  border: solid 1px #969696;
+}
+
+.form-group textarea{
+  resize: none;
+}
+
+.form-group{
+  padding: 12px;
+}
+
+
