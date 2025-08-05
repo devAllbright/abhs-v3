@@ -1,9 +1,33 @@
-import "../../../styles/pricing/shopping-cart/scroll-steps/contact-info.css";
+import { useEffect, useState } from "react";
 import { LocalizationProvider, DateTimePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import TextField from "@mui/material/TextField";
+import dayjs from "dayjs";
+import "../../../styles/pricing/shopping-cart/scroll-steps/contact-info.css";
 
 export default function ContactInfo({ stepNumber }) {
+  const [contactInfo, setContactInfo] = useState(() => {
+    const stored = sessionStorage.getItem("contactInfo");
+    return stored
+      ? JSON.parse(stored)
+      : {
+          fullName: "",
+          phoneNumber: "",
+          address: "",
+          appointment: null,
+          comments: "",
+        };
+  });
+
+  const handleChange = (field) => (event) => {
+    const value = event?.target?.value ?? event;
+    setContactInfo((prev) => ({ ...prev, [field]: value }));
+  };
+
+  useEffect(() => {
+    sessionStorage.setItem("contactInfo", JSON.stringify(contactInfo));
+  }, [contactInfo]);
+
   return (
     <div className="scroll-contact-info">
       <div className="scroll-title">
@@ -18,6 +42,8 @@ export default function ContactInfo({ stepNumber }) {
             label="Full Name"
             variant="outlined"
             name="fullName"
+            value={contactInfo.fullName}
+            onChange={handleChange("fullName")}
           />
         </div>
 
@@ -29,6 +55,8 @@ export default function ContactInfo({ stepNumber }) {
             variant="outlined"
             type="tel"
             name="phoneNumber"
+            value={contactInfo.phoneNumber}
+            onChange={handleChange("phoneNumber")}
           />
         </div>
 
@@ -39,12 +67,19 @@ export default function ContactInfo({ stepNumber }) {
             label="Your Address"
             variant="outlined"
             name="address"
+            value={contactInfo.address}
+            onChange={handleChange("address")}
           />
         </div>
 
         <div className="form-group">
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DateTimePicker label="Select Date & Time" renderInput={(params) => <TextField {...params} fullWidth />} />
+            <DateTimePicker
+              label="Select Date & Time"
+              value={contactInfo.appointment ? dayjs(contactInfo.appointment) : null}
+              onChange={(date) => handleChange("appointment")(date?.toISOString())}
+              renderInput={(params) => <TextField {...params} fullWidth />}
+            />
           </LocalizationProvider>
         </div>
 
@@ -57,6 +92,8 @@ export default function ContactInfo({ stepNumber }) {
             multiline
             rows={4}
             name="comments"
+            value={contactInfo.comments}
+            onChange={handleChange("comments")}
           />
         </div>
       </div>
