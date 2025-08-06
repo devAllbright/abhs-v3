@@ -54,7 +54,7 @@ const PrimaryBanner = ({ bannerData }) => {
             ))}
           </div>
           <div className="primary-banner__cta">
-            <CTAButton href="#" text="Check Prices" buttonClass="primary-cta" />
+            <CTAButton href="#" text="Free Consultation" buttonClass="primary-cta" />
           </div>
         </div>
       </div>

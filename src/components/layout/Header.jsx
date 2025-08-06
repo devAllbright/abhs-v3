@@ -70,14 +70,14 @@ export default function Header() {
           >
             <a href="#" className="header__cta-number-link">
               <img src="/phone-call.png" alt="Phone Icon" className="header__cta-number-icon" />
-              <span className="header__cta-number-text">(555) - 555 - 5555</span>
+              <span className="header__cta-number-text">(408) - 280 - 1234</span>
             </a>
           </div>
           <div
             className="header__cta-button"
             onMouseEnter={() => setIsVisible(false)}
           >
-            <a href="/pricing/location" className="primary-cta">Check Prices</a>
+            <a href="/pricing/location" className="primary-cta">Free Consultation</a>
           </div>
         </div>
       </header>
