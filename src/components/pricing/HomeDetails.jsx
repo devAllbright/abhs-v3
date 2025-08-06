@@ -246,7 +246,7 @@ export default function HomeDetails() {
       </div>
 
       <div className="navigation-buttons">
-        <a href="/pricing-v2/service-type">
+        <a href="/pricing/service-type">
           <button className="nav-button">Back</button>
         </a>
         <button className="nav-button" onClick={handleNextClick}>Next</button>
