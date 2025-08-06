@@ -54,7 +54,7 @@ const PrimaryBanner = ({ bannerData }) => {
             ))}
           </div>
           <div className="primary-banner__cta">
-            <CTAButton href="#" text="Free Consultation" buttonClass="primary-cta" />
+            <CTAButton href="https://book.housecallpro.com/book/All-Bright-Home-Services/38acff17233d44ec9cdc0edf4aadf395?v2=true" text="Free Consultation" buttonClass="primary-cta" />
           </div>
         </div>
       </div>
