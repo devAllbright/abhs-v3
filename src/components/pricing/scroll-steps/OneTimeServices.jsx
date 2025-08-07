@@ -1,13 +1,34 @@
+import { useEffect, useState } from "react";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
 import "../../../styles/pricing/shopping-cart/scroll-steps/one-time-services.css";
 
 export default function OneTimeServices() {
-  const { addService, removeService, addExtra, removeExtra, activeServices, activeExtras, services, updateBundleDiscount } = useShoppingCart();
+  const {
+    addService,
+    removeService,
+    addExtra,
+    removeExtra,
+    activeServices,
+    activeExtras,
+    services,
+    updateBundleDiscount,
+  } = useShoppingCart();
 
-  // Retrieve one-time services
+  // ✅ State to safely handle sessionStorage access
+  const [condition, setCondition] = useState(null);
+
+  // ✅ Load real condition after hydration
+  useEffect(() => {
+    const homeDetailsRaw = sessionStorage.getItem("homeDetails");
+    const homeDetails = homeDetailsRaw ? JSON.parse(homeDetailsRaw) : {};
+    setCondition(homeDetails.condition || "YES");
+  }, []);
+
+  // ⛔ Prevent rendering until condition is loaded
+  if (condition === null) return null;
+
   const oneTimeServices = services.oneTimeServices;
 
-  // Handle service selection
   const handleServiceClick = (service) => {
     const isActive = activeServices.some((s) => s.id === service.id);
     if (isActive) {
@@ -15,10 +36,9 @@ export default function OneTimeServices() {
     } else {
       addService(service);
     }
-    updateBundleDiscount(); // ✅ Ensure bundle discount updates
+    updateBundleDiscount();
   };
 
-  // Handle extra selection
   const handleExtraClick = (serviceId, extra) => {
     const isServiceActive = activeServices.some((s) => s.id === serviceId);
     if (!isServiceActive) {
@@ -34,6 +54,8 @@ export default function OneTimeServices() {
     }
   };
 
+  const formatServiceName = (id) => id.replace(/([A-Z])/g, " $1").trim();
+
   return (
     <div className="scroll-choose-service">
       <div className="scroll-title">
@@ -42,19 +64,26 @@ export default function OneTimeServices() {
 
       <div className="services-container">
         {Object.entries(oneTimeServices).map(([serviceId, service]) => {
+          // ⛔ Skip "OneTimeFreshenUp" if condition is "NO"
+          if (serviceId === "OneTimeFreshenUp" && condition === "NO") return null;
+
           const isServiceActive = activeServices.some((s) => s.id === serviceId);
 
           return (
             <div key={serviceId}>
-              {/* Service Button (No Price) */}
               <button
                 className={`service ${isServiceActive ? "active-service" : ""}`}
-                onClick={() => handleServiceClick({ id: serviceId, name: serviceId.replace(/([A-Z])/g, " $1").trim(), price: service.price })}
+                onClick={() =>
+                  handleServiceClick({
+                    id: serviceId,
+                    name: formatServiceName(serviceId),
+                    price: service.price,
+                  })
+                }
               >
-                {serviceId.replace(/([A-Z])/g, " $1").trim()}
+                {formatServiceName(serviceId)}
               </button>
 
-              {/* Extras Section - Only shown when service is active */}
               {isServiceActive && service.extras && (
                 <div className="extras-container">
                   {service.extras.map((extra) => {
