@@ -173,7 +173,7 @@ export default function FinalSummary() {
           <button className="nav-button">Back</button>
         </a>
         <button className="nav-button" onClick={handleNextClick}>
-          Confirm & Continue
+          Confirm
         </button>
       </div>
     </>

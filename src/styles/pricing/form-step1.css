@@ -95,6 +95,7 @@
   background-color: #F5B452;
   color: #FBFCF8;
   text-align: center;
+  cursor: pointer;
 }
 
 .nav-button:nth-child(1){

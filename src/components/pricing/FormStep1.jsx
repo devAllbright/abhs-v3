@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import '../../styles/pricing/form-step1.css'
+import '../../styles/pricing/form-step1.css';
 
 const Step1 = () => {
-
   const [formData, setFormData] = useState({
     email: '',
     source: '',
@@ -25,19 +24,17 @@ const Step1 = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-  
+    e.preventDefault();
+
     setTimeout(() => {
       if (!formData.email || !formData.source || !formData.houseType) {
         alert('Empty fields are not allowed');
       } else {
         sessionStorage.setItem('step1FormData', JSON.stringify(formData));
-        window.location.href = '/pricing/service-type'
-
+        window.location.href = '/pricing/service-type';
       }
-    }, 500)
-  }
-  
+    }, 500);
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -100,9 +97,16 @@ const Step1 = () => {
             <p className="type-text">Condominium</p>
           </div>
         </div>
+
         <div className="navigation-buttons">
-          <a href="/pricing/choose-estimate"><button className="nav-button">Back</button></a>
-          <a href=""><button type='submit' className="nav-button">Next</button></a>
+          <button
+            type="button"
+            className="nav-button"
+            onClick={() => window.location.href = '/pricing/location'}
+          >
+            Back
+          </button>
+          <button type="submit" className="nav-button">Next</button>
         </div>
       </div>
     </form>
