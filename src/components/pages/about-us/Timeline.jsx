@@ -100,6 +100,7 @@ const Timeline = () => {
                       width: '140px',
                       height: '90px',
                       objectFit: 'cover',
+                      objectPosition: 'top center',
                       borderRadius: '6px',
                       boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
                       transition: 'transform 0.2s ease, box-shadow 0.2s ease',
