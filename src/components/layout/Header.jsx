@@ -68,7 +68,7 @@ export default function Header() {
             className="header__cta-number"
             onMouseEnter={() => setIsVisible(false)}
           >
-            <a href="#" className="header__cta-number-link">
+            <a href="tel:4082801234" className="header__cta-number-link">
               <img src="/phone-call.png" alt="Phone Icon" className="header__cta-number-icon" />
               <span className="header__cta-number-text">(408) - 280 - 1234</span>
             </a>

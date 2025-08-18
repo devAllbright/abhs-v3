@@ -1,0 +1,42 @@
+[
+  {
+    "title": "From Idea to Action",
+    "subtitle": "Founding & Early Days",
+    "date": "Year of Start",
+    "description": "In [Year], Ernie set out to provide top-notch cleaning services with a focus on quality and customer care.",
+    "images": ["/timeline/img-1.png", "/timeline/img-2.png"],
+    "side": "left"
+  },
+  {
+    "title": "Our First Wheels",
+    "subtitle": "First Allbright Van & First Jobs",
+    "date": "Year + 1",
+    "description": "This first Allbright van became our mobile headquarters, bringing professional cleaning directly to our customers’ doors.",
+    "images": ["/timeline/img-3.png"],
+    "side": "right"
+  },
+  {
+    "title": "From One Van to a Fleet",
+    "subtitle": "Expanding the Fleet",
+    "date": "Year + 2",
+    "description": "With growing demand, Allbright Home Services expanded its fleet, making it possible to serve more homes and businesses faster.",
+    "images": ["/timeline/img-4.png"],
+    "side": "left"
+  },
+  {
+    "title": "Our People, Our Strength",
+    "subtitle": "Building a Team & Reputation",
+    "date": "Year + 3",
+    "description": "The heart of Allbright Home Services has always been its dedicated team, committed to delivering exceptional service.",
+    "images": ["/timeline/img-5.png"],
+    "side": "right"
+  },
+  {
+    "title": "Decades of Excellence",
+    "subtitle": "Modern Era & Legacy",
+    "date": "Present",
+    "description": "Today, Allbright Home Services continues to shine, combining tradition with innovation to meet the needs of modern customers.",
+    "images": ["/timeline/img-6.png"],
+    "side": "left"
+  }
+]

@@ -25,7 +25,9 @@ const bannerData = {
     heroImage: "/hero-img.png"
   },
 
-  imgClass: "--main"
+  imgClass: "--main",
+
+  ctaAction: "redirect"
 };
 
 const blogPosts = [
@@ -77,7 +79,6 @@ const faqs = [
   <Hero bannerData={bannerData} />
   <BenefitSection client:only="react"/>
   <WhyChooseUsSection />
-  <ServiceSection />
   <ReviewsWidget />
   <PostCarousel posts={ blogPosts } client:only="react" />
   <FAQSection faqs={ faqs } />

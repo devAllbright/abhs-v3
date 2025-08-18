@@ -1,6 +1,8 @@
 @use '../abstracts/variables' as *;
 
 .primary-cta{
+  all: unset;
+  cursor: pointer;
   background-color: $primary-color-dark;
   font-size: $font-size-16;
   font-weight: $font-weight-bold;

@@ -1,6 +1,6 @@
 export default function PostCarousel({ posts }) {
   return (
-    <div className="post-carousel">
+    {/* <div className="post-carousel">
       <div className="post-carousel__container">
         <h1 className="post-carousel__title">What's New?</h1>
         <div className="post-carousel__content">
@@ -24,6 +24,6 @@ export default function PostCarousel({ posts }) {
           </div>
         </div>
       </div>
-    </div>
+    </div> */}
   );
 }

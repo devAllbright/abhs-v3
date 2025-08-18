@@ -1,4 +1,4 @@
-const TimelineItem = ({ title, subtitle, date, description, images, side }) => {
+/* const TimelineItem = ({ title, subtitle, date, description, images, side }) => {
   return (
     <div className={`timeline__item ${side}`}>
       <div className="timeline__marker"></div>
@@ -6,7 +6,6 @@ const TimelineItem = ({ title, subtitle, date, description, images, side }) => {
       <div className="timeline__content">
         <h3>{title}</h3>
         {subtitle && <h4>{subtitle}</h4>}
-        <p>{description}</p>
         {images && (
           <div className="timeline__images">
             {images.map((src, index) => (
@@ -14,9 +13,12 @@ const TimelineItem = ({ title, subtitle, date, description, images, side }) => {
             ))}
           </div>
         )}
+        <p>{description}</p>
+
       </div>
     </div>
   );
 };
 
 export default TimelineItem;
+ */

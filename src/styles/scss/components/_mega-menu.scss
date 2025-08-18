@@ -14,6 +14,10 @@
     }
   }
 
+  &__section:nth-child(2) {
+    overflow-x: auto;
+  }
+
   &__service-type {
     display: flex;
     margin-bottom: $spacing-24;
@@ -85,6 +89,8 @@
     margin-right: $spacing-24;
     background-color: $background-neutral;
     border-radius: $spacing-6;
+    text-decoration: none;
+    color: inherit;
 
     &-img img{
       width: 22rem;

@@ -1,0 +1,6 @@
+@use '../abstracts/variables' as *;
+
+.timeline-container{
+    padding: $spacing-64;
+    padding-top: 96px;
+}
