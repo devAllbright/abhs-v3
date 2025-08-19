@@ -120,18 +120,33 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
+  {
+    question: "What’s included in a deep cleaning service?",
+    answer: "Deep cleaning covers all standard cleaning tasks plus detailed attention to areas often overlooked—like baseboards, light switches, behind appliances, inside cabinets, and more. It's a full top-to-bottom refresh for your home."
+  },
+  {
+    question: "How is deep cleaning different from regular cleaning?",
+    answer: "Regular cleaning maintains cleanliness week to week, while deep cleaning targets built-up grime, dust, and hidden dirt throughout the home. It’s ideal for first-time cleanings, seasonal resets, or homes that haven’t been professionally cleaned in a while."
+  },
+  {
+    question: "How long does a deep cleaning take?",
+    answer: "It depends on the size and condition of your home. Most deep cleans take between 3–6 hours. We’ll provide an estimate when you book based on your home’s details."
+  },
+  {
+    question: "Do I need to prepare anything before the deep cleaning?",
+    answer: "We recommend tidying up clutter and securing pets to allow our team to work efficiently. If you have special requests or areas of concern, just let us know in advance."
+  },
+  {
+    question: "How often should I schedule a deep cleaning?",
+    answer: "We suggest deep cleaning at least once or twice a year, or before starting recurring cleanings. It’s also perfect for post-renovation, pre-move-in, or before special events."
+  }
 ]
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

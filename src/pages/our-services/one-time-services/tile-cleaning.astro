@@ -116,18 +116,34 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
+  {
+    question: "What does your tile cleaning service include?",
+    answer: "We deep clean tile surfaces and grout lines using professional equipment and safe cleaning agents. This removes dirt, grease, stains, and bacteria buildup, leaving your floors and walls looking refreshed."
+  },
+  {
+    question: "Can you clean both tile floors and walls?",
+    answer: "Yes, our service covers all tiled areas, including floors, walls, backsplashes, and shower enclosures. We adjust our cleaning process based on the type of tile and location."
+  },
+  {
+    question: "Do you also clean and restore grout?",
+    answer: "Absolutely. Grout is porous and often traps dirt and stains. We deep clean and, if requested, can also apply grout sealing to help protect against future buildup."
+  },
+  {
+    question: "Is professional tile cleaning safe for all types of tile?",
+    answer: "Yes, we use products and methods that are safe for ceramic, porcelain, natural stone, and other tile types. We always choose the right approach for your specific surfaces."
+  },
+  {
+    question: "How often should I schedule tile and grout cleaning?",
+    answer: "Most homes benefit from professional tile and grout cleaning once or twice a year, depending on foot traffic, moisture levels, and daily use."
+  }
 ]
+
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

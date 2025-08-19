@@ -113,18 +113,34 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
-]
+  {
+    question: "What does your post-renovation cleaning service include?",
+    answer: "We remove construction dust, debris, and residue from all surfaces—walls, floors, windows, fixtures, and built-ins. This includes deep cleaning of baseboards, vents, cabinets (inside and out), and appliances."
+  },
+  {
+    question: "Do you clean up construction debris?",
+    answer: "We handle light construction debris like dust, drywall particles, paint splatter, and sawdust. For larger debris or disposal needs, we recommend using a construction cleanup crew before our service."
+  },
+  {
+    question: "Is this service safe for newly installed materials?",
+    answer: "Yes, we use gentle, non-abrasive products and tools safe for new surfaces like freshly painted walls, new flooring, tiles, and countertops. We’re careful not to damage recently completed work."
+  },
+  {
+    question: "How long does post-renovation cleaning take?",
+    answer: "It depends on the size of the space and how much dust or residue remains. Most jobs take between 4–8 hours. We’ll give you a time estimate when you book."
+  },
+  {
+    question: "When should I schedule this service?",
+    answer: "Schedule once all construction or remodeling work is fully complete—including painting and flooring—so we can clean thoroughly without risking re-contamination."
+  }
+];
+
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

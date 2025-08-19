@@ -116,18 +116,33 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
-]
+  {
+    question: "What is anodized frame restoration?",
+    answer: "Anodized frame restoration is the process of cleaning, polishing, and protecting aluminum window and door frames that have oxidized, faded, or become stained over time. We restore their original finish without replacing the frames."
+  },
+  {
+    question: "How do I know if my frames need restoration?",
+    answer: "Signs include chalky or dull surfaces, visible corrosion, discoloration, or difficulty cleaning the frame. If your aluminum frames no longer look sharp, it's time to restore them."
+  },
+  {
+    question: "Is the process safe for all types of aluminum frames?",
+    answer: "Yes, we use non-abrasive, professional-grade products specifically formulated for anodized aluminum to clean and restore without damaging the finish."
+  },
+  {
+    question: "How long does the restoration last?",
+    answer: "With proper care, the results can last several years. We also offer maintenance recommendations to extend the life and look of your restored frames."
+  },
+  {
+    question: "Do you offer restoration for commercial properties as well?",
+    answer: "Absolutely. We provide anodized frame restoration services for both residential and commercial properties, including storefronts and office buildings."
+  }
+];
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

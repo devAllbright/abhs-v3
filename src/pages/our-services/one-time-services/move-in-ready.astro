@@ -119,18 +119,34 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
-]
+  {
+    question: "What’s included in a move-in ready cleaning?",
+    answer: "Our move-in ready cleaning includes deep cleaning of all rooms, appliances, cabinets (inside and out), baseboards, bathrooms, and floors—ensuring your new home is spotless, sanitized, and ready for you to move in."
+  },
+  {
+    question: "Do you clean inside appliances and cabinets?",
+    answer: "Yes. We clean inside and outside of all kitchen appliances, cabinets, drawers, and closets to make sure no dust, crumbs, or residue is left behind from previous occupants."
+  },
+  {
+    question: "Should I schedule the cleaning before or after moving in?",
+    answer: "It’s best to schedule your move-in cleaning before your belongings arrive. This allows us to clean every surface thoroughly without furniture or boxes in the way."
+  },
+  {
+    question: "Do I need to provide cleaning supplies?",
+    answer: "No, we bring all professional-grade supplies and equipment needed for a deep, move-in ready clean. If you have special product requests, just let us know in advance."
+  },
+  {
+    question: "Can you clean homes that have been vacant for a while?",
+    answer: "Yes, we specialize in preparing homes that have been empty or neglected, removing dust buildup, cobwebs, and any lingering odors to make the space feel fresh and welcoming."
+  }
+];
+
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

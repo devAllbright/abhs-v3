@@ -113,18 +113,33 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
+  {
+    question: "What carpet cleaning methods do you use?",
+    answer: "We use industry-leading steam cleaning (hot water extraction) and low-moisture methods depending on your carpet type and needs. Both methods are effective for removing dirt, stains, and allergens."
+  },
+  {
+    question: "How long does it take for carpets to dry after cleaning?",
+    answer: "Drying typically takes 4–6 hours, depending on humidity and carpet thickness. We recommend keeping foot traffic to a minimum during this time for best results."
+  },
+  {
+    question: "Can you remove pet stains and odors?",
+    answer: "Yes, we specialize in treating pet stains and odors using enzyme-based cleaners that neutralize smells and break down organic residue deep in the carpet fibers."
+  },
+  {
+    question: "Do I need to move my furniture before the cleaning?",
+    answer: "We can move small and light furniture as part of the service. For larger or delicate items, we recommend moving them ahead of time or letting us know in advance."
+  },
+  {
+    question: "How often should I have my carpets professionally cleaned?",
+    answer: "Most homes benefit from professional cleaning every 6–12 months. High-traffic areas or homes with pets and children may need more frequent cleanings."
+  }
 ]
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

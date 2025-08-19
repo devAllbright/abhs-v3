@@ -115,18 +115,34 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
-]
+  {
+    question: "What does your wood cabinets and floors reviving service include?",
+    answer: "We deep clean, polish, and condition wood surfaces to restore their natural beauty. This service removes dirt, grease, and dull buildup while enhancing shine and protecting against future wear."
+  },
+  {
+    question: "Do you refinish or just restore the look of wood?",
+    answer: "Our reviving service focuses on cleaning and restoring the appearance of your existing finish. We do not sand or refinish, but we can dramatically improve the look and extend the life of your wood."
+  },
+  {
+    question: "Is the process safe for all types of wood finishes?",
+    answer: "Yes. We use products specifically designed for wood care and tailor our methods to the type of finish, whether it’s sealed, varnished, or natural wood."
+  },
+  {
+    question: "How often should I have my wood cabinets or floors revived?",
+    answer: "Most homes benefit from professional wood care once or twice a year, depending on usage and foot traffic. Regular maintenance helps prevent permanent damage and fading."
+  },
+  {
+    question: "Will this service remove scratches or stains?",
+    answer: "Our process can minimize the appearance of light scratches and water spots, but deep scratches or severe damage may require refinishing. We’ll assess and recommend the best solution for your wood surfaces."
+  }
+];
+
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

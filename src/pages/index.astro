@@ -3,7 +3,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero";
 import BenefitSection from "../components/pages/home/BenefitsSection";
 import WhyChooseUsSection from "../components/pages/home/WhyChooseUsSection.astro";
-import ServiceSection from "../components/pages/home/ServiceSection.astro";
 import ReviewsWidget from "../components/pages/ReviewsWidget.astro";
 import PostCarousel from "../components/layout/PostCarousel";
 import FAQSection from "../components/pages/home/FAQSection.astro"
@@ -67,16 +66,32 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
-]
+  {
+    question: "What types of cleaning and maintenance services do you offer?",
+    answer: "We provide a full range of house cleaning services—including deep cleaning, move-in/move-out cleaning, and recurring maintenance—as well as general home upkeep such as appliance cleaning, minor repairs, and seasonal maintenance tasks."
+  },
+  {
+    question: "How do I book a cleaning or maintenance appointment?",
+    answer: "Booking is easy! You can schedule a service online through our website or call us directly. Simply choose your service, pick a time that works for you, and we’ll handle the rest."
+  },
+  {
+    question: "Are your cleaners and technicians background-checked?",
+    answer: "Yes, all our team members go through thorough background checks and are fully trained professionals to ensure your home is in safe hands."
+  },
+  {
+    question: "Do I need to be home during the service?",
+    answer: "It's completely up to you. Many clients prefer to provide access and go about their day. You can trust our team to respect your space and follow any specific instructions you provide."
+  },
+  {
+    question: "What areas do you serve?",
+    answer: "We proudly serve the Greater Silicon Valley region, including the South Bay and East Bay. Our service area covers cities like San Jose, Fremont, Santa Clara, Palo Alto, Mountain View, and surrounding neighborhoods."
+  }
+];
+
 ---
 
 <BaseLayout>
-  <Hero bannerData={bannerData} />
+  <Hero bannerData={bannerData} client:only="react"/>
   <BenefitSection client:only="react"/>
   <WhyChooseUsSection />
   <ReviewsWidget />

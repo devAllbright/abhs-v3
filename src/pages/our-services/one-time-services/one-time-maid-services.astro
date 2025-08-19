@@ -120,18 +120,34 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
-]
+  {
+    question: "What does a one-time maid service include?",
+    answer: "Our one-time service includes a thorough cleaning of your home—dusting, vacuuming, mopping, bathroom and kitchen cleaning, trash removal, and surface disinfection. It’s a full reset without the commitment of recurring visits."
+  },
+  {
+    question: "Is one-time cleaning good for special occasions?",
+    answer: "Absolutely. One-time maid service is perfect for pre- or post-event cleanups, holiday preparation, spring cleaning, or getting your home guest-ready."
+  },
+  {
+    question: "Can I customize what gets cleaned during the visit?",
+    answer: "Yes. Let us know your priorities or any specific areas you'd like us to focus on, and we'll tailor the service to fit your needs."
+  },
+  {
+    question: "How long does a one-time cleaning take?",
+    answer: "It depends on the size and condition of your home. Most cleanings take 2–5 hours. We’ll provide a time estimate once we know the details of your space."
+  },
+  {
+    question: "Do I need to be home during the cleaning?",
+    answer: "No, you're not required to be home. Many clients provide entry instructions and return to a freshly cleaned space. We’ll notify you when the job is complete."
+  }
+];
+
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

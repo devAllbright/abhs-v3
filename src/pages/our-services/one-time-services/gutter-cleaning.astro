@@ -117,18 +117,34 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
-]
+  {
+    question: "What does your gutter cleaning service include?",
+    answer: "Our service includes removing all leaves, debris, and buildup from gutters and downspouts, flushing the system for proper flow, and checking for any visible blockages or overflow issues."
+  },
+  {
+    question: "How often should I have my gutters cleaned?",
+    answer: "We recommend cleaning your gutters at least twice a year—typically in the spring and fall. Homes near trees or with heavy debris buildup may need more frequent cleanings."
+  },
+  {
+    question: "Do you clean both gutters and downspouts?",
+    answer: "Yes, we clear out all gutters and flush the downspouts to ensure proper drainage and prevent clogs that can lead to water damage."
+  },
+  {
+    question: "Do I need to be home during the service?",
+    answer: "No, as long as we have access to the exterior of your home, you do not need to be present. We’ll inform you once the job is complete and share any issues we discovered."
+  },
+  {
+    question: "Can you clean gutters on multi-story homes?",
+    answer: "Yes, we’re equipped to safely clean gutters on one- and two-story homes. Just let us know the property details when booking."
+  }
+];
+
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

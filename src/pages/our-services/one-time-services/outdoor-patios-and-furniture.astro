@@ -117,18 +117,34 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
+  {
+    question: "What’s included in your outdoor patio and furniture cleaning service?",
+    answer: "Our service includes cleaning all hard patio surfaces (concrete, stone, tile, etc.) and washing or wiping down outdoor furniture such as tables, chairs, cushions, and loungers. We remove dirt, pollen, mildew, and debris to restore your outdoor space."
+  },
+  {
+    question: "Do you clean all types of outdoor furniture?",
+    answer: "Yes, we clean furniture made of metal, wood, wicker, plastic, and fabric. We use surface-appropriate products to ensure safe and effective cleaning for each material."
+  },
+  {
+    question: "Can you remove mold or mildew from cushions and surfaces?",
+    answer: "Yes, we treat and remove light to moderate mildew and mold using safe cleaning agents. For severe cases, we’ll assess and recommend the best solution based on the material condition."
+  },
+  {
+    question: "How often should I schedule patio and furniture cleaning?",
+    answer: "We recommend cleaning your outdoor furniture and patio surfaces every 3–6 months, especially during or after pollen season, heavy rains, or before hosting guests."
+  },
+  {
+    question: "Do I need to move the furniture before you arrive?",
+    answer: "No need! We’ll move and clean under and around the furniture as part of the service. If there are delicate items, please let us know in advance."
+  }
 ]
+
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

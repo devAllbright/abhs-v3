@@ -116,18 +116,34 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
-]
+  {
+    question: "What does your window washing service include?",
+    answer: "We clean both the interior and exterior of windows, including glass panes, frames, sills, and tracks. We remove dirt, streaks, smudges, and cobwebs to leave your windows crystal clear."
+  },
+  {
+    question: "Do you clean high or hard-to-reach windows?",
+    answer: "Yes, we are equipped to clean most high and hard-to-reach windows safely. For multi-story homes, we use professional tools and techniques to reach exterior windows."
+  },
+  {
+    question: "Is your window cleaning process safe for tinted or specialty glass?",
+    answer: "Absolutely. We use non-abrasive tools and streak-free cleaning solutions that are safe for tinted, tempered, and specialty glass surfaces."
+  },
+  {
+    question: "How often should I have my windows professionally cleaned?",
+    answer: "Most homeowners schedule window cleaning twice a year—spring and fall. Homes near busy roads, trees, or ocean air may benefit from more frequent cleanings."
+  },
+  {
+    question: "Do I need to be home during the window washing service?",
+    answer: "Not necessarily. As long as we have access to the property and entry instructions for interior cleaning, you don’t need to be present. We’ll notify you once the service is complete."
+  }
+];
+
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

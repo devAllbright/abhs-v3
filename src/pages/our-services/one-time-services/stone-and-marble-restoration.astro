@@ -114,18 +114,34 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
+  {
+    question: "What is included in your stone and marble restoration service?",
+    answer: "Our restoration process includes deep cleaning, polishing, stain removal, and sealing of natural stone and marble surfaces. We restore shine, remove etching, and help protect against future damage."
+  },
+  {
+    question: "Can you fix dull or scratched marble surfaces?",
+    answer: "Yes, we use professional polishing and honing techniques to eliminate scratches, dull spots, and etching, bringing your marble back to a smooth, glossy finish."
+  },
+  {
+    question: "Is the process safe for all types of natural stone?",
+    answer: "Absolutely. We customize our methods based on the specific type of stone—whether it’s marble, granite, travertine, or limestone—using appropriate tools and products for safe, effective results."
+  },
+  {
+    question: "How long does the restoration process take?",
+    answer: "It depends on the size of the area and the condition of the stone. Most projects are completed in a few hours to one full day. We’ll provide a time estimate when you book."
+  },
+  {
+    question: "How often should I have my stone or marble restored?",
+    answer: "We recommend professional restoration every 12–24 months, depending on foot traffic and usage. Regular maintenance and sealing can help extend the time between full restorations."
+  }
 ]
+
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

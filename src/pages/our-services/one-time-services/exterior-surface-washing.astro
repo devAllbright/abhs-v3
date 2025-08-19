@@ -119,18 +119,33 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
-]
+  {
+    question: "What types of surfaces can you pressure wash?",
+    answer: "We can safely pressure wash driveways, sidewalks, patios, decks, fences, exterior walls, garage doors, and more. We adjust pressure levels and use appropriate cleaning agents for each surface type."
+  },
+  {
+    question: "Is pressure washing safe for all exterior materials?",
+    answer: "Yes, when done professionally. We assess each surface and adjust pressure settings to avoid damage. For delicate materials like wood or painted surfaces, we use soft washing techniques instead."
+  },
+  {
+    question: "How often should I have my exterior surfaces cleaned?",
+    answer: "Most homes benefit from pressure washing once a year. However, high-traffic areas or regions with a lot of dust, mildew, or tree debris may need more frequent cleanings."
+  },
+  {
+    question: "Do I need to be home during the service?",
+    answer: "No, as long as we have access to the areas being cleaned and an outdoor water supply, you don’t need to be present. We’ll follow any specific instructions you provide beforehand."
+  },
+  {
+    question: "Will pressure washing remove oil stains and mildew?",
+    answer: "Yes, our equipment and eco-friendly detergents can remove most oil stains, algae, mildew, and other buildup. Some tough stains may require spot treatments or multiple passes."
+  }
+];
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

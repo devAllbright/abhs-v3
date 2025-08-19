@@ -117,18 +117,33 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
-]
+  {
+    question: "What does your bi-monthly maid service include?",
+    answer: "Our bi-monthly service includes full surface cleaning, dusting, vacuuming, kitchen and bathroom cleaning, and spot-checks for buildup or neglected areas."
+  },
+  {
+    question: "Is bi-monthly cleaning enough for my home?",
+    answer: "Bi-monthly service is great for smaller households, or those who do light cleaning between visits. It helps maintain cleanliness without being too frequent."
+  },
+  {
+    question: "Can I request specific areas to be focused on each visit?",
+    answer: "Absolutely. If certain rooms or tasks need more attention during a visit, just let us know and we’ll prioritize them."
+  },
+  {
+    question: "Will I get the same cleaner each time?",
+    answer: "We strive for consistency and will assign the same professional whenever possible for your scheduled visits."
+  },
+  {
+    question: "What happens if I need to reschedule a visit?",
+    answer: "No problem! Just give us at least 24 hours’ notice and we’ll help you reschedule without any fees."
+  }
+];
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>

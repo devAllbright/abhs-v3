@@ -118,18 +118,34 @@ const finalCTAData = {
 };
 
 const faqs = [
-  { question: "What is your return policy?", answer: "You can return any item within 30 days of purchase for a full refund." },
-  { question: "Do you offer international shipping?", answer: "Yes, we ship to most countries worldwide. Shipping rates may vary." },
-  { question: "How can I track my order?", answer: "Once your order is shipped, you will receive a tracking number via email." },
-  { question: "What payment methods do you accept?", answer: "We accept Visa, MasterCard, PayPal, and Apple Pay." },
-  { question: "Can I change my order after placing it?", answer: "Orders can be modified within 24 hours of placement by contacting support." }
-]
+  {
+    question: "What types of furniture do you clean?",
+    answer: "We clean sofas, sectionals, armchairs, dining chairs, ottomans, and other upholstered furniture. Our methods are safe for most fabrics, including microfiber, cotton, polyester, and blends."
+  },
+  {
+    question: "Is professional upholstery cleaning safe for delicate fabrics?",
+    answer: "Yes, we test fabrics before cleaning and use the appropriate method—steam cleaning, dry cleaning, or low-moisture techniques—to protect delicate or specialty materials."
+  },
+  {
+    question: "Can you remove stains and odors from furniture?",
+    answer: "Absolutely. We treat food stains, pet accidents, spills, and odors with professional-grade cleaning solutions that neutralize smells and lift stains without damaging the fabric."
+  },
+  {
+    question: "How long does it take furniture to dry after cleaning?",
+    answer: "Most upholstery dries within 4–6 hours, depending on fabric type, ventilation, and humidity. We recommend allowing extra time for thicker materials or cushions."
+  },
+  {
+    question: "How often should I have my upholstery cleaned?",
+    answer: "For best results, we suggest professional upholstery cleaning every 12–18 months. Homes with kids, pets, or heavy use may benefit from more frequent cleanings."
+  }
+];
+
 
 
 ---
 
 <BaseLayout>
-  <Hero bannerData={ bannerData }/>
+  <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>
