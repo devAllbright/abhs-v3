@@ -62,12 +62,12 @@ const PrimaryBanner = ({ bannerData }) => {
               {ctaAction === "redirect" ? (
                 <RedirectCTA
                   href="https://book.housecallpro.com/book/All-Bright-Home-Services/38acff17233d44ec9cdc0edf4aadf395?v2=true"
-                  text="Free Consultation"
+                  text="Book a Consultation"
                   buttonClass="primary-cta"
                 />
               ) : (
                 <ModalCTA
-                  text="Free Consultation"
+                  text="Book a Consultation"
                   buttonClass="primary-cta"
                 />
               )}
