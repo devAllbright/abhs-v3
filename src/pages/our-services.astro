@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SearchBar from "../components/pages/our-services/SearchBar";
 import ServiceSection from "../components/pages/home/ServiceSection.astro";
-import QuizCTA from "../components/QuizCTA";
 import ReviewsWidget from "../components/pages/ReviewsWidget.astro";
 import FAQSection from "../components/pages/home/FAQSection.astro"
 import FinalCTASection from "../components/pages/home/FinalCTASection.astro";
@@ -29,7 +28,6 @@ const faqs = [
 <BaseLayout>
   <SearchBar client:only="react"/>
   <ServiceSection />
-  <QuizCTA />
   <ReviewsWidget />
   <FAQSection faqs={ faqs } />
   <FinalCTASection finalCTAData={ finalCTAData }/>

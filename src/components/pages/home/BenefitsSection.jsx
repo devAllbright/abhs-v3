@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SectionHeading from "../../SectionHeading";
 
 const benefits = [
@@ -40,26 +40,43 @@ const benefits = [
   {
     id: 6,
     title: "100% Satisfaction Guarantee",
-    description: "",
+    description: "", // Empty to test safe rendering
     icon: "/benefits/guarantee-icon.png",
     image: "/benefits/guarantee.png"
   }
 ];
 
 export default function BenefitsSection() {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(null); // Start as null to trigger mount animation
+  const intervalRef = useRef(null);
+
+  const startInterval = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      setActiveIndex((prevIndex) => {
+        const nextIndex = prevIndex === null ? 0 : (prevIndex + 1) % benefits.length;
+        return nextIndex;
+      });
+    }, 7000);
+  };
 
   useEffect(() => {
-    setTimeout(() => {
+    // Slight delay to trigger ::after animation on first item
+    const initialTimeout = setTimeout(() => {
       setActiveIndex(0);
+      startInterval();
     }, 100);
 
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % benefits.length);
-    }, 7000);
-
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(initialTimeout);
+      clearInterval(intervalRef.current);
+    };
   }, []);
+
+  const handleClick = (index) => {
+    setActiveIndex(index);
+    startInterval(); // Continue cycling from clicked item
+  };
 
   return (
     <>
@@ -74,7 +91,8 @@ export default function BenefitsSection() {
           {benefits.map((benefit, index) => (
             <div
               key={benefit.id}
-              className={`benefit-section__list-item ${index === activeIndex ? "active" : ""} ${index < activeIndex ? "reset" : ""}`}
+              onClick={() => handleClick(index)}
+              className={`benefit-section__list-item ${index === activeIndex ? "active" : ""}`}
             >
               <div className="benefit-section__list-item-icon">
                 <img src={benefit.icon} alt={benefit.title} />
@@ -83,13 +101,16 @@ export default function BenefitsSection() {
                 <div className="benefit-section__list-item-title">
                   {benefit.title}
                 </div>
-                <div className="benefit-section__list-item-description">
-                  <p>{benefit.description}</p>
-                </div>
+                {typeof benefit.description === "string" && benefit.description.trim() !== "" && (
+                  <div className="benefit-section__list-item-description">
+                    <p>{benefit.description}</p>
+                  </div>
+                )}
               </div>
             </div>
           ))}
         </div>
+
         <div className="benefit-section__img">
           {activeIndex !== null && (
             <img src={benefits[activeIndex].image} alt="Benefit" />
@@ -99,7 +120,3 @@ export default function BenefitsSection() {
     </>
   );
 }
-
-
-
-

@@ -71,13 +71,6 @@
         padding-top: $spacing-12;
       }
     }
-
-    &.reset {
-      &::after {
-        width: 0;
-        transition: none;
-      }
-    }
   }
 
   &__img {

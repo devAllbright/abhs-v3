@@ -71,3 +71,13 @@
     color: $neutral-text;
   }
 }
+
+.search-bar__result-item mark {
+  background-color: transparent;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.search-bar__result-item.active {
+  background-color: #f3f3f3;
+}

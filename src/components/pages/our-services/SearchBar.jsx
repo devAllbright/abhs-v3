@@ -1,81 +1,97 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
+import Fuse from "fuse.js";
+import serviceTypes from "../../../data/serviceTypes.json";
 
-const services = [
-  {
-    name: "Carpet Cleaning",
-    slug: "carpet-cleaning",
-    price: 199,
-    keywords: ["carpet", "floor cleaning", "rug", "deep clean", "stains", "steam"],
-  },
-  {
-    name: "Window Washing",
-    slug: "window-washing",
-    price: 199,
-    keywords: ["windows", "glass", "exterior", "interior", "cleaning"],
-  },
-  {
-    name: "Maid Services",
-    slug: "maid-services",
-    price: 199,
-    keywords: ["cleaning", "home", "weekly", "monthly", "housekeeping", "bi-monthly"],
-  },
-  {
-    name: "Upholstery Cleaning",
-    slug: "upholstery-cleaning",
-    price: 199,
-    keywords: ["sofa", "couch", "fabric", "steam", "stain removal", "furniture"],
-  },
-  {
-    name: "Tile Cleaning",
-    slug: "tile-cleaning",
-    price: 199,
-    keywords: ["tiles", "grout", "floor", "bathroom", "kitchen", "scrub"],
-  },
-  {
-    name: "Stone and Marble Restoration",
-    slug: "stone-and-marble-restoration",
-    price: 199,
-    keywords: ["marble", "granite", "stone", "polish", "restore", "shine"],
-  },
-  {
-    name: "Gutter Cleaning",
-    slug: "gutter-cleaning",
-    price: 199,
-    keywords: ["gutter", "roof", "drainage", "leaves", "clog"],
-  },
-  {
-    name: "Move-in Ready",
-    slug: "move-in-ready",
-    price: 199,
-    keywords: ["moving", "cleaning", "new home", "vacuum", "fresh start"],
-  },
-  {
-    name: "Exterior Surface Washing",
-    slug: "exterior-surface-washing",
-    price: 199,
-    keywords: ["power wash", "pressure wash", "driveway", "siding", "patio"],
-  },
-  {
-    name: "Wood Cabinets and Floors Reviving",
-    slug: "wood-cabinets-and-floors-reviving",
-    price: 199,
-    keywords: ["wood", "floor", "cabinet", "refinish", "restore", "polish"],
-  },
-];
+// 🔧 Extract and flatten all services from serviceTypes.json
+function extractServices(json) {
+  const services = [];
+
+  Object.entries(json).forEach(([typeName, typeData]) => {
+    typeData.categories.forEach((category) => {
+      category.services.forEach((service) => {
+        services.push({
+          name: service.name,
+          slug: service.url.replace("/our-services/", ""),
+          url: service.url,
+          price: service.price,
+          keywords: [
+            service.name,
+            category.title,
+            typeName,
+          ],
+        });
+      });
+    });
+  });
+
+  return services;
+}
+
+const allServices = extractServices(serviceTypes);
+
+// Fuse.js config
+const fuse = new Fuse(allServices, {
+  keys: ["name", "keywords"],
+  threshold: 0.4,
+  includeMatches: true,
+});
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const inputRef = useRef(null);
 
-  const filteredServices = useMemo(() => {
-    const q = query.toLowerCase().trim();
-    if (q === "") return [];
+  const filteredResults = useMemo(() => {
+    if (query.trim() === "") return [];
 
-    return services.filter(({ name, keywords }) => {
-      const inName = name.toLowerCase().includes(q);
-      const inKeywords = keywords.some((kw) => kw.toLowerCase().includes(q));
-      return inName || inKeywords;
+    return fuse.search(query.trim()).map(({ item, matches }) => {
+      const highlighted = matches?.find((m) => m.key === "name" || m.key === "keywords");
+      return {
+        ...item,
+        match: highlighted,
+      };
     });
   }, [query]);
+
+  // Keyboard nav: ↑ ↓ Enter
+  const handleKeyDown = (e) => {
+    if (!filteredResults.length) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setActiveIndex((prev) => (prev + 1) % filteredResults.length);
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setActiveIndex((prev) =>
+        prev <= 0 ? filteredResults.length - 1 : prev - 1
+      );
+    } else if (e.key === "Enter" && activeIndex >= 0) {
+      e.preventDefault();
+      window.location.href = filteredResults[activeIndex].url;
+    }
+  };
+
+  // Reset activeIndex if results change
+  useEffect(() => {
+    setActiveIndex(-1);
+  }, [filteredResults]);
+
+  // Highlight matched terms
+  const highlightMatch = (text, match) => {
+    if (!match?.indices?.length) return text;
+
+    let result = "";
+    let lastIndex = 0;
+
+    match.indices.forEach(([start, end], i) => {
+      result += text.slice(lastIndex, start);
+      result += `<mark>${text.slice(start, end + 1)}</mark>`;
+      lastIndex = end + 1;
+    });
+
+    result += text.slice(lastIndex);
+    return result;
+  };
 
   return (
     <div className="search-bar">
@@ -90,28 +106,44 @@ export default function SearchBar() {
             <input
               id="service-search"
               type="text"
+              ref={inputRef}
               className="search-bar__input"
               placeholder="Search services..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleKeyDown}
               aria-label="Search services"
+              autoComplete="off"
             />
 
-            {filteredServices.length > 0 && (
+            {query.trim() !== "" && (
               <ul className="search-bar__results">
-                {filteredServices.map((service) => (
-                  <li key={service.slug}>
-                    <a
-                      href={`/our-services/${service.slug}`}
-                      className="search-bar__result-item"
-                    >
-                      <span className="search-bar__result-name">{service.name}</span>
-                      <span className="search-bar__result-price">
-                        Starting from ${service.price}
-                      </span>
-                    </a>
+                {filteredResults.length > 0 ? (
+                  filteredResults.map((service, i) => (
+                    <li key={service.slug}>
+                      <a
+                        href={service.url}
+                        className={`search-bar__result-item ${
+                          i === activeIndex ? "active" : ""
+                        }`}
+                      >
+                        <span
+                          className="search-bar__result-name"
+                          dangerouslySetInnerHTML={{
+                            __html: highlightMatch(service.name, service.match),
+                          }}
+                        />
+                        <span className="search-bar__result-price">
+                          Starting from ${service.price}
+                        </span>
+                      </a>
+                    </li>
+                  ))
+                ) : (
+                  <li className="search-bar__no-results">
+                    No results found for "{query}"
                   </li>
-                ))}
+                )}
               </ul>
             )}
           </div>
