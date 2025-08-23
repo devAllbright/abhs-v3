@@ -1,41 +1,51 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import LeadForm from "./forms/LeadForm";
 
-export default function LeadModal({ isOpen, onClose }) {
+export default function LeadModal({ isOpen, onClose, thankYouPath = "/thank-you" }) {
+  const dialogRef = useRef(null);
+
   useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === "Escape") onClose();
-    };
+    const onEsc = (e) => e.key === "Escape" && onClose();
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleEsc);
+      window.addEventListener("keydown", onEsc);
+      setTimeout(() => dialogRef.current?.focus(), 0);
     } else {
       document.body.style.overflow = "";
+      window.removeEventListener("keydown", onEsc);
     }
-    return () => window.removeEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", onEsc);
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  // SSR guard for Astro: only portal on the client
+  if (!isOpen || typeof document === "undefined") return null;
 
-  return createPortal(
-    <div
-      className="modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-title"
-      onClick={onClose}
-    >
-      <div className="modal__content" onClick={(e) => e.stopPropagation()}>
-        <button className="modal__close" onClick={onClose} aria-label="Close modal">
-          ×
-        </button>
-        <iframe
-          id="hcp-lead-iframe"
-          src="https://book.housecallpro.com/lead-form/All-Bright-Home-Services/8ef469d031c04fe8a2ac4421d606a1ca"
-          title="Lead Capture Form"
+  const modalNode = (
+    <div className="modal" role="presentation" onClick={onClose}>
+      <div
+        className="modal__content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="lead-modal-title"
+        onClick={(e) => e.stopPropagation()}
+        tabIndex={-1}
+        ref={dialogRef}
+      >
+        <button className="modal__close" onClick={onClose} aria-label="Close">×</button>
+
+        <h2 id="lead-modal-title" className="modal__title">Contact us</h2>
+        <p className="modal__subtitle">Leave your contact details and we will call you back.</p>
+
+        <LeadForm
+          onSuccess={() => {
+            onClose();
+            window.location.href = thankYouPath; // redirects fine from a portal
+          }}
         />
       </div>
-    </div>,
-    document.getElementById("modal-root")
+    </div>
   );
+
+  return createPortal(modalNode, document.body);
 }

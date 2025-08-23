@@ -1,7 +1,7 @@
+/* Full-screen overlay */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;              /* top/right/bottom/left: 0 */
   width: 100vw;
   height: 100vh;
   z-index: 9999;
@@ -16,23 +16,13 @@
     position: relative;
     background: #fff;
     border-radius: 1rem;
-
-    // ✅ Lock width to form's natural width
     width: 640px;
     max-width: 100%;
-
     max-height: 90vh;
-    overflow-y: auto; // ✅ Enable vertical scroll inside the modal
-    overflow-x: hidden; // ✅ Prevent horizontal scroll inside modal
-
+    overflow-y: auto;
+    overflow-x: hidden;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-
-    iframe {
-      display: block;
-      border: none;
-      width: 100%; // ✅ Let iframe adapt to .modal__content width
-      height: 720px;
-    }
+    padding: 1.5rem; /* space for the form */
   }
 
   &__close {
@@ -42,27 +32,15 @@
     background: transparent;
     border: none;
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 700;
     color: #333;
     cursor: pointer;
-    z-index: 10;
 
-    &:hover {
-      color: #000;
-    }
+    &:hover { color: #000; }
   }
 
-  &__loader {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    font-size: 1rem;
-    color: #555;
-    height: 720px;
-    width: 640px;
-    background: #f9f9f9;
-  }
+  &__title { margin: 0 0 .25rem; font-size: 1.5rem; }
+  &__subtitle { margin: 0 0 1rem; color: #666; }
 
   @media (max-width: 768px) {
     align-items: flex-start;
@@ -72,16 +50,6 @@
       height: 100%;
       border-radius: 0;
       max-height: 100vh;
-
-      iframe {
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    &__loader {
-      width: 100%;
-      height: 100%;
     }
   }
 }
