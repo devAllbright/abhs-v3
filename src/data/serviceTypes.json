@@ -61,7 +61,7 @@
           { "name": "Full Bundle", "img": "", "price": "Save $100", "url": "/our-services/packages/full-bundle" },
           { "name": "Carpet Bundle", "img": "", "price": "Save $75", "url": "/our-services/packages/carpet-bundle" },
           { "name": "Window Bundle", "img": "", "price": "Save $75", "url": "/our-services/packages/window-bundle" },
-          { "name": "Carpet and Windows", "img": "", "price": "Save $50", "url": "/our-services/packages/carpet-and-windows" }
+          { "name": "Carpet and Window", "img": "", "price": "Save $50", "url": "/our-services/packages/carpet-and-window-bundle" }
         ]
       },
       {
