@@ -30,7 +30,7 @@
           { "name": "Carpet Cleaning", "img": "/mega-menu/carpet-cleaning.png", "price": "169", "url": "/our-services/one-time-services/carpet-cleaning" },
           { "name": "Tile Cleaning", "img": "/mega-menu/tile-cleaning.png", "price": "480", "url": "/our-services/one-time-services/tile-cleaning" },
           { "name": "Stone & Marble Restoration", "img": "/mega-menu/stone-marble.png", "price": "780", "url": "/our-services/one-time-services/stone-and-marble-restoration" },
-          { "name": "Wood Cabinets & Floors Reviving", "img": "/mega-menu/wood-revive.png", "price": "120", "url": "/our-services/one-time-services/wood-cabinets-and-floors-reviving" }
+          { "name": "Wood Cabinets & Floors Reviving", "img": "/mega-menu/wood-revive.png", "price": "395", "url": "/our-services/one-time-services/wood-cabinets-and-floors-reviving" }
         ]
       },
       {
@@ -38,7 +38,7 @@
         "services": [
           { "name": "Window Washing", "img": "/mega-menu/window-washing.png", "price": "395", "url": "/our-services/one-time-services/window-washing" },
           { "name": "Gutter Cleaning", "img": "/mega-menu/gutter-cleaning.png", "price": "740", "url": "/our-services/one-time-services/gutter-cleaning" },
-          { "name": "Anodized Frames Restoration", "img": "/mega-menu/anodized-frames.png", "price": "150", "url": "/our-services/one-time-services/anodized-frames-restoration" },
+          { "name": "Anodized Frames Restoration", "img": "/mega-menu/anodized-frames.png", "price": "395", "url": "/our-services/one-time-services/anodized-frames-restoration" },
           { "name": "Exterior Surface Washing", "img": "/mega-menu/exterior-washing.png", "price": "480", "url": "/our-services/one-time-services/exterior-surface-washing" }
         ]
       },
@@ -58,18 +58,18 @@
       {
         "title": "Bundles",
         "services": [
-          { "name": "Full Bundle", "img": "", "price": "650", "url": "/our-services/packages/full-bundle" },
-          { "name": "Carpet Bundle", "img": "", "price": "350", "url": "/our-services/packages/carpet-bundle" },
-          { "name": "Window Bundle", "img": "", "price": "600", "url": "/our-services/packages/window-bundle" },
-          { "name": "Carpet and Windows", "img": "", "price": "550", "url": "/our-services/packages/carpet-and-windows" }
+          { "name": "Full Bundle", "img": "", "price": "Save $100", "url": "/our-services/packages/full-bundle" },
+          { "name": "Carpet Bundle", "img": "", "price": "Save $75", "url": "/our-services/packages/carpet-bundle" },
+          { "name": "Window Bundle", "img": "", "price": "Save $75", "url": "/our-services/packages/window-bundle" },
+          { "name": "Carpet and Windows", "img": "", "price": "Save $50", "url": "/our-services/packages/carpet-and-windows" }
         ]
       },
       {
         "title": "Maintenance Plans",
         "services": [
-          { "name": "Pristine Plan", "img": "", "price": "10000", "url": "/our-services/packages/pristine-plan" },
-          { "name": "Care Plan", "img": "", "price": "5500", "url": "/our-services/packages/care-plan" },
-          { "name": "Refresh Plan", "img": "", "price": "3500", "url": "/our-services/packages/refresh-plan" },
+          { "name": "Pristine Plan", "img": "", "price": "Custom Quote", "url": "/our-services/packages/pristine-plan" },
+          { "name": "Care Plan", "img": "", "price": "Custom Quote", "url": "/our-services/packages/care-plan" },
+          { "name": "Refresh Plan", "img": "", "price": "Custom Quote", "url": "/our-services/packages/refresh-plan" },
           { "name": "Signature Plan", "img": "", "price": "Custom Quote", "url": "/our-services/packages/signature-plan" }
         ]
       }

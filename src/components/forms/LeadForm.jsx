@@ -5,8 +5,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const schema = z.object({
   first_name: z.string().min(1, "First name is required"),
   last_name: z.string().min(1, "Last name is required"),
-  phone: z.string().min(7, "Phone number is required")
-            .regex(/^[0-9+\-() ]+$/, "Invalid phone number"),
+  email: z.string().email("Enter a valid email address"),
+  phone: z
+    .string()
+    .min(7, "Phone number is required")
+    .regex(/^[0-9+\-() ]+$/, "Invalid phone number"),
   service_details: z.string().min(1, "Service details are required"),
   home_size: z.enum(["900-1500", "1500-2500", "2500-3500"], {
     required_error: "Please select a home size",
@@ -22,12 +25,14 @@ export default function LeadForm({ onSuccess }) {
       customer: {
         first_name: values.first_name,
         last_name: values.last_name,
-        phones: [{ number: values.phone }],
+        email: values.email,               // ✅ send email
+        mobile_number: values.phone,       // ✅ map phone -> mobile_number (HCP-friendly)
+        notifications_enabled: true,
       },
       note: `Service details: ${values.service_details}\nHome Sq. Ft.: ${values.home_size}`,
     };
 
-    const res = await fetch("/api/service-request", {
+    const res = await fetch("https://allbright-app-production.up.railway.app/api/service-request", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
@@ -48,6 +53,12 @@ export default function LeadForm({ onSuccess }) {
       <div className="lead-form__group">
         <input placeholder="Last name" {...register("last_name")} />
         {errors.last_name && <span className="lead-form__err">{errors.last_name.message}</span>}
+      </div>
+
+      {/* ✅ New email field */}
+      <div className="lead-form__group">
+        <input placeholder="Email" type="email" {...register("email")} />
+        {errors.email && <span className="lead-form__err">{errors.email.message}</span>}
       </div>
 
       <div className="lead-form__group">

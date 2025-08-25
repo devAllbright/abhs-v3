@@ -8,12 +8,18 @@ const MegaMenu = forwardRef(({ visible, onLeave }, ref) => {
     setSelectedType(type)
   }
 
-  const formatPrice = (price) => {
+  const formatPrice = (price, type) => {
     if (price == null) return ''
     const num = Number(price)
     if (!Number.isNaN(num)) {
+      // For Maintenance Plans and Bundles, show plain price (no "Starting at")
+      if (type === 'Maintenance Plans' || type === 'Bundles') {
+        return `$${num.toLocaleString('en-US')}`
+      }
+      // Default: Recurring Services (and any other types) show "Starting at"
       return `Starting at $${num.toLocaleString('en-US')}`
     }
+    // If price is already a string like "Custom" or "Free estimate", pass through
     return String(price)
   }
 
@@ -75,7 +81,7 @@ const MegaMenu = forwardRef(({ visible, onLeave }, ref) => {
                       <p>{service.name}</p>
                     </div>
                     <div className="mega-menu__service-price">
-                      <p>{formatPrice(service.price)}</p>
+                      <p>{formatPrice(service.price, selectedType)}</p>
                     </div>
                   </a>
                 ))}

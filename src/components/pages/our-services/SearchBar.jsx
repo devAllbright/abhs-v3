@@ -7,18 +7,15 @@ function extractServices(json) {
   const services = [];
 
   Object.entries(json).forEach(([typeName, typeData]) => {
-    typeData.categories.forEach((category) => {
-      category.services.forEach((service) => {
+    (typeData.categories || []).forEach((category) => {
+      (category.services || []).forEach((service) => {
         services.push({
+          type: typeName, // keep track of the parent type (Recurring Services, Maintenance Plans, Bundles)
           name: service.name,
           slug: service.url.replace("/our-services/", ""),
           url: service.url,
           price: service.price,
-          keywords: [
-            service.name,
-            category.title,
-            typeName,
-          ],
+          keywords: [service.name, category.title, typeName],
         });
       });
     });
@@ -36,6 +33,22 @@ const fuse = new Fuse(allServices, {
   includeMatches: true,
 });
 
+// Price formatter with type-based rules
+function formatPrice(price, type) {
+  if (price == null) return "";
+  const num = Number(price);
+  if (!Number.isNaN(num)) {
+    // For Maintenance Plans and Bundles, show plain price (no "Starting at")
+    if (type === "Maintenance Plans" || type === "Bundles") {
+      return `$${num.toLocaleString("en-US")}`;
+    }
+    // Default (e.g., Recurring Services): show "Starting at"
+    return `Starting at $${num.toLocaleString("en-US")}`;
+  }
+  // If price is a string like "Custom", "Free estimate", etc., pass through
+  return String(price);
+}
+
 export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -43,9 +56,10 @@ export default function SearchBar() {
 
   const filteredResults = useMemo(() => {
     if (query.trim() === "") return [];
-
     return fuse.search(query.trim()).map(({ item, matches }) => {
-      const highlighted = matches?.find((m) => m.key === "name" || m.key === "keywords");
+      const highlighted = matches?.find(
+        (m) => m.key === "name" || m.key === "keywords"
+      );
       return {
         ...item,
         match: highlighted,
@@ -83,7 +97,7 @@ export default function SearchBar() {
     let result = "";
     let lastIndex = 0;
 
-    match.indices.forEach(([start, end], i) => {
+    match.indices.forEach(([start, end]) => {
       result += text.slice(lastIndex, start);
       result += `<mark>${text.slice(start, end + 1)}</mark>`;
       lastIndex = end + 1;
@@ -98,10 +112,7 @@ export default function SearchBar() {
       <section className="search-bar__section">
         <h1 className="search-bar__title">How can we help you today?</h1>
 
-        <form
-          className="search-bar__form"
-          onSubmit={(e) => e.preventDefault()}
-        >
+        <form className="search-bar__form" onSubmit={(e) => e.preventDefault()}>
           <div className="search-bar__input-group">
             <input
               id="service-search"
@@ -134,7 +145,7 @@ export default function SearchBar() {
                           }}
                         />
                         <span className="search-bar__result-price">
-                          Starting from ${service.price}
+                          {formatPrice(service.price, service.type)}
                         </span>
                       </a>
                     </li>

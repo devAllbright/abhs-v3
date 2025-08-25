@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import '../../../styles/pricing/thank-you.css'
+import '../../styles/pricing/thank-you.css'
 
 export default function ThankYou() {
   useEffect(() => {
