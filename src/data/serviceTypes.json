@@ -58,19 +58,19 @@
       {
         "title": "Bundles",
         "services": [
-          { "name": "Full Bundle", "img": "", "price": "Save $100", "url": "/our-services/packages/full-bundle" },
-          { "name": "Carpet Bundle", "img": "", "price": "Save $75", "url": "/our-services/packages/carpet-bundle" },
-          { "name": "Window Bundle", "img": "", "price": "Save $75", "url": "/our-services/packages/window-bundle" },
-          { "name": "Carpet and Window", "img": "", "price": "Save $50", "url": "/our-services/packages/carpet-and-window-bundle" }
+          { "name": "Full Bundle", "img": "/mega-menu/full-bundle.png", "price": "Save $100", "url": "/our-services/packages/full-bundle" },
+          { "name": "Carpet Bundle", "img": "/mega-menu/carpet-bundle.png", "price": "Save $75", "url": "/our-services/packages/carpet-bundle" },
+          { "name": "Window Bundle", "img": "/mega-menu/window-bundle.png", "price": "Save $75", "url": "/our-services/packages/window-bundle" },
+          { "name": "Carpet and Window", "img": "/mega-menu/carpet-and-window-bundle.png", "price": "Save $50", "url": "/our-services/packages/carpet-and-window-bundle" }
         ]
       },
       {
         "title": "Maintenance Plans",
         "services": [
-          { "name": "Pristine Plan", "img": "", "price": "Custom Quote", "url": "/our-services/packages/pristine-plan" },
-          { "name": "Care Plan", "img": "", "price": "Custom Quote", "url": "/our-services/packages/care-plan" },
-          { "name": "Refresh Plan", "img": "", "price": "Custom Quote", "url": "/our-services/packages/refresh-plan" },
-          { "name": "Signature Plan", "img": "", "price": "Custom Quote", "url": "/our-services/packages/signature-plan" }
+          { "name": "Pristine Plan", "img": "/mega-menu/pristine-plan.png", "price": "Custom Quote", "url": "/our-services/packages/pristine-plan" },
+          { "name": "Care Plan", "img": "/mega-menu/care-plan.png", "price": "Custom Quote", "url": "/our-services/packages/care-plan" },
+          { "name": "Refresh Plan", "img": "/mega-menu/refresh-plan.png", "price": "Custom Quote", "url": "/our-services/packages/refresh-plan" },
+          { "name": "Signature Plan", "img": "/mega-menu/signature-plan.png", "price": "Custom Quote", "url": "/our-services/packages/signature-plan" }
         ]
       }
     ]

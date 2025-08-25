@@ -44,7 +44,7 @@ const categoryServiceMap = {
     "Full Bundle",
     "Carpet Bundle",
     "Window Bundle",
-    "Carpet and Windows",
+    "Carpet and Window",
     "Pristine Plan",
     "Care Plan",
     "Refresh Plan",
