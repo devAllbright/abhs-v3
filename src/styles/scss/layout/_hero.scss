@@ -188,7 +188,16 @@
   }
 
   &__title {
-    font-size: $font-size-42;
+    font-size: $font-size-36;
     margin-bottom: $spacing-12;
+    line-height: $line-height-13;
+  }
+
+  &__subtitle {
+    text-align: center;
+    font-size: $font-size-16;
+    font-family: $font-secondary;
+    font-weight: $font-weight-light;
+    font-style: italic;
   }
 }

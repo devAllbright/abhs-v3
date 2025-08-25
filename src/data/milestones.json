@@ -1,41 +1,57 @@
 [
   {
-    "title": "From Idea to Action",
-    "subtitle": "Founding & Early Days",
-    "date": "Year of Start",
-    "description": "In [Year], Ernie set out to provide top-notch cleaning services with a focus on quality and customer care.",
-    "images": ["/timeline/img-1.png", "/timeline/img-2.png"],
+    "title": "The Beginning",
+    "subtitle": "A dream takes root",
+    "date": "1976",
+    "description": "With determination and a vision for better living, Allbright Home Services was founded in 1976. What started as a small, family-run cleaning venture quickly became known for hard work, trust, and quality service.",
+    "images": ["/timeline/img-2.png"],
     "side": "left"
   },
   {
-    "title": "Our First Wheels",
-    "subtitle": "First Allbright Van & First Jobs",
-    "date": "Year + 1",
-    "description": "This first Allbright van became our mobile headquarters, bringing professional cleaning directly to our customers’ doors.",
+    "title": "The First Carpet Cleaning Van",
+    "subtitle": "Innovation hits the road",
+    "date": "1985",
+    "description": "In 1985, Allbright rolled out its first professional carpet cleaning van. This wasn’t just a vehicle—it was a bold step toward innovation, convenience, and reliability for every customer.",
     "images": ["/timeline/img-3.png"],
     "side": "right"
   },
   {
     "title": "From One Van to a Fleet",
-    "subtitle": "Expanding the Fleet",
-    "date": "Year + 2",
-    "description": "With growing demand, Allbright Home Services expanded its fleet, making it possible to serve more homes and businesses faster.",
+    "subtitle": "Growing with our community",
+    "date": "1990",
+    "description": "By the early 1990s, Allbright grew from one van into a fleet serving thousands of homes and businesses. Our bright vans became a symbol of trust and quality throughout the Bay Area.",
     "images": ["/timeline/img-4.png"],
     "side": "left"
   },
   {
     "title": "Our People, Our Strength",
-    "subtitle": "Building a Team & Reputation",
-    "date": "Year + 3",
-    "description": "The heart of Allbright Home Services has always been its dedicated team, committed to delivering exceptional service.",
+    "subtitle": "The heart of Allbright",
+    "date": "1995",
+    "description": "The real strength of Allbright has always been its people. In 1995, our growing team carried forward the values of dedication, care, and professionalism—treating every home as if it were their own.",
     "images": ["/timeline/img-5.png"],
     "side": "right"
   },
   {
-    "title": "Decades of Excellence",
-    "subtitle": "Modern Era & Legacy",
-    "date": "Present",
-    "description": "Today, Allbright Home Services continues to shine, combining tradition with innovation to meet the needs of modern customers.",
+    "title": "Building a Legacy",
+    "subtitle": "A new generation leads forward",
+    "date": "2012",
+    "description": "By 2012, Allbright had become more than a cleaning company—it was a legacy. This era reflected a new generation of leadership, a stronger commitment to professionalism, and a vision for the future.",
+    "images": ["/timeline/img-6.png"],
+    "side": "left"
+  },
+  {
+    "title": "48 Years Strong",
+    "subtitle": "Blending tradition with innovation",
+    "date": "Today",
+    "description": "Today, Allbright continues to live by its founding belief: “Cleaning for Better Living.” We bring together decades of expertise with eco-friendly solutions, modern equipment, and concierge-level care.",
+    "images": ["/timeline/img-6.png"],
+    "side": "right"
+  },
+  {
+    "title": "Looking Ahead",
+    "subtitle": "Our story continues",
+    "date": "",
+    "description": "Our story is still unfolding. As we continue to expand, one thing remains unchanged: our promise to serve with integrity, professionalism, and care—just as we did back in 1976.",
     "images": ["/timeline/img-6.png"],
     "side": "left"
   }

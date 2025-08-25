@@ -39,7 +39,17 @@ const Timeline = () => {
         {milestones.map((milestone, index) => (
           <VerticalTimelineElement
             key={index}
-            date={milestone.date}
+            date={
+              <span
+                style={{
+                  color: '#FC8551',
+                  fontWeight: 700,
+                  fontSize: '2rem',
+                }}
+              >
+                {milestone.date}
+              </span>
+            }
             position={milestone.side}
             contentStyle={{
               background: '#fffaf5',
