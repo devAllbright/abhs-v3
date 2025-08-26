@@ -52,6 +52,13 @@ export default function LeadForm({ onSuccess }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="lead-form">
+      <div className="lead-form__title">
+        <span>Service Request</span>
+      </div>
+      <div className="lead-form__subtitle">
+        <span>Fill out your contact information and we will call you</span>
+      </div>
+
       <div className="lead-form__group">
         <input placeholder="First name" {...register("first_name")} />
         {errors.first_name && (
