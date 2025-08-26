@@ -32,6 +32,10 @@
     outline: none;
     transition: border-color 0.2s ease;
 
+    &::placeholder {
+      font-size: $font-size-16;
+    }
+
     &:focus { border-color: #0077ff; }
     &.error { border-color: #d93025; } /* optional: see note below */
   }
