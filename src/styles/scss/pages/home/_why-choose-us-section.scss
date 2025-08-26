@@ -1,7 +1,8 @@
 @use '../../abstracts/variables' as *;
 
 .why-choose-us{
-  height: 100vh;
+  min-height: 50vh;
+  padding-bottom: $spacing-64;
 
   .reasons{
     display: flex;

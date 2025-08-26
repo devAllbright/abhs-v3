@@ -6,7 +6,7 @@ import {
 } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 
-const ANIM_DURATION = 200; // ms
+const ANIM_DURATION = 200;
 
 const Timeline = () => {
   const [hoverSrc, setHoverSrc] = useState(null);
