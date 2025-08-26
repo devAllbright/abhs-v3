@@ -1,4 +1,5 @@
-/* Full-screen overlay */
+@use '../abstracts//variables' as *;
+
 .modal {
   position: fixed;
   inset: 0;              /* top/right/bottom/left: 0 */
@@ -11,6 +12,10 @@
   background: rgba(0, 0, 0, 0.6);
   padding: 1rem;
   overflow-x: hidden;
+
+  &__title{
+    font-size: $font-size-20;
+  }
 
   &__content {
     position: relative;

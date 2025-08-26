@@ -34,9 +34,6 @@ export default function LeadModal({ isOpen, onClose, thankYouPath = "/thank-you"
       >
         <button className="modal__close" onClick={onClose} aria-label="Close">×</button>
 
-        <h2 id="lead-modal-title" className="modal__title">Contact us</h2>
-        <p className="modal__subtitle">Leave your contact details and we will call you back.</p>
-
         <LeadForm
           onSuccess={() => {
             onClose();

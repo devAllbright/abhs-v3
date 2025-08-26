@@ -1,51 +1,76 @@
-@use '../abstracts//variables' as *;
+@use '../abstracts/variables' as *;
 
 .lead-form {
   display: flex;
   flex-direction: column;
+  padding: $spacing-24;
 
-  &__title{
+  &__title {
     font-size: $font-size-28;
-    font-weight: $font-weight-bold
+    font-weight: $font-weight-bold;
   }
 
-  &__subtitle{
+  &__subtitle {
     color: #8f8f8f;
     font-size: $font-size-20;
   }
 
   &__group {
-    margin-bottom: 1rem;
     display: flex;
     flex-direction: column;
     margin-top: $spacing-16;
+    margin-bottom: 1rem;
+
+  span {
+    font-size: $font-size-12;
+    font-weight: $font-weight-bold;
+    padding-left: $spacing-12;
   }
 
+  &--error {
+    input,
+    select,
+    textarea {
+      border-color: #d93025;
+    }
+  }
+}
+
+  /* Base fields (inputs, select, textarea) */
   input,
   select,
   textarea {
     width: 100%;
     padding: 0.75rem 1rem;
-    font-size: 1rem;
+    font-size: $font-size-16; /* unified text size */
+    line-height: 1.4;
     border: 1px solid #ddd;
     border-radius: 0.5rem;
     outline: none;
-    transition: border-color 0.2s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    background-color: #fff;
+
+    &:focus {
+      border-color: #0077ff;
+      box-shadow: 0 0 0 3px rgba(0, 119, 255, 0.12);
+    }
+
+    &.error { border-color: #d93025; }
 
     &::placeholder {
       font-size: $font-size-16;
+      color: #aaa; /* input placeholder color */
     }
-
-    &:focus { border-color: #0077ff; }
-    &.error { border-color: #d93025; } /* optional: see note below */
   }
 
+  /* Error text */
   &__err {
     margin-top: 0.35rem;
     font-size: 0.85rem;
     color: #d93025;
   }
 
+  /* Submit button */
   button[type="submit"] {
     margin-top: 0.5rem;
     padding: 0.9rem 1.2rem;
@@ -56,9 +81,10 @@
     cursor: pointer;
     background-color: #FC8551;
     color: #fff;
-    transition: background 0.2s ease;
+    transition: background 0.2s ease, transform 0.06s ease;
 
-    &:hover { background-color: #005fcc; }
+    &:hover { background-color: #e77440; }
+    &:active { transform: translateY(1px); }
     &:disabled { background-color: #aaa; cursor: not-allowed; }
   }
 }
