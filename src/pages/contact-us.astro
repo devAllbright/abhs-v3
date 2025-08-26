@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ContactForm from '../components/forms/ContactForm'
+---
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+
+
+
+  <BaseLayout>
+    <div class="contact-us">
+      <div class="contact-us__left-side">
+        <div class="contact-us__image">
+          <img src="/contact-us.png" alt="Contact Us">
+        </div>
+        
+        <div class="contact-us__details">
+          <div class="contact-us__detail contact-us__detail--email">
+            <div class="contact-us__icon">
+              <img src="/icons/email.png" alt="">
+            </div>
+            <div class="contact-us__text">
+              <div>
+                <div class="contact-us__title">Email</div>
+                <div class="contact-us__subtitle">contact@allbrighths.com</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-us__detail contact-us__detail--phone">
+            <div class="contact-us__icon">
+              <img src="/icons/phone.png" alt="">
+            </div>
+            <div class="contact-us__text">
+              <div>
+                <div class="contact-us__title">Phone</div>
+                <div class="contact-us__subtitle">(408) - 280 - 1234</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-us__detail contact-us__detail--address">
+            <div class="contact-us__icon">
+              <img src="/icons/location.png" alt="">
+            </div>
+            <div class="contact-us__text">
+              <div>
+                <div class="contact-us__title">Office</div>
+                <div class="contact-us__subtitle">979 W San Carlos St, San Jose, CA 95126</div>
+              </div>
+            </div>
+          </div>
+
+<!--           <div class="contact-us__detail contact-us__detail--social">
+            <div class="contact-us__icon">
+              <img src="" alt="">
+            </div>
+            <div class="contact-us__text">
+              <div>Social Media</div>
+              <img src="" alt="">
+              <img src="" alt="">
+            </div>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="contact-us__right-side">
+        <div class="contact-us__form">
+
+        <ContactForm client:only="react"/>
+        </div>
+      </div>
+    </div>
+  </BaseLayout>
+
+
+<!-- <style>
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .summary-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+  }
+</style> -->

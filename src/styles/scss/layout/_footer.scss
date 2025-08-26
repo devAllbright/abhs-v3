@@ -35,7 +35,6 @@
     }
   }
 
-  /* ⬇️ Now 5 columns so all groups fit on one row */
   &__links {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -66,7 +65,7 @@
     & > * {
       display: flex;
       align-items: center;
-      font-size: $font-size-20;
+      font-size: $font-size-16;
 
       a {
         color: $secondary-text;
@@ -90,7 +89,7 @@
     a {
       text-decoration: none;
       color: $secondary-text;
-      font-size: $font-size-20;
+      font-size: $font-size-16;
     }
   }
 
@@ -104,17 +103,5 @@
     margin-top: $spacing-48;
     padding: $spacing-16 0;
     background-color: $background-darker;
-  }
-}
-
-/* ✅ Optional responsive fallback so the 5 columns don’t get cramped */
-@media (max-width: 1200px) {
-  .footer__links {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (max-width: 640px) {
-  .footer__links {
-    grid-template-columns: 1fr;
   }
 }
