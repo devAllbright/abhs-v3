@@ -1,0 +1,157 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import Hero from '../../../components/Hero'
+import ServiceDescription from '../../../components/pages/services/ServiceDescription'
+import HowItWorks from "../../../components/pages/services/HowItWorks.astro"
+import BundleAndSave from '../../../components/pages/services/BundleAndSave'
+import ReviewsWidget from "../../../components/pages/ReviewsWidget.astro"
+import PostCarousel from "../../../components/layout/PostCarousel"
+import FAQSection from "../../../components/pages/home/FAQSection.astro"
+import FinalCTASection from "../../../components/pages/home/FinalCTASection.astro"
+
+const bannerData = {
+  ratingText: "4.9 AVERAGE RATING",
+  title: "More than clean — a complete refresh",
+  subtitle: "Book in seconds!",
+  description: `Like a luxury car detail, but for your home: precision dusting, 
+                deep sanitizing, and restored shine in every corner. Perfect for 
+                seasonal resets, special occasions, or a fresh start.`,
+  socialProof: [
+    "5,000+ customers trust in Allbright Home Services",
+    "200,000+ services completed"
+  ],
+  images: {
+    googleLogo: "/google-logo.png",
+    ratingStars: "/rating-stars.svg",
+    checkIcon: "/check.png",
+    heroImage: "/services/deep-cleaning/hero-img.png"
+  },
+
+  imgClass: "--secondary"
+}
+
+const descriptionData = {
+  title: "Give Your Home the VIP Treatment",
+  imageUrl: "/services/home-detailing-cleaning/description-img.png",
+  paragraphs: [
+    {
+      subtitle: "Detailing for Your Living Space",
+      brief: `Just like car detailing restores a vehicle’s shine, 
+              our Home Detailing service revitalizes your living space. 
+              We target forgotten corners, stubborn grime, and high-touch 
+              surfaces that standard cleaning often misses.`
+    },
+    {
+      subtitle: "A Luxury Clean for Everyday Living",
+      brief: `From polished fixtures to refreshed floors, 
+              our team delivers a meticulous clean that makes your home 
+              feel brand new. Perfect for seasonal resets, special occasions, 
+              or simply treating your home to the VIP care it deserves.`
+    }
+  ]
+};
+
+const reasonsData = [
+  { icon: '/why-us/experience.png', reasonsTitle: 'Nearly 50 Years of Expertise', description: "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first." },
+  { icon: '/why-us/home.png', reasonsTitle: 'Comprehensive Home Care', description: 'From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional.' },
+  { icon: '/why-us/sustainability.png', reasonsTitle: 'Sustainable and Precise', description: '"Maintenance and Cleaning for Better living" is our promise. We use eco-friendly products and expert techniques for lasting quality.' }
+];
+
+const bundleData = [
+    {
+      title: "Carpet Bundle",
+      discount: "15% OFF!",
+      price: "$299",
+      brief: "Lorem ipsum dolor",
+      features: ["Deep cleaning", "Carpet Cleaning"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+    {
+      title: "Carpets and Windows",
+      discount: "20% OFF!",
+      price: "$499",
+      brief: "Lorem ipsum dolor",
+      features: ["Carpet CLeaning", "Window Washing"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+];
+
+const blogPosts = [
+  {
+    image: "/services/deep-cleaning/blog-post-1.png",
+    title: "Deep Cleaning",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/deep-cleaning/blog-post-2.png",
+    title: "Deep Cleaning",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/deep-cleaning/blog-post-3.png",
+    title: "Deep Cleaning",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/deep-cleaning/blog-post-4.png",
+    title: "Deep Cleaning",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  }
+];
+
+const finalCTAData = {
+  imgSrc: "/services/home-detailing-cleaning/final-cta.png",
+  imgAlt: "Final Call to Action",
+  title: "Transform Your Home with Detailing Care",
+  brief: `Give your home more than just a clean—give it a full refresh. 
+          Our meticulous Home Detailing service restores shine, 
+          sanitizes high-touch areas, and leaves every room feeling 
+          polished and revitalized.`,
+  callToActionText: "",
+  contactText: "Book your Home Detailing today!",
+};
+
+const faqs = [
+  {
+    question: "What’s included in a deep cleaning service?",
+    answer: "Our Deep Cleaning Service goes beyond routine upkeep to give your home a complete reset. It includes:\n\n• Kitchen: Degreasing and sanitizing countertops, sinks, appliance exteriors, cabinet fronts, and stovetops.\n• Bathrooms: Scrubbing and disinfecting toilets, tubs, showers, sinks, mirrors, and tile.\n• Living Areas & Bedrooms: Detailed dusting of furniture, baseboards, vents, blinds, and ceiling fans; vacuuming and mopping all floors.\n• Hard-to-Reach Areas: Cleaning behind furniture (when accessible), polishing fixtures, and addressing areas often overlooked during regular cleaning.\n\nThis service is ideal for seasonal cleanings, move-in/move-out situations, or anytime your home needs a top-to-bottom refresh."
+  },
+  {
+    question: "How is deep cleaning different from regular cleaning?",
+    answer: "Regular cleaning focuses on keeping your home fresh and tidy week to week—dusting surfaces, vacuuming/mopping floors, sanitizing kitchens and bathrooms, and maintaining high-traffic areas.\n\nDeep cleaning, on the other hand, goes much further. It targets built-up dirt, grime, and hidden areas that don’t get as much attention during routine cleanings. This includes:\n• Scrubbing baseboards, vents, blinds, and fixtures\n• Cleaning inside cabinets, appliances, and other detailed areas\n• Removing deep buildup in kitchens, bathrooms, and hard-to-reach spaces\n\nIn short, regular cleaning maintains your home, while deep cleaning resets it—leaving every corner spotless and refreshed."
+  },
+  {
+    question: "How long does a deep cleaning take?",
+    answer: "The time needed for a deep cleaning depends on the size of your home, its condition, and the level of detail required. On average, most deep cleanings take anywhere from 4 to 8 hours. Larger homes or those with heavier buildup may require additional time.\n\nDuring your free consultation, we’ll walk through your home, discuss your priorities, and provide a clear time estimate so you know exactly what to expect."
+  },
+  {
+    question: "Do I need to prepare anything before the deep cleaning?",
+    answer: "Preparation isn’t mandatory, but a few quick steps help us focus time on detailed cleaning:\n\n• Tidy surfaces & floors: Pick up toys, clothes, and personal items so we can clean every surface thoroughly.\n• Secure pets: Keep pets in a safe area or outside the work zones for their comfort and our team’s safety.\n• Access & instructions: Provide entry details, alarm codes, and any special notes (delicate items, rooms to skip, priorities).\n• Fragile & valuables: Please move or clearly mark fragile/heirloom items you’d prefer we don’t handle.\n• Parking & water/electric: Ensure convenient parking and access to water and power.\n• Linens & beds (optional): Leave fresh sheets out if you’d like us to change them.\n• Inside-appliance cleaning (optional): If you’ve added oven or refrigerator interior cleaning, please remove contents beforehand.\n\nWe’ll also review your priorities at the start of the visit so the team focuses on what matters most to you."
+  },
+  {
+    question: "How often should I schedule a deep cleaning? And why?",
+    answer: "Most homes benefit from a deep cleaning every 3 to 6 months. This frequency helps prevent buildup in kitchens, bathrooms, and hard-to-reach areas while keeping your home healthier and easier to maintain with regular cleanings in between.\n\nYou may want to schedule deep cleaning more often if:\n• You have children, pets, or frequent guests.\n• You host special events and want your home at its best.\n• You notice dust, grime, or buildup in places not covered during routine cleaning.\n\nRegular deep cleaning not only improves your home’s appearance but also extends the life of surfaces, appliances, and finishes—protecting your investment and ensuring a consistently fresh environment."
+  }
+];
+
+
+
+---
+
+<BaseLayout>
+  <Hero bannerData={ bannerData } client:only="react"/>
+  <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
+  <HowItWorks reasons={ reasonsData }/>
+  <BundleAndSave bundleData={ bundleData } client:only="react"/>
+  <ReviewsWidget />
+  <PostCarousel posts={ blogPosts } client:only="react"/>
+  <FAQSection faqs={ faqs }/>
+  <FinalCTASection finalCTAData={ finalCTAData }/>
+
+</BaseLayout>

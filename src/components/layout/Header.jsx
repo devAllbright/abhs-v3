@@ -69,7 +69,13 @@ export default function Header() {
             className="header__cta-button"
             onMouseEnter={() => setIsVisible(false)}
           >
-            <a href="https://book.housecallpro.com/book/All-Bright-Home-Services/38acff17233d44ec9cdc0edf4aadf395?v2=true" className="primary-cta">Book a Consultation</a>
+            <a
+              href="https://book.housecallpro.com/book/All-Bright-Home-Services/38acff17233d44ec9cdc0edf4aadf395?v2=true"
+              className="primary-cta"
+            >
+              <img src="/icons/calendar.png" alt="" className="cta-icon" />
+              <span>Book a Free Consultation</span>
+            </a>
           </div>
         </div>
       </header>

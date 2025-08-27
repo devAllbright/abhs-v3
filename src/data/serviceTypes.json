@@ -19,8 +19,9 @@
         "title": "Interior Cleaning",
         "services": [
           { "name": "One-Time Maid Services", "img": "/mega-menu/one-time-maid-services.png", "price": "195", "url": "/our-services/one-time-services/one-time-maid-services" },
-          { "name": "Deep Cleaning", "img": "/mega-menu/deep-cleaning.png", "price": "390", "url": "/our-services/one-time-services/deep-cleaning" },
+          { "name": "Home Detailing Cleaning", "img": "/mega-menu/home-detailing-cleaning.png", "price": "395", "url": "/our-services/one-time-services/home-detailing" },
           { "name": "Move-In Ready Cleaning", "img": "/mega-menu/move-in-ready.png", "price": "795", "url": "/our-services/one-time-services/move-in-ready" },
+          { "name": "Deep Cleaning", "img": "/mega-menu/deep-cleaning.png", "price": "390", "url": "/our-services/one-time-services/deep-cleaning" },
           { "name": "Post Renovation Cleaning", "img": "/mega-menu/post-renovation.png", "price": "960", "url": "/our-services/one-time-services/post-renovation-cleaning" }
         ]
       },
@@ -29,8 +30,8 @@
         "services": [
           { "name": "Carpet Cleaning", "img": "/mega-menu/carpet-cleaning.png", "price": "169", "url": "/our-services/one-time-services/carpet-cleaning" },
           { "name": "Tile Cleaning", "img": "/mega-menu/tile-cleaning.png", "price": "480", "url": "/our-services/one-time-services/tile-cleaning" },
-          { "name": "Stone & Marble Restoration", "img": "/mega-menu/stone-marble.png", "price": "780", "url": "/our-services/one-time-services/stone-and-marble-restoration" },
-          { "name": "Wood Cabinets & Floors Reviving", "img": "/mega-menu/wood-revive.png", "price": "395", "url": "/our-services/one-time-services/wood-cabinets-and-floors-reviving" }
+          { "name": "Wood Cabinets & Floors Reviving", "img": "/mega-menu/wood-revive.png", "price": "395", "url": "/our-services/one-time-services/wood-cabinets-and-floors-reviving" },
+          { "name": "Stone & Marble Restoration", "img": "/mega-menu/stone-marble.png", "price": "780", "url": "/our-services/one-time-services/stone-and-marble-restoration" }
         ]
       },
       {
@@ -38,8 +39,8 @@
         "services": [
           { "name": "Window Washing", "img": "/mega-menu/window-washing.png", "price": "395", "url": "/our-services/one-time-services/window-washing" },
           { "name": "Gutter Cleaning", "img": "/mega-menu/gutter-cleaning.png", "price": "740", "url": "/our-services/one-time-services/gutter-cleaning" },
-          { "name": "Anodized Frames Restoration", "img": "/mega-menu/anodized-frames.png", "price": "395", "url": "/our-services/one-time-services/anodized-frames-restoration" },
-          { "name": "Exterior Surface Washing", "img": "/mega-menu/exterior-washing.png", "price": "480", "url": "/our-services/one-time-services/exterior-surface-washing" }
+          { "name": "Exterior Surface Washing", "img": "/mega-menu/exterior-washing.png", "price": "480", "url": "/our-services/one-time-services/exterior-surface-washing" },
+          { "name": "Anodized Frames Restoration", "img": "/mega-menu/anodized-frames.png", "price": "395", "url": "/our-services/one-time-services/anodized-frames-restoration" }
         ]
       },
       {

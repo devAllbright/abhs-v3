@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LeadModal from "../LeadModal";
 
-export default function ModalCTA({ text, buttonClass, thankYouPath = "/thank-you" }) {
+export default function ModalCTA({ buttonClass, thankYouPath = "/thank-you" }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -13,7 +13,7 @@ export default function ModalCTA({ text, buttonClass, thankYouPath = "/thank-you
         aria-haspopup="dialog"
         aria-expanded={showModal}
       >
-        {text}
+        Book a Free Consultation
       </button>
 
       <LeadModal
