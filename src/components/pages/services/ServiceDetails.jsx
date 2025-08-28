@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import serviceDetails from "../../../data/serviceDetails.json";
+import SectionHeading from '../../SectionHeading'
 
 export default function ServiceDetails({
   serviceName,
@@ -44,39 +45,43 @@ export default function ServiceDetails({
   };
 
   return (
-    <div className="service-details">
-      <div className="service-details__grid">
-        {/* MAIN (A) */}
-        <Tile area="A">
-          <EmblaTile
-            mode="main"
-            cards={mainCards}
-            loop={loopMain}
-            autoplay={autoplayMain}
-            autoplayIntervalMs={autoplayIntervalMs}
-            showDots={showDots}
-            ariaLabel="Main block"
-          />
-        </Tile>
+    <>
+      <SectionHeading title="A Closer Look" subtitle="Discover the full scope of what we offer, from start to finish."/>
+      <div className="service-details">
+        <div className="service-details__grid">
+          {/* MAIN (A) */}
+          <Tile area="A">
+            <EmblaTile
+              mode="main"
+              cards={mainCards}
+              loop={loopMain}
+              autoplay={autoplayMain}
+              autoplayIntervalMs={autoplayIntervalMs}
+              showDots={showDots}
+              ariaLabel="Main block"
+            />
+          </Tile>
 
-        {/* SMALL blocks (manual only) */}
-        <Tile area="B">
-          <EmblaTile mode="small" cards={blocks.topRight} loop={false} autoplay={false} showDots={false} ariaLabel="Quick Facts" />
-        </Tile>
-        <Tile area="C">
-          <EmblaTile mode="small" cards={blocks.middleRight} loop={false} autoplay={false} showDots={false} ariaLabel="Highlights & Add-ons" />
-        </Tile>
-        <Tile area="D">
-          <EmblaTile mode="small" cards={blocks.bottomLeft} loop={false} autoplay={false} showDots={false} ariaLabel="Extras & Optional Services" />
-        </Tile>
-        <Tile area="E">
-          <EmblaTile mode="small" cards={blocks.bottomMiddle} loop={false} autoplay={false} showDots={false} ariaLabel="Pro Tips & Benefits" />
-        </Tile>
-        <Tile area="F">
-          <EmblaTile mode="small" cards={blocks.bottomRight} loop={false} autoplay={false} showDots={false} ariaLabel="What’s Not Included" />
-        </Tile>
+          {/* SMALL blocks (manual only) */}
+          <Tile area="B">
+            <EmblaTile mode="small" cards={blocks.topRight} loop={false} autoplay={false} showDots={false} ariaLabel="Quick Facts" />
+          </Tile>
+          <Tile area="C">
+            <EmblaTile mode="small" cards={blocks.middleRight} loop={false} autoplay={false} showDots={false} ariaLabel="Highlights & Add-ons" />
+          </Tile>
+          <Tile area="D">
+            <EmblaTile mode="small" cards={blocks.bottomLeft} loop={false} autoplay={false} showDots={false} ariaLabel="Extras & Optional Services" />
+          </Tile>
+          <Tile area="E">
+            <EmblaTile mode="small" cards={blocks.bottomMiddle} loop={false} autoplay={false} showDots={false} ariaLabel="Pro Tips & Benefits" />
+          </Tile>
+          <Tile area="F">
+            <EmblaTile mode="small" cards={blocks.bottomRight} loop={false} autoplay={false} showDots={false} ariaLabel="What’s Not Included" />
+          </Tile>
+        </div>
       </div>
-    </div>
+    </>
+
   );
 }
 
