@@ -19,6 +19,7 @@
     "@types/react-dom": "^19.0.4",
     "astro": "^5.3.1",
     "dayjs": "^1.11.13",
+    "embla-carousel-react": "^8.6.0",
     "fuse.js": "^7.1.0",
     "prop-types": "^15.8.1",
     "react": "^19.1.1",
