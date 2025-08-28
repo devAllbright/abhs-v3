@@ -186,7 +186,7 @@
   }
 }
 
-/* SMALL CARDS (B–F): header title 1.3x bigger + bold */
+/* SMALL CARDS (B–F): gradient background for non-first, title bottom-left bigger, description rules */
 .small-card {
   position: relative;
   width: 100%;
@@ -197,24 +197,26 @@
     inset: 0;
   }
 
+  /* First small block keeps its image background */
   &__bg--image {
     background-size: cover;
     background-position: center;
-    filter: none;
   }
 
+  /* Other small blocks → gradient from uploaded image colors */
   &__bg--css {
-    background: #111;
-    /* optional animated gradient:
-    background: linear-gradient(120deg, #0f0f12, #1a1a1f, #0f0f12);
+    background: linear-gradient(
+      135deg,
+      #f6b31a, /* extracted warm yellow */
+      #017a62  /* extracted teal green */
+    );
     background-size: 200% 200%;
-    animation: cardBgShift 8s ease infinite;
-    */
+    animation: cardBgShift 12s ease infinite;
   }
 
   @keyframes cardBgShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
 
@@ -223,34 +225,52 @@
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0.25)
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.35)
     );
   }
 
+  /* Content wrapper */
   &__content {
     position: relative;
     z-index: 1;
     color: #fff;
     padding: 1rem;
-    display: flex;
-    align-items: center;
     height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
-  &--header &__content {
-    align-items: flex-end;
-  }
-
+  /* Title: bigger + bottom-left, no JSX changes */
   &__title {
-    font-size: 1.43rem; /* 1.1rem × 1.3 */
-    font-weight: 700;   /* bold */
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    font-size: 1.43rem; /* bigger title preserved */
+    font-weight: 700;
+    line-height: 1.2;
     margin: 0;
   }
 
+  /* Default description size (first small card with image keeps this) */
   &__text {
-    font-size: 0.95rem;
-    line-height: 1.35;
     margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    text-align: left;
+    /* sits in normal flow; title is absolutely positioned */
+  }
+
+  /* For non-first small cards (those that use CSS bg):
+     center description vertically and make it 1.3x bigger,
+     while keeping text left-aligned. */
+  &__bg--css ~ &__content {
+    justify-content: center; /* vertical centering for description */
+  }
+
+  &__bg--css ~ &__content .small-card__text {
+    font-size: 1.235rem; /* 0.95rem × 1.3 */
+    line-height: 1.5;
+    text-align: left;
   }
 }
