@@ -2,17 +2,6 @@
 import RedirectCTA from "./buttons/RedirectCTA";
 import ModalCTA from "./buttons/ModalCTA";
 
-const IMAGE_LIST = [
-  { type: "a", src: "/collage/collage-img-1.jpg" },
-  { type: "b", src: "/collage/collage-img-2.jpg" },
-  { type: "a", src: "/collage/collage-img-3.jpg" },
-  { type: "b", src: "/collage/collage-img-4.jpg" },
-  { type: "a", src: "/collage/collage-img-5.jpg" },
-  { type: "b", src: "/collage/collage-img-6.jpg" },
-  { type: "a", src: "/collage/collage-img-7.jpg" },
-  { type: "b", src: "/collage/collage-img-8.jpg" },
-];
-
 const StaticColumn = ({ images }) => (
   <div className="primary-banner__collage-column-wrapper">
     <div className="primary-banner__collage-column primary-banner__collage-column--animated">
@@ -20,7 +9,7 @@ const StaticColumn = ({ images }) => (
         <img
           key={i}
           src={item.src}
-          alt={`Collage ${i + 1}`}
+          alt={`Image ${i + 1}`}
           className={`primary-banner__collage-image primary-banner__collage-image--type-${item.type}`}
           loading="lazy"
         />
@@ -37,6 +26,7 @@ export default function Hero({ bannerData }) {
     description,
     socialProof,
     images,
+    uiImages,   // 👈 dedicated array for collage/carousel/etc.
     ctaAction,
   } = bannerData;
 
@@ -45,16 +35,8 @@ export default function Hero({ bannerData }) {
       <div className="primary-banner__content">
         <div>
           <div className="primary-banner__reviews">
-            <img
-              src={images.googleLogo}
-              className="primary-banner__reviews-icon"
-              alt="Google Logo"
-            />
-            <img
-              src={images.ratingStars}
-              className="primary-banner__reviews-icon"
-              alt="Rating Stars"
-            />
+            <img src={images.googleLogo} className="primary-banner__reviews-icon" alt="Google Logo" />
+            <img src={images.ratingStars} className="primary-banner__reviews-icon" alt="Rating Star" />
             <p className="primary-banner__reviews-text">{ratingText}</p>
           </div>
 
@@ -95,8 +77,8 @@ export default function Hero({ bannerData }) {
 
       <div className="primary-banner__collage">
         <div className="primary-banner__collage-container">
-          <StaticColumn images={IMAGE_LIST} />
-          <StaticColumn images={[...IMAGE_LIST].reverse()} />
+          <StaticColumn images={uiImages} />
+          <StaticColumn images={[...uiImages].reverse()} />
         </div>
       </div>
     </div>
