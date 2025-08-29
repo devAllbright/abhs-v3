@@ -26,7 +26,7 @@ export default function Hero({ bannerData }) {
     description,
     socialProof,
     images,
-    uiImages,   // 👈 dedicated array for collage/carousel/etc.
+    uiImages = [],
     ctaAction,
   } = bannerData;
 
