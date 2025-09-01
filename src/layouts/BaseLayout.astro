@@ -6,9 +6,56 @@ import "../styles/main.scss";
 ---
 
 <html lang="en">
-  <Head title="Allbright Home Services"/>
+  <Head title="Allbright Home Services" />
   <Header client:only="react" />
   <slot />
   <Footer />
+  <script>
+    (function () {
+      // 🔹 Bubble config (must be set before script loads)
+      (window as any).chatbaseConfig = {
+        chatbotId: "QyXsFCkhAqyBY_4aUC8XK",
+        domain: "www.chatbase.co",
+        chatBubble: {
+          title: "Need help?",
+          message: "👋 Hi! Got questions? Ask me here."
+        }
+      };
+
+      // 🔹 Safe Chatbase init
+      if (!(window as any).chatbase || (window as any).chatbase("getState") !== "initialized") {
+        (window as any).chatbase = (...args: any[]) => {
+          if (!(window as any).chatbase.q) {
+            (window as any).chatbase.q = [];
+          }
+          (window as any).chatbase.q.push(args);
+        };
+
+        (window as any).chatbase = new Proxy((window as any).chatbase, {
+          get(target, prop) {
+            if (prop === "q") {
+              return target.q;
+            }
+            return (...args: any[]) => (target as any)(prop, ...args);
+          },
+        });
+      }
+
+      // 🔹 Load embed script
+      const onLoad = function () {
+        const script = document.createElement("script");
+        script.src = "https://www.chatbase.co/embed.min.js";
+        script.id = "QyXsFCkhAqyBY_4aUC8XK";
+        (script as any).domain = "www.chatbase.co";
+        document.body.appendChild(script);
+      };
+
+      if (document.readyState === "complete") {
+        onLoad();
+      } else {
+        window.addEventListener("load", onLoad);
+      }
+    })();
+  </script>
   <div id="modal-root"></div>
 </html>
