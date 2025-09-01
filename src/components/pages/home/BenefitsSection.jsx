@@ -5,7 +5,7 @@ const benefits = [
   {
     id: 1,
     title: "Time-Saving Convenience",
-    description: "Book in seconds and let us handle the rest, so you can enjoy more free time.",
+    description: "With AllBright, home care starts with a free consultation you can book online in seconds—or a quick call to get everything started. From there, we handle the details.",
     icon: "/benefits/convenience-icon.png",
     image: "/benefits/convenience.png"
   },
@@ -26,7 +26,7 @@ const benefits = [
   {
     id: 4,
     title: "Custom Plans for Every Home",
-    description: "Tailored cleaning and maintenance solutions designed to fit your unique needs.",
+    description: "Enjoy the flexibility of cleaning on your terms—from quick, routine visits to concierge-level yearly maintenance plans that cover every detail. Our services are designed to adapt to your home and lifestyle.",
     icon: "/benefits/customization-icon.png",
     image: "/benefits/customization.png"
   },
