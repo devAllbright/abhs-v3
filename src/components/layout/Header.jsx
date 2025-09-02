@@ -1,35 +1,76 @@
-import { useState, useRef } from 'react'
-import MegaMenu from './MegaMenu'
+// Header.jsx
+import { useState, useRef, useEffect } from 'react';
+import MegaMenu from './MegaMenu';
+import SearchIcon from '../pages/our-services/SearchIcon';
+import SearchBar from '../pages/our-services/SearchBar';
 
 export default function Header() {
-  const [isVisible, setIsVisible] = useState(false)
-  const megaMenuRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(false);  // MegaMenu
+  const [showSearch, setShowSearch] = useState(false); // Search popover
+  const popoverRef = useRef(null);
 
-  const handleMouseEnterServices = () => setIsVisible(true)
+  const handleMouseEnterServices = () => {
+    setShowSearch(false); // close search if services opens
+    setIsVisible(true);
+  };
 
   const handleCloseIfNotServices = (e) => {
-    const target = e.relatedTarget
+    const target = e.relatedTarget;
 
     const fromOtherNavItem =
       target?.closest('.header__nav-item') &&
-      !target?.textContent.includes('Our Services')
+      !target?.textContent.includes('Our Services');
 
-    const fromOverlay = target?.classList.contains('mega-menu__overlay')
-    const fromHeaderLogo = target?.closest('.header__logo')
-    const fromNumber = target?.closest('.header__cta-number')
-    const fromButton = target?.closest('.header__cta-button')
+    const fromOverlay = target?.classList.contains('mega-menu__overlay');
+    const fromHeaderLogo = target?.closest('.header__logo');
+    const fromNumber = target?.closest('.header__cta-number');
+    const fromButton = target?.closest('.header__cta-button');
 
     if (fromOtherNavItem || fromOverlay || fromHeaderLogo || fromNumber || fromButton) {
-      setIsVisible(false)
+      setIsVisible(false);
     }
-  }
+  };
+
+  // Close search on click outside & Esc
+  useEffect(() => {
+    function onDocClick(e) {
+      if (!showSearch) return;
+      if (popoverRef.current && !popoverRef.current.contains(e.target)) {
+        setShowSearch(false);
+      }
+    }
+    function onEsc(e) {
+      if (e.key === 'Escape') setShowSearch(false);
+    }
+    document.addEventListener('mousedown', onDocClick);
+    document.addEventListener('keydown', onEsc);
+    return () => {
+      document.removeEventListener('mousedown', onDocClick);
+      document.removeEventListener('keydown', onEsc);
+    };
+  }, [showSearch]);
+
+  // Autofocus the SearchBar input when popover opens (targets #service-search)
+  useEffect(() => {
+    if (showSearch) {
+      // slight delay to ensure the input is in the DOM
+      const t = setTimeout(() => {
+        const input = document.getElementById('service-search');
+        if (input) input.focus();
+      }, 0);
+      return () => clearTimeout(t);
+    }
+  }, [showSearch]);
 
   return (
     <>
       <header className="header">
         <div
           className="header__logo"
-          onMouseEnter={() => setIsVisible(false)}
+          onMouseEnter={() => {
+            setIsVisible(false);
+            setShowSearch(false);
+          }}
         >
           <a href="/" className="header__logo-link">
             <div className="header__logo-img">
@@ -42,23 +83,59 @@ export default function Header() {
         </div>
 
         <nav className="header__nav">
-          <div className="header__nav-item" onMouseEnter={() => setIsVisible(false)}>
+          <div
+            className="header__nav-item"
+            onMouseEnter={() => {
+              setIsVisible(false);
+              setShowSearch(false);
+            }}
+          >
             <a href="/about-us">About Us</a>
           </div>
 
-          <div className="header__nav-item" onMouseEnter={handleMouseEnterServices}>
+          <div
+            className="header__nav-item"
+            onMouseEnter={handleMouseEnterServices}
+          >
             <a href="/our-services">Our Services</a>
           </div>
 
-          <div className="header__nav-item" onMouseEnter={() => setIsVisible(false)}>
+          <div
+            className="header__nav-item"
+            onMouseEnter={() => {
+              setIsVisible(false);
+              setShowSearch(false);
+            }}
+          >
             <a href="/contact-us">Contact Us</a>
           </div>
+
+          {/* 🔎 Search icon button */}
+          <SearchIcon
+            className="header__nav-icon"
+            size={40}
+            strokeWidth={1}
+            onClick={() => {
+              setIsVisible(false);
+              setShowSearch((s) => !s);
+            }}
+          />
+
+          {/* Popover with SearchBar */}
+          {showSearch && (
+            <div ref={popoverRef} className="header__search-popover">
+              <SearchBar />
+            </div>
+          )}
         </nav>
 
         <div className="header__cta">
           <div
             className="header__cta-number"
-            onMouseEnter={() => setIsVisible(false)}
+            onMouseEnter={() => {
+              setIsVisible(false);
+              setShowSearch(false);
+            }}
           >
             <a href="tel:4082801234" className="header__cta-number-link">
               <img src="/phone-call.png" alt="Phone Icon" className="header__cta-number-icon" />
@@ -67,7 +144,10 @@ export default function Header() {
           </div>
           <div
             className="header__cta-button"
-            onMouseEnter={() => setIsVisible(false)}
+            onMouseEnter={() => {
+              setIsVisible(false);
+              setShowSearch(false);
+            }}
           >
             <a
               href="https://book.housecallpro.com/book/All-Bright-Home-Services/38acff17233d44ec9cdc0edf4aadf395?v2=true"
@@ -80,7 +160,7 @@ export default function Header() {
         </div>
       </header>
 
-      <MegaMenu visible={isVisible} onLeave={handleCloseIfNotServices} ref={megaMenuRef} />
+      <MegaMenu visible={isVisible} onLeave={handleCloseIfNotServices} />
     </>
-  )
+  );
 }
