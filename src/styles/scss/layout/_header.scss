@@ -73,7 +73,11 @@
       &:hover { background: rgba(0, 0, 0, 0.05); }
       &:focus-visible { outline: 2px solid rgba(0, 0, 0, 0.25); outline-offset: 2px; }
 
-      svg { width: 1.25rem; height: 1.25rem; display: block; } /* ~20px */
+      svg { 
+        width: 2.5rem; 
+        height: 2.5rem;
+        display: block; 
+      }
     }
   }
 
@@ -89,7 +93,7 @@
     padding: $spacing-12;
     box-shadow: 0 $spacing-12 $spacing-24 rgba(0, 0, 0, 0.12);
     width: min(44rem, 92vw);
-    
+
     /* ---------- HARD SCOPED RESETS (header-only) ---------- */
     .search-bar,
     .search-bar__section,
