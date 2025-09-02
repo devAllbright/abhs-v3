@@ -2170,7 +2170,113 @@
         "answer": "Yes. You’ll have one dedicated team for consistency, with a trained backup team available if needed so you’re never left without service."
       }
     ]
-  }
+  },
+  "Rotating System": {
+  "main": {
+    "zones": [
+      {
+        "title": "Restful Bedrooms",
+        "description": "Dusting, vacuuming or mopping, surface cleaning, and bed-making to keep your bedrooms fresh, inviting, and ready for a good night’s sleep.",
+        "image": "/service-details/rotating-system/bedrooms.png"
+      },
+      {
+        "title": "Spotless Bathrooms",
+        "description": "Sanitizing toilets, sinks, tubs, showers, mirrors, and countertops so your bathrooms always feel clean, safe, and sparkling.",
+        "image": "/service-details/rotating-system/bathrooms.png"
+      },
+      {
+        "title": "Fresh & Functional Kitchen",
+        "description": "Cleaning and disinfecting countertops, sinks, stovetops, appliance exteriors, and cabinet fronts—keeping the heart of your home spotless.",
+        "image": "/service-details/rotating-system/kitchen.png"
+      },
+      {
+        "title": "Welcoming Living Areas",
+        "description": "Dusting furniture, vacuuming or mopping floors, and refreshing common spaces so your family and guests always feel comfortable.",
+        "image": "/service-details/rotating-system/living-areas.png"
+      },
+      {
+        "title": "Deep Cleaning of Overlooked Areas",
+        "description": "On rotation, we tackle baseboards, trim, light fixtures, ceiling fans, vents, grilles, and cabinet fronts—ensuring dirt and grime never build up.",
+        "image": "/service-details/rotating-system/deep-cleaning.png"
+      }
+    ]
+  },
+  "blocks": {
+    "topRight": {
+      "title": "Quick Facts",
+      "description": [
+        "Frequency: Weekly, bi-weekly, or monthly.",
+        "Duration: Typically 2–4 hours depending on home size and condition."
+      ],
+      "image": "/service-details/img-1.png",
+      "background": "css-bg"
+    },
+    "middleRight": {
+      "title": "Service Highlights",
+      "description": [
+        "Essential cleaning every visit—bedrooms, bathrooms, kitchen, and living areas.",
+        "Rotational deep cleaning of baseboards, vents, and overlooked details.",
+        "Consistent quality with a proven system designed for busy households."
+      ],
+      "image": "/service-details/img-2.png",
+      "background": "css-bg"
+    },
+    "bottomRight": {
+      "title": "What’s Not Included",
+      "description": [
+        "Fixed pricing—cost varies by home size and chosen frequency.",
+        "Structural repairs (windows, flooring, gutters, etc.).",
+        "Post-construction cleanup (available separately)."
+      ],
+      "image": "/service-details/img-3.png",
+      "background": "css-bg"
+    },
+    "bottomMiddle": {
+      "title": "Pro Tips & Benefits",
+      "description": [
+        "Choose the frequency that best fits your lifestyle—weekly, bi-weekly, or monthly.",
+        "Add upgrades like oven or refrigerator cleaning to maximize freshness.",
+        "Combine with yearly Home Detailing for top-to-bottom consistency."
+      ],
+      "image": "/service-details/img-4.png",
+      "background": "css-bg"
+    },
+    "bottomLeft": {
+      "title": "Optional Upgrades",
+      "description": [
+        "Clean inside the oven.",
+        "Clean inside the refrigerator.",
+        "Clean shutters and blinds.",
+        "Change linens."
+      ],
+      "image": "/service-details/img-5.png",
+      "background": "css-bg"
+    }
+  },
+  "faq": [
+    {
+      "question": "What’s included in the Rotating System?",
+      "answer": "Every visit includes essential cleaning of bedrooms, bathrooms, kitchen, and living areas. On rotation, we deep-clean overlooked areas like baseboards, vents, and light fixtures."
+    },
+    {
+      "question": "How flexible is the scheduling?",
+      "answer": "The Rotating System can be booked weekly, bi-weekly, or monthly depending on your household’s needs."
+    },
+    {
+      "question": "Can I add specialty services?",
+      "answer": "Yes. You can add extras such as oven cleaning, refrigerator cleaning, shutter and blind care, and linen changes."
+    },
+    {
+      "question": "Who is the Rotating System best for?",
+      "answer": "It’s ideal for busy households who want consistent cleaning without the stress of last-minute deep cleans. Essential areas are always covered, while deep tasks are rotated in."
+    },
+    {
+      "question": "Do I need Home Detailing too?",
+      "answer": "We recommend adding Home Detailing once or twice per year for the best results, as it provides a full top-to-bottom deep clean of areas not covered in routine visits."
+    }
+  ]
+}
+
 
 
 

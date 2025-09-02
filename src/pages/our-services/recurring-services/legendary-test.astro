@@ -1,0 +1,187 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import Hero from '../../../components/Hero'
+import ServiceDescription from '../../../components/pages/services/ServiceDescription'
+import ServiceDetails from '../../../components/pages/services/ServiceDetails'
+import HowItWorks from "../../../components/pages/services/HowItWorks.astro"
+import BundleAndSave from '../../../components/pages/services/BundleAndSave'
+import ReviewsWidget from "../../../components/pages/ReviewsWidget.astro"
+import PostCarousel from "../../../components/layout/PostCarousel"
+import FAQSection from "../../../components/pages/home/FAQSection.astro"
+import FinalCTASection from "../../../components/pages/home/FinalCTASection.astro"
+
+const bannerData = {
+  ratingText: "4.9 AVERAGE RATING",
+  title: "Weekly Maid Services for a Constantly Clean Home",
+  subtitle: "Book in seconds!",
+  description: `Juggling work, family, and life? We keep your home spotless 
+                week after week—so you don’t have to. With nearly 50 years 
+                of experience, we’re the trusted choice for stress-free weekly 
+                cleaning.`,
+  socialProof: [
+    "5,000+ customers trust in Allbright Home Services",
+    "200,000+ services completed"
+  ],
+  images: {
+    googleLogo: "/google-logo.png",
+    ratingStars: "/rating-stars.svg",
+    checkIcon: "/check.png",
+    heroImage: "/services/maid-services/hero-img.png"
+  },
+
+  uiImages: [
+    { type: "a", src: "/banner-list/weekly-maid-services/img-1.png" },
+    { type: "b", src: "/banner-list/weekly-maid-services/img-2.png" },
+    { type: "a", src: "/banner-list/weekly-maid-services/img-3.png" },
+    { type: "b", src: "/banner-list/weekly-maid-services/img-4.png" },
+    { type: "a", src: "/banner-list/weekly-maid-services/img-5.png" },
+    { type: "b", src: "/banner-list/weekly-maid-services/img-6.png" },
+    { type: "a", src: "/banner-list/weekly-maid-services/img-7.png" },
+    { type: "b", src: "/banner-list/weekly-maid-services/img-8.png" },
+  ],
+
+
+  imgClass: "--secondary",
+}
+
+const descriptionData = {
+  title: "A Clean Home, Every Single Week",
+  imageUrl: "/services/weekly-maid-services/description-img.png",
+  paragraphs: [
+    {
+      subtitle: "Stay Ahead of the Mess",
+      brief: `Life is busy—but your home doesn’t have to show it. 
+              Our weekly maid service is perfect for families, 
+              professionals, or anyone who wants their space to stay fresh, 
+              clean, and always ready for guests.`
+    },
+    {
+      subtitle: "Consistency Starts with an Initial Deep Cleaning",
+      brief: `If your home hasn’t had professional cleaning in the last 90 days, 
+              we’ll begin with an initial deep clean to get everything up to standard. 
+              From there, our weekly visits are efficient and thorough—keeping every 
+              surface spotless and every room feeling just right.`
+    }
+  ]
+};
+
+const reasonsData = [
+  { icon: '/why-us/experience.png', reasonsTitle: 'Nearly 50 Years of Expertise', description: "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first." },
+  { icon: '/why-us/home.png', reasonsTitle: 'Comprehensive Home Care', description: 'From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional.' },
+  { icon: '/why-us/sustainability.png', reasonsTitle: 'Sustainable and Precise', description: '"Maintenance and Cleaning for Better living" is our promise. We use eco-friendly products and expert techniques for lasting quality.' }
+];
+
+const bundleData = [
+    {
+      title: "Carpet Bundle",
+      discount: "15% OFF!",
+      price: "$299",
+      brief: "Lorem ipsum dolor",
+      features: ["Deep cleaning", "Carpet Cleaning"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+    {
+      title: "Carpets and Windows",
+      discount: "20% OFF!",
+      price: "$499",
+      brief: "Lorem ipsum dolor",
+      features: ["Carpet CLeaning", "Window Washing"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+];
+
+const blogPosts = [
+  {
+    image: "/services/maid-services/blog-post-1.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-2.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-3.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-4.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  }
+];
+
+const finalCTAData = {
+  imgSrc: "/services/weekly-maid-services/final-cta.png",
+  imgAlt: "Final Call to Action",
+  title: "Weekly Maid Services | Reliable Home Cleaning, Every Week",
+  brief: `Want a spotless home every week? Our weekly maid services deliver 
+          consistent, professional cleaning—starting with a one-time deep 
+          clean if needed.`,
+  callToActionText: "",
+  contactText: "Let’s make your home shine!",
+};
+
+const faqs = [
+  {
+    question: "What does your weekly maid service include?",
+    answer: "Our Weekly Maid Service follows our exclusive Legendary Cleaning Rotating System, designed to keep your home consistently clean and fresh.\n\n• Every Visit – Bedrooms, bathrooms, kitchen, and living areas receive a full cleaning, including dusting, vacuuming/mopping, sanitizing, and wiping down surfaces.\n• On Rotation – Each visit also includes a set of deep-cleaning tasks, such as baseboards, vents, cabinet fronts, or light fixtures, ensuring hidden dirt never builds up.\n• Optional Add-Ons – You can customize your service with extras like cleaning inside the oven or refrigerator, changing linens, or refreshing shutters and blinds.\n\nThis system gives you the perfect balance of reliable weekly cleaning with long-term deep-cleaning built in—so your home stays spotless and healthy year-round."
+  },
+  {
+    question: "Is weekly cleaning the right choice for me?",
+    answer: "Yes! Weekly cleaning is perfect if you want a consistently fresh, healthy, and stress-free home. Our Legendary Cleaning Rotating System ensures high-traffic areas are spotless every visit, while deep-cleaning tasks are handled on rotation—so dirt and grime never build up. It’s especially ideal for busy households, families with kids or pets, and anyone who values the comfort of a well-maintained home without the hassle."
+  },
+  {
+    question: "How much do your cleaning and maintenance services cost?",
+    answer: "Our pricing is customized to your home’s unique needs, size, and the type of service requested. Because every home is different, we don’t offer a one-size-fits-all price list. Instead, we provide a free in-home consultation to better understand your goals and create a detailed, accurate quote. This way, you get the most value for your investment and a plan that fits your home perfectly."
+  },
+  {
+    question: "Do you bring your own supplies and equipment?",
+    answer: "Yes. Our team arrives fully equipped with professional-grade cleaning supplies, eco-friendly solutions, and the right tools for each job. You don’t need to worry about providing anything—we bring everything needed to deliver exceptional results."
+  },
+  {
+    question: "Do you use eco-friendly cleaning products?",
+    answer: "Yes, whenever possible we use non-toxic, eco-friendly cleaning products that are safe for your family, pets, and the environment. We are committed to providing a healthier, greener clean without compromising on effectiveness."
+  },
+  {
+    question: "Can I customize the cleaning tasks each week?",
+    answer: "Absolutely. While our Legendary Cleaning Rotating System provides structure and consistency, we always tailor your weekly service to your home’s unique needs. You can let us know which rooms or tasks you’d like prioritized, and we’ll adjust the plan accordingly.\n\nFor even more flexibility, you can also choose optional add-ons such as:\n• Cleaning inside the oven or refrigerator\n• Refreshing shutters and blinds\n• Changing linens\n\nThis way, your weekly cleaning is not only consistent but also fully customized to match your lifestyle and preferences."
+  },
+  {
+    question: "Will I have the same cleaner every week?",
+    answer: "Yes. We do our best to assign the same trusted cleaner or team to your home each week, so you enjoy consistency, familiarity, and peace of mind. To ensure there are no interruptions, we also train a backup team on your home’s preferences. That way, if your regular cleaner is unavailable, you’ll still receive the same high-quality service and attention to detail you expect."
+  },
+  {
+    question: "Do I need to be home during weekly maid service?",
+    answer: "No, you don’t need to be home. Many of our clients prefer to provide us with entry instructions or a key so they can go about their day without interruption. Your security is our top priority—we carefully track and safeguard any keys or access codes entrusted to us. Once your cleaning is complete, we’ll lock up and leave your home secure and spotless."
+  },
+  {
+    question: "What if I’m not satisfied with the cleaning?",
+    answer: "Your satisfaction is our priority. If you’re ever unhappy with any part of your service, simply let us know within 24 hours, and we’ll return to address the issue at no extra cost. We stand behind our work and want you to feel completely confident when choosing AllBright Home Services."
+  }
+];
+
+
+
+---
+
+<BaseLayout>
+  <Hero bannerData={ bannerData } client:only="react"/>
+  <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
+  <ServiceDetails serviceName= "Rotating System" client:only="react"/>
+  <HowItWorks reasons={ reasonsData }/>
+  <BundleAndSave bundleData={ bundleData } client:only="react"/>
+  <ReviewsWidget />
+  <PostCarousel posts={ blogPosts } client:only="react"/>
+  <FAQSection faqs={ faqs }/>
+  <FinalCTASection finalCTAData={ finalCTAData }/>
+
+</BaseLayout>
