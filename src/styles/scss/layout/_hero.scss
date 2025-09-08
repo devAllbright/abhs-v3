@@ -91,10 +91,11 @@
       gap: $spacing-24;
       justify-content: center;
       align-items: flex-start;
-      height: 45vh;
+      height: 65vh;
       padding: $spacing-24;
       overflow: hidden;
       position: relative;
+      border-radius: 35% 35%;
 
       &::before,
       &::after {
@@ -151,6 +152,7 @@
         border-radius: $spacing-12;
         margin-bottom: $spacing-16;
         object-fit: cover;
+        object-position: top;
         width: 20rem;
         display: block;
       }

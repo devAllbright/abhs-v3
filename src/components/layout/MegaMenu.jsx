@@ -32,32 +32,36 @@ const MegaMenu = forwardRef(({ visible, onLeave }, ref) => {
             <p>Service Type</p>
           </div>
 
-          {Object.entries(serviceTypes).map(([type, data]) => (
-            <div
-              key={type}
-              className="mega-menu__service-type"
-              onMouseEnter={() => handleHover(type)}
-            >
-              <div className="mega-menu__service-type-icon">
-                <div className="mega-menu__service-type-icon-wrapper">
-                  <img
-                    src={`/services/${type.toLowerCase().replace(/ /g, '-')}.png`}
-                    alt={`${type} Icon`}
-                  />
-                </div>
-              </div>
-              <div className="mega-menu__service-type-text">
-                <div>
-                  <div className="mega-menu__service-type-text-name">
-                    <p>{type}</p>
-                  </div>
-                  <div className="mega-menu__service-type-text-description">
-                    <p>{data.description}</p>
+          {Object.entries(serviceTypes).map(([type, data]) => {
+            // Skip Packages
+            if (type === 'Packages') return null
+            return (
+              <div
+                key={type}
+                className="mega-menu__service-type"
+                onMouseEnter={() => handleHover(type)}
+              >
+                <div className="mega-menu__service-type-icon">
+                  <div className="mega-menu__service-type-icon-wrapper">
+                    <img
+                      src={`/services/${type.toLowerCase().replace(/ /g, '-')}.png`}
+                      alt={`${type} Icon`}
+                    />
                   </div>
                 </div>
+                <div className="mega-menu__service-type-text">
+                  <div>
+                    <div className="mega-menu__service-type-text-name">
+                      <p>{type}</p>
+                    </div>
+                    <div className="mega-menu__service-type-text-description">
+                      <p>{data.description}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Section: Category Services */}

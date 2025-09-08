@@ -21,57 +21,19 @@
           { "name": "One-Time Maid Services", "img": "/mega-menu/one-time-maid-services.png", "price": "195", "url": "/our-services/one-time-services/one-time-maid-services" },
           { "name": "Home Detailing Cleaning", "img": "/mega-menu/home-detailing-cleaning.png", "price": "395", "url": "/our-services/one-time-services/home-detailing-cleaning" },
           { "name": "Move-In Ready Cleaning", "img": "/mega-menu/move-in-ready.png", "price": "795", "url": "/our-services/one-time-services/move-in-ready" },
-          { "name": "Deep Cleaning", "img": "/mega-menu/deep-cleaning.png", "price": "390", "url": "/our-services/one-time-services/deep-cleaning" },
-          { "name": "Post Renovation Cleaning", "img": "/mega-menu/post-renovation.png", "price": "960", "url": "/our-services/one-time-services/post-renovation-cleaning" }
+          { "name": "Deep Cleaning", "img": "/mega-menu/deep-cleaning.png", "price": "390", "url": "/our-services/one-time-services/deep-cleaning" }
         ]
       },
       {
         "title": "Floors & Restoration",
         "services": [
-          { "name": "Carpet Cleaning", "img": "/mega-menu/carpet-cleaning.png", "price": "169", "url": "/our-services/one-time-services/carpet-cleaning" },
-          { "name": "Tile Cleaning", "img": "/mega-menu/tile-cleaning.png", "price": "480", "url": "/our-services/one-time-services/tile-cleaning" },
-          { "name": "Wood Cabinets & Floors Reviving", "img": "/mega-menu/wood-revive.png", "price": "395", "url": "/our-services/one-time-services/wood-cabinets-and-floors-reviving" },
-          { "name": "Stone & Marble Restoration", "img": "/mega-menu/stone-marble.png", "price": "780", "url": "/our-services/one-time-services/stone-and-marble-restoration" }
+          { "name": "Carpet Cleaning", "img": "/mega-menu/carpet-cleaning.png", "price": "169", "url": "/our-services/one-time-services/carpet-cleaning" }
         ]
       },
       {
         "title": "Windows & Exteriors",
         "services": [
-          { "name": "Window Washing", "img": "/mega-menu/window-washing.png", "price": "395", "url": "/our-services/one-time-services/window-washing" },
-          { "name": "Gutter Cleaning", "img": "/mega-menu/gutter-cleaning.png", "price": "740", "url": "/our-services/one-time-services/gutter-cleaning" },
-          { "name": "Exterior Surface Washing", "img": "/mega-menu/exterior-washing.png", "price": "480", "url": "/our-services/one-time-services/exterior-surface-washing" },
-          { "name": "Anodized Frames Restoration", "img": "/mega-menu/anodized-frames.png", "price": "395", "url": "/our-services/one-time-services/anodized-frames-restoration" }
-        ]
-      },
-      {
-        "title": "Outdoor Living",
-        "services": [
-          { "name": "Outdoor Patios & Furniture Cleaning", "img": "/mega-menu/patios-furniture.png", "price": "795", "url": "/our-services/one-time-services/outdoor-patios-and-furniture" },
-          { "name": "Outdoor Kitchen Cleaning", "img": "/mega-menu/outdoor-kitchen.png", "price": "795", "url": "/our-services/one-time-services/outdoor-kitchen" },
-          { "name": "Upholstery Cleaning", "img": "/mega-menu/upholstery-cleaning.png", "price": "65", "url": "/our-services/one-time-services/upholstery-cleaning" }
-        ]
-      }
-    ]
-  },
-  "Packages": {
-    "description": "For convenience and savings.",
-    "categories": [
-      {
-        "title": "Bundles",
-        "services": [
-          { "name": "Full Bundle", "img": "/mega-menu/full-bundle.png", "price": "Save $100", "url": "/our-services/packages/full-bundle" },
-          { "name": "Carpet Bundle", "img": "/mega-menu/carpet-bundle.png", "price": "Save $75", "url": "/our-services/packages/carpet-bundle" },
-          { "name": "Window Bundle", "img": "/mega-menu/window-bundle.png", "price": "Save $75", "url": "/our-services/packages/window-bundle" },
-          { "name": "Carpet and Window", "img": "/mega-menu/carpet-and-window-bundle.png", "price": "Save $50", "url": "/our-services/packages/carpet-and-window-bundle" }
-        ]
-      },
-      {
-        "title": "Maintenance Plans",
-        "services": [
-          { "name": "Pristine Plan", "img": "/mega-menu/pristine-plan.png", "price": "Custom Quote", "url": "/our-services/packages/pristine-plan" },
-          { "name": "Care Plan", "img": "/mega-menu/care-plan.png", "price": "Custom Quote", "url": "/our-services/packages/care-plan" },
-          { "name": "Refresh Plan", "img": "/mega-menu/refresh-plan.png", "price": "Custom Quote", "url": "/our-services/packages/refresh-plan" },
-          { "name": "Signature Plan", "img": "/mega-menu/signature-plan.png", "price": "Custom Quote", "url": "/our-services/packages/signature-plan" }
+          { "name": "Window Washing", "img": "/mega-menu/window-washing.png", "price": "395", "url": "/our-services/one-time-services/window-washing" }
         ]
       }
     ]
