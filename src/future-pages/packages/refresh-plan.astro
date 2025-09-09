@@ -1,0 +1,176 @@
+<!-- ---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import Hero from '../../../components/Hero'
+import ServiceDescription from '../../../components/pages/services/ServiceDescription'
+import ServiceDetails from '../../../components/pages/services/ServiceDetails'
+import HowItWorks from "../../../components/pages/services/HowItWorks.astro"
+import BundleAndSave from '../../../components/pages/services/BundleAndSave'
+import ReviewsWidget from "../../../components/pages/ReviewsWidget.astro"
+import PostCarousel from "../../../components/layout/PostCarousel"
+import FAQSection from "../../../components/pages/home/FAQSection.astro"
+import FinalCTASection from "../../../components/pages/home/FinalCTASection.astro"
+
+const bannerData = {
+  ratingText: "4.9 AVERAGE RATING",
+  title: "The Refresh Plan: Low-Maintenance, High Peace of Mind",
+  subtitle: "Sign up in seconds — enjoy year-round care",
+  description: `Keep your home clean, protected, and guest-ready—without 
+                lifting a finger. The Refresh Plan delivers monthly maid 
+                service plus annual carpet, window, and gutter cleaning 
+                for effortless upkeep all year long.`,
+  socialProof: [
+    "5,000+ customers trust in Allbright Home Services",
+    "200,000+ services completed"
+  ],
+  images: {
+    googleLogo: "/google-logo.png",
+    ratingStars: "/rating-stars.svg",
+    checkIcon: "/check.png",
+    heroImage: "/services/maid-services/hero-img.png"
+  },
+
+  uiImages: [
+    { type: "a", src: "/banner-list/refresh-plan/img-1.png" },
+    { type: "b", src: "/banner-list/refresh-plan/img-2.png" },
+    { type: "a", src: "/banner-list/refresh-plan/img-3.png" },
+    { type: "b", src: "/banner-list/refresh-plan/img-4.png" },
+    { type: "a", src: "/banner-list/refresh-plan/img-5.png" },
+    { type: "b", src: "/banner-list/refresh-plan/img-6.png" },
+    { type: "a", src: "/banner-list/refresh-plan/img-7.png" },
+    { type: "b", src: "/banner-list/refresh-plan/img-8.png" },
+  ],
+
+
+  imgClass: "--secondary"
+}
+
+const descriptionData = {
+  title: "Consistent Care. Cleaner Living.",
+  imageUrl: "/services/packages/refresh-plan/description-img.png",
+  paragraphs: [
+    {
+      subtitle: "A Smart Schedule for a Well-Kept Home",
+      brief: `The Refresh Plan is built for homeowners 
+              who want reliable maintenance without the 
+              stress of managing it. With monthly maid 
+              service and essential deep-cleaning touchpoints 
+              throughout the year, you’ll enjoy a home that 
+              stays fresh, healthy, and low-maintenance.`
+    },
+    {
+      subtitle: "Prevent Problems Before They Start",
+      brief: `Regular cleaning isn’t just about looks—it protects 
+              your floors, windows, and gutters from long-term damage. 
+              Our proactive approach keeps your home in peak condition 
+              year-round, so you can focus on what matters most while 
+              we handle the rest.`
+    }
+  ]
+};
+
+const reasonsData = [
+  { icon: '/why-us/experience.png', reasonsTitle: 'Nearly 50 Years of Expertise', description: "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first." },
+  { icon: '/why-us/home.png', reasonsTitle: 'Comprehensive Home Care', description: 'From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional.' },
+  { icon: '/why-us/sustainability.png', reasonsTitle: 'Sustainable and Precise', description: '"Maintenance and Cleaning for Better living" is our promise. We use eco-friendly products and expert techniques for lasting quality.' }
+];
+
+const bundleData = [
+    {
+      title: "Carpet Bundle",
+      discount: "15% OFF!",
+      price: "$299",
+      brief: "Lorem ipsum dolor",
+      features: ["Deep cleaning", "Carpet Cleaning"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+    {
+      title: "Carpets and Windows",
+      discount: "20% OFF!",
+      price: "$499",
+      brief: "Lorem ipsum dolor",
+      features: ["Carpet CLeaning", "Window Washing"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+];
+
+const blogPosts = [
+  {
+    image: "/services/maid-services/blog-post-1.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-2.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-3.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-4.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  }
+];
+
+const finalCTAData = {
+  imgSrc: "/services/packages/refresh-plan/final-cta.png",
+  imgAlt: "Final Call to Action",
+  title: "Your Home, Cared For—All Year Long",
+  brief: `Say goodbye to surprise messes, buildup, 
+          and overlooked chores. The Refresh Plan 
+          keeps your home consistently clean and 
+          properly maintained with one simple subscription. 
+          Ready to take the stress out of home care?`,
+  callToActionText: "",
+  contactText: "Let’s get started.",
+};
+
+const faqs = [
+  {
+    question: "What’s included in the Refresh Plan?",
+    answer: "The Refresh Plan provides monthly maid service to keep your home neat and well-maintained, along with one annual carpet cleaning, one window washing, and one gutter cleaning. It’s designed for consistent upkeep with the peace of mind that key deep-cleaning tasks are automatically scheduled each year."
+  },
+  {
+    question: "How does scheduling work for the annual services?",
+    answer: "We’ll send you reminders when it’s time for carpet, window, or gutter cleaning. You pick the dates that work best, and we take care of the rest. This way, you never have to remember or worry about scheduling these important tasks."
+  },
+  {
+    question: "Can I customize the Refresh Plan?",
+    answer: "Yes. While the core services are fixed, you can add extras such as upholstery cleaning, tile cleaning, or exterior pressure washing. If you’d like more flexibility in frequency or services, the Signature Plan is a better fit."
+  },
+  {
+    question: "Who is the Refresh Plan best for?",
+    answer: "It’s ideal for smaller households, empty nesters, or homeowners who want monthly upkeep but don’t need weekly service. It’s also great for anyone who prefers not to manage scheduling for deeper tasks like carpets and gutters."
+  },
+  {
+    question: "What happens if I miss a scheduled visit?",
+    answer: "No problem—we’ll work with you to reschedule. We just ask for at least 48 hours’ notice to avoid a cancellation fee. Our goal is to keep your plan on track while being flexible with your needs."
+  }
+];
+
+
+
+---
+
+<BaseLayout>
+  <Hero bannerData={ bannerData } client:only="react"/>
+  <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
+  <ServiceDetails serviceName= "Refresh Plan" client:only="react"/>
+  <HowItWorks reasons={ reasonsData }/>
+  <BundleAndSave bundleData={ bundleData } client:only="react"/>
+  <ReviewsWidget />
+  <PostCarousel posts={ blogPosts } client:only="react"/>
+  <FAQSection faqs={ faqs }/>
+  <FinalCTASection finalCTAData={ finalCTAData }/>
+
+</BaseLayout> -->

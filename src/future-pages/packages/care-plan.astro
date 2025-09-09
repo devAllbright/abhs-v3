@@ -1,4 +1,4 @@
----
+<!-- ---
 import BaseLayout from "../../../layouts/BaseLayout.astro"
 import Hero from '../../../components/Hero'
 import ServiceDescription from '../../../components/pages/services/ServiceDescription'
@@ -12,12 +12,11 @@ import FinalCTASection from "../../../components/pages/home/FinalCTASection.astr
 
 const bannerData = {
   ratingText: "4.9 AVERAGE RATING",
-  title: "The Refresh Plan: Low-Maintenance, High Peace of Mind",
-  subtitle: "Sign up in seconds — enjoy year-round care",
-  description: `Keep your home clean, protected, and guest-ready—without 
-                lifting a finger. The Refresh Plan delivers monthly maid 
-                service plus annual carpet, window, and gutter cleaning 
-                for effortless upkeep all year long.`,
+  title: "The Care Plan: Clean. Protected. Always Ready.",
+  subtitle: "Sign up in seconds — let us handle the upkeep",
+  description: `The Care Plan keeps your home consistently fresh and well-maintained. 
+                With bi-monthly maid service and annual deep cleanings, you get lasting 
+                protection, less mess, and more peace of mind.`,
   socialProof: [
     "5,000+ customers trust in Allbright Home Services",
     "200,000+ services completed"
@@ -30,14 +29,14 @@ const bannerData = {
   },
 
   uiImages: [
-    { type: "a", src: "/banner-list/refresh-plan/img-1.png" },
-    { type: "b", src: "/banner-list/refresh-plan/img-2.png" },
-    { type: "a", src: "/banner-list/refresh-plan/img-3.png" },
-    { type: "b", src: "/banner-list/refresh-plan/img-4.png" },
-    { type: "a", src: "/banner-list/refresh-plan/img-5.png" },
-    { type: "b", src: "/banner-list/refresh-plan/img-6.png" },
-    { type: "a", src: "/banner-list/refresh-plan/img-7.png" },
-    { type: "b", src: "/banner-list/refresh-plan/img-8.png" },
+    { type: "a", src: "/banner-list/care-plan/img-1.png" },
+    { type: "b", src: "/banner-list/care-plan/img-2.png" },
+    { type: "a", src: "/banner-list/care-plan/img-3.png" },
+    { type: "b", src: "/banner-list/care-plan/img-4.png" },
+    { type: "a", src: "/banner-list/care-plan/img-5.png" },
+    { type: "b", src: "/banner-list/care-plan/img-6.png" },
+    { type: "a", src: "/banner-list/care-plan/img-7.png" },
+    { type: "b", src: "/banner-list/care-plan/img-8.png" },
   ],
 
 
@@ -45,25 +44,21 @@ const bannerData = {
 }
 
 const descriptionData = {
-  title: "Consistent Care. Cleaner Living.",
-  imageUrl: "/services/packages/refresh-plan/description-img.png",
+  title: "Dependable Cleaning. Worry-Free Maintenance.",
+  imageUrl: "/services/packages/care-plan/description-img.png",
   paragraphs: [
     {
-      subtitle: "A Smart Schedule for a Well-Kept Home",
-      brief: `The Refresh Plan is built for homeowners 
-              who want reliable maintenance without the 
-              stress of managing it. With monthly maid 
-              service and essential deep-cleaning touchpoints 
-              throughout the year, you’ll enjoy a home that 
-              stays fresh, healthy, and low-maintenance.`
+      subtitle: "Every Other Week, Right on Schedule",
+      brief: `The Care Plan is perfect for homes that need more regular attention. 
+              With bi-monthly cleanings, your space stays neat, healthy, and 
+              guest-ready—without you having to think about it. Plus, we handle 
+              the deep cleaning essentials each year for carpets, windows, and gutters.`
     },
     {
-      subtitle: "Prevent Problems Before They Start",
-      brief: `Regular cleaning isn’t just about looks—it protects 
-              your floors, windows, and gutters from long-term damage. 
-              Our proactive approach keeps your home in peak condition 
-              year-round, so you can focus on what matters most while 
-              we handle the rest.`
+      subtitle: "Maintain Value. Prevent Bigger Issues.",
+      brief: `Dirt buildup, clogged gutters, and neglected carpets can cause real damage 
+              over time. This plan prevents those headaches. We handle the work on a proactive 
+              schedule—so you can relax, knowing your home is in good hands all year long.`
     }
   ]
 };
@@ -123,38 +118,36 @@ const blogPosts = [
 ];
 
 const finalCTAData = {
-  imgSrc: "/services/packages/refresh-plan/final-cta.png",
+  imgSrc: "/services/packages/care-plan/final-cta.png",
   imgAlt: "Final Call to Action",
-  title: "Your Home, Cared For—All Year Long",
-  brief: `Say goodbye to surprise messes, buildup, 
-          and overlooked chores. The Refresh Plan 
-          keeps your home consistently clean and 
-          properly maintained with one simple subscription. 
-          Ready to take the stress out of home care?`,
+  title: "A Cleaner Home, All Year Long",
+  brief: `With the Care Plan, you get the reliability of bi-monthly cleaning 
+          and the deep care your home needs to stay beautiful and protected. 
+          Ready to hand off the hassle?`,
   callToActionText: "",
-  contactText: "Let’s get started.",
+  contactText: "Let’s make your home shine!",
 };
 
 const faqs = [
   {
-    question: "What’s included in the Refresh Plan?",
-    answer: "The Refresh Plan provides monthly maid service to keep your home neat and well-maintained, along with one annual carpet cleaning, one window washing, and one gutter cleaning. It’s designed for consistent upkeep with the peace of mind that key deep-cleaning tasks are automatically scheduled each year."
+    question: "What’s included in the Care Plan?",
+    answer: "The Care Plan gives you maid service every other week, plus annual carpet, window, and gutter cleaning. It strikes a balance between consistent upkeep and cost savings, helping your home stay fresh without the hassle of one-time bookings."
   },
   {
-    question: "How does scheduling work for the annual services?",
-    answer: "We’ll send you reminders when it’s time for carpet, window, or gutter cleaning. You pick the dates that work best, and we take care of the rest. This way, you never have to remember or worry about scheduling these important tasks."
+    question: "How often will cleaners visit my home?",
+    answer: "Our team comes every other week on a recurring schedule. This bi-monthly service keeps your home consistently clean while preventing dust and clutter from piling up between visits."
   },
   {
-    question: "Can I customize the Refresh Plan?",
-    answer: "Yes. While the core services are fixed, you can add extras such as upholstery cleaning, tile cleaning, or exterior pressure washing. If you’d like more flexibility in frequency or services, the Signature Plan is a better fit."
+    question: "Can I adjust or pause my plan if needed?",
+    answer: "Yes. You can skip a visit, adjust your schedule, or pause the plan temporarily—for example, if you’ll be traveling. Simply let us know in advance and we’ll make the changes."
   },
   {
-    question: "Who is the Refresh Plan best for?",
-    answer: "It’s ideal for smaller households, empty nesters, or homeowners who want monthly upkeep but don’t need weekly service. It’s also great for anyone who prefers not to manage scheduling for deeper tasks like carpets and gutters."
+    question: "Why is this plan better than booking one-time services?",
+    answer: "With the Care Plan, your home gets regular attention so it never falls into cycles of buildup and catch-up. Plus, annual deep-cleaning tasks are covered automatically, and you benefit from bundled pricing that’s more cost-effective than scheduling separately."
   },
   {
-    question: "What happens if I miss a scheduled visit?",
-    answer: "No problem—we’ll work with you to reschedule. We just ask for at least 48 hours’ notice to avoid a cancellation fee. Our goal is to keep your plan on track while being flexible with your needs."
+    question: "What if I forget to schedule my annual services?",
+    answer: "We’ll handle the reminders for you. When it’s time for your carpet, window, or gutter cleaning, we’ll reach out to arrange dates that work for your schedule—so nothing is overlooked."
   }
 ];
 
@@ -165,7 +158,7 @@ const faqs = [
 <BaseLayout>
   <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
-  <ServiceDetails serviceName= "Refresh Plan" client:only="react"/>
+  <ServiceDetails serviceName= "Care Plan" client:only="react"/>
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>
   <ReviewsWidget />
@@ -173,4 +166,4 @@ const faqs = [
   <FAQSection faqs={ faqs }/>
   <FinalCTASection finalCTAData={ finalCTAData }/>
 
-</BaseLayout>
+</BaseLayout> -->

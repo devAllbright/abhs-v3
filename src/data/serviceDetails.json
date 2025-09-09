@@ -87,12 +87,12 @@
       "zones": [
         {
           "title": "Whole-Home Care",
-          "description": "Dusting of furniture, décor, and accessible surfaces; vacuuming carpets, rugs, and stairs; mopping hard floors with professional products; emptying trash and recycling bins; sanitizing high-touch areas such as doorknobs, switches, and remotes.",
+          "description": "Dusting of furniture, décor, and accessible surfaces; vacuuming carpets, rugs, and stairs; mopping hard floors with professional products; emptying trash and recycling bins; sanitizing high-touch surfaces such as doorknobs, switches, and remotes.",
           "image": "/service-details/bi-monthly-maid-services/img-1.png"
         },
         {
           "title": "Kitchen Detail",
-          "description": "Wiping down countertops and backsplash; cleaning and sanitizing sinks and faucets; exterior wipe-down of appliances (fridge, oven, microwave, dishwasher); cabinet fronts and handles wiped; and stove top degreased and polished.",
+          "description": "Wiping down countertops and backsplash, cleaning and sanitizing sinks and faucets, exterior wipe-down of appliances (fridge, oven, microwave, dishwasher), cabinet fronts and handles wiped, and stove top degreased and polished.",
           "image": "/service-details/bi-monthly-maid-services/img-2.png"
         },
         {
@@ -102,12 +102,12 @@
         },
         {
           "title": "Bedrooms & Living Areas",
-          "description": "Beds made (with optional linen change on request); surfaces, dressers, and nightstands dusted; furniture exteriors wiped and spot-cleaned; living room tables, décor, and electronics dusted and polished.",
+          "description": "Beds made (with optional linen change on request); surfaces, dressers, and nightstands dusted; furniture exteriors wiped and spot-cleaned; living room surfaces, tables, and décor dusted and polished.",
           "image": "/service-details/bi-monthly-maid-services/img-4.png"
         },
         {
           "title": "Rotating Deep-Clean Tasks",
-          "description": "Handled across visits: baseboards and molding, ceiling fans and light fixtures, air vents and return grates, cabinet fronts or interiors touched up, and window sills and ledges.",
+          "description": "Different areas are tackled each week, including baseboards and molding, ceiling fans and light fixtures, air vents and return grates, cabinet fronts or interior touch-ups, and window sills and ledges.",
           "image": "/service-details/bi-monthly-maid-services/img-5.png"
         }
       ]
@@ -169,24 +169,29 @@
     "main": {
       "zones": [
         {
-          "title": "Kitchen & Bathrooms",
-          "description": "Deep cleaning and sanitizing of sinks, tubs, toilets, and showers; countertops disinfected and polished; appliance exteriors cleaned (fridge, oven, microwave, dishwasher); mirrors, fixtures, and faucets polished streak-free.",
+          "title": "Whole-Home Care",
+          "description": "Dusting of furniture, décor, and accessible surfaces; vacuuming carpets, rugs, and stairs; mopping hard floors with professional products; emptying trash and recycling bins; sanitizing high-touch surfaces such as doorknobs, switches, and remotes.",
           "image": "/service-details/monthly-maid-services/img-1.png"
         },
         {
-          "title": "Dusting & Floors",
-          "description": "Thorough dusting of furniture, surfaces, and décor; edge-to-edge vacuuming of carpets and rugs; mopping of hard-surface floors with professional products; spot-cleaning visible marks on furniture exteriors.",
+          "title": "Kitchen Detail",
+          "description": "Wiping down countertops and backsplash, cleaning and sanitizing sinks and faucets, exterior wipe-down of appliances (fridge, oven, microwave, dishwasher), cabinet fronts and handles wiped, and stove top degreased and polished.",
           "image": "/service-details/monthly-maid-services/img-2.png"
         },
         {
-          "title": "Hard-to-Reach Areas",
-          "description": "Baseboards and molding dusted or wiped; ceiling fans and light fixtures cleaned; air vents and return grates detailed; window sills and ledges refreshed.",
+          "title": "Bathroom Refresh",
+          "description": "Toilets, tubs, showers, and sinks scrubbed and disinfected; soap scum and water stains removed from tiles and glass; mirrors and fixtures polished streak-free; vanities, counters, and cabinet exteriors wiped.",
           "image": "/service-details/monthly-maid-services/img-3.png"
         },
         {
           "title": "Bedrooms & Living Areas",
-          "description": "Beds made (with optional linen change); furniture surfaces wiped and polished; living room tables, décor, and electronics dusted.",
+          "description": "Beds made (with optional linen change on request); surfaces, dressers, and nightstands dusted; furniture exteriors wiped and spot-cleaned; living room surfaces, tables, and décor dusted and polished.",
           "image": "/service-details/monthly-maid-services/img-4.png"
+        },
+        {
+          "title": "Rotating Deep-Clean Tasks",
+          "description": "Different areas are tackled each week, including baseboards and molding, ceiling fans and light fixtures, air vents and return grates, cabinet fronts or interior touch-ups, and window sills and ledges.",
+          "image": "/service-details/monthly-maid-services/img-5.png"
         }
       ]
     },
@@ -244,28 +249,23 @@
       }
     }
   },
-  "Anodized Frames Restoration": {
+  "One-Time Maid Services": {
     "main": {
       "zones": [
         {
-          "title": "Surface Cleaning",
-          "description": "Removal of dirt, dust, and grime buildup on frames, followed by professional washing to prep the aluminum for restoration.",
-          "image": "/service-details/anodized-frames-restoration/img-1.png"
+          "title": "Kitchen & Bathrooms",
+          "description": "Wiping and sanitizing of sinks, countertops, appliance exteriors, toilets, tubs, showers, and mirrors for a fresh reset in the most used spaces.",
+          "image": "/service-details/one-time-maid-services/img-1.png"
         },
         {
-          "title": "Oxidation & Stain Removal",
-          "description": "Elimination of chalky white oxidation residue; removal of hard water stains, spots, and corrosion marks; with special attention to faded or sun-exposed areas.",
-          "image": "/service-details/anodized-frames-restoration/img-2.png"
+          "title": "Living Areas & Bedrooms",
+          "description": "Dusting of furniture and accessible surfaces, plus vacuuming and mopping of all floors to quickly refresh shared and personal spaces.",
+          "image": "/service-details/one-time-maid-services/img-2.png"
         },
         {
-          "title": "Polishing & Finish Restoration",
-          "description": "Gentle polishing revives the original color and sheen, buffing smooths surface imperfections, and the metallic luster is enhanced for curb appeal.",
-          "image": "/service-details/anodized-frames-restoration/img-3.png"
-        },
-        {
-          "title": "Protective Coating Application",
-          "description": "A professional-grade protective sealant is applied, providing UV and weather resistance while forming a long-lasting barrier to prevent fading or staining.",
-          "image": "/service-details/anodized-frames-restoration/img-4.png"
+          "title": "General Touch-Ups",
+          "description": "Wiping down light switches, door handles, and visible smudges, with quick detailing to ensure a polished finish throughout the home.",
+          "image": "/service-details/one-time-maid-services/img-3.png"
         }
       ]
     },
@@ -273,8 +273,8 @@
       "topRight": {
         "title": "Quick Facts",
         "description": [
-          "Recommended Frequency: Every 3–5 years, depending on environmental exposure (sun, rain, coastal air).",
-          "Duration: 3–6 hours per home, depending on number of windows/doors and the level of oxidation or staining."
+          "Recommended Frequency: As needed for special events, seasonal touch-ups, or when you want a quick refresh without an ongoing schedule.",
+          "Duration: 2–5 hours depending on the size of your home, its condition, and your priorities."
         ],
         "image": "/service-details/img-1.png",
         "background": "css-bg"
@@ -282,9 +282,9 @@
       "middleRight": {
         "title": "Service Highlights",
         "description": [
-          "Cost-effective alternative to replacing anodized frames.",
-          "Restores original finish, shine, and color.",
-          "Adds long-lasting protection against weather and UV damage."
+          "Perfect for special occasions or guest visits.",
+          "Targets the most essential, high-impact areas.",
+          "Quick and efficient cleaning without a recurring commitment."
         ],
         "image": "/service-details/img-2.png",
         "background": "css-bg"
@@ -292,10 +292,9 @@
       "bottomRight": {
         "title": "What’s Not Included",
         "description": [
-          "Structural repairs to bent, broken, or warped frames.",
-          "Glass replacement or repair.",
-          "Painting or powder coating of frames.",
-          "Non-aluminum frame materials."
+          "Deep cleaning tasks such as inside appliances, cabinet interiors, or baseboards (available with add-ons or a deep cleaning service).",
+          "Carpet shampooing or steam cleaning.",
+          "Post-construction cleanup."
         ],
         "image": "/service-details/img-3.png",
         "background": "css-bg"
@@ -303,9 +302,9 @@
       "bottomMiddle": {
         "title": "Pro Tips & Benefits",
         "description": [
-          "Regular cleaning helps extend the effects of restoration.",
-          "Ideal before listing a home for sale or after years of exposure to harsh weather.",
-          "Combine with exterior cleaning services such as window or siding washing for a full refresh."
+          "Schedule before parties or guest visits for a welcoming atmosphere.",
+          "Book after events to reset your home quickly without stress.",
+          "Let us know if you want specific areas prioritized for a customized plan."
         ],
         "image": "/service-details/img-4.png",
         "background": "css-bg"
@@ -313,87 +312,10 @@
       "bottomLeft": {
         "title": "Optional Upgrades",
         "description": [
-          "Combine with full exterior cleaning packages.",
-          "Add-on window washing for spotless glass.",
-          "Bundle with gutter or siding cleaning for maximum curb appeal."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Carpet Cleaning": {
-    "main": {
-      "zones": [
-        {
-          "title": "Deep Cleaning Methods",
-          "description": "Steam Cleaning (Hot Water Extraction) is the most powerful method for deep cleaning, removing embedded dirt, stains, and allergens while refreshing carpet fibers. Low-moisture cleaning is a faster-drying method ideal for certain carpet types or situations requiring quick turnaround.",
-          "image": "/service-details/carpet-cleaning/img-1.png"
-        },
-        {
-          "title": "Stain & Odor Treatment",
-          "description": "Specialized solutions neutralize pet odors and remove stains that target both the surface and underlying padding, with additional treatments available for severe cases.",
-          "image": "/service-details/carpet-cleaning/img-2.png"
-        },
-        {
-          "title": "Furniture Handling",
-          "description": "Light furniture such as chairs, small tables, and end tables is carefully moved to clean beneath. Larger or heavy furniture like beds, sectionals, and entertainment centers is left in place for safety, though it can be pre-moved by the homeowner if desired.",
-          "image": "/service-details/carpet-cleaning/img-3.png"
-        },
-        {
-          "title": "Professional Guidance",
-          "description": "Receive drying-time recommendations tailored to your home’s ventilation, along with post-cleaning care instructions to extend results.",
-          "image": "/service-details/carpet-cleaning/img-4.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: Every 6–12 months depending on household conditions. Homes with pets, children, or high foot traffic benefit from cleaning every 6 months.",
-          "Duration: 2–4 hours for most standard homes. Larger homes or heavily soiled carpets may require more time.",
-          "Drying Times: Steam Cleaning 6–12 hours · Low-Moisture Cleaning 2–4 hours."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Safe handling of light furniture.",
-          "Professional stain & odor treatments.",
-          "Tailored cleaning methods for your carpet type."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Full furniture moving for heavy or oversized items.",
-          "Carpet replacement or repair services.",
-          "Water damage restoration (separate service)."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Vacuum before your appointment for best results.",
-          "Use ceiling fans or HVAC to speed drying.",
-          "Schedule cleanings seasonally or before special events for fresher carpets."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Severe stain/odor treatments (on request).",
-          "Specialty solutions for pets & allergens.",
-          "Protective treatments to extend cleanliness."
+          "Interior appliance cleaning.",
+          "Cabinet interior cleaning.",
+          "Baseboard detailing.",
+          "Carpet or upholstery cleaning."
         ],
         "image": "/service-details/img-5.png",
         "background": "css-bg"
@@ -472,165 +394,6 @@
           "Oven interior cleaning.",
           "Refrigerator interior cleaning.",
           "Linen changing."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Exterior Surface Washing": {
-    "main": {
-      "zones": [
-        {
-          "title": "Driveways, Sidewalks & Pathways",
-          "description": "Removal of dirt, tire marks, and general buildup. Treatment of mildew and algae improves both safety and appearance.",
-          "image": "/service-details/exterior-surface-washing/img-1.png"
-        },
-        {
-          "title": "Patios, Decks & Outdoor Living Areas",
-          "description": "Cleaning of stone, tile, or wood surfaces, restoring outdoor spaces to a fresh and welcoming condition.",
-          "image": "/service-details/exterior-surface-washing/img-2.png"
-        },
-        {
-          "title": "Fences, Gates & Exterior Walls",
-          "description": "Washing of vinyl, wood, or metal fencing with removal of dirt, mold, and weather stains from siding or stucco.",
-          "image": "/service-details/exterior-surface-washing/img-3.png"
-        },
-        {
-          "title": "Garage Doors & Entryways",
-          "description": "Removal of grease stains, dust, and debris, with surface treatments designed to restore curb appeal.",
-          "image": "/service-details/exterior-surface-washing/img-4.png"
-        },
-        {
-          "title": "Stone, Brick & Concrete Surfaces",
-          "description": "Deep cleaning of masonry and hardscape features with specialized care to preserve surface integrity.",
-          "image": "/service-details/exterior-surface-washing/img-5.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: Once or twice per year depending on exposure to weather, shade, and traffic.",
-          "Duration: 3–6 hours for most residential properties, depending on the number and size of surfaces being cleaned."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Safe and effective cleaning methods for a variety of surfaces.",
-          "Removes mildew, stains, and buildup without damaging materials.",
-          "Improves curb appeal and preserves surface integrity."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Structural repairs to exterior surfaces.",
-          "Roof washing or gutter cleaning (separate services).",
-          "Graffiti removal on specialty coatings."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Regular cleaning prevents mold, algae, and grime from causing long-term stains.",
-          "Best scheduled before summer, rainy seasons, or special events.",
-          "Pair with window cleaning for a complete exterior refresh."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Bundle with window washing for a full exterior clean.",
-          "Add driveway sealing for longer-lasting results.",
-          "Pair with gutter or siding cleaning for maximum curb appeal."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Gutter Cleaning": {
-    "main": {
-      "zones": [
-        {
-          "title": "Debris Removal",
-          "description": "Clearing leaves, twigs, and buildup from gutters and downspouts to restore flow and prevent blockages.",
-          "image": "/service-details/gutter-cleaning/img-1.png"
-        },
-        {
-          "title": "System Flush",
-          "description": "Running water through gutters and downspouts to confirm proper flow and ensure clogs are fully cleared.",
-          "image": "/service-details/gutter-cleaning/img-2.png"
-        },
-        {
-          "title": "Inspection",
-          "description": "Checking for visible blockages, overflow issues, and early signs of damage to prevent long-term problems.",
-          "image": "/service-details/gutter-cleaning/img-3.png"
-        },
-        {
-          "title": "Cleanup",
-          "description": "All collected debris is removed from your property so nothing is left behind after the service.",
-          "image": "/service-details/gutter-cleaning/img-4.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: At least twice per year, typically in the spring and fall. Homes near trees, pine needles, or heavy storms may require more frequent cleaning.",
-          "Duration: 1–3 hours depending on the size of the home, number of stories, and condition of the gutters."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Protects your home from water damage and roof leaks.",
-          "Ensures downspouts and gutters flow properly.",
-          "Helps prevent costly foundation and structural issues."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Gutter repair or replacement.",
-          "Roof cleaning beyond gutter edges.",
-          "Structural work on fascia or soffits."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Schedule service before rainy seasons to prevent overflow.",
-          "Homes in wooded areas or after major storms may need more frequent cleaning.",
-          "Combine with roofline inspections to catch small issues before they become bigger problems."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Add gutter guard installation for long-term debris prevention.",
-          "Combine with roof or siding washing for a full exterior refresh.",
-          "Bundle with window cleaning for complete curb appeal."
         ],
         "image": "/service-details/img-5.png",
         "background": "css-bg"
@@ -792,502 +555,28 @@
       }
     }
   },
-  "One-Time Maid Services": {
+  "Carpet Cleaning": {
     "main": {
       "zones": [
         {
-          "title": "Kitchen & Bathrooms",
-          "description": "Wiping and sanitizing of sinks, countertops, appliance exteriors, toilets, tubs, showers, and mirrors for a fresh reset in the most used spaces.",
-          "image": "/service-details/one-time-maid-services/img-1.png"
-        },
-        {
-          "title": "Living Areas & Bedrooms",
-          "description": "Dusting of furniture and accessible surfaces, plus vacuuming and mopping of all floors to quickly refresh shared and personal spaces.",
-          "image": "/service-details/one-time-maid-services/img-2.png"
-        },
-        {
-          "title": "General Touch-Ups",
-          "description": "Wiping down light switches, door handles, and visible smudges, with quick detailing to ensure a polished finish throughout the home.",
-          "image": "/service-details/one-time-maid-services/img-3.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: As needed for special events, seasonal touch-ups, or when you want a quick refresh without an ongoing schedule.",
-          "Duration: 2–5 hours depending on the size of your home, its condition, and your priorities."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Perfect for special occasions or guest visits.",
-          "Targets the most essential, high-impact areas.",
-          "Quick and efficient cleaning without a recurring commitment."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Deep cleaning tasks such as inside appliances, cabinet interiors, or baseboards (available with add-ons or a deep cleaning service).",
-          "Carpet shampooing or steam cleaning.",
-          "Post-construction cleanup."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Schedule before parties or guest visits for a welcoming atmosphere.",
-          "Book after events to reset your home quickly without stress.",
-          "Let us know if you want specific areas prioritized for a customized plan."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Interior appliance cleaning.",
-          "Cabinet interior cleaning.",
-          "Baseboard detailing.",
-          "Carpet or upholstery cleaning."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Outdoor Kitchen Cleaning": {
-    "main": {
-      "zones": [
-        {
-          "title": "Grill & Appliances",
-          "description": "Degreasing and cleaning of grills, burners, refrigerators, sinks, and appliance exteriors to restore shine and functionality.",
-          "image": "/service-details/outdoor-kitchen-cleaning/img-1.png"
-        },
-        {
-          "title": "Counters & Surfaces",
-          "description": "Wiping and sanitizing of countertops, prep areas, and backsplashes to keep your cooking space safe and spotless.",
-          "image": "/service-details/outdoor-kitchen-cleaning/img-2.png"
-        },
-        {
-          "title": "Cabinets & Storage",
-          "description": "Cleaning and disinfecting of cabinet exteriors and handles to eliminate grease, dirt, and stains.",
-          "image": "/service-details/outdoor-kitchen-cleaning/img-3.png"
-        },
-        {
-          "title": "Floors & Surroundings",
-          "description": "Sweeping, mopping, or surface washing to remove grease, dirt, and debris around the kitchen area.",
-          "image": "/service-details/outdoor-kitchen-cleaning/img-4.png"
-        },
-        {
-          "title": "Detailing",
-          "description": "Polishing stainless steel finishes, treating grease buildup, and checking for mildew or stains to maintain durability and appearance.",
-          "image": "/service-details/outdoor-kitchen-cleaning/img-5.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: At least once or twice a year, depending on usage. For seasonal use, service is ideal at the start and end of the cooking season. For year-round use, quarterly service is recommended to maintain shine, safety, and performance.",
-          "Duration: 3–5 hours depending on kitchen size, number of appliances, and buildup level."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Extends the life of your outdoor kitchen investment.",
-          "Removes grease, dirt, and stains for a guest-ready space.",
-          "Keeps appliances, counters, and finishes safe, clean, and inviting."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Repair or replacement of outdoor appliances or cabinetry.",
-          "Structural restoration of stone or metal surfaces.",
-          "Landscaping or patio cleaning beyond the outdoor kitchen area."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Schedule a cleaning before hosting events or seasonal gatherings.",
-          "Regular upkeep prevents grease from damaging stainless steel and stone finishes.",
-          "Combine with exterior surface washing for a complete outdoor refresh."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Deep cleaning of appliance interiors such as grills or refrigerators.",
-          "Protective sealing for stone countertops or backsplashes.",
-          "Bundle with patio or deck washing for a full outdoor refresh."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Outdoor Patio and Furniture Cleaning": {
-    "main": {
-      "zones": [
-        {
-          "title": "Patio & Deck Surfaces",
-          "description": "Sweeping, washing, or surface cleaning to remove dirt, stains, and mildew buildup from patios and decks.",
-          "image": "/service-details/outdoor-patio-furniture-cleaning/img-1.png"
-        },
-        {
-          "title": "Outdoor Furniture",
-          "description": "Wiping and sanitizing of tables, chairs, and lounges. Removal of dust, pollen, and grime from frames and surfaces.",
-          "image": "/service-details/outdoor-patio-furniture-cleaning/img-2.png"
-        },
-        {
-          "title": "Cushions & Fabrics",
-          "description": "Vacuuming and spot-cleaning of outdoor cushions and fabrics, weather permitting, to keep them fresh and usable.",
-          "image": "/service-details/outdoor-patio-furniture-cleaning/img-3.png"
-        },
-        {
-          "title": "Detailing",
-          "description": "Cleaning of railings, light fixtures, and decorative accents for a polished, guest-ready finish.",
-          "image": "/service-details/outdoor-patio-furniture-cleaning/img-4.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: Once or twice per year, typically at the beginning and end of outdoor season. Homes in year-round climates or coastal areas benefit from quarterly cleaning.",
-          "Duration: 2–4 hours depending on patio size, number of furniture pieces, and condition of cushions."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Extends the life of outdoor furniture and cushions.",
-          "Removes dirt, stains, pollen, and mildew for a cleaner outdoor experience.",
-          "Keeps patios and furniture guest-ready for every season."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Upholstery or cushion replacement.",
-          "Furniture repair or refinishing.",
-          "Pressure cleaning of delicate or non-weatherproof fabrics."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Schedule cleaning in spring to remove pollen and prepare for outdoor use.",
-          "Add a fall cleaning to extend the life of your furniture before storage.",
-          "For homes with year-round exposure, quarterly cleaning keeps furniture protected and fresh."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Protective fabric treatments for outdoor cushions.",
-          "Sealing for stone or wood patio surfaces.",
-          "Bundle with exterior surface washing for a complete outdoor refresh."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Post-Renovation Cleaning": {
-    "main": {
-      "zones": [
-        {
-          "title": "Dust & Debris Removal",
-          "description": "Wiping and vacuuming of walls, windowsills, vents, baseboards, and fixtures. Elimination of drywall dust, paint splatter, and sawdust to ensure a safe, dust-free environment.",
-          "image": "/service-details/post-renovation-cleaning/img-1.png"
-        },
-        {
-          "title": "Surface Cleaning",
-          "description": "Sanitizing of countertops, cabinets, and shelving, along with cleaning and polishing appliances, fixtures, and hardware for a spotless finish.",
-          "image": "/service-details/post-renovation-cleaning/img-2.png"
-        },
-        {
-          "title": "Floor Care",
-          "description": "Sweeping, vacuuming, and mopping of all flooring. Special detailing for tile, stone, and hardwood surfaces to restore shine and cleanliness.",
-          "image": "/service-details/post-renovation-cleaning/img-3.png"
-        },
-        {
-          "title": "Windows & Glass",
-          "description": "Removing smudges, adhesive, and dust from windows, mirrors, and glass doors to achieve a polished, streak-free look.",
-          "image": "/service-details/post-renovation-cleaning/img-4.png"
-        },
-        {
-          "title": "Detail Work",
-          "description": "Cleaning of light fixtures, switches, door frames, and trim. Polishing and refreshing of surfaces for a flawless, move-in ready finish.",
-          "image": "/service-details/post-renovation-cleaning/img-5.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: One-time service, ideally scheduled immediately after renovation or construction completion. In some cases, a two-phase approach may be needed for large projects.",
-          "Duration: 6–12 hours depending on the size of the space, type of renovation, and level of dust or debris. Larger remodels or new builds may require multiple visits."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Removes fine dust, debris, and construction residue.",
-          "Polishes finishes for a brand-new look.",
-          "Ensures your space is safe, spotless, and move-in ready."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Removal of heavy construction debris, lumber, or broken materials.",
-          "Paint correction or repair of damaged finishes.",
-          "Large-scale disposal services (requires contractor crew)."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Allow paint, grout, or sealants to fully cure before booking service.",
-          "Confirm contractors have finished sanding and debris removal to avoid repeated buildup.",
-          "Schedule cleaning before moving in furniture or unpacking for the best results."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Two-phase cleaning for large-scale renovations.",
-          "Add carpet or upholstery cleaning for a full reset.",
-          "Bundle with window or exterior cleaning for a complete post-renovation refresh."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Stone and Marble Restoration": {
-    "main": {
-      "zones": [
-        {
-          "title": "Deep Cleaning",
-          "description": "Removal of dirt, buildup, and surface residue from stone and marble surfaces to restore clarity and cleanliness.",
-          "image": "/service-details/stone-marble-restoration/img-1.png"
-        },
-        {
-          "title": "Polishing & Honing",
-          "description": "Professional methods eliminate dull spots, scratches, and etching while restoring a smooth, glossy, and uniform finish.",
-          "image": "/service-details/stone-marble-restoration/img-2.png"
-        },
-        {
-          "title": "Stain Removal",
-          "description": "Targeted treatments remove water marks, spills, and discoloration to restore the natural beauty of the stone.",
-          "image": "/service-details/stone-marble-restoration/img-3.png"
-        },
-        {
-          "title": "Sealing & Protection",
-          "description": "Application of a high-quality sealer provides resistance against future staining and wear, extending the life of the stone.",
-          "image": "/service-details/stone-marble-restoration/img-4.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: Every 12–24 months depending on usage and foot traffic.",
-          "Duration: A few hours to a full day, depending on the size of the area and the condition of the stone."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Restores marble, granite, travertine, limestone, and other natural stone surfaces.",
-          "Removes stains, scratches, and etching to bring back original shine.",
-          "Protective sealing prevents future damage and prolongs results."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Full replacement of damaged stone pieces.",
-          "Structural repairs beyond surface restoration.",
-          "Non-stone surfaces or synthetic countertops."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Use mats and area rugs in high-traffic areas to protect surfaces.",
-          "Wipe spills quickly to prevent staining or etching.",
-          "Pair with routine professional sealing to maintain results longer."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Add grout cleaning and sealing for a uniform look.",
-          "Bundle with deep cleaning of adjacent floors or countertops.",
-          "Protective coating for high-use areas like kitchens and bathrooms."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Tile Cleaning": {
-    "main": {
-      "zones": [
-        {
-          "title": "Deep Cleaning of Tile Surfaces",
-          "description": "Removes dirt, grease, and buildup from floors, walls, and countertops using professional equipment and safe solutions.",
-          "image": "/service-details/tile-cleaning/img-1.png"
-        },
-        {
-          "title": "Grout Line Cleaning",
-          "description": "Specialized tools and solutions lift stains, sanitize, and restore grout color for a brighter, fresher look.",
-          "image": "/service-details/tile-cleaning/img-2.png"
-        },
-        {
-          "title": "Sanitizing & Disinfecting",
-          "description": "Targets bacteria, mold, and mildew in grout and damp areas to ensure a healthier living environment.",
-          "image": "/service-details/tile-cleaning/img-3.png"
-        },
-        {
-          "title": "Detail Work",
-          "description": "Careful cleaning of edges, corners, and hard-to-reach spots for a spotless, professional finish.",
-          "image": "/service-details/tile-cleaning/img-4.png"
-        },
-        {
-          "title": "Optional Grout Sealing",
-          "description": "Adds a protective barrier to resist stains, extend results, and make maintenance easier over time.",
-          "image": "/service-details/tile-cleaning/img-5.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: Every 12–18 months for most homes. High-traffic areas such as kitchens, bathrooms, and entryways may benefit from cleaning every 6–12 months.",
-          "Duration: Varies based on surface size and condition. Average homes take 2–5 hours."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Restores tile and grout to a fresher, brighter finish.",
-          "Eliminates dirt, grease, stains, and harmful buildup.",
-          "Optional sealing extends results and simplifies maintenance."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Full re-grouting or tile replacement.",
-          "Structural repairs to damaged tile or grout.",
-          "Heavy construction debris removal (offered separately)."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Sweep or vacuum regularly to prevent grit from scratching tiles.",
-          "Mop with a pH-neutral cleaner and avoid harsh chemicals or acids.",
-          "Wipe spills quickly to protect grout and natural stone.",
-          "Use rugs or mats in high-traffic areas for extra protection."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Full home tile sealing package.",
-          "Bundle with stone & marble restoration for total surface care.",
-          "Deep steam cleaning for stubborn grout stains."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Upholstery Cleaning": {
-    "main": {
-      "zones": [
-        {
-          "title": "Furniture Cleaning",
-          "description": "Professional cleaning for sofas, sectionals, loveseats, armchairs, ottomans, dining chairs, and more to restore comfort and freshness.",
-          "image": "/service-details/upholstery-cleaning/img-1.png"
-        },
-        {
-          "title": "Fabric-Specific Care",
-          "description": "Safe cleaning methods for microfiber, cotton, polyester, linen, blends, silk, wool, velvet, and other specialty fabrics. Includes pre-testing of materials to ensure proper care.",
-          "image": "/service-details/upholstery-cleaning/img-2.png"
+          "title": "Deep Cleaning Methods",
+          "description": "Steam Cleaning (Hot Water Extraction) is the most powerful method for deep cleaning, removing embedded dirt, stains, and allergens while refreshing carpet fibers. Low-moisture cleaning is a faster-drying method ideal for certain carpet types or situations requiring quick turnaround.",
+          "image": "/service-details/carpet-cleaning/img-1.png"
         },
         {
           "title": "Stain & Odor Treatment",
-          "description": "Targeted solutions for pet stains, food spills, oils, and everyday buildup, with specialized treatments available for tough or lingering odors.",
-          "image": "/service-details/upholstery-cleaning/img-3.png"
+          "description": "Specialized solutions neutralize pet odors and remove stains that target both the surface and underlying padding, with additional treatments available for severe cases.",
+          "image": "/service-details/carpet-cleaning/img-2.png"
         },
         {
-          "title": "Detailing",
-          "description": "Removal of embedded dirt and allergens from deep within fibers, refreshing fabric to restore color, softness, and overall appearance.",
-          "image": "/service-details/upholstery-cleaning/img-4.png"
+          "title": "Furniture Handling",
+          "description": "Light furniture such as chairs, small tables, and end tables is carefully moved to clean beneath. Larger or heavy furniture like beds, sectionals, and entertainment centers is left in place for safety, though it can be pre-moved by the homeowner if desired.",
+          "image": "/service-details/carpet-cleaning/img-3.png"
+        },
+        {
+          "title": "Professional Guidance",
+          "description": "Receive drying-time recommendations tailored to your home’s ventilation, along with post-cleaning care instructions to extend results.",
+          "image": "/service-details/carpet-cleaning/img-4.png"
         }
       ]
     },
@@ -1295,8 +584,9 @@
       "topRight": {
         "title": "Quick Facts",
         "description": [
-          "Recommended Frequency: Every 12–18 months for most furniture. High-use items such as sofas and dining chairs benefit from cleaning every 6–12 months, especially in homes with children or pets.",
-          "Duration: 2–4 hours for an average household set of furniture. Larger homes or multiple large pieces may require additional time."
+          "Recommended Frequency: Every 6–12 months depending on household conditions. Homes with pets, children, or high foot traffic benefit from cleaning every 6 months.",
+          "Duration: 2–4 hours for most standard homes. Larger homes or heavily soiled carpets may require more time.",
+          "Drying Times: Steam Cleaning 6–12 hours · Low-Moisture Cleaning 2–4 hours."
         ],
         "image": "/service-details/img-1.png",
         "background": "css-bg"
@@ -1304,9 +594,9 @@
       "middleRight": {
         "title": "Service Highlights",
         "description": [
-          "Refreshes and extends the life of upholstered furniture.",
-          "Removes dirt, stains, odors, and allergens.",
-          "Safe, fabric-specific methods tailored to each material."
+          "Safe handling of light furniture.",
+          "Professional stain & odor treatments.",
+          "Tailored cleaning methods for your carpet type."
         ],
         "image": "/service-details/img-2.png",
         "background": "css-bg"
@@ -1314,9 +604,9 @@
       "bottomRight": {
         "title": "What’s Not Included",
         "description": [
-          "Furniture repairs, reupholstery, or fabric replacement.",
-          "Leather cleaning (separate specialized service).",
-          "Heavy water damage or mold remediation."
+          "Full furniture moving for heavy or oversized items.",
+          "Carpet replacement or repair services.",
+          "Water damage restoration (separate service)."
         ],
         "image": "/service-details/img-3.png",
         "background": "css-bg"
@@ -1324,9 +614,9 @@
       "bottomMiddle": {
         "title": "Pro Tips & Benefits",
         "description": [
-          "Vacuum upholstered furniture regularly to reduce dirt buildup.",
-          "Address spills quickly to prevent permanent staining.",
-          "Use professional cleaning before special events or after heavy seasonal use."
+          "Vacuum before your appointment for best results.",
+          "Use ceiling fans or HVAC to speed drying.",
+          "Schedule cleanings seasonally or before special events for fresher carpets."
         ],
         "image": "/service-details/img-4.png",
         "background": "css-bg"
@@ -1334,9 +624,9 @@
       "bottomLeft": {
         "title": "Optional Upgrades",
         "description": [
-          "Protective fabric treatments to resist stains and spills.",
-          "Bundle with carpet or rug cleaning for a full home refresh.",
-          "Pet-specific odor and allergen treatments."
+          "Severe stain/odor treatments (on request).",
+          "Specialty solutions for pets & allergens.",
+          "Protective treatments to extend cleanliness."
         ],
         "image": "/service-details/img-5.png",
         "background": "css-bg"
@@ -1419,868 +709,5 @@
         "background": "css-bg"
       }
     }
-  },
-  "Wood Cabinets and Floors Reviving": {
-    "main": {
-      "zones": [
-        {
-          "title": "Deep Cleaning",
-          "description": "Removal of dirt, grease, and buildup from cabinets, drawers, and wood flooring for a cleaner, refreshed surface.",
-          "image": "/service-details/wood-cabinets-floors-reviving/img-1.png"
-        },
-        {
-          "title": "Rejuvenation",
-          "description": "Polishing and refreshing finishes to restore shine, enhance durability, and highlight the natural wood grain.",
-          "image": "/service-details/wood-cabinets-floors-reviving/img-2.png"
-        },
-        {
-          "title": "Conditioning & Protection",
-          "description": "Application of conditioners to nourish wood, prevent cracking, and add protective layers against daily wear and tear.",
-          "image": "/service-details/wood-cabinets-floors-reviving/img-3.png"
-        },
-        {
-          "title": "Detailing",
-          "description": "Cleaning and polishing of edges, corners, handles, and trim for a complete, polished finish.",
-          "image": "/service-details/wood-cabinets-floors-reviving/img-4.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: Once or twice per year depending on traffic and usage. High-use areas such as kitchens, entryways, and hallways benefit from service every 6 months, while lower-use areas may only need it once annually.",
-          "Duration: 3–6 hours depending on the number of surfaces, size of the area, and condition of the wood."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Restores natural beauty and extends the life of wood cabinets and floors.",
-          "Conditions wood to prevent drying, cracking, and premature wear.",
-          "Delivers a refreshed look without the cost or hassle of refinishing."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Sanding, stripping, or full refinishing of wood surfaces.",
-          "Repair of water damage, deep scratches, or structural issues.",
-          "Replacement of damaged wood or cabinetry."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Place rugs or mats in high-traffic areas to protect floors.",
-          "Wipe spills immediately to prevent water damage or staining.",
-          "Regular reviving delays the need for costly refinishing or replacement."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Protective sealing for extra durability in high-traffic areas.",
-          "Bundle with stone & marble restoration for full-surface care.",
-          "Specialized treatment for antique or specialty wood finishes."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Full Bundle": {
-    "main": {
-      "zones": [
-        {
-          "title": "Deep Cleaning",
-          "description": "Comprehensive cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes baseboards, fixtures, and hard-to-reach areas for a full interior reset.",
-          "image": "/service-details/full-bundle/img-1.png"
-        },
-        {
-          "title": "Carpet Cleaning",
-          "description": "Choice of steam cleaning or low-moisture method. Removes embedded dirt, stains, allergens, and odors to refresh and sanitize carpets.",
-          "image": "/service-details/full-bundle/img-2.png"
-        },
-        {
-          "title": "Window Washing",
-          "description": "Interior and exterior glass cleaned for a streak-free shine. Includes screens, frames, tracks, and sills for a complete finish.",
-          "image": "/service-details/full-bundle/img-3.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: As needed for move-ins/outs, seasonal resets, holiday/event prep, or after renovations.",
-          "Duration: 6–10 hours in a single visit depending on home size and condition. Larger homes may require additional time or extra technicians."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Combines three of our most popular services in one visit.",
-          "Saves $100 compared to booking separately.",
-          "Provides the ultimate top-to-bottom reset for your home."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Upholstery, tile, or exterior surface cleaning (available as add-ons).",
-          "Large debris or post-construction waste removal.",
-          "Repairs to flooring, windows, or fixtures."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Schedule before holidays, events, or move-in/out days for maximum impact.",
-          "Pair with upholstery or tile cleaning add-ons for an even more complete refresh.",
-          "Enjoy the convenience of a single-day reset instead of multiple appointments."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Upholstery cleaning to refresh furniture fabrics.",
-          "Tile and grout cleaning for kitchens and bathrooms.",
-          "Exterior surface washing for patios, siding, or driveways."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Carpet Bundle": {
-    "main": {
-      "zones": [
-        {
-          "title": "Deep Cleaning",
-          "description": "Comprehensive cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes dusting, sanitizing, and detail work on surfaces, fixtures, and hard-to-reach areas.",
-          "image": "/service-details/carpet-bundle/img-1.png"
-        },
-        {
-          "title": "Carpet Cleaning",
-          "description": "Steam or low-moisture cleaning options remove dirt, stains, allergens, and odors while refreshing carpet fibers for a healthier, fresher home.",
-          "image": "/service-details/carpet-bundle/img-2.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: Every 6–12 months, especially in homes with kids, pets, or high traffic. Also ideal for seasonal resets or post-event cleanups.",
-          "Duration: 4–8 hours depending on home size, number of rooms, and carpet condition."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Combines two essential services in one visit.",
-          "Saves $75 compared to booking separately.",
-          "Delivers both spotless interiors and refreshed carpets."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Upholstery, tile, or window cleaning (available as add-ons).",
-          "Carpet replacement or repair of damaged flooring.",
-          "Removal of heavy furniture or large appliances."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Move fragile or personal items off carpets before service.",
-          "Keep pets secured in a safe space during cleaning.",
-          "Use drying aids like fans or HVAC circulation to speed carpet drying."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Upholstery cleaning for sofas and chairs.",
-          "Tile and grout cleaning for kitchens and bathrooms.",
-          "Window washing to complete the refresh."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Window Bundle": {
-    "main": {
-      "zones": [
-        {
-          "title": "Deep Cleaning",
-          "description": "Comprehensive interior cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes dusting, sanitizing, baseboards, fixtures, and hard-to-reach areas.",
-          "image": "/service-details/window-bundle/img-1.png"
-        },
-        {
-          "title": "Window Washing",
-          "description": "Interior and exterior glass cleaned for a streak-free shine. Includes screens, tracks, and sills for a complete finish that enhances light and curb appeal.",
-          "image": "/service-details/window-bundle/img-2.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: Best scheduled for seasonal cleanings (spring/fall), pre-event preparation, or holiday refreshes.",
-          "Duration: 4–8 hours depending on home size, number of windows, and detailing needs."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Combines two popular services in one convenient visit.",
-          "Saves $75 compared to booking separately.",
-          "Provides a spotless home interior and streak-free windows inside and out."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Carpet, upholstery, or tile cleaning (available as add-ons).",
-          "Paint removal or correction of permanent hard water stains (requires extra treatment).",
-          "Windows inaccessible due to safety or structural restrictions."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Clear items from window sills, ledges, and nearby furniture before service.",
-          "Provide access for both interior and exterior windows (unlock gates if needed).",
-          "Move fragile décor away from windows to avoid accidents.",
-          "Secure pets away from work areas for safety."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Carpet or upholstery cleaning to complete your reset.",
-          "Tile and grout cleaning for kitchens and bathrooms.",
-          "Exterior surface washing to enhance curb appeal."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Carpet and Window Bundle": {
-    "main": {
-      "zones": [
-        {
-          "title": "Carpet Cleaning",
-          "description": "Choice of steam (hot water extraction) or low-moisture cleaning methods. Removes dirt, allergens, odors, and refreshes carpet fibers for a healthier home.",
-          "image": "/service-details/carpet-window-bundle/img-1.png"
-        },
-        {
-          "title": "Window Washing",
-          "description": "Interior and exterior glass cleaned for a streak-free shine. Tracks, sills, and screens detailed for improved airflow and clarity.",
-          "image": "/service-details/carpet-window-bundle/img-2.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Recommended Frequency: Every 6–12 months, especially before hosting guests, during seasonal resets, or anytime you want a refreshed home inside and out.",
-          "Duration: 3–6 hours depending on number of windows, carpeted rooms, and overall home size."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Combines carpet cleaning and window washing in one efficient visit.",
-          "Saves $50 compared to booking separately.",
-          "Refreshes both interior comfort and exterior curb appeal."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Deep cleaning, upholstery, or tile (available as add-ons).",
-          "Removal of permanent carpet stains or heavy water damage.",
-          "Inaccessible exterior windows beyond safe reach."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Clear carpets of toys, décor, and small items before the appointment.",
-          "Move lightweight furniture if possible to maximize carpet coverage.",
-          "Open blinds and curtains for faster window access.",
-          "Secure pets and ensure parking and water access for technicians."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Add upholstery cleaning for sofas and chairs.",
-          "Bundle with deep cleaning for a complete reset.",
-          "Protective carpet treatment to extend cleanliness and durability."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    }
-  },
-  "Refresh Plan": {
-    "main": {
-      "zones": [
-        {
-          "title": "Monthly Maid Service",
-          "description": "Regular cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes dusting, sanitizing, and tidying to maintain a consistently fresh home environment.",
-          "image": "/service-details/refresh-plan/img-1.png"
-        },
-        {
-          "title": "Annual Carpet Cleaning",
-          "description": "Professional steam or low-moisture cleaning that removes dirt, allergens, odors, and stains to refresh and sanitize carpets.",
-          "image": "/service-details/refresh-plan/img-2.png"
-        },
-        {
-          "title": "Annual Window Washing",
-          "description": "Interior and exterior glass cleaned for streak-free clarity. Includes screens, tracks, and sills for a complete window refresh.",
-          "image": "/service-details/refresh-plan/img-3.png"
-        },
-        {
-          "title": "Annual Gutter Cleaning",
-          "description": "Removal of leaves and debris from gutters and downspouts, plus flush and inspection to ensure proper drainage and prevent water damage.",
-          "image": "/service-details/refresh-plan/img-4.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Maid Service: Once per month (2–4 hours per visit depending on home size).",
-          "Carpet Cleaning: Once annually.",
-          "Window Washing: Once annually.",
-          "Gutter Cleaning: Once annually."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Combines monthly maid upkeep with annual deep-clean services.",
-          "Ensures key home maintenance tasks are covered without tracking.",
-          "Saves time and hassle by scheduling services automatically."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Weekly or bi-weekly maid visits (covered in other plans).",
-          "Upholstery, tile, or exterior surface cleaning (available as add-ons).",
-          "Heavy debris removal or gutter repair."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Use monthly maid visits to maintain high-traffic areas between seasonal deep cleans.",
-          "Book annual services in spring or fall for best results.",
-          "Pair with optional add-ons like tile cleaning or exterior washing for a complete reset."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Upholstery cleaning for furniture refresh.",
-          "Tile and grout cleaning for kitchens and bathrooms.",
-          "Exterior surface washing for siding, patios, or driveways."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    },
-    "faq": [
-      {
-        "question": "What’s included in the Refresh Plan?",
-        "answer": "The Refresh Plan includes monthly maid service to keep your home neat and tidy, plus one annual carpet cleaning, one window washing, and one gutter cleaning. It’s designed for consistent upkeep with the peace of mind that deep-cleaning tasks are automatically covered each year."
-      },
-      {
-        "question": "How does scheduling work for the annual services?",
-        "answer": "We’ll send you reminders when it’s time for carpet, window, or gutter cleaning. You choose the dates that work best for you, and we handle the scheduling and service so you never have to track them yourself."
-      },
-      {
-        "question": "Can I customize the Refresh Plan?",
-        "answer": "Yes. While the core services are fixed, you can add extras such as upholstery cleaning, tile cleaning, or exterior surface washing. If you prefer more flexibility in frequency or services, our Signature Plan may be a better fit."
-      },
-      {
-        "question": "Who is the Refresh Plan best for?",
-        "answer": "The Refresh Plan is ideal for smaller households, empty nesters, or homeowners who want consistent monthly cleaning but don’t need weekly service. It’s also perfect for those who prefer not to manage annual task scheduling."
-      },
-      {
-        "question": "What happens if I miss a scheduled visit?",
-        "answer": "If you need to reschedule, we’ll work with you to find a new time. We ask for at least 48 hours’ notice to avoid a cancellation fee, but our goal is to keep your plan on track while staying flexible with your schedule."
-      }
-    ]
-  },
-  "Care Plan": {
-    "main": {
-      "zones": [
-        {
-          "title": "Bi-Monthly Maid Service",
-          "description": "Cleaning every other week for kitchens, bathrooms, bedrooms, and living areas. Includes dusting, sanitizing, vacuuming, mopping, and overall tidying for consistent upkeep.",
-          "image": "/service-details/care-plan/img-1.png"
-        },
-        {
-          "title": "Annual Carpet Cleaning",
-          "description": "Professional steam or low-moisture methods that remove stains, allergens, odors, and refresh carpet fibers for a healthier home.",
-          "image": "/service-details/care-plan/img-2.png"
-        },
-        {
-          "title": "Annual Window Washing",
-          "description": "Interior and exterior glass washed for a streak-free shine. Includes screens, tracks, and sills for a complete finish.",
-          "image": "/service-details/care-plan/img-3.png"
-        },
-        {
-          "title": "Annual Gutter Cleaning",
-          "description": "Clearing of leaves, debris, and buildup, plus a flush and inspection to ensure proper drainage and prevent water damage.",
-          "image": "/service-details/care-plan/img-4.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Maid Service: Every other week (2–3 hours per visit depending on home size).",
-          "Carpet Cleaning: Once annually.",
-          "Window Washing: Once annually.",
-          "Gutter Cleaning: Once annually."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Combines bi-monthly maid service with annual deep-clean essentials.",
-          "Perfect balance for busy families and professionals who want consistent upkeep.",
-          "Annual services automatically included for peace of mind."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Weekly maid visits (covered under other plans).",
-          "Upholstery, tile, or exterior surface cleaning (available as add-ons).",
-          "Structural repairs for windows, gutters, or flooring."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Bi-monthly service keeps dust, crumbs, and clutter under control between deeper cleanings.",
-          "Schedule annual services seasonally (spring/fall) for maximum impact.",
-          "Add upholstery or tile cleaning when needed for a more complete reset."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Upholstery cleaning for sofas and dining chairs.",
-          "Tile and grout cleaning for kitchens and bathrooms.",
-          "Exterior surface washing for siding, patios, or driveways."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    },
-    "faq": [
-      {
-        "question": "What’s included in the Care Plan?",
-        "answer": "The Care Plan includes bi-monthly maid service plus one annual carpet cleaning, one window washing, and one gutter cleaning. It ensures consistent upkeep with yearly deep-clean essentials already covered."
-      },
-      {
-        "question": "Can I switch to weekly maid service?",
-        "answer": "Weekly visits aren’t included in this plan, but you can upgrade to a different plan that offers weekly service. The Care Plan is designed for every-other-week upkeep."
-      },
-      {
-        "question": "How does scheduling work for the annual services?",
-        "answer": "We’ll send reminders when it’s time for carpet, window, or gutter cleaning. You can choose the date that works best, and we handle the scheduling."
-      },
-      {
-        "question": "Who is the Care Plan best for?",
-        "answer": "This plan is ideal for families, couples, and busy professionals who want consistent upkeep every two weeks but don’t need weekly service."
-      },
-      {
-        "question": "Can I add extras like upholstery cleaning?",
-        "answer": "Yes. You can add upholstery, tile, or exterior surface cleaning to your Care Plan for a more complete reset whenever you need it."
-      }
-    ]
-  },
-  "Pristine Plan": {
-    "main": {
-      "zones": [
-        {
-          "title": "Weekly Maid Service",
-          "description": "Full cleaning of kitchens, bathrooms, bedrooms, and living spaces. Includes dusting, vacuuming, mopping, sanitizing, and general tidying every week.",
-          "image": "/service-details/pristine-plan/img-1.png"
-        },
-        {
-          "title": "Annual Carpet Cleaning",
-          "description": "Professional deep cleaning with steam or low-moisture methods. Removes dirt, stains, odors, and allergens to keep carpets fresh year-round.",
-          "image": "/service-details/pristine-plan/img-2.png"
-        },
-        {
-          "title": "Annual Window Washing",
-          "description": "Interior and exterior glass washed streak-free. Includes tracks, screens, and sills for a polished, complete result.",
-          "image": "/service-details/pristine-plan/img-3.png"
-        },
-        {
-          "title": "Annual Gutter Cleaning",
-          "description": "Clearing of gutters and downspouts, plus flushing and inspection to ensure proper drainage and prevent costly water damage.",
-          "image": "/service-details/pristine-plan/img-4.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Maid Service: Weekly visits (2–3 hours per visit depending on home size).",
-          "Carpet Cleaning: Once annually.",
-          "Window Washing: Once annually.",
-          "Gutter Cleaning: Once annually."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Our most complete package with weekly upkeep plus annual deep-clean services.",
-          "Ideal for large households, busy professionals, or families wanting a spotless home year-round.",
-          "Includes priority scheduling during peak seasons for Pristine Plan clients."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Upholstery, tile, or exterior surface cleaning (available as add-ons).",
-          "Repairs for gutters, windows, or flooring.",
-          "Post-construction cleanup (offered separately)."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Weekly visits ensure dust, clutter, and mess never build up.",
-          "Book annual services in spring or fall for best results.",
-          "Use add-ons like upholstery, tile, or exterior washing for a complete reset.",
-          "Enjoy priority scheduling during busy holiday or seasonal periods."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Upholstery cleaning for sofas, chairs, and mattresses.",
-          "Tile and grout cleaning for bathrooms and kitchens.",
-          "Exterior surface washing for siding, patios, or driveways."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    },
-    "faq": [
-      {
-        "question": "What’s included in the Pristine Plan?",
-        "answer": "The Pristine Plan includes weekly maid service plus one annual carpet cleaning, one window washing, and one gutter cleaning. It provides consistent upkeep and annual deep cleaning for a spotless home year-round."
-      },
-      {
-        "question": "Do I get priority scheduling?",
-        "answer": "Yes. Pristine Plan clients receive priority scheduling during peak seasons such as holidays and spring/fall cleaning periods."
-      },
-      {
-        "question": "Can I add upholstery or tile cleaning?",
-        "answer": "Yes. You can add upholstery, tile, or exterior surface cleaning as extras to your Pristine Plan for a complete reset when needed."
-      },
-      {
-        "question": "Who is the Pristine Plan best for?",
-        "answer": "The Pristine Plan is ideal for large households, families, or busy professionals who want their home consistently spotless and free of buildup."
-      },
-      {
-        "question": "How long does each visit take?",
-        "answer": "Weekly maid visits take about 2–3 hours depending on home size. Annual services take an additional 3–6 hours combined, scheduled separately."
-      }
-    ]
-  },
-  "Signature Plan": {
-    "main": {
-      "zones": [
-        {
-          "title": "Flexible Cleaning Options",
-          "description": "Choose weekly, bi-weekly, monthly, or seasonal cleaning. Kitchens, bathrooms, bedrooms, and living areas are refreshed to your preferred schedule.",
-          "image": "/service-details/signature-plan/img-1.png"
-        },
-        {
-          "title": "Specialty Add-Ons",
-          "description": "Appliance detailing, tile and grout restoration, upholstery and mattress care, garage organizing, move-in/out prep, and outdoor projects. Exterior maintenance such as gutter care and surface washing available as needed.",
-          "image": "/service-details/signature-plan/img-2.png"
-        },
-        {
-          "title": "Personalized Scheduling",
-          "description": "Scheduling tailored around your lifestyle and household needs. Seasonal or one-off specialty projects can be booked on demand.",
-          "image": "/service-details/signature-plan/img-3.png"
-        }
-      ]
-    },
-    "blocks": {
-      "topRight": {
-        "title": "Quick Facts",
-        "description": [
-          "Frequency: Fully customizable (weekly, bi-weekly, monthly, seasonal, or project-based).",
-          "Duration: Adaptable depending on chosen services (2–4 hours for standard visits; longer for seasonal or specialty projects)."
-        ],
-        "image": "/service-details/img-1.png",
-        "background": "css-bg"
-      },
-      "middleRight": {
-        "title": "Service Highlights",
-        "description": [
-          "Concierge-level flexibility tailored to your lifestyle.",
-          "Dedicated cleaning team with trained backup support.",
-          "Specialty add-ons and seasonal projects available on demand."
-        ],
-        "image": "/service-details/img-2.png",
-        "background": "css-bg"
-      },
-      "bottomRight": {
-        "title": "What’s Not Included",
-        "description": [
-          "Fixed pricing—cost varies by services and frequency.",
-          "Structural repairs (gutters, flooring, windows, etc.).",
-          "Post-construction cleanup (available separately)."
-        ],
-        "image": "/service-details/img-3.png",
-        "background": "css-bg"
-      },
-      "bottomMiddle": {
-        "title": "Pro Tips & Benefits",
-        "description": [
-          "Use Signature for flexibility: weekly during busy months, seasonal resets for spring/fall.",
-          "Add specialty projects like garage organizing or appliance detailing to maximize value.",
-          "Keep one dedicated team for consistency, with backup support always ready."
-        ],
-        "image": "/service-details/img-4.png",
-        "background": "css-bg"
-      },
-      "bottomLeft": {
-        "title": "Optional Upgrades",
-        "description": [
-          "Appliance detailing (fridge, oven, microwave, etc.).",
-          "Upholstery and mattress cleaning.",
-          "Garage organizing and move-in/out preparation.",
-          "Outdoor maintenance such as gutter cleaning and surface washing."
-        ],
-        "image": "/service-details/img-5.png",
-        "background": "css-bg"
-      }
-    },
-    "faq": [
-      {
-        "question": "What’s included in the Signature Plan?",
-        "answer": "The Signature Plan includes customizable cleaning options, specialty add-ons, and personalized scheduling. Services cover kitchens, bathrooms, bedrooms, living spaces, and seasonal or one-off projects."
-      },
-      {
-        "question": "How flexible is the scheduling?",
-        "answer": "The plan is fully customizable—choose weekly, bi-weekly, monthly, seasonal, or project-based scheduling depending on your lifestyle needs."
-      },
-      {
-        "question": "Can I add specialty services?",
-        "answer": "Yes. You can add specialty projects such as appliance detailing, tile and grout restoration, upholstery and mattress cleaning, garage organizing, and exterior maintenance like gutter care."
-      },
-      {
-        "question": "Who is the Signature Plan best for?",
-        "answer": "The Signature Plan is best for homeowners who want total control, concierge-level service, and the ability to adjust services as life changes. It’s ideal for those who prefer consistent quality with flexible scheduling."
-      },
-      {
-        "question": "Do I have a dedicated cleaning team?",
-        "answer": "Yes. You’ll have one dedicated team for consistency, with a trained backup team available if needed so you’re never left without service."
-      }
-    ]
-  },
-  "Rotating System": {
-  "main": {
-    "zones": [
-      {
-        "title": "Restful Bedrooms",
-        "description": "Dusting, vacuuming or mopping, surface cleaning, and bed-making to keep your bedrooms fresh, inviting, and ready for a good night’s sleep.",
-        "image": "/service-details/rotating-system/bedrooms.png"
-      },
-      {
-        "title": "Spotless Bathrooms",
-        "description": "Sanitizing toilets, sinks, tubs, showers, mirrors, and countertops so your bathrooms always feel clean, safe, and sparkling.",
-        "image": "/service-details/rotating-system/bathrooms.png"
-      },
-      {
-        "title": "Fresh & Functional Kitchen",
-        "description": "Cleaning and disinfecting countertops, sinks, stovetops, appliance exteriors, and cabinet fronts—keeping the heart of your home spotless.",
-        "image": "/service-details/rotating-system/kitchen.png"
-      },
-      {
-        "title": "Welcoming Living Areas",
-        "description": "Dusting furniture, vacuuming or mopping floors, and refreshing common spaces so your family and guests always feel comfortable.",
-        "image": "/service-details/rotating-system/living-areas.png"
-      },
-      {
-        "title": "Deep Cleaning of Overlooked Areas",
-        "description": "On rotation, we tackle baseboards, trim, light fixtures, ceiling fans, vents, grilles, and cabinet fronts—ensuring dirt and grime never build up.",
-        "image": "/service-details/rotating-system/deep-cleaning.png"
-      } 
-    ]
-  },
-  "blocks": {
-    "topRight": {
-      "title": "Quick Facts",
-      "description": [
-        "Frequency: Weekly, bi-weekly, or monthly.",
-        "Duration: Typically 2–4 hours depending on home size and condition."
-      ],
-      "image": "/service-details/img-1.png",
-      "background": "css-bg"
-    },
-    "middleRight": {
-      "title": "Service Highlights",
-      "description": [
-        "Essential cleaning every visit—bedrooms, bathrooms, kitchen, and living areas.",
-        "Rotational deep cleaning of baseboards, vents, and overlooked details.",
-        "Consistent quality with a proven system designed for busy households."
-      ],
-      "image": "/service-details/img-2.png",
-      "background": "css-bg"
-    },
-    "bottomRight": {
-      "title": "What’s Not Included",
-      "description": [
-        "Fixed pricing—cost varies by home size and chosen frequency.",
-        "Structural repairs (windows, flooring, gutters, etc.).",
-        "Post-construction cleanup (available separately)."
-      ],
-      "image": "/service-details/img-3.png",
-      "background": "css-bg"
-    },
-    "bottomMiddle": {
-      "title": "Pro Tips & Benefits",
-      "description": [
-        "Choose the frequency that best fits your lifestyle—weekly, bi-weekly, or monthly.",
-        "Add upgrades like oven or refrigerator cleaning to maximize freshness.",
-        "Combine with yearly Home Detailing for top-to-bottom consistency."
-      ],
-      "image": "/service-details/img-4.png",
-      "background": "css-bg"
-    },
-    "bottomLeft": {
-      "title": "Optional Upgrades",
-      "description": [
-        "Clean inside the oven.",
-        "Clean inside the refrigerator.",
-        "Clean shutters and blinds.",
-        "Change linens."
-      ],
-      "image": "/service-details/img-5.png",
-      "background": "css-bg"
-    }
-  },
-  "faq": [
-    {
-      "question": "What’s included in the Rotating System?",
-      "answer": "Every visit includes essential cleaning of bedrooms, bathrooms, kitchen, and living areas. On rotation, we deep-clean overlooked areas like baseboards, vents, and light fixtures."
-    },
-    {
-      "question": "How flexible is the scheduling?",
-      "answer": "The Rotating System can be booked weekly, bi-weekly, or monthly depending on your household’s needs."
-    },
-    {
-      "question": "Can I add specialty services?",
-      "answer": "Yes. You can add extras such as oven cleaning, refrigerator cleaning, shutter and blind care, and linen changes."
-    },
-    {
-      "question": "Who is the Rotating System best for?",
-      "answer": "It’s ideal for busy households who want consistent cleaning without the stress of last-minute deep cleans. Essential areas are always covered, while deep tasks are rotated in."
-    },
-    {
-      "question": "Do I need Home Detailing too?",
-      "answer": "We recommend adding Home Detailing once or twice per year for the best results, as it provides a full top-to-bottom deep clean of areas not covered in routine visits."
-    }
-  ]
-}
-
-
-
-
-
-
-
+  }
 }
