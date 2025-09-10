@@ -33,7 +33,7 @@ const benefits = [
   {
     id: 5,
     title: "24/7 AI Assistant Support",
-    description: "Need help? Our smart AI assistant is always available to understand your needs and connect you with the right service—anytime, anywhere.",
+    description: "Need help? Our smart AI assistant Sofia is always available to understand your needs and connect you with the right service—anytime, anywhere.",
     icon: "/benefits/assistant-icon.png",
     image: "/benefits/ai-assistant.png"
   },

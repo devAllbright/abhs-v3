@@ -6,7 +6,6 @@ const categories = [
   { name: "Trending", icon: "/icons/trending.svg" },
   { name: "Cleaning", icon: "/icons/recurring.svg" },
   { name: "Specialty", icon: "/icons/specialty.svg" },
-  { name: "Packages", icon: "/icons/packages.svg" },
 ];
 
 /** Build a strict index: serviceName -> { service, type } */
@@ -40,16 +39,6 @@ const categoryServiceMap = {
     "Monthly Maid Services",
   ],
   Specialty: ["Window Washing"],
-  Packages: [
-    "Full Bundle",
-    "Carpet Bundle",
-    "Window Bundle",
-    "Carpet and Window",
-    "Pristine Plan",
-    "Care Plan",
-    "Refresh Plan",
-    "Signature Plan",
-  ],
 };
 
 /** Normalize strings for safe comparisons */
@@ -59,32 +48,16 @@ const norm = (s) =>
     .trim()
     .toLowerCase();
 
-/** Does this parent type require plain price (no "Starting at")? */
-const isPlainPriceType = (parentType) => {
-  const t = norm(parentType);
-  // Support common top-level key variants without relying on exact spelling
-  return (
-    t === "packages" || // many JSONs use "Packages" instead of "Bundles"
-    t === "bundles" ||
-    t === "maintenance plans" ||
-    t === "maintenance plan" ||
-    t === "maintenance"
-  );
-};
-
-/** Strict price formatter using normalized parent type */
-const formatPrice = (price, parentType) => {
+/** Strict price formatter (always "starting at") */
+const formatPrice = (price) => {
   if (price == null) return "";
   const n = Number(price);
-  const plain = isPlainPriceType(parentType);
 
   if (!Number.isNaN(n)) {
-    return plain
-      ? `$${n.toLocaleString("en-US")}`
-      : `Projects starting at $${n.toLocaleString("en-US")}`;
+    return `Projects starting at $${n.toLocaleString("en-US")}`;
   }
   // For string prices like "Custom", "Free estimate"
-  return plain ? String(price) : `Projects starting at ${price}`;
+  return `Projects starting at ${price}`;
 };
 
 const ServiceFilter = () => {
@@ -99,7 +72,7 @@ const ServiceFilter = () => {
         if (!hit) return null;
         return {
           ...hit.service,
-          _parentType: hit.type, // carry exact parent type from JSON
+          _parentType: hit.type,
         };
       })
       .filter(Boolean);
@@ -164,7 +137,7 @@ const ServiceFilter = () => {
                 <p>{svc.name}</p>
               </div>
               <div className="service-filter__service-price">
-                <p>{formatPrice(svc.price, svc._parentType)}</p>
+                <p>{formatPrice(svc.price)}</p>
               </div>
             </a>
           ))}
