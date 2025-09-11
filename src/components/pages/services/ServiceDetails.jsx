@@ -46,14 +46,7 @@ export default function ServiceDetails({
 
   return (
     <>
-      {/* <SectionHeading title="A Closer Look" subtitle="Discover the full scope of what we offer, from start to finish."/> */}
-      <div className="section-heading">
-        <h2 className="section-heading__title">Legendary Rotating Cleaning System</h2>
-        <p className="section-heading__subtitle">A proven approach that balances routine 
-                                                 cleaning with deep-cleaning rotations to 
-                                                 keep your home spotless, fresh, and 
-                                                 consistently well-maintained.</p>
-      </div>
+      <SectionHeading title="A Closer Look" subtitle="Discover the full scope of what we offer, from start to finish."/>
       <div className="service-details">
         <div className="service-details__grid">
           {/* MAIN (A) */}

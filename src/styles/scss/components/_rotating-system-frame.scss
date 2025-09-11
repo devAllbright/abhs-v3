@@ -1,0 +1,99 @@
+@use '../abstracts/variables' as *;
+
+.rotating-system-frame {
+  padding: 0 9vw;
+
+  &__header {
+    width: 100%;
+    padding-top: 48px;
+    text-align: center;
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #303030;
+  }
+
+  &__subtitle {
+    font-size: 24px;
+    font-style: italic;
+    color: #303030;
+  }
+
+  &__body {
+    display: flex;
+    padding: 5vh 0;
+  }
+
+  &__side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
+
+  &__image {
+    width: 600px;
+    height: 600px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #303030;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  &__paragraph {
+    & + & {
+      margin-top: 16px;
+    }
+  }
+
+  &__bullets {
+    margin-top: 24px;
+  }
+
+  &__cta-link {
+    text-decoration: none;
+  }
+
+  &__cta-button {
+    all: unset;
+    padding: 6px;
+    text-align: center;
+    color: #303030;
+    text-decoration: none;
+    margin-top: 24px;
+    border-bottom: 2px solid #56b665;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #56b665;
+      color: #FBFCF8;
+      transform: translateY(-2px);
+    }
+  }
+
+  &__subtitle-row {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__subtitle-row-text {
+    width: 80%;
+    font-size: 20px;
+    font-weight: 300;
+    color: #303030;
+    text-align: center;
+    padding-bottom: $spacing-48;
+  }
+
+}

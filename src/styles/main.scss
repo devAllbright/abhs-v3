@@ -27,6 +27,8 @@
 @use "./scss/components/lead-form";
 @use "./scss/components/timeline";
 @use "./scss/components/service-details";
+@use "./scss/components/rotating-system-frame";
+@use "./scss/components/rotating-system-component";
 
 
 // 5. Pages (Specific page styles)
@@ -41,6 +43,7 @@
 @use "./scss/pages/home/service-filter";
 @use "./scss/pages/about-us/brief";
 @use "./scss/pages/contact-us/contact-us";
+
 
 // 6. Themes (Light and Dark mode)
 // 7. Vendors (Third-party styles)
