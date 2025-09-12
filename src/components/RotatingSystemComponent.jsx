@@ -195,7 +195,7 @@ const RotatingSystemComponent = () => {
           <div className="rotating-system__text">
             <div className="rotating-system__section-container">
               <div className="rotating-system__section">
-                <div className="rotating-system__section-header">Normal Clean</div>
+                <div className="rotating-system__section-header">Normal Cleaning</div>
                 <div className="rotating-system__section-content">
                   {infoData[currentInfo]?.normalCleaning.map((item, index) => (
                     <p key={index} className="rotating-system__item">
