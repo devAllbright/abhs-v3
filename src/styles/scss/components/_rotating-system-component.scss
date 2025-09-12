@@ -93,39 +93,51 @@
     white-space: pre-wrap;
   }
 
+  /* ──────────────────────────────────────────────
+     SIDE-BY-SIDE COLUMNS (equal height)
+     ────────────────────────────────────────────── */
   &__section-container {
     display: flex;
+    align-items: stretch; /* ← force equal heights */
+    gap: 0;
   }
 
   &__section {
-    width: 28.9rem; /* ~462.9px */
+    width: 28.9rem; /* ~462.9px (keep your fixed width) */
+    display: flex;          /* ← make a column */
+    flex-direction: column; /* ← header + content stack */
+  }
 
-    &-header {
-      padding: 1.98rem; /* ~31.7px */
+  &__section-header {
+    padding: 1.98rem; /* ~31.7px */
+    font-weight: bold;
+    color: #f7f7f7;
+    background-color: #ec6b33;
+  }
+
+  &__section-content {
+    padding: 1.98rem; /* ~31.7px */
+    border: 0.0625rem solid #e7a78c; /* 1px */
+    flex: 1 1 auto;                  /* ← fills remaining height */
+
+    .rotating-system__checkmark {
+      color: #04a44d;
       font-weight: bold;
-      color: #f7f7f7;
-      background-color: #ec6b33;
-
-      &:nth-child(1) {
-        border-right: 0.0625rem solid #e7a78c; /* keep at 1px */
-      }
+      margin-right: 0.99rem; /* ~15.8px */
     }
 
-    &-content {
-      padding: 1.98rem; /* ~31.7px */
-      border: 0.0625rem solid #e7a78c; /* keep at 1px */
-
-      .rotating-system__checkmark {
-        color: #04a44d;
-        font-weight: bold;
-        margin-right: 0.99rem; /* ~15.8px */
-      }
-
-      p.rotating-system__item {
-        padding: 0.99rem 0; /* ~15.8px */
-        font-size: 1.32rem; /* ~21.1px */
-      }
+    p.rotating-system__item {
+      padding: 0.99rem 0; /* ~15.8px */
+      font-size: 1.32rem; /* ~21.1px */
     }
+  }
+
+  /* Tidy middle divider: avoid double border, add single left border on right column */
+  &__section:first-child .rotating-system__section-content {
+    border-right: 0;
+  }
+  &__section:last-child .rotating-system__section-content {
+    border-left: 0.0625rem solid #e7a78c;
   }
 
   &__checkmark {
