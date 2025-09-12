@@ -1,8 +1,33 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import RotatingSystemComponent from "../components/RotatingSystemComponent";
+import FAQSection from '../components/pages/home/FAQSection.astro'
+
+const faqs = [
+  {
+    question: "What's the difference between Normal Cleaning and Rotation Cleaning Options?",
+    answer: "Normal Cleaning covers all essential tasks we complete on every visit—such as disinfecting surfaces, cleaning bathrooms, dusting furniture, vacuuming, and taking out trash. These ensure your home stays consistently clean.\n\nRotation Cleaning Options are deeper tasks—like scrubbing grout, polishing chrome, or wiping inside trash bins—that we perform as time allows. These tasks help maintain long-term cleanliness without needing a full deep clean each time."
+  },
+  {
+    question: "Are Rotation Cleaning Options included in every visit?",
+    answer: "Rotation Cleaning Options are available on request and completed as time allows—after all Normal Cleaning tasks are done. If you're interested in any specific rotating tasks, just let us know, and we'll prioritize them when possible."
+  },
+  {
+    question: "What if I want all the deep-cleaning tasks done in one visit?",
+    answer: "Great question! If you'd like all Rotation Cleaning Options completed in one session, we recommend our Home Detailing Cleaning service. It's a comprehensive deep clean that includes every rotation item across all areas of the home—perfect for seasonal refreshes or detailed resets."
+  },
+  {
+    question: "Which areas of my home are included in the Rotating Cleaning System?",
+    answer: "Our system covers Bathrooms, Kitchens, Living Areas, and Sleeping Areas. Each zone receives core cleaning every visit and rotating deep-clean tasks like polishing, detail dusting, and hand-wiping on a rotating basis—as time allows."
+  },
+  {
+    question: "Can I request specific deep-clean tasks before my visit?",
+    answer: "Absolutely. While our system cycles through deep tasks automatically, you can request specific Rotation Cleaning Options before your visit. We'll do our best to include them, depending on time available after completing all standard cleaning tasks."
+  }
+];
 ---
 
 <BaseLayout>
   <RotatingSystemComponent client:only="react" />
+  <FAQSection faqs={ faqs }/>
 </BaseLayout>

@@ -58,7 +58,6 @@
   }
 
   &__description {
-    width: 40%;
     flex-grow: 0;
     flex-shrink: 0;
     display: flex;
@@ -71,7 +70,8 @@
   &__info-box {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    width: 100%;
+/*     width: 100%; */
+    width: 60rem;
 
     &--visible { opacity: 1; }
     &--hidden { opacity: 0; }
