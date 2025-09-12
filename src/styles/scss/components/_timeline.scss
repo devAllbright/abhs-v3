@@ -3,4 +3,12 @@
 .timeline-container{
     padding: $spacing-64;
     padding-top: 96px;
+
+    .milestone-4-img-4 {
+        object-position: center center;
+    }
+
+    .milestone-5-img-5 {
+        object-position: top top;
+    }
 }

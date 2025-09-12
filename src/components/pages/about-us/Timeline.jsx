@@ -73,7 +73,7 @@ const Timeline = () => {
             <h3
               style={{
                 marginBottom: '0.5rem',
-                fontSize: '2rem', // biggest
+                fontSize: '2rem',
                 fontWeight: 700,
                 lineHeight: 1.3,
               }}
@@ -87,7 +87,7 @@ const Timeline = () => {
                 style={{
                   margin: '0 0 1rem',
                   fontWeight: 500,
-                  fontSize: '1.5rem', // medium
+                  fontSize: '1.5rem',
                   lineHeight: 1.4,
                 }}
               >
@@ -103,6 +103,7 @@ const Timeline = () => {
                     key={i}
                     src={src}
                     alt={`milestone-${index}-img-${i}`}
+                    className={`timeline-image milestone-${index}-img-${i}`}
                     onMouseEnter={() => showOverlay(src)}
                     onMouseLeave={scheduleHide}
                     onClick={() => showOverlay(src)} // touch fallback
@@ -110,7 +111,7 @@ const Timeline = () => {
                       width: '140px',
                       height: '90px',
                       objectFit: 'cover',
-                      objectPosition: 'top center',
+                      objectPosition: 'center center', // default, can override in CSS
                       borderRadius: '6px',
                       boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
                       transition: 'transform 0.2s ease, box-shadow 0.2s ease',
@@ -126,7 +127,7 @@ const Timeline = () => {
               <p
                 style={{
                   marginBottom: milestone.images ? '1.25rem' : '0',
-                  fontSize: '1.1rem', // smallest
+                  fontSize: '1.1rem',
                   lineHeight: 1.6,
                   fontWeight: 400,
                 }}
