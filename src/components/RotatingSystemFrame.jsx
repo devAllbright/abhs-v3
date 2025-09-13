@@ -25,9 +25,10 @@ const RotatingSystemFrame = () => {
             <p className="rotating-system-frame__paragraph">
               AllBright's revolutionary cleaning system delivers impeccable kitchens, bathrooms,
               and living spaces during every visit. Our flexible schedule also includes rotating
-              tasks such as high dusting, window sills, and baseboards. Enhance your service with
+              options such as high dusting, window sills, and baseboards. Enhance your service with
               extras like oven, refrigerator, and cabinet cleaning. Choose AllBright for exceptional
               cleanliness and ultimate peace of mind.
+              
             </p>
 
             <p className="rotating-system-frame__bullets">
