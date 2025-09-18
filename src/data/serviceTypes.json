@@ -37,5 +37,19 @@
         ]
       }
     ]
+  },
+  "Packages": {
+    "description": "For convenience and savings.",
+    "categories": [
+      {
+        "title": "Bundles",
+        "services": [
+          { "name": "Full Bundle", "img": "/mega-menu/full-bundle.png", "price": "Save $100", "url": "/our-services/packages/full-bundle" },
+          { "name": "Carpet Bundle", "img": "/mega-menu/carpet-bundle.png", "price": "Save $75", "url": "/our-services/packages/carpet-bundle" },
+          { "name": "Window Bundle", "img": "/mega-menu/window-bundle.png", "price": "Save $75", "url": "/our-services/packages/window-bundle" },
+          { "name": "Carpet and Window", "img": "/mega-menu/carpet-and-window-bundle.png", "price": "Save $50", "url": "/our-services/packages/carpet-and-window-bundle" }
+        ]
+      }
+    ]
   }
 }

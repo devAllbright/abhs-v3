@@ -1,0 +1,183 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import Hero from '../../../components/Hero'
+import ServiceDescription from '../../../components/pages/services/ServiceDescription'
+import ServiceDetails from '../../../components/pages/services/ServiceDetails'
+import HowItWorks from "../../../components/pages/services/HowItWorks.astro"
+import BundleAndSave from '../../../components/pages/services/BundleAndSave'
+import ReviewsWidget from "../../../components/pages/ReviewsWidget.astro"
+import PostCarousel from "../../../components/layout/PostCarousel"
+import FAQSection from "../../../components/pages/home/FAQSection.astro"
+import FinalCTASection from "../../../components/pages/home/FinalCTASection.astro"
+
+const bannerData = {
+  ratingText: "4.9 AVERAGE RATING",
+  title: "Window Bundle: Deep Cleaning + Window Washing",
+  subtitle: "Book in seconds — save $75!",
+  description: `Want a sparkling clean home that shines inside and out? 
+                Our Window Bundle combines Deep Cleaning with streak-free 
+                Window Washing—giving your space a brighter, fresher feel 
+                and saving you $75 in the process.`,
+  socialProof: [
+    "5,000+ customers trust in Allbright Home Services",
+    "200,000+ services completed"
+  ],
+  images: {
+    googleLogo: "/google-logo.png",
+    ratingStars: "/rating-stars.svg",
+    checkIcon: "/check.png",
+    heroImage: "/services/maid-services/hero-img.png"
+  },
+
+  uiImages: [
+    { type: "a", src: "/banner-list/window-bundle/img-1.png" },
+    { type: "b", src: "/banner-list/window-bundle/img-2.png" },
+    { type: "a", src: "/banner-list/window-bundle/img-3.png" },
+    { type: "b", src: "/banner-list/window-bundle/img-4.png" },
+    { type: "a", src: "/banner-list/window-bundle/img-5.png" },
+    { type: "b", src: "/banner-list/window-bundle/img-6.png" },
+    { type: "a", src: "/banner-list/window-bundle/img-7.png" },
+    { type: "b", src: "/banner-list/window-bundle/img-8.png" },
+  ],
+
+
+  imgClass: "--secondary"
+}
+
+const descriptionData = {
+  title: "Clear Views. Clean Space. Total Refresh.",
+  imageUrl: "/services/packages/window-bundle/description-img.png",
+  paragraphs: [
+    {
+      subtitle: "Interior Deep Clean + Window Brilliance",
+      brief: `Bring light and life back into your home with a 
+              full interior deep clean plus crystal-clear windows. 
+              The Window Bundle tackles built-up grime, dust, 
+              and streaks—leaving your home spotless, polished, 
+              and full of natural light.`
+    },
+    {
+      subtitle: "Save $75 Instantly",
+      brief: `Don’t waste time booking separately. This bundle delivers 
+              maximum results with minimal hassle—and puts $75 back in 
+              your pocket. It’s ideal for seasonal resets, move-ins, or 
+              simply elevating the look and feel of your entire home.`
+    }
+  ]
+};
+
+const reasonsData = [
+  { icon: '/why-us/experience.png', reasonsTitle: 'Nearly 50 Years of Expertise', description: "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first." },
+  { icon: '/why-us/home.png', reasonsTitle: 'Comprehensive Home Care', description: 'From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional.' },
+  { icon: '/why-us/sustainability.png', reasonsTitle: 'Sustainable and Precise', description: '"Maintenance and Cleaning for Better living" is our promise. We use eco-friendly products and expert techniques for lasting quality.' }
+];
+
+const bundleData = [
+    {
+      title: "Carpet Bundle",
+      discount: "15% OFF!",
+      price: "$299",
+      brief: "Lorem ipsum dolor",
+      features: ["Deep cleaning", "Carpet Cleaning"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+    {
+      title: "Carpets and Windows",
+      discount: "20% OFF!",
+      price: "$499",
+      brief: "Lorem ipsum dolor",
+      features: ["Carpet CLeaning", "Window Washing"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+];
+
+const blogPosts = [
+  {
+    image: "/services/maid-services/blog-post-1.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-2.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-3.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-4.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  }
+];
+
+const finalCTAData = {
+  imgSrc: "/services/packages/window-bundle/final-cta.png",
+  imgAlt: "Final Call to Action",
+  title: "A Brighter Home—Inside and Out",
+  brief: `Deep clean your space and let the sunlight in. 
+          With $75 in savings and two powerful services 
+          in one, the Window Bundle is your shortcut to 
+          a fresher, more vibrant home. Book today and 
+          see the difference.`,
+  callToActionText: "",
+  contactText: "Let’s make your home shine!",
+};
+
+const faqs = [
+  {
+    question: "What’s included in the Window Bundle?",
+    answer: "The Window Bundle combines Deep Cleaning with Window Washing. You’ll enjoy a spotless interior plus streak-free, sparkling windows inside and out—while saving $75 compared to booking separately."
+  },
+  {
+    question: "How long does the Window Bundle service take?",
+    answer: "Most homes take 4–8 hours depending on size, number of windows, and detailing needs. We’ll provide an exact estimate during your consultation."
+  },
+  {
+    question: "Can I add other services to the Window Bundle?",
+    answer: "Yes, you can add carpet, tile, or upholstery cleaning at booking. If you’d prefer a customizable plan for ongoing services, our Signature Maintenance Plan may be better."
+  },
+  {
+    question: "When should I choose the Window Bundle?",
+    answer: "This bundle is perfect for brightening your home during seasonal cleanings, before hosting guests, or whenever you want your home to feel more inviting."
+  },
+  {
+    question: "Do you clean both sides of the windows?",
+    answer: "Yes, we clean both interior and accessible exterior surfaces. We’ll confirm accessibility during booking to ensure everything can be reached safely."
+  },
+  {
+    question: "Will window cleaning remove paint, hard water stains, or buildup?",
+    answer: "Standard cleaning removes dirt, dust, and streaks. For stubborn hard water stains or paint residue, extra treatments may be required—your technician will advise you on options."
+  },
+  {
+    question: "Do I need to prepare anything before the Window Bundle service?",
+    answer: "Preparation is simple: clear items from window areas, provide access to the home, and secure pets. If you’d like screens and tracks detailed, let us know so we can plan extra time."
+  }
+];
+
+
+
+
+---
+
+<BaseLayout>
+  <Hero bannerData={ bannerData } client:only="react"/>
+  <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
+  <ServiceDetails serviceName= "Window Bundle" client:only="react"/>
+  <HowItWorks reasons={ reasonsData }/>
+  <BundleAndSave bundleData={ bundleData } client:only="react"/>
+  <ReviewsWidget />
+  <PostCarousel posts={ blogPosts } client:only="react"/>
+  <FAQSection faqs={ faqs }/>
+  <FinalCTASection finalCTAData={ finalCTAData }/>
+
+</BaseLayout>

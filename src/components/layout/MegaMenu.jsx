@@ -33,8 +33,6 @@ const MegaMenu = forwardRef(({ visible, onLeave }, ref) => {
           </div>
 
           {Object.entries(serviceTypes).map(([type, data]) => {
-            // Skip Packages
-            if (type === 'Packages') return null
             return (
               <div
                 key={type}

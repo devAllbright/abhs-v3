@@ -1,0 +1,183 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro"
+import Hero from '../../../components/Hero'
+import ServiceDescription from '../../../components/pages/services/ServiceDescription'
+import ServiceDetails from '../../../components/pages/services/ServiceDetails'
+import HowItWorks from "../../../components/pages/services/HowItWorks.astro"
+import BundleAndSave from '../../../components/pages/services/BundleAndSave'
+import ReviewsWidget from "../../../components/pages/ReviewsWidget.astro"
+import PostCarousel from "../../../components/layout/PostCarousel"
+import FAQSection from "../../../components/pages/home/FAQSection.astro"
+import FinalCTASection from "../../../components/pages/home/FinalCTASection.astro"
+
+const bannerData = {
+  ratingText: "4.9 AVERAGE RATING",
+  title: "Carpet Bundle: Deep Cleaning + Carpet Care",
+  subtitle: "Book in seconds — save $75!",
+  description: `Refresh every room and restore your carpets in one simple visit. 
+                The Carpet Bundle combines two of our most requested services—giving 
+                your home a cleaner, healthier feel while saving you $75.`,
+  socialProof: [
+    "5,000+ customers trust in Allbright Home Services",
+    "200,000+ services completed"
+  ],
+  images: {
+    googleLogo: "/google-logo.png",
+    ratingStars: "/rating-stars.svg",
+    checkIcon: "/check.png",
+    heroImage: "/services/maid-services/hero-img.png"
+  },
+
+  uiImages: [
+    { type: "a", src: "/banner-list/carpet-bundle/img-1.png" },
+    { type: "b", src: "/banner-list/carpet-bundle/img-2.png" },
+    { type: "a", src: "/banner-list/carpet-bundle/img-3.png" },
+    { type: "b", src: "/banner-list/carpet-bundle/img-4.png" },
+    { type: "a", src: "/banner-list/carpet-bundle/img-5.png" },
+    { type: "b", src: "/banner-list/carpet-bundle/img-6.png" },
+    { type: "a", src: "/banner-list/carpet-bundle/img-7.png" },
+    { type: "b", src: "/banner-list/carpet-bundle/img-8.png" },
+  ],
+
+
+  imgClass: "--secondary"
+}
+
+const descriptionData = {
+  title: "A Deeper Clean from Top to Bottom",
+  imageUrl: "/services/packages/carpet-bundle/description-img.png",
+  paragraphs: [
+    {
+      subtitle: "Interior Cleaning Meets Carpet Revival",
+      brief: `Tired of surface-level results? The Carpet Bundle 
+              combines a thorough deep clean with professional 
+              carpet care removing dust, dirt, allergens, and 
+              stains to leave your home fresher, brighter, and 
+              more inviting from the ground up.`
+    },
+    {
+      subtitle: "Save More. Schedule Less.",
+      brief: `Separately, these services are powerful. Together, 
+              they’re transformative—and with bundled pricing, you 
+              save $75. One appointment handles it all, whether you're 
+              preparing for guests, changing seasons, or just reclaiming your space.`
+    }
+  ]
+};
+
+const reasonsData = [
+  { icon: '/why-us/experience.png', reasonsTitle: 'Nearly 50 Years of Expertise', description: "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first." },
+  { icon: '/why-us/home.png', reasonsTitle: 'Comprehensive Home Care', description: 'From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional.' },
+  { icon: '/why-us/sustainability.png', reasonsTitle: 'Sustainable and Precise', description: '"Maintenance and Cleaning for Better living" is our promise. We use eco-friendly products and expert techniques for lasting quality.' }
+];
+
+const bundleData = [
+    {
+      title: "Carpet Bundle",
+      discount: "15% OFF!",
+      price: "$299",
+      brief: "Lorem ipsum dolor",
+      features: ["Deep cleaning", "Carpet Cleaning"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+    {
+      title: "Carpets and Windows",
+      discount: "20% OFF!",
+      price: "$499",
+      brief: "Lorem ipsum dolor",
+      features: ["Carpet CLeaning", "Window Washing"],
+      cta: { href: "#", text: "BOOK NOW!" },
+      disclaimer: "One-time Service",
+    },
+];
+
+const blogPosts = [
+  {
+    image: "/services/maid-services/blog-post-1.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-2.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-3.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  },
+  {
+    image: "/services/maid-services/blog-post-4.png",
+    title: "Maid Services",
+    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#"
+  }
+];
+
+const finalCTAData = {
+  imgSrc: "/services/packages/carpet-bundle/final-cta.png",
+  imgAlt: "Final Call to Action",
+  title: "Two Services. One Visit. Big Savings.",
+  brief: `Get the deep clean your home deserves and 
+          the carpet care it needs—all while saving $75. 
+          The Carpet Bundle is the perfect combo for anyone 
+          ready to refresh their space without the hassle of 
+          multiple bookings. Book your bundle today!`,
+  callToActionText: "",
+  contactText: "Book your bundle today!",
+};
+
+const faqs = [
+  {
+    question: "What’s included in the Carpet Bundle?",
+    answer: "The Carpet Bundle combines Deep Cleaning and Carpet Cleaning in one visit. It’s a great way to refresh your entire home while also giving your carpets a professional clean—removing stains, allergens, and odors for a healthier environment."
+  },
+  {
+    question: "How long does the Carpet Bundle service take?",
+    answer: "On average, it takes 4–8 hours depending on the size of your home and the condition of your carpets. We’ll give you a personalized time estimate during your consultation."
+  },
+  {
+    question: "Can I add other services to the Carpet Bundle?",
+    answer: "Yes, you can add services such as window washing or upholstery cleaning at the time of booking. For fully tailored cleaning on a recurring schedule, our Signature Maintenance Plan may be a better fit."
+  },
+  {
+    question: "When should I choose the Carpet Bundle?",
+    answer: "It’s a great option for families with kids or pets, after hosting an event, or whenever you notice dirt and allergens building up in your carpets."
+  },
+  {
+    question: "Will the carpet cleaning remove all stains?",
+    answer: "Our advanced methods remove most stains, but results depend on the type and age of the stain. We’ll assess your carpets on-site and let you know what results you can expect."
+  },
+  {
+    question: "Do I need to move furniture before carpet cleaning?",
+    answer: "We ask that you move small and fragile items beforehand. Our team can move lightweight furniture if needed, but larger items usually remain in place."
+  },
+  {
+    question: "Is it okay to walk on the carpets right after cleaning?",
+    answer: "We recommend letting carpets dry for a few hours before walking on them. Your technician will provide drying times and care instructions specific to your home."
+  }
+];
+
+
+
+
+
+---
+
+<BaseLayout>
+  <Hero bannerData={ bannerData } client:only="react"/>
+  <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
+  <ServiceDetails serviceName= "Carpet Bundle" client:only="react"/>
+  <HowItWorks reasons={ reasonsData }/>
+  <BundleAndSave bundleData={ bundleData } client:only="react"/>
+  <ReviewsWidget />
+  <PostCarousel posts={ blogPosts } client:only="react"/>
+  <FAQSection faqs={ faqs }/>
+  <FinalCTASection finalCTAData={ finalCTAData }/>
+
+</BaseLayout>

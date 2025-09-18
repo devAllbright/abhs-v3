@@ -709,5 +709,280 @@
         "background": "css-bg"
       }
     }
+  },
+    "Full Bundle": {
+    "main": {
+      "zones": [
+        {
+          "title": "Deep Cleaning",
+          "description": "Comprehensive cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes baseboards, fixtures, and hard-to-reach areas for a full interior reset.",
+          "image": "/service-details/full-bundle/img-1.png"
+        },
+        {
+          "title": "Carpet Cleaning",
+          "description": "Choice of steam cleaning or low-moisture method. Removes embedded dirt, stains, allergens, and odors to refresh and sanitize carpets.",
+          "image": "/service-details/full-bundle/img-2.png"
+        },
+        {
+          "title": "Window Washing",
+          "description": "Interior and exterior glass cleaned for a streak-free shine. Includes screens, frames, tracks, and sills for a complete finish.",
+          "image": "/service-details/full-bundle/img-3.png"
+        }
+      ]
+    },
+    "blocks": {
+      "topRight": {
+        "title": "Quick Facts",
+        "description": [
+          "Recommended Frequency: As needed for move-ins/outs, seasonal resets, holiday/event prep, or after renovations.",
+          "Duration: 6–10 hours in a single visit depending on home size and condition. Larger homes may require additional time or extra technicians."
+        ],
+        "image": "/service-details/img-1.png",
+        "background": "css-bg"
+      },
+      "middleRight": {
+        "title": "Service Highlights",
+        "description": [
+          "Combines three of our most popular services in one visit.",
+          "Saves $100 compared to booking separately.",
+          "Provides the ultimate top-to-bottom reset for your home."
+        ],
+        "image": "/service-details/img-2.png",
+        "background": "css-bg"
+      },
+      "bottomRight": {
+        "title": "What’s Not Included",
+        "description": [
+          "Upholstery, tile, or exterior surface cleaning (available as add-ons).",
+          "Large debris or post-construction waste removal.",
+          "Repairs to flooring, windows, or fixtures."
+        ],
+        "image": "/service-details/img-3.png",
+        "background": "css-bg"
+      },
+      "bottomMiddle": {
+        "title": "Pro Tips & Benefits",
+        "description": [
+          "Schedule before holidays, events, or move-in/out days for maximum impact.",
+          "Pair with upholstery or tile cleaning add-ons for an even more complete refresh.",
+          "Enjoy the convenience of a single-day reset instead of multiple appointments."
+        ],
+        "image": "/service-details/img-4.png",
+        "background": "css-bg"
+      },
+      "bottomLeft": {
+        "title": "Optional Upgrades",
+        "description": [
+          "Upholstery cleaning to refresh furniture fabrics.",
+          "Tile and grout cleaning for kitchens and bathrooms.",
+          "Exterior surface washing for patios, siding, or driveways."
+        ],
+        "image": "/service-details/img-5.png",
+        "background": "css-bg"
+      }
+    }
+  },
+  "Carpet Bundle": {
+    "main": {
+      "zones": [
+        {
+          "title": "Deep Cleaning",
+          "description": "Comprehensive cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes dusting, sanitizing, and detail work on surfaces, fixtures, and hard-to-reach areas.",
+          "image": "/service-details/carpet-bundle/img-1.png"
+        },
+        {
+          "title": "Carpet Cleaning",
+          "description": "Steam or low-moisture cleaning options remove dirt, stains, allergens, and odors while refreshing carpet fibers for a healthier, fresher home.",
+          "image": "/service-details/carpet-bundle/img-2.png"
+        }
+      ]
+    },
+    "blocks": {
+      "topRight": {
+        "title": "Quick Facts",
+        "description": [
+          "Recommended Frequency: Every 6–12 months, especially in homes with kids, pets, or high traffic. Also ideal for seasonal resets or post-event cleanups.",
+          "Duration: 4–8 hours depending on home size, number of rooms, and carpet condition."
+        ],
+        "image": "/service-details/img-1.png",
+        "background": "css-bg"
+      },
+      "middleRight": {
+        "title": "Service Highlights",
+        "description": [
+          "Combines two essential services in one visit.",
+          "Saves $75 compared to booking separately.",
+          "Delivers both spotless interiors and refreshed carpets."
+        ],
+        "image": "/service-details/img-2.png",
+        "background": "css-bg"
+      },
+      "bottomRight": {
+        "title": "What’s Not Included",
+        "description": [
+          "Upholstery, tile, or window cleaning (available as add-ons).",
+          "Carpet replacement or repair of damaged flooring.",
+          "Removal of heavy furniture or large appliances."
+        ],
+        "image": "/service-details/img-3.png",
+        "background": "css-bg"
+      },
+      "bottomMiddle": {
+        "title": "Pro Tips & Benefits",
+        "description": [
+          "Move fragile or personal items off carpets before service.",
+          "Keep pets secured in a safe space during cleaning.",
+          "Use drying aids like fans or HVAC circulation to speed carpet drying."
+        ],
+        "image": "/service-details/img-4.png",
+        "background": "css-bg"
+      },
+      "bottomLeft": {
+        "title": "Optional Upgrades",
+        "description": [
+          "Upholstery cleaning for sofas and chairs.",
+          "Tile and grout cleaning for kitchens and bathrooms.",
+          "Window washing to complete the refresh."
+        ],
+        "image": "/service-details/img-5.png",
+        "background": "css-bg"
+      }
+    }
+  },
+  "Window Bundle": {
+    "main": {
+      "zones": [
+        {
+          "title": "Deep Cleaning",
+          "description": "Comprehensive interior cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes dusting, sanitizing, baseboards, fixtures, and hard-to-reach areas.",
+          "image": "/service-details/window-bundle/img-1.png"
+        },
+        {
+          "title": "Window Washing",
+          "description": "Interior and exterior glass cleaned for a streak-free shine. Includes screens, tracks, and sills for a complete finish that enhances light and curb appeal.",
+          "image": "/service-details/window-bundle/img-2.png"
+        }
+      ]
+    },
+    "blocks": {
+      "topRight": {
+        "title": "Quick Facts",
+        "description": [
+          "Recommended Frequency: Best scheduled for seasonal cleanings (spring/fall), pre-event preparation, or holiday refreshes.",
+          "Duration: 4–8 hours depending on home size, number of windows, and detailing needs."
+        ],
+        "image": "/service-details/img-1.png",
+        "background": "css-bg"
+      },
+      "middleRight": {
+        "title": "Service Highlights",
+        "description": [
+          "Combines two popular services in one convenient visit.",
+          "Saves $75 compared to booking separately.",
+          "Provides a spotless home interior and streak-free windows inside and out."
+        ],
+        "image": "/service-details/img-2.png",
+        "background": "css-bg"
+      },
+      "bottomRight": {
+        "title": "What’s Not Included",
+        "description": [
+          "Carpet, upholstery, or tile cleaning (available as add-ons).",
+          "Paint removal or correction of permanent hard water stains (requires extra treatment).",
+          "Windows inaccessible due to safety or structural restrictions."
+        ],
+        "image": "/service-details/img-3.png",
+        "background": "css-bg"
+      },
+      "bottomMiddle": {
+        "title": "Pro Tips & Benefits",
+        "description": [
+          "Clear items from window sills, ledges, and nearby furniture before service.",
+          "Provide access for both interior and exterior windows (unlock gates if needed).",
+          "Move fragile décor away from windows to avoid accidents.",
+          "Secure pets away from work areas for safety."
+        ],
+        "image": "/service-details/img-4.png",
+        "background": "css-bg"
+      },
+      "bottomLeft": {
+        "title": "Optional Upgrades",
+        "description": [
+          "Carpet or upholstery cleaning to complete your reset.",
+          "Tile and grout cleaning for kitchens and bathrooms.",
+          "Exterior surface washing to enhance curb appeal."
+        ],
+        "image": "/service-details/img-5.png",
+        "background": "css-bg"
+      }
+    }
+  },
+  "Carpet and Window Bundle": {
+    "main": {
+      "zones": [
+        {
+          "title": "Carpet Cleaning",
+          "description": "Choice of steam (hot water extraction) or low-moisture cleaning methods. Removes dirt, allergens, odors, and refreshes carpet fibers for a healthier home.",
+          "image": "/service-details/carpet-window-bundle/img-1.png"
+        },
+        {
+          "title": "Window Washing",
+          "description": "Interior and exterior glass cleaned for a streak-free shine. Tracks, sills, and screens detailed for improved airflow and clarity.",
+          "image": "/service-details/carpet-window-bundle/img-2.png"
+        }
+      ]
+    },
+    "blocks": {
+      "topRight": {
+        "title": "Quick Facts",
+        "description": [
+          "Recommended Frequency: Every 6–12 months, especially before hosting guests, during seasonal resets, or anytime you want a refreshed home inside and out.",
+          "Duration: 3–6 hours depending on number of windows, carpeted rooms, and overall home size."
+        ],
+        "image": "/service-details/img-1.png",
+        "background": "css-bg"
+      },
+      "middleRight": {
+        "title": "Service Highlights",
+        "description": [
+          "Combines carpet cleaning and window washing in one efficient visit.",
+          "Saves $50 compared to booking separately.",
+          "Refreshes both interior comfort and exterior curb appeal."
+        ],
+        "image": "/service-details/img-2.png",
+        "background": "css-bg"
+      },
+      "bottomRight": {
+        "title": "What’s Not Included",
+        "description": [
+          "Deep cleaning, upholstery, or tile (available as add-ons).",
+          "Removal of permanent carpet stains or heavy water damage.",
+          "Inaccessible exterior windows beyond safe reach."
+        ],
+        "image": "/service-details/img-3.png",
+        "background": "css-bg"
+      },
+      "bottomMiddle": {
+        "title": "Pro Tips & Benefits",
+        "description": [
+          "Clear carpets of toys, décor, and small items before the appointment.",
+          "Move lightweight furniture if possible to maximize carpet coverage.",
+          "Open blinds and curtains for faster window access.",
+          "Secure pets and ensure parking and water access for technicians."
+        ],
+        "image": "/service-details/img-4.png",
+        "background": "css-bg"
+      },
+      "bottomLeft": {
+        "title": "Optional Upgrades",
+        "description": [
+          "Add upholstery cleaning for sofas and chairs.",
+          "Bundle with deep cleaning for a complete reset.",
+          "Protective carpet treatment to extend cleanliness and durability."
+        ],
+        "image": "/service-details/img-5.png",
+        "background": "css-bg"
+      }
+    }
   }
 }
