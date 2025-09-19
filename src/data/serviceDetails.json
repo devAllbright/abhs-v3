@@ -710,18 +710,18 @@
       }
     }
   },
-    "Full Bundle": {
+  "Full Bundle": {
     "main": {
       "zones": [
-        {
-          "title": "Deep Cleaning",
-          "description": "Comprehensive cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes baseboards, fixtures, and hard-to-reach areas for a full interior reset.",
-          "image": "/service-details/full-bundle/img-1.png"
-        },
         {
           "title": "Carpet Cleaning",
           "description": "Choice of steam cleaning or low-moisture method. Removes embedded dirt, stains, allergens, and odors to refresh and sanitize carpets.",
           "image": "/service-details/full-bundle/img-2.png"
+        },
+        {
+          "title": "Deep Cleaning",
+          "description": "Comprehensive cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes baseboards, fixtures, and hard-to-reach areas for a full interior reset.",
+          "image": "/service-details/full-bundle/img-1.png"
         },
         {
           "title": "Window Washing",
@@ -786,14 +786,14 @@
     "main": {
       "zones": [
         {
-          "title": "Deep Cleaning",
-          "description": "Comprehensive cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes dusting, sanitizing, and detail work on surfaces, fixtures, and hard-to-reach areas.",
-          "image": "/service-details/carpet-bundle/img-1.png"
-        },
-        {
           "title": "Carpet Cleaning",
           "description": "Steam or low-moisture cleaning options remove dirt, stains, allergens, and odors while refreshing carpet fibers for a healthier, fresher home.",
           "image": "/service-details/carpet-bundle/img-2.png"
+        },
+        {
+          "title": "Deep Cleaning",
+          "description": "Comprehensive cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes dusting, sanitizing, and detail work on surfaces, fixtures, and hard-to-reach areas.",
+          "image": "/service-details/carpet-bundle/img-1.png"
         }
       ]
     },
