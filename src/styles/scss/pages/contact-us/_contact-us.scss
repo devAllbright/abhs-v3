@@ -31,8 +31,8 @@
   }
 
   &__details{
-    border: 2px #f1f1f1 solid;
-    border-radius: 6px;
+    border: 0.2rem $background-neutral solid;
+    border-radius: $spacing-6;
 
     .contact-us__detail{
       display: flex;
@@ -76,10 +76,104 @@
   &__form{
     width: 45rem;
     height: 100%;
-    border: 2px #f1f1f1 solid;
-    border-radius: 6px;
+    border: 0.2rem $background-neutral solid;
+    border-radius: $spacing-6;
     padding: $spacing-24;
   }
+}
 
+/* ===================== TABLET (≤1024px): scaling only ===================== */
+@media (max-width: 1024px) {
+  .contact-us{
+    padding: $spacing-24;
 
+    &__right-side{ height: auto; }
+
+    &__image{
+      width: 28rem;
+      height: 28rem;
+      margin-bottom: $spacing-12;
+    }
+
+    &__icon{
+      width: 4rem; height: 4rem;
+      img{ width: 4rem; height: 4rem; }
+    }
+
+    &__form{
+      width: 36rem;
+      padding: $spacing-24;
+    }
+  }
+}
+
+/* ===================== MOBILE (≤768px): image + info on top (flex), form below ===================== */
+@media (max-width: 768px) {
+  .contact-us{
+    /* stack columns */
+    flex-direction: column;
+    align-items: stretch;
+    padding: $spacing-16;
+
+    &__left-side{
+      /* top row with image + details side-by-side */
+      width: 100%;
+      margin-right: 0;
+      display: flex;
+      gap: $spacing-12;
+      align-items: stretch;
+      margin-bottom: $spacing-16;
+    }
+
+    &__image{
+      /* half width image */
+      flex: 1 1 50%;
+      width: auto;
+      height: auto;
+      margin-bottom: 0;
+
+      /* keep a pleasant aspect ratio */
+      aspect-ratio: 1 / 1; /* square-ish; adjust if you prefer */
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 0.6rem;
+      }
+    }
+
+    &__details{
+      /* half width details card */
+      flex: 1 1 50%;
+      width: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: $spacing-6;
+      padding: 0; /* keep inner item padding from children */
+    }
+
+    &__detail{ padding: $spacing-12; }
+
+    &__icon{
+      width: 3.6rem; height: 3.6rem;
+      img{ width: 3.6rem; height: 3.6rem; }
+    }
+
+    &__text{ padding-left: $spacing-12; }
+
+    &__title{ font-size: $font-size-16; }
+    &__subtitle{ font-size: $font-size-12; }
+
+    /* form full width and below */
+    &__right-side{
+      width: 100%;
+      height: auto;
+    }
+
+    &__form{
+      width: 100%;
+      padding: $spacing-16;
+    }
+  }
 }
