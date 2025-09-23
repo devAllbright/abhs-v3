@@ -1,13 +1,13 @@
 ---
 import Head from "../components/layout/Head.astro";
-import Header from "../components/layout/Header";
+import ResponsiveHeader from "../components/layout/ResponsiveHeader";
 import Footer from "../components/layout/Footer.astro";
 import "../styles/main.scss";
 ---
 
 <html lang="en">
   <Head title="Allbright Home Services" />
-  <Header client:only="react" />
+  <ResponsiveHeader client:only="react" />
   <slot />
   <Footer />
   <script>

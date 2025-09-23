@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 .rotating-system {
   display: flex;
   justify-content: center;
@@ -20,7 +22,7 @@
 
   &__circle {
     width: 14.9rem; /* ~238px */
-    height: 14.9rem; /* ~238px */
+    height: 14.9rem;
     border-radius: 50%;
     overflow: hidden;
     display: flex;
@@ -29,7 +31,7 @@
     flex-direction: column;
     margin: auto;
     cursor: pointer;
-    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, box-shadow 0.3s ease;
 
     &:hover:not(&--arrows) {
       box-shadow: 0 0 4.13rem rgba(0, 0, 0, 0.5); /* ~66px */
@@ -39,10 +41,10 @@
       box-shadow: 0 0 3.72rem rgba(236, 107, 51, 0.9) !important; /* ~59.5px */
     }
 
-    &--kitchen { grid-column: 2; grid-row: 1; }
-    &--requests { grid-column: 1; grid-row: 2; }
+    &--kitchen   { grid-column: 2; grid-row: 1; }
+    &--requests  { grid-column: 1; grid-row: 2; }
     &--bathrooms { grid-column: 3; grid-row: 2; }
-    &--bedrooms { grid-column: 2; grid-row: 3; }
+    &--bedrooms  { grid-column: 2; grid-row: 3; }
     &--arrows {
       grid-column: 2;
       grid-row: 2;
@@ -70,26 +72,25 @@
   &__info-box {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-/*     width: 100%; */
     width: 60rem;
 
     &--visible { opacity: 1; }
-    &--hidden { opacity: 0; }
+    &--hidden  { opacity: 0; }
   }
 
   &__subheader {
     display: flex;
     align-items: center;
     font-size: 2.3rem; /* ~36.9px */
-    font-weight: bold;
+    font-weight: $font-weight-bold;
     margin-bottom: 0.83rem; /* ~13.3px */
-    color: #303030;
+    color: $primary-text;
   }
 
   &__text {
     font-size: 1.98rem; /* ~31.7px */
-    font-weight: lighter;
-    color: #303030;
+    font-weight: $font-weight-light;
+    color: $primary-text;
     white-space: pre-wrap;
   }
 
@@ -98,31 +99,31 @@
      ────────────────────────────────────────────── */
   &__section-container {
     display: flex;
-    align-items: stretch; /* ← force equal heights */
+    align-items: stretch; /* ← equal heights */
     gap: 0;
   }
 
   &__section {
-    width: 28.9rem; /* ~462.9px (keep your fixed width) */
-    display: flex;          /* ← make a column */
-    flex-direction: column; /* ← header + content stack */
+    width: 28.9rem; /* ~462.9px */
+    display: flex;
+    flex-direction: column;
   }
 
   &__section-header {
     padding: 1.98rem; /* ~31.7px */
-    font-weight: bold;
-    color: #f7f7f7;
-    background-color: #ec6b33;
+    font-weight: $font-weight-bold;
+    color: $secondary-text;
+    background-color: $primary-color-dark; /* was #ec6b33 */
   }
 
   &__section-content {
-    padding: 1.98rem; /* ~31.7px */
+    padding: 1.98rem;
     border: 0.0625rem solid #e7a78c; /* 1px */
-    flex: 1 1 auto;                  /* ← fills remaining height */
+    flex: 1 1 auto;
 
     .rotating-system__checkmark {
-      color: #04a44d;
-      font-weight: bold;
+      color: $background-positive-b; /* was #04a44d */
+      font-weight: $font-weight-bold;
       margin-right: 0.99rem; /* ~15.8px */
     }
 
@@ -132,17 +133,106 @@
     }
   }
 
-  /* Tidy middle divider: avoid double border, add single left border on right column */
-  &__section:first-child .rotating-system__section-content {
-    border-right: 0;
-  }
-  &__section:last-child .rotating-system__section-content {
-    border-left: 0.0625rem solid #e7a78c;
-  }
+  /* Avoid double border in the middle on desktop/tablet */
+  &__section:first-child .rotating-system__section-content { border-right: 0; }
+  &__section:last-child  .rotating-system__section-content { border-left: 0.0625rem solid #e7a78c; }
 
   &__checkmark {
-    color: #04a44d;
-    font-weight: bold;
-    margin-right: 0.99rem; /* ~15.8px */
+    color: $background-positive-b;
+    font-weight: $font-weight-bold;
+    margin-right: 0.99rem;
+  }
+}
+
+/* ===================== TABLET (≤1024px): scale only ===================== */
+@media (max-width: 1024px) {
+  .rotating-system {
+    height: auto;
+    padding: 0 $spacing-24;
+
+    &__grid {
+      width: 40rem;   /* down from 49.6rem */
+      height: 40rem;
+      gap: 1.2rem;
+      margin-right: $spacing-24;
+    }
+
+    &__circle {
+      width: 12rem;
+      height: 12rem;
+
+      &:hover:not(&--arrows) {
+        box-shadow: 0 0 2.4rem rgba(0, 0, 0, 0.35);
+      }
+    }
+
+    &__info-box { width: 48rem; }
+
+    &__subheader { font-size: $font-size-24; }
+    &__text     { font-size: $font-size-16; }
+
+    &__section           { width: 25rem; }
+    &__section-header    { padding: $spacing-16; }
+    &__section-content   {
+      padding: $spacing-16;
+
+      .rotating-system__item { font-size: $font-size-16; padding: $spacing-8 0; }
+      .rotating-system__checkmark { margin-right: $spacing-8; }
+    }
+  }
+}
+
+/* ============== MOBILE (≤768px): text/details on top, animation below ============== */
+@media (max-width: 768px) {
+  .rotating-system {
+    height: auto;
+    padding: 0 $spacing-16;
+    flex-direction: column;     /* stack */
+    align-items: center;
+
+    /* Reorder: details first, animation second */
+    &__description { order: 1; width: 100%; }
+    &__grid        { order: 2; margin-right: 0; }
+
+    /* Center the info block horizontally; constrain inner text width */
+    &__info-box {
+      width: 100%;
+      max-width: 40rem;         /* not full width */
+      margin: 0 auto;
+    }
+
+    &__subheader { font-size: $font-size-20; text-align: center; }
+    &__text     { font-size: $font-size-16; }
+
+    /* Stack the two detail columns vertically for readability */
+    &__section-container {
+      flex-direction: column;
+      gap: $spacing-16;
+    }
+
+    &__section {
+      width: 100%;
+    }
+
+    /* Use full borders on stacked sections */
+    &__section:first-child .rotating-system__section-content { border-right: 0.0625rem solid #e7a78c; }
+    &__section:last-child  .rotating-system__section-content { border-left:  0.0625rem solid #e7a78c; }
+
+    /* Center the rotating graphic below the text */
+    &__grid {
+      width: 32rem;             /* smaller square */
+      height: 32rem;
+      gap: 0.9rem;
+      margin: $spacing-24 auto 0;
+    }
+
+    &__circle {
+      width: 10rem;
+      height: 10rem;
+
+      &:hover:not(&--arrows) {
+        box-shadow: 0 0 1.6rem rgba(0, 0, 0, 0.25);
+      }
+    }
   }
 }

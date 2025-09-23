@@ -9,6 +9,7 @@
 
 // 3. Layout (Header, Footer, Grid, etc.)
 @use "./scss/layout/header";
+@use "./scss/layout/mobile-header";
 @use "./scss/layout/footer";
 @use "./scss/layout/base-layout";
 @use "./scss/layout/hero";

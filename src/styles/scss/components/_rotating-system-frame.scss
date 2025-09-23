@@ -5,20 +5,20 @@
 
   &__header {
     width: 100%;
-    padding-top: 48px;
+    padding-top: $spacing-48; /* 48px */
     text-align: center;
   }
 
   &__title {
-    font-size: 36px;
-    font-weight: bold;
-    color: #303030;
+    font-size: $font-size-36; /* 36px */
+    font-weight: $font-weight-bold;
+    color: $primary-text;
   }
 
   &__subtitle {
-    font-size: 24px;
+    font-size: $font-size-24; /* 24px */
     font-style: italic;
-    color: #303030;
+    color: $primary-text;
   }
 
   &__body {
@@ -34,51 +34,45 @@
   }
 
   &__image {
-    width: 600px;
-    height: 600px;
+    width: 60rem;        /* 600px */
     max-width: 100%;
     height: auto;
+    display: block;
   }
 
   &__text {
-    font-size: 20px;
-    font-weight: bold;
-    color: #303030;
+    font-size: $font-size-20;  /* 20px */
+    font-weight: $font-weight-bold;
+    color: $primary-text;
 
-    a {
-      text-decoration: none;
-    }
+    a { text-decoration: none; }
   }
 
   &__paragraph {
-    & + & {
-      margin-top: 16px;
-    }
+    & + & { margin-top: $spacing-16; } /* 16px */
   }
 
   &__bullets {
-    margin-top: 24px;
+    margin-top: $spacing-24; /* 24px */
   }
 
-  &__cta-link {
-    text-decoration: none;
-  }
+  &__cta-link { text-decoration: none; }
 
   &__cta-button {
     all: unset;
-    padding: 6px;
+    padding: 0.6rem; /* 6px */
     text-align: center;
-    color: #303030;
+    color: $primary-text;
     text-decoration: none;
-    margin-top: 24px;
-    border-bottom: 2px solid #56b665;
+    margin-top: $spacing-24;
+    border-bottom: 0.2rem solid $background-positive-b; /* 2px */
     transition: all 0.2s;
     cursor: pointer;
 
     &:hover {
-      background-color: #56b665;
-      color: #FBFCF8;
-      transform: translateY(-2px);
+      background-color: $background-positive-b;
+      color: $secondary-text;
+      transform: translateY(-0.2rem);
     }
   }
 
@@ -89,11 +83,68 @@
 
   &__subtitle-row-text {
     width: 80%;
-    font-size: 20px;
-    font-weight: 300;
-    color: #303030;
+    font-size: $font-size-20;       /* 20px */
+    font-weight: $font-weight-light;
+    color: $primary-text;
     text-align: center;
     padding-bottom: $spacing-48;
   }
+}
 
+/* ===================== TABLET (≤1024px): scale only ===================== */
+@media (max-width: 1024px) {
+  .rotating-system-frame {
+    padding: 0 $spacing-24;
+
+    &__title    { font-size: $font-size-28; }
+    &__subtitle { font-size: $font-size-20; }
+    &__text     { font-size: $font-size-18; }
+    &__body     { padding: 4vh 0; }
+
+    &__image { width: 44rem; }            /* smaller image but still side-by-side */
+    &__subtitle-row-text { font-size: $font-size-16; width: 90%; }
+  }
+}
+
+/* ============== MOBILE (≤768px): text over image, centered image ============== */
+@media (max-width: 768px) {
+  .rotating-system-frame {
+    padding: 0 $spacing-16;
+
+    &__body {
+      flex-direction: column;     /* stack */
+      align-items: center;
+      gap: $spacing-24;
+      padding: $spacing-24 0;
+    }
+
+    /* Reorder: content first, media second */
+    &__side--content { order: 1; width: 100%; }
+    &__side--media   { order: 2; width: 100%; justify-content: center; }
+
+    /* Full-width container for text, but constrain inner text width */
+    &__text {
+      width: 100%;
+      max-width: 50rem;           /* not full width */
+      margin: 0 auto;
+      font-size: $font-size-16;
+    }
+
+    &__title    { font-size: $font-size-24; line-height: $line-height-15; }
+    &__subtitle { font-size: $font-size-16; }
+
+    /* Image centered below text */
+    &__image {
+      width: clamp(22rem, 85vw, 40rem);
+      margin: 0 auto;             /* center horizontally */
+    }
+
+    &__subtitle-row-text {
+      width: 100%;
+      max-width: 42rem;
+      font-size: $font-size-16;
+      padding-bottom: $spacing-48;
+      margin: 0 auto;
+    }
+  }
 }

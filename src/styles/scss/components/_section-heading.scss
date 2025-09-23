@@ -24,6 +24,35 @@
     margin-top: $spacing-12;
     margin-bottom: $spacing-64;
     max-width: 65rem;
-    
+  }
+}
+
+/* ======== RESPONSIVE OVERRIDES ======== */
+
+/* Tablet (≤1024px) */
+@media (max-width: 1024px) {
+  .section-heading {
+    &__title {
+      font-size: $font-size-28;   /* smaller title */
+    }
+    &__subtitle {
+      font-size: $font-size-16;   /* keep subtitle readable */
+      margin-bottom: $spacing-40; /* reduce spacing */
+    }
+  }
+}
+
+/* Mobile (≤768px) */
+@media (max-width: 768px) {
+  .section-heading {
+    &__title {
+      font-size: $font-size-24;   /* smaller still */
+      line-height: $line-height-15;
+    }
+    &__subtitle {
+      font-size: $font-size-12;   /* scale down */
+      margin-bottom: $spacing-32;
+      padding: 0 $spacing-12;     /* add side padding for text fit */
+    }
   }
 }

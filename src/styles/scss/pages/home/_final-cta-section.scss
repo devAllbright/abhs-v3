@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: $spacing-64 *2 0;
+  padding: $spacing-64 * 2 0;
 
   .final-cta{
     display: flex;
@@ -45,7 +45,7 @@
       font-family: $font-secondary;
       font-size: $font-size-12;
       font-weight: $font-weight-light;
-      
+
       span{
         font-weight: $font-weight-bold;
       }
@@ -58,6 +58,53 @@
         margin-right: $spacing-16;
       }
     }
+  }
+}
 
+/* ================== UNIFIED TABLET & MOBILE (≤1024px) ================== */
+@media (max-width: 1024px) {
+  .final-cta-section {
+    padding: $spacing-64 0; /* tighter vertical padding */
+
+    .final-cta {
+      height: auto; /* let height flow with content */
+
+      &__img {
+        /* Fluid width that fits phones up to tablets, bounded by rems */
+        width: clamp(18rem, 45vw, 34rem);
+
+        img {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 3 / 2; /* keeps original look without hard heights */
+          border-radius: $spacing-12 0 0 $spacing-12;
+        }
+      }
+
+      &__text {
+        width: clamp(18rem, 45vw, 34rem);
+        border-radius: 0 $spacing-12 $spacing-12 0;
+      }
+
+      &__content {
+        width: clamp(16rem, 42vw, 30rem);
+      }
+
+      &__title {
+        font-size: $font-size-20;
+      }
+
+      &__brief {
+        font-size: $font-size-12;
+      }
+
+      &__cta {
+        margin-top: $spacing-16;
+
+        .secondary-cta {
+          margin-right: $spacing-12;
+        }
+      }
+    }
   }
 }

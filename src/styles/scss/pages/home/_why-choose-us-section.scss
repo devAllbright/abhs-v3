@@ -6,15 +6,14 @@
 
   .reasons{
     display: flex;
-    justify-content: center;
-  
+    justify-content: center; /* ✅ centered on desktop */
+    align-items: flex-start;
+
     &__item{
       width: 40rem;
 
       &-icon{
-        img{
-          height: 5rem;
-        }
+        img{ height: 5rem; }
       }
 
       &-title{
@@ -33,7 +32,6 @@
     &__item:not(:last-child){
       margin-right: $spacing-64;
     }
-
   }
 
   .review-container{
@@ -80,5 +78,99 @@
       }
     }
   }
+}
 
+/* ======== RESPONSIVE OVERRIDES (SCALING ONLY, KEEP ROW & CENTER) ======== */
+
+/* Tablet (≤1024px): centered row, scale down */
+@media (max-width: 1024px) {
+  .why-choose-us{
+    padding: 0 $spacing-24 $spacing-64;
+
+    .reasons{
+      justify-content: center;       /* ✅ keep centered */
+      gap: $spacing-24;              /* visual gap without extra margins */
+      overflow-x: auto;              /* allow scroll only if needed */
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      padding: 0 $spacing-16;
+
+      &__item{
+        width: 28rem;                /* scale card width */
+        scroll-snap-align: start;
+
+        &-icon img{ height: 4rem; }
+        &-title{ font-size: $font-size-24; }
+        &-description{ font-size: $font-size-16; }
+      }
+
+      /* remove big desktop right-margins when we use gap */
+      &__item:not(:last-child){ margin-right: 0; }
+    }
+
+    .review-container{
+      margin-top: $spacing-48;
+
+      .individual-review{
+        width: 100%;
+        max-width: 90rem;
+        padding: $spacing-24;
+
+        p{ font-size: $font-size-20; }
+
+        &__info{
+          img{
+            height: 4rem;
+            margin-left: -4rem;
+          }
+          &-name p{ font-size: $font-size-16; }
+        }
+      }
+    }
+  }
+}
+
+/* Mobile (≤768px): centered row, smaller cards, optional scroll */
+@media (max-width: 768px) {
+  .why-choose-us{
+    padding: 0 $spacing-16 $spacing-48;
+
+    .reasons{
+      justify-content: center;        /* ✅ keep centered */
+      gap: $spacing-16;
+      overflow-x: auto;               /* only if width exceeds viewport */
+      scroll-snap-type: x mandatory;
+      padding: 0 $spacing-12;
+
+      &__item{
+        width: 22rem;                 /* smaller card */
+        scroll-snap-align: start;
+
+        &-icon img{ height: 3.2rem; }
+        &-title{ font-size: $font-size-20; }
+        &-description{ font-size: $font-size-16; }
+      }
+
+      &__item:not(:last-child){ margin-right: 0; }
+    }
+
+    .review-container{
+      margin-top: $spacing-40;
+
+      .individual-review{
+        width: 100%;
+        padding: $spacing-24;
+
+        p{ font-size: $font-size-18; }
+
+        &__info{
+          img{
+            height: 3.6rem;
+            margin-left: 0;           /* remove negative offset on small */
+          }
+          &-name p{ font-size: $font-size-16; }
+        }
+      }
+    }
+  }
 }

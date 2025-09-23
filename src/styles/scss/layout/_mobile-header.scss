@@ -1,0 +1,128 @@
+@use '../abstracts/variables' as *;
+
+.mobile-header {
+  position: sticky;
+  top: 0;
+  background-color: $background-light;
+  z-index: 1000;
+  padding: $spacing-12 $spacing-24;
+  box-shadow: 0 $spacing-4 $spacing-12 rgba(0, 0, 0, 0.05);
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__hamburger {
+    background: transparent;
+    border: none;
+    padding: $spacing-8;
+    cursor: pointer;
+
+    img {
+      width: 5rem;
+      height: 5rem;
+      display: block;
+    }
+  }
+
+  &__logo img {
+    height: 5rem;
+    display: block;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: $background-light;
+    z-index: 999;
+    overflow-y: auto;
+    padding: $spacing-24 $spacing-24 $spacing-64;
+  }
+
+  &__overlay-close {
+    position: absolute;
+    top: $spacing-24;
+    right: $spacing-24;
+    background: transparent;
+    border: none;
+    padding: $spacing-8;
+    cursor: pointer;
+    z-index: 1001;
+
+    img {
+      width: 2.4rem;
+      height: 2.4rem;
+      display: block;
+    }
+  }
+
+  &__menu {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      margin-bottom: $spacing-16;
+    }
+
+    a {
+      text-decoration: none;
+      color: $primary-text;
+      font-size: $font-size-16;
+      font-weight: $font-weight-regular;
+
+      &:hover {
+        color: $tertiary-text;
+      }
+    }
+  }
+
+  &__expand-btn {
+    background: none;
+    border: none;
+    font-size: $font-size-16;
+    font-weight: $font-weight-regular;
+    color: $primary-text;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    cursor: pointer;
+
+    &:hover {
+      color: $tertiary-text;
+    }
+
+    img {
+      width: 1.6rem;
+      height: 1.6rem;
+      margin-left: $spacing-8;
+      display: inline-block;
+    }
+  }
+
+  &__submenu {
+    margin-top: $spacing-8;
+    padding-left: $spacing-16;
+
+    li {
+      margin-bottom: $spacing-12;
+
+      a {
+        font-size: $font-size-16;
+        color: $tertiary-text;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

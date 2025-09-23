@@ -3,7 +3,7 @@
 .benefit-section {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* ✅ Center vertically on desktop */
   height: 100vh;
   position: relative;
 
@@ -14,7 +14,7 @@
   &__list-item {
     display: flex;
     align-items: center;
-    border-bottom: 2px solid rgba(191, 191, 191, 0.5);
+    border-bottom: 0.2rem solid rgba(191, 191, 191, 0.5);
     padding: $spacing-24 0 $spacing-32 0;
     position: relative;
     cursor: pointer;
@@ -23,11 +23,11 @@
     &::after {
       content: "";
       position: absolute;
-      bottom: -2px;
+      bottom: -0.2rem;
       left: 0;
       width: 0%;
-      height: 2px;
-      background: linear-gradient(to right, #FC8551 70%, transparent);
+      height: 0.2rem;
+      background: linear-gradient(to right, $primary-color-dark 70%, transparent);
       z-index: 1;
     }
 
@@ -35,9 +35,7 @@
       height: 5rem;
       margin-right: $spacing-12;
 
-      img {
-        height: 5rem;
-      }
+      img { height: 5rem; }
     }
 
     &-title {
@@ -54,8 +52,10 @@
       height: 0;
       overflow: hidden;
       opacity: 0;
-      transform: translateY(-10px);
-      transition: height 0.6s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+      transform: translateY(-1rem);
+      transition: height 0.6s cubic-bezier(0.65, 0, 0.35, 1),
+                  opacity 0.5s ease-in-out,
+                  transform 0.5s ease-in-out;
     }
 
     &.active {
@@ -75,13 +75,87 @@
 
   &__img {
     position: relative;
-    
+    align-self: center; /* ✅ Keep image vertically centered even if list grows */
+
     img {
       width: 35rem;
       height: 52.5rem;
-      border-radius: 2.4rem;
+      border-radius: $spacing-24; /* 2.4rem */
       object-fit: cover;
       transition: opacity 0.8s ease-in-out;
+    }
+  }
+}
+
+/* ======== RESPONSIVE OVERRIDES ======== */
+
+/* Tablet (≤1024px) — keep side-by-side, just scale down */
+@media (max-width: 1024px) {
+  .benefit-section {
+    height: auto;
+    padding: 0 $spacing-24;
+    align-items: center; /* ✅ keep centered on tablet too */
+
+    &__list { margin-right: $spacing-40; }
+
+    &__list-item {
+      padding: $spacing-16 0 $spacing-24 0;
+
+      &-icon {
+        height: 4rem;
+        img { height: 4rem; }
+      }
+
+      &-title { font-size: $font-size-20; }
+
+      &-description {
+        font-size: $font-size-16;
+        max-width: 40rem;
+      }
+    }
+
+    &__img {
+      align-self: center; /* ✅ ensure vertical centering */
+      img {
+        width: 28rem;
+        height: 42rem;
+        border-radius: $spacing-16;
+      }
+    }
+  }
+}
+
+/* Mobile (≤768px) — still side-by-side, tighter scale */
+@media (max-width: 768px) {
+  .benefit-section {
+    padding: 0 $spacing-16;
+    align-items: center; /* ✅ center on mobile as well */
+
+    &__list { margin-right: $spacing-24; }
+
+    &__list-item {
+      padding: $spacing-12 0 $spacing-16 0;
+
+      &-icon {
+        height: 3rem;
+        img { height: 3rem; }
+      }
+
+      &-title { font-size: $font-size-18; }
+
+      &-description {
+        font-size: $font-size-14; /* concrete value */
+        max-width: 28rem;
+      }
+    }
+
+    &__img {
+      align-self: center; /* ✅ keep centered */
+      img {
+        width: 22rem;
+        height: 32rem;
+        border-radius: $spacing-12; /* 1.2rem */
+      }
     }
   }
 }

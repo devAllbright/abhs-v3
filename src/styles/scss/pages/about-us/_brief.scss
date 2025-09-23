@@ -14,6 +14,7 @@
       width: 40rem;
       height: 50rem;
       border-radius: $spacing-12;
+      object-fit: cover;
     }
   }
 
@@ -45,5 +46,79 @@
     font-size: $font-size-16;
     font-weight: $font-weight-light;
     font-family: $font-secondary;
+  }
+}
+
+/* ===================== RESPONSIVE (SCALING ONLY) ===================== */
+
+/* Tablet (≤1024px): keep row layout, scale sizes so it fits vertically */
+@media (max-width: 1024px) {
+  .brief {
+    height: auto;
+    padding: 0 $spacing-24;
+
+    &__img {
+      margin-right: $spacing-40;
+
+      img {
+        width: 32rem;
+        height: 39rem;
+        border-radius: $spacing-12;
+      }
+    }
+
+    &__text {
+      width: auto;            /* allow flexible text column */
+      max-width: 42rem;
+      flex: 1 1 auto;
+
+      div { margin-top: $spacing-16; }
+    }
+
+    &__title {
+      font-size: $font-size-28;
+      width: 100%;
+    }
+
+    &__description {
+      font-size: $font-size-16;
+    }
+  }
+}
+
+/* Mobile (≤768px): still row layout; compress widths so both columns fit */
+@media (max-width: 768px) {
+  .brief {
+    height: auto;
+    padding: 0 $spacing-16;
+    align-items: center;
+
+    &__img {
+      margin-right: $spacing-16;
+
+      img {
+        width: 20rem;         /* compact image so two columns fit */
+        height: auto;
+        aspect-ratio: 4 / 5;  /* preserve portrait proportion */
+        border-radius: $spacing-12;
+      }
+    }
+
+    &__text {
+      width: auto;            /* take remaining space */
+      flex: 1 1 auto;
+
+      div { margin-top: $spacing-12; }
+    }
+
+    &__title {
+      font-size: $font-size-24;
+      width: 100%;
+      line-height: $line-height-15;
+    }
+
+    &__description {
+      font-size: $font-size-16;
+    }
   }
 }
