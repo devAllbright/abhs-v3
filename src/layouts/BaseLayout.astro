@@ -3,15 +3,13 @@ import Head from "../components/layout/Head.astro";
 import ResponsiveHeader from "../components/layout/ResponsiveHeader";
 import Footer from "../components/layout/Footer.astro";
 import "../styles/main.scss";
-
-const GTM_ID = "GTM-T99VMMT9"; // Your GTM container ID
 ---
 
 <html lang="en">
   <head>
     <Head title="Allbright Home Services" />
 
-    <!-- ✅ Google Tag Manager (head script) -->
+    <!-- ✅ Google Tag Manager (head script, no modificado) -->
     <script is:inline>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -23,14 +21,14 @@ const GTM_ID = "GTM-T99VMMT9"; // Your GTM container ID
   </head>
 
   <body>
-    <!-- ✅ Google Tag Manager (noscript) -->
+    <!-- ✅ Google Tag Manager (noscript, lo primero en body) -->
     <noscript>
-      <iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T99VMMT9"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <!-- End Google Tag Manager -->
 
-    <!-- Site Layout -->
+    <!-- Header y contenido -->
     <ResponsiveHeader client:only="react" />
     <slot />
     <Footer />
