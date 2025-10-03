@@ -3,65 +3,79 @@ import Head from "../components/layout/Head.astro";
 import ResponsiveHeader from "../components/layout/ResponsiveHeader";
 import Footer from "../components/layout/Footer.astro";
 import "../styles/main.scss";
+
+const GTM_ID = "GTM-T99VMMT9"; // Your GTM container ID
 ---
 
 <html lang="en">
-  <Head title="Allbright Home Services" />
-  <ResponsiveHeader client:only="react" />
-  <slot />
-  <Footer />
-  <script>
-    (function () {
-      // --- 1) Configure floating teaser bubble (must be BEFORE the embed script) ---
-      (window as any).chatbaseConfig = {
-        // show the floating teaser bubble above the launcher
-        showFloatingInitialMessages: true,
-        // seconds before showing the teaser (adjust as you like)
-        floatingInitialMessagesDelay: 1
-      };
+  <head>
+    <Head title="Allbright Home Services" />
 
-      // Optional: also declare the standard embed config (some setups read this)
-      (window as any).embeddedChatbotConfig = {
-        chatbotId: "QyXsFCkhAqyBY_4aUC8XK",
-        domain: "www.chatbase.co"
-      };
+    <!-- ✅ Google Tag Manager (head script) -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-T99VMMT9');
+    </script>
+    <!-- End Google Tag Manager -->
+  </head>
 
-      // --- 2) Safe pre-init stub so calls can queue before SDK is ready ---
-      if (!(window as any).chatbase || (window as any).chatbase("getState") !== "initialized") {
-        (window as any).chatbase = (...args: any[]) => {
-          if (!(window as any).chatbase.q) (window as any).chatbase.q = [];
-          (window as any).chatbase.q.push(args);
+  <body>
+    <!-- ✅ Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Site Layout -->
+    <ResponsiveHeader client:only="react" />
+    <slot />
+    <Footer />
+
+    <!-- ✅ Chatbase Integration -->
+    <script>
+      (function () {
+        (window as any).chatbaseConfig = {
+          showFloatingInitialMessages: true,
+          floatingInitialMessagesDelay: 1
         };
-        (window as any).chatbase = new Proxy((window as any).chatbase, {
-          get(target, prop) {
-            if (prop === "q") return (target as any).q;
-            return (...args: any[]) => (target as any)(prop, ...args);
-          },
-        });
-      }
-
-      // --- 3) Load official embed (use attributes, not element.id) ---
-      const onLoad = function () {
-        const script = document.createElement("script");
-        script.src = "https://www.chatbase.co/embed.min.js";
-        script.defer = true;
-        // ✅ Use the documented attributes Chatbase reads:
-        script.setAttribute("chatbotId", "QyXsFCkhAqyBY_4aUC8XK");
-        script.setAttribute("domain", "www.chatbase.co");
-
-        // After SDK loads, set the actual initial message content
-        script.onload = () => {
-          (window as any).chatbase.setInitialMessages?.([
-            "👋 Hi! Need pricing or help booking a cleaning? Ask me here."
-          ]);
+        (window as any).embeddedChatbotConfig = {
+          chatbotId: "QyXsFCkhAqyBY_4aUC8XK",
+          domain: "www.chatbase.co"
         };
+        if (!(window as any).chatbase || (window as any).chatbase("getState") !== "initialized") {
+          (window as any).chatbase = (...args: any[]) => {
+            if (!(window as any).chatbase.q) (window as any).chatbase.q = [];
+            (window as any).chatbase.q.push(args);
+          };
+          (window as any).chatbase = new Proxy((window as any).chatbase, {
+            get(target, prop) {
+              if (prop === "q") return (target as any).q;
+              return (...args: any[]) => (target as any)(prop, ...args);
+            },
+          });
+        }
+        const onLoad = function () {
+          const script = document.createElement("script");
+          script.src = "https://www.chatbase.co/embed.min.js";
+          script.defer = true;
+          script.setAttribute("chatbotId", "QyXsFCkhAqyBY_4aUC8XK");
+          script.setAttribute("domain", "www.chatbase.co");
+          script.onload = () => {
+            (window as any).chatbase.setInitialMessages?.([
+              "👋 Hi! Need pricing or help booking a cleaning? Ask me here."
+            ]);
+          };
+          document.body.appendChild(script);
+        };
+        if (document.readyState === "complete") onLoad();
+        else window.addEventListener("load", onLoad);
+      })();
+    </script>
 
-        document.body.appendChild(script);
-      };
-
-      if (document.readyState === "complete") onLoad();
-      else window.addEventListener("load", onLoad);
-    })();
-  </script>
-  <div id="modal-root"></div>
+    <div id="modal-root"></div>
+  </body>
 </html>
