@@ -12,21 +12,17 @@ const MegaMenu = forwardRef(({ visible, onLeave }, ref) => {
     if (price == null) return ''
     const num = Number(price)
     if (!Number.isNaN(num)) {
-      // For Maintenance Plans and Bundles, show plain price (no "Starting at")
       if (type === 'Maintenance Plans' || type === 'Bundles') {
         return `$${num.toLocaleString('en-US')}`
       }
-      // Default: Recurring Services (and any other types) show "Starting at"
       return `Starting at $${num.toLocaleString('en-US')}`
     }
-    // If price is already a string like "Custom" or "Free estimate", pass through
     return String(price)
   }
 
   return (
     <div className={`mega-menu ${visible ? 'mega-menu--visible' : ''}`} ref={ref}>
       <div className="mega-menu__content" onMouseLeave={onLeave}>
-        {/* Section: Service Types */}
         <div className="mega-menu__section">
           <div className="mega-menu__section-title">
             <p>Service Type</p>
