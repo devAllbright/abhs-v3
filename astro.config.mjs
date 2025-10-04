@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 
 export default defineConfig({
-  site: 'https://www.allbrighthomeservices.com',
+  site: 'https://www.allbrighths.com',
   integrations: [
     react(),
     sitemap(),
