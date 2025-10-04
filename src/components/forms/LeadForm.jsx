@@ -61,6 +61,7 @@ export default function LeadForm({ onSuccess }) {
       }
 
     window.location.href = "/thank-you"
+
     
     } catch (err) {
       console.error("Submission error:", err);
