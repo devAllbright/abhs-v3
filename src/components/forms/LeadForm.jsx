@@ -1,8 +1,7 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-// If you want the styles applied here, uncomment and point to your file:
-// import "./lead-form.scss";
+import { useState } from "react";
 
 const schema = z.object({
   first_name: z.string().min(1, "First name is required"),
@@ -13,7 +12,6 @@ const schema = z.object({
     .min(7, "Phone number is required")
     .regex(/^[0-9+\-() ]+$/, "Invalid phone number"),
   service_details: z.string().min(1, "Service details are required"),
-  // ✅ Only require a non-empty selection
   home_size: z.string().min(1, "Please select a home size"),
 });
 
@@ -24,30 +22,52 @@ export default function LeadForm({ onSuccess }) {
     formState: { errors, isSubmitting },
   } = useForm({ resolver: zodResolver(schema) });
 
+  const [submitError, setSubmitError] = useState("");
+
   async function onSubmit(values) {
+    setSubmitError("");
+
     const payload = {
       customer: {
         first_name: values.first_name,
         last_name: values.last_name,
         email: values.email,
-        mobile_number: values.phone, // map phone -> mobile_number
+        mobile_number: values.phone,
         notifications_enabled: true,
       },
       note: `Service details: ${values.service_details}\nHome Sq. Ft.: ${values.home_size}`,
     };
 
-    const res = await fetch(
-      "https://allbright-app-production.up.railway.app/api/service-request",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      }
-    );
+    try {
+      const res = await fetch(
+        "https://allbright-app-production.up.railway.app/api/service-request",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
 
-    const data = await res.json();
-    if (!res.ok) throw new Error(data?.error || "Failed to submit request");
-    onSuccess?.();
+      const data = await res.json();
+
+      if (!res.ok) {
+        const serverMessage =
+          data?.error?.message ||
+          data?.error ||
+          JSON.stringify(data) ||
+          "Failed to submit request";
+
+        throw new Error(serverMessage);
+      }
+
+    window.location.href = "/thank-you"
+    
+    } catch (err) {
+      console.error("Submission error:", err);
+      setSubmitError(
+        err?.message || "An unexpected error occurred during submission"
+      );
+    }
   }
 
   return (
@@ -109,6 +129,12 @@ export default function LeadForm({ onSuccess }) {
           <span className="lead-form__err">{errors.home_size.message}</span>
         )}
       </div>
+
+      {submitError && (
+        <div className="lead-form__err" role="alert" aria-live="polite">
+          {submitError}
+        </div>
+      )}
 
       <button type="submit" disabled={isSubmitting}>
         {isSubmitting ? "Submitting…" : "Submit"}
