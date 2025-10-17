@@ -88,33 +88,30 @@
 
 /* ================== RESPONSIVE OVERRIDES ================== */
 
-/* Tablet (≤1024px): scale only, keep side-by-side layout */
 @media (max-width: 1024px) {
   .faq-section {
     padding: $spacing-48 0;
 
     &__content {
-      /* still flex, still side-by-side */
       gap: $spacing-32;
     }
 
-    /* Left block */
     & > div {
       margin-right: $spacing-32;
 
       .faq-section__left-title {
         width: 28rem;
-        font-size: $font-size-28; /* keep strong heading */
+        font-size: $font-size-24;
       }
 
       .faq-section__left-subtitle {
         width: 28rem;
-        font-size: $font-size-16;
+        font-size: $font-size-14;
       }
     }
 
     &__list {
-      width: 44rem;
+      width: 42rem;
       margin-left: $spacing-32;
     }
 
@@ -122,8 +119,72 @@
       padding: $spacing-16 0;
 
       .faq-section__question {
-        h3 { font-size: $font-size-20; }
-        img { height: 2.2rem; }
+        h3 {
+          font-size: $font-size-18;
+        }
+        img {
+          height: 2.2rem;
+        }
+      }
+
+      .faq-section__answer {
+        font-size: $font-size-14;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .faq-section {
+    padding: $spacing-40 0;
+
+    &__content {
+      display: block;
+    }
+
+    & > div {
+      margin-right: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: $spacing-32;
+
+      .faq-section__left-title,
+      .faq-section__left-subtitle {
+        width: 100%;
+        max-width: 50rem;
+        text-align: center;
+        margin-top: $spacing-24;
+      }
+
+      .faq-section__left-title {
+        font-size: $font-size-20;
+        margin-bottom: $spacing-12;
+      }
+
+      .faq-section__left-subtitle {
+        font-size: $font-size-12;
+      }
+    }
+
+    &__list {
+      width: 100%;
+      margin-left: 0;
+      padding: 0 $spacing-16;
+    }
+
+    &__item {
+      padding: $spacing-12 0;
+
+      .faq-section__question {
+        h3 {
+          font-size: $font-size-16;
+        }
+        img {
+          height: 1.8rem;
+        }
       }
 
       .faq-section__answer {
@@ -133,64 +194,3 @@
   }
 }
 
-/* Mobile (≤768px): switch to stacked (block) layout
-   - Left container occupies full width
-   - Title/subtitle constrained (not full width)
-   - List sits below, full width container */
-
-@media (max-width: 768px) {
-  .faq-section {
-    padding: $spacing-40 0;
-
-    &__content {
-      display: block; /* ✅ stacked layout */
-    }
-
-    /* Full-width container for left block, but constrain the text width */
-    & > div {
-      margin-right: 0;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* center the text block within full-width container */
-      margin-bottom: $spacing-32;
-
-      .faq-section__left-title,
-      .faq-section__left-subtitle {
-        width: 100%;
-        max-width: 50rem; /* ✅ not full width */
-        text-align: center;
-        margin-top: $spacing-24;
-      }
-
-      .faq-section__left-title {
-        font-size: $font-size-28;
-        margin-bottom: $spacing-12;
-      }
-
-      .faq-section__left-subtitle {
-        font-size: $font-size-16;
-      }
-    }
-
-    /* Questions below, container full width but text constrained by padding */
-    &__list {
-      width: 100%;
-      margin-left: 0;
-      padding: 0 $spacing-16; /* breathing room on edges */
-    }
-
-    &__item {
-      padding: $spacing-12 0;
-
-      .faq-section__question {
-        h3 { font-size: $font-size-20; }
-        img { height: 2rem; }
-      }
-
-      .faq-section__answer {
-        font-size: $font-size-16;
-      }
-    }
-  }
-}
