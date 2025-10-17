@@ -11,8 +11,13 @@
 
 html{
   box-sizing: border-box;
-  /* font-size: 62.5%; */
-  font-size: clamp(0.4rem, 0.65vw, 0.525rem);
+  font-size: 65.5%;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: clamp(0.4rem, 0.65vw, 0.525rem);
+  }
 }
 
 body{

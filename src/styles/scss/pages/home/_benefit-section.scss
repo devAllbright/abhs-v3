@@ -3,7 +3,7 @@
 .benefit-section {
   display: flex;
   justify-content: center;
-  align-items: center; /* ✅ Center vertically on desktop */
+  align-items: center;
   height: 100vh;
   position: relative;
 
@@ -126,36 +126,55 @@
 }
 
 /* Mobile (≤768px) — still side-by-side, tighter scale */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .benefit-section {
-    padding: 0 $spacing-16;
-    align-items: center; /* ✅ center on mobile as well */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; // ✅ Vertically center image
+    padding: 0 $spacing-12;
+    gap: $spacing-16;
+    height: auto;
 
-    &__list { margin-right: $spacing-24; }
+    &__list {
+      margin: 0;
+      width: 60%;
+    }
 
     &__list-item {
-      padding: $spacing-12 0 $spacing-16 0;
+      padding: $spacing-8 0 $spacing-12 0;
 
       &-icon {
-        height: 3rem;
-        img { height: 3rem; }
+        height: 2.4rem;
+        margin-right: $spacing-8;
+
+        img {
+          height: 2.4rem;
+          width: auto;
+        }
       }
 
-      &-title { font-size: $font-size-18; }
+      &-title {
+        font-size: $font-size-14;
+        line-height: $line-height-15;
+      }
 
       &-description {
-        font-size: $font-size-14; /* concrete value */
-        max-width: 28rem;
+        font-size: $font-size-12;
+        max-width: 100%;
       }
     }
 
     &__img {
-      align-self: center; /* ✅ keep centered */
+      align-self: center; // ✅ Vertically center image alongside list
+      width: 40%;
+
       img {
-        width: 22rem;
-        height: 32rem;
-        border-radius: $spacing-12; /* 1.2rem */
+        width: 100%;
+        height: auto;
+        max-width: 14rem;
+        border-radius: $spacing-8;
       }
     }
   }
 }
+

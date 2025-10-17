@@ -40,14 +40,14 @@ const benefits = [
   {
     id: 6,
     title: "100% Satisfaction Guarantee",
-    description: "", // Empty to test safe rendering
+    description: "",
     icon: "/benefits/guarantee-icon.png",
     image: "/benefits/guarantee.png"
   }
 ];
 
 export default function BenefitsSection() {
-  const [activeIndex, setActiveIndex] = useState(null); // Start as null to trigger mount animation
+  const [activeIndex, setActiveIndex] = useState(null);
   const intervalRef = useRef(null);
 
   const startInterval = () => {
@@ -61,7 +61,6 @@ export default function BenefitsSection() {
   };
 
   useEffect(() => {
-    // Slight delay to trigger ::after animation on first item
     const initialTimeout = setTimeout(() => {
       setActiveIndex(0);
       startInterval();
@@ -75,7 +74,7 @@ export default function BenefitsSection() {
 
   const handleClick = (index) => {
     setActiveIndex(index);
-    startInterval(); // Continue cycling from clicked item
+    startInterval();
   };
 
   return (

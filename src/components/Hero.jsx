@@ -1,4 +1,3 @@
-// components/Hero.jsx
 import RedirectCTA from "./buttons/RedirectCTA";
 import ModalCTA from "./buttons/ModalCTA";
 
