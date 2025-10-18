@@ -14,6 +14,7 @@
   &__logo {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: $spacing-32;
 
     &-link {
@@ -35,10 +36,9 @@
     }
   }
 
-  /* Desktop: keep grid */
   &__links {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    justify-content: center;
     gap: $spacing-24;
     margin-top: $spacing-24;
   }
@@ -47,13 +47,34 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-16;
+    text-align: left;
+    margin-right: $spacing-40;
+
+    span {
+      font-size: $font-size-20;
+    }
   }
 
-  &__social {
-    display: flex;
-    gap: $spacing-16;
+  &__list {
+    list-style: none;
 
-    img { height: 4rem; }
+    a {
+      text-decoration: none;
+      color: $secondary-text;
+      font-size: $font-size-20;
+    }
+  }
+
+  &__item {
+    margin-bottom: $spacing-12;
+  }
+
+  &__cta {
+    margin-top: $spacing-24;
+
+    .secondary-cta {
+      margin-right: $spacing-16;
+    }
   }
 
   &__contact {
@@ -78,22 +99,13 @@
     }
   }
 
-  &__cta {
-    margin-top: $spacing-24;
-  }
+  &__social {
+    display: flex;
+    gap: $spacing-16;
 
-  &__list {
-    list-style: none;
-
-    a {
-      text-decoration: none;
-      color: $secondary-text;
-      font-size: $font-size-16;
+    img {
+      height: 4rem;
     }
-  }
-
-  &__item {
-    margin-bottom: $spacing-12;
   }
 
   &__copyright {
@@ -105,82 +117,77 @@
   }
 }
 
-/* ===================== RESPONSIVE (FLEX-WRAP, LEFT-ALIGNED) ===================== */
-
-/* Tablet (≤1024px): flex-wrap with 3 columns/row, LEFT aligned columns & links; logo centered */
 @media (max-width: 1024px) {
   .footer {
     &__content {
       padding: 0 $spacing-24;
     }
 
-    /* Logo centered horizontally */
     &__logo {
       justify-content: center;
       text-align: center;
 
-      &-link { justify-content: center; }
+      &-link {
+        justify-content: center;
+      }
+
+      &-text {
+        font-size: $font-size-16;
+      }
     }
 
-    /* Links wrap, LEFT aligned */
     &__links {
-      display: flex;             /* switch from grid to flex */
-      flex-wrap: wrap;           /* allow wrapping */
-      justify-content: flex-start; /* ✅ left-align columns */
-      align-content: flex-start; /* ensure rows pack to the top/left */
+      flex-wrap: wrap;
+      justify-content: center;
       gap: $spacing-24;
-      margin-top: $spacing-24;
     }
 
-    /* 3 columns per row target */
     &__column {
-      flex: 0 1 calc(33.333% - #{$spacing-24 * 0.6667});
-      max-width: calc(33.333% - #{$spacing-24 * 0.6667});
-      text-align: left;          /* ✅ left-align column content */
+      width: 30%;
+      margin-right: 0;
+      gap: $spacing-8;
+      margin-top: $spacing-16;
     }
 
-    /* Link text LEFT aligned */
-    &__list { text-align: left; }
+    &__list a {
+      font-size: $font-size-14;
+    }
 
-    /* Slightly smaller icons for tablet */
-    &__social img { height: 3.6rem; }
-    &__contact > * img { height: 3rem; }
+    &__item {
+      margin-bottom: $spacing-6;
+    }
+
+    &__cta {
+      margin-top: $spacing-4;
+    }
+
+    &__contact {
+      gap: $spacing-6;
+
+      & > * {
+        font-size: $font-size-14;
+
+        img {
+          height: 2.8rem;
+        }
+      }
+    }
+
+    &__social img {
+      height: 3.2rem;
+    }
   }
 }
 
-/* Mobile (≤768px): flex-wrap with 2 columns/row, LEFT aligned columns & links; logo centered */
-@media (max-width: 768px) {
+
+@media (max-width: 767px) {
   .footer {
     &__content {
       padding: 0 $spacing-16;
     }
 
-    /* Keep logo centered */
-    &__logo {
-      justify-content: center;
-      text-align: center;
-
-      &-link { justify-content: center; }
-    }
-
-    /* Links wrap, LEFT aligned */
-    &__links {
-      gap: $spacing-16;            /* tighter gap */
-      justify-content: flex-start; /* ✅ left-align columns */
-      align-content: flex-start;
-    }
-
-    /* 2 columns per row target */
     &__column {
-      flex: 0 1 calc(50% - #{$spacing-16 * 0.5});
-      max-width: calc(50% - #{$spacing-16 * 0.5});
-      text-align: left;            /* ✅ left-align column content */
+      width: 100%;
     }
-
-    &__list { text-align: left; }
-
-    /* Scale icons a bit more */
-    &__social img { height: 3.2rem; }
-    &__contact > * img { height: 2.8rem; }
   }
 }
