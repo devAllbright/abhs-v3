@@ -75,7 +75,7 @@
   }
 
   &__cta {
-    margin-top: $spacing-24;
+    margin-top: $spacing-32;
 
     .secondary-cta {
       margin-right: $spacing-16;
@@ -107,6 +107,7 @@
   &__social {
     display: flex;
     gap: $spacing-16;
+    margin-top: $spacing-12;
 
     img {
       height: 4rem;
@@ -175,7 +176,7 @@
     }
 
     &__cta {
-      margin-top: $spacing-4;
+      margin-top: $spacing-12;
     }
 
     &__contact {
@@ -199,7 +200,7 @@
 @media (max-width: 767px) {
   .footer {
     &__content {
-      padding: 0 $spacing-16;
+      padding: 0;
     }
 
     &__logo {
@@ -211,38 +212,27 @@
       }
 
       &-text {
-        font-size: $font-size-16;
+        font-size: $font-size-14;
       }
     }
 
     &__links {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: $spacing-16;
+      flex-direction: column;
+      align-items: center;
       margin-top: $spacing-24;
-      width: fit-content;
-      margin-left: auto;
-      margin-right: auto;
+      width: 100%;
+      transform: none;
     }
 
     &__column {
       display: flex;
       flex-direction: column;
-      max-width: 20rem;
-      gap: $spacing-8;
-      text-align: left;
-      margin-right: $spacing-12;
-
-      span {
-        font-size: $font-size-14;
-      }
-
-      &:nth-child(2),
-      &:nth-child(4),
-      &:nth-child(6) {
-        margin-right: 0;
-      }
+      align-items: center;
+      text-align: center;
+      margin: 0;
+      margin-bottom: $spacing-24;
+      width: 20rem;
     }
 
     &__list a {
@@ -250,7 +240,7 @@
     }
 
     &__item {
-      margin-bottom: $spacing-6;
+      margin-bottom: $spacing-4;
     }
 
     &__cta {
@@ -258,19 +248,21 @@
     }
 
     &__contact {
-      gap: $spacing-6;
+      gap: $spacing-4;
 
       & > * {
         font-size: $font-size-14;
 
         img {
-          height: 2.8rem;
+          height: 2.4rem;
         }
       }
     }
 
     &__social img {
-      height: 3.2rem;
+      height: 2.8rem;
     }
   }
 }
+
+
