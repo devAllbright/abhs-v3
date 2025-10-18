@@ -61,33 +61,36 @@
   }
 }
 
-/* ================== UNIFIED TABLET & MOBILE (≤1024px) ================== */
+
+/* ===== Tablet (≤1024px): Shrink card layout proportionally ===== */
 @media (max-width: 1024px) {
   .final-cta-section {
-    padding: $spacing-64 0; /* tighter vertical padding */
+    padding: $spacing-48 0;
 
     .final-cta {
-      height: auto; /* let height flow with content */
+      height: auto;
 
       &__img {
-        /* Fluid width that fits phones up to tablets, bounded by rems */
-        width: clamp(18rem, 45vw, 34rem);
+        width: 40rem;
 
         img {
           width: 100%;
           height: auto;
-          aspect-ratio: 3 / 2; /* keeps original look without hard heights */
+          aspect-ratio: 3 / 2;
+          object-fit: cover;
           border-radius: $spacing-12 0 0 $spacing-12;
         }
       }
 
       &__text {
-        width: clamp(18rem, 45vw, 34rem);
+        width: 40rem;
+        padding: $spacing-24;
         border-radius: 0 $spacing-12 $spacing-12 0;
       }
 
       &__content {
-        width: clamp(16rem, 42vw, 30rem);
+        width: 100%;
+        max-width: 32rem;
       }
 
       &__title {
@@ -108,3 +111,56 @@
     }
   }
 }
+
+/* ===== Mobile (≤768px): Smaller card layout, same horizontal structure ===== */
+@media (max-width: 768px) {
+  .final-cta-section {
+    padding: $spacing-32 0;
+
+    .final-cta {
+      height: auto;
+
+      &__img {
+        width: 28rem;
+
+        img {
+          width: 100%;
+          height: auto;
+          aspect-ratio: 3 / 2;
+          object-fit: cover;
+          border-radius: $spacing-12 0 0 $spacing-12;
+        }
+      }
+
+      &__text {
+        width: 28rem;
+        padding: $spacing-16;
+        border-radius: 0 $spacing-12 $spacing-12 0;
+      }
+
+      &__content {
+        width: 100%;
+        max-width: 24rem;
+      }
+
+      &__title {
+        font-size: $font-size-16;
+      }
+
+      &__brief {
+        font-size: $font-size-12;
+      }
+
+      &__cta {
+        margin-top: $spacing-12;
+
+        .secondary-cta {
+          margin-right: $spacing-8;
+        }
+      }
+    }
+  }
+}
+
+
+
