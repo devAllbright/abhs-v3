@@ -6,95 +6,98 @@
   align-items: center;
   padding: $spacing-64 * 2 0;
 
-  .final-cta{
+  .final-cta {
     display: flex;
+    width: 100%;
+    max-width: 80rem;
     height: 30rem;
     border-radius: $spacing-12;
-    box-shadow: 0 0 1rem 0 rgba(0,0,0,0.75);
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.75);
 
-    &__img{
-      width: 45rem;
+    &__img {
+      width: 50%;
 
-      img{
-        width: 45rem;
-        height: 30rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         border-radius: $spacing-12 0 0 $spacing-12;
       }
     }
 
-    &__text{
+    &__text {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 45rem;
+      width: 50%;
       background-color: $tertiary-color-light;
       border-radius: 0 $spacing-12 $spacing-12 0;
     }
 
-    &__content{
-      width: 40rem;
+    &__content {
+      width: 90%;
+      max-width: 40rem;
     }
 
-    &__title{
+    &__title {
       font-family: $font-primary;
       font-size: $font-size-24;
       font-weight: $font-weight-bold;
     }
 
-    &__brief{
+    &__brief {
       font-family: $font-secondary;
       font-size: $font-size-12;
       font-weight: $font-weight-light;
 
-      span{
+      span {
         font-weight: $font-weight-bold;
       }
     }
 
-    &__cta{
+    &__cta {
       margin-top: $spacing-24;
 
-      .secondary-cta{
+      .secondary-cta {
         margin-right: $spacing-16;
       }
     }
   }
 }
 
-
-/* ===== Tablet (≤1024px): Shrink card layout proportionally ===== */
 @media (max-width: 1024px) {
   .final-cta-section {
     padding: $spacing-48 0;
 
     .final-cta {
-      height: auto;
+      height: 24rem;
+      max-width: 64rem;
 
       &__img {
-        width: 40rem;
+        width: 50%;
+        height: 100%;
 
         img {
           width: 100%;
-          height: auto;
-          aspect-ratio: 3 / 2;
+          height: 100%;
           object-fit: cover;
           border-radius: $spacing-12 0 0 $spacing-12;
         }
       }
 
       &__text {
-        width: 40rem;
-        padding: $spacing-24;
+        width: 50%;
+        padding: 2rem;
         border-radius: 0 $spacing-12 $spacing-12 0;
       }
 
       &__content {
         width: 100%;
-        max-width: 32rem;
+        max-width: 28rem;
       }
 
       &__title {
-        font-size: $font-size-20;
+        font-size: $font-size-18;
       }
 
       &__brief {
@@ -102,45 +105,49 @@
       }
 
       &__cta {
-        margin-top: $spacing-16;
+        margin-top: $spacing-12;
 
         .secondary-cta {
-          margin-right: $spacing-12;
+          margin-right: $spacing-8;
         }
       }
     }
   }
 }
 
-/* ===== Mobile (≤768px): Smaller card layout, same horizontal structure ===== */
-@media (max-width: 768px) {
+
+@media (max-width: 767px) {
   .final-cta-section {
     padding: $spacing-32 0;
 
     .final-cta {
+      flex-direction: column;
+      width: 100%;
+      max-width: 28rem;
+      margin: 0 auto;
       height: auto;
 
       &__img {
-        width: 28rem;
+        width: 100%;
+        height: 18rem;
 
         img {
           width: 100%;
-          height: auto;
-          aspect-ratio: 3 / 2;
+          height: 100%;
           object-fit: cover;
-          border-radius: $spacing-12 0 0 $spacing-12;
+          border-radius: $spacing-12 $spacing-12 0 0;
         }
       }
 
       &__text {
-        width: 28rem;
+        width: 100%;
         padding: $spacing-16;
-        border-radius: 0 $spacing-12 $spacing-12 0;
+        border-radius: 0 0 $spacing-12 $spacing-12;
       }
 
       &__content {
         width: 100%;
-        max-width: 24rem;
+        max-width: 100%;
       }
 
       &__title {
@@ -161,6 +168,3 @@
     }
   }
 }
-
-
-
