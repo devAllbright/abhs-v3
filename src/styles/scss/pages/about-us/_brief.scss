@@ -49,9 +49,6 @@
   }
 }
 
-/* ===================== RESPONSIVE (SCALING ONLY) ===================== */
-
-/* Tablet (≤1024px): keep row layout, scale sizes so it fits vertically */
 @media (max-width: 1024px) {
   .brief {
     height: auto;
@@ -68,7 +65,7 @@
     }
 
     &__text {
-      width: auto;            /* allow flexible text column */
+      width: auto;
       max-width: 42rem;
       flex: 1 1 auto;
 
@@ -86,28 +83,31 @@
   }
 }
 
-/* Mobile (≤768px): still row layout; compress widths so both columns fit */
 @media (max-width: 768px) {
   .brief {
     height: auto;
     padding: 0 $spacing-16;
+    flex-direction: column-reverse;
     align-items: center;
+    text-align: center;
 
     &__img {
-      margin-right: $spacing-16;
+      margin: $spacing-24 0 0 0;
+      display: flex;
+      justify-content: center;
 
       img {
-        width: 20rem;         /* compact image so two columns fit */
+        width: 20rem;
         height: auto;
-        aspect-ratio: 4 / 5;  /* preserve portrait proportion */
+        aspect-ratio: 4 / 5;
         border-radius: $spacing-12;
       }
     }
 
     &__text {
-      width: auto;            /* take remaining space */
-      flex: 1 1 auto;
-
+      width: 100%;         
+      max-width: 100%;
+      text-align: left;
       div { margin-top: $spacing-12; }
     }
 
@@ -122,3 +122,4 @@
     }
   }
 }
+

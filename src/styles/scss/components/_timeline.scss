@@ -8,3 +8,27 @@
       object-position: center top;
     }
 }
+
+@media (max-width: 767px) {
+  .timeline-container {
+    padding: $spacing-24;
+
+    .vertical-timeline::before {
+      left: 50% !important;
+      transform: translateX(-50%);
+    }
+
+    .vertical-timeline-element-content {
+      max-width: 90% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+
+    .vertical-timeline-element-content-arrow {
+      left: 50% !important;
+      transform: translateX(-50%) rotate(45deg);
+      border-right: none;
+      border-top: 10px solid #fffaf5;
+    }
+  }
+}

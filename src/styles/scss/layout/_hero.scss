@@ -184,7 +184,8 @@
   height: 90vh;
 
   &__section {
-    margin-top: -10vh;
+    text-align: center;
+    max-width: 90%;
   }
 
   &__title {
@@ -194,7 +195,6 @@
   }
 
   &__subtitle {
-    text-align: center;
     font-size: $font-size-16;
     font-family: $font-secondary;
     font-weight: $font-weight-light;
@@ -202,9 +202,6 @@
   }
 }
 
-/* -------------------------------
-   Tablet: max-width 1024px
----------------------------------- */
 /* -------------------------------
    Tablet: max-width 1024px
 ---------------------------------- */
@@ -294,9 +291,19 @@
       height: 11rem !important;
     }
   }
+
+  .hero-text {
+    height: 75vh;
+
+    &__title {
+      font-size: $font-size-28;
+    }
+
+    &__subtitle {
+      font-size: $font-size-14;
+    }
+  }
 }
-
-
 
 /* -------------------------------
    Mobile: max-width 767px
@@ -397,6 +404,17 @@
   .primary-banner__collage {
     display: none;
   }
+
+  .hero-text {
+    height: 60vh;
+    padding: 0 $spacing-16;
+
+    &__title {
+      font-size: $font-size-24;
+    }
+
+    &__subtitle {
+      font-size: $font-size-12;
+    }
+  }
 }
-
-

@@ -1,7 +1,7 @@
 export default function HeroText() {
   return (
     <div className='hero-text'>
-      <div>
+      <div className="hero-text__section">
         <div className="hero-text__title">
           <h1>About Us - Our Story</h1>
         </div>
