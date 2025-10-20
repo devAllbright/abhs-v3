@@ -202,9 +202,7 @@
   }
 }
 
-/* -------------------------------
-   Tablet: max-width 1024px
----------------------------------- */
+
 @media (max-width: 1024px) {
   .primary-banner {
     flex-direction: row;
@@ -246,9 +244,11 @@
   }
 
   .primary-banner__social-proof {
+    width: 30rem !important;
     margin-top: $spacing-16;
 
     &-item {
+      width: 30rem !important;
       margin-top: $spacing-8;
     }
 
@@ -305,9 +305,7 @@
   }
 }
 
-/* -------------------------------
-   Mobile: max-width 767px
----------------------------------- */
+
 @media (max-width: 767px) {
   .primary-banner {
     flex-direction: column;
@@ -362,7 +360,7 @@
     align-items: flex-start;
     gap: $spacing-12;
     margin-top: $spacing-16;
-    width: 100%;
+    width: 100% !important;
     flex-wrap: wrap;
   }
 
@@ -371,18 +369,19 @@
     flex-wrap: wrap;
     align-items: flex-start;
     word-break: break-word;
+    width: 100% !important;
   }
 
   .primary-banner__social-proof-icon {
-    height: 2rem;
-    width: 2rem;
+    height: 1rem;
+    width: 1rem;
     margin-right: $spacing-12;
     flex-shrink: 0;
     margin-top: $spacing-4;
   }
 
   .primary-banner__social-proof-text {
-    font-size: $font-size-14;
+    font-size: $font-size-12;
     line-height: $line-height-15;
     text-align: left;
     flex: 1 1 auto;
@@ -390,6 +389,7 @@
   }
 
   .primary-banner__cta {
+    width: 100% !important;
     margin-top: $spacing-24;
 
     a,
