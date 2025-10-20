@@ -1,6 +1,3 @@
-/* _service-details.scss — 2x typography update */
-
-/* Layout container */
 .service-details {
   width: 100vw;
   min-height: 90vh;
@@ -50,7 +47,6 @@
   }
 }
 
-/* Embla carousel base */
 .embla {
   position: relative;
   width: 100%;
@@ -128,7 +124,6 @@
   }
 }
 
-/* MAIN CARD (A): 2x bigger typography */
 .main-card {
   position: relative;
   width: 100%;
@@ -172,7 +167,6 @@
   }
 }
 
-/* SMALL CARDS (B–F): 2x bigger typography */
 .small-card {
   position: relative;
   width: 100%;
@@ -183,7 +177,7 @@
   &__bg--image { background-size: cover; background-position: center; }
 
   &__bg--css {
-    background: linear-gradient(135deg, #f6b31a, #017a62);
+    background: #FFFF;
     background-size: 200% 200%;
     animation: cardBgShift 12s ease infinite;
   }
@@ -225,22 +219,20 @@
     font-size: 1.9rem;
     line-height: 1.5;
     text-align: left;
+    color: #fff;
   }
 
   &__bg--css ~ &__content { justify-content: center; }
   &__bg--css ~ &__content .small-card__text { font-size: 1.9rem; line-height: 1.5; text-align: left; }
 }
 
-/* ===================== RESPONSIVE SCALING ===================== */
-
-/* Tablet (≤1024px): scale down, maintain grid layout */
 @media (max-width: 1024px) {
   .service-details {
     padding: 1rem;
 
     &__grid {
-      width: 96rem;            /* was 110rem */
-      height: 52rem;           /* was 60rem */
+      width: 96rem;
+      height: 52rem;
       gap: 0.8rem;
     }
   }
@@ -250,23 +242,22 @@
   .embla__dot { width: 0.55rem; height: 0.55rem; }
   .embla__progress { height: 0.2rem; }
 
-  .main-card__title     { font-size: 2rem; }     /* down from 2.5rem */
-  .main-card__paragraph { font-size: 1.45rem; }  /* down from 1.96rem */
+  .main-card__title     { font-size: 2rem; }
+  .main-card__paragraph { font-size: 1.45rem; }
 
-  .small-card__title { font-size: 1.6rem; }      /* down from 2.2rem */
-  .small-card__text  { font-size: 1.35rem; }     /* down from 1.9rem */
+  .small-card__title { font-size: 1.6rem; } 
+  .small-card__text  { font-size: 1.35rem; } 
 }
 
-/* Mobile (≤768px): stronger scale so everything fits in-screen
-   – keep same areas; make main block a bit narrower via column weights */
-@media (max-width: 768px) {
+
+@media (max-width: 767px) {
   .service-details {
     padding: 0.8rem;
-    min-height: 0;            /* let grid height control the section */
+    min-height: 0;  
     &__grid {
       width: 100%;
-      height: 70vh;           /* fit on screen; adjust if necessary */
-      grid-template-columns: 1.6fr 1.6fr 1fr 1fr; /* main block slightly smaller */
+      height: 70vh;     
+      grid-template-columns: 1.6fr 1.6fr 1fr 1fr;
       gap: 0.6rem;
     }
   }
@@ -282,5 +273,5 @@
 
   .small-card__content { padding: 0.75rem; }
   .small-card__title { font-size: 1.2rem; left: 0.75rem; bottom: 0.75rem; }
-  .small-card__text  { font-size: 1rem; }
+  .small-card__text  { font-size: 1.2rem !important; }
 }
