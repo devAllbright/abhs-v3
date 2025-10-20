@@ -19,15 +19,12 @@ export default function ServiceDetails({
     );
   }
 
-  // MAIN (A): zones already an array; description is now a STRING
   const mainCards = (serviceData.main?.zones || []).map((z) => ({
     title: z.title,
     paragraph: typeof z.description === "string" ? z.description : "",
     image: z.image,
   }));
 
-  // SMALL blocks: convert each block into an array of cards:
-  //   [ {kind:'header', title, image}, ...items ]
   const normalizeBlock = (b) => {
     if (!b) return [];
     const headerCard = { kind: "header", title: b.title, image: b.image };
@@ -90,7 +87,7 @@ function Tile({ area, children }) {
 }
 
 function EmblaTile({
-  mode = "main",               // "main" | "small"
+  mode = "main",
   cards = [],
   loop = false,
   autoplay = false,
@@ -103,7 +100,6 @@ function EmblaTile({
   const [scrollSnaps, setScrollSnaps] = useState([]);
   const timerRef = useRef(null);
 
-  // progress bar (main only)
   const [progress, setProgress] = useState(0);
   const progressTimerRef = useRef(null);
 
@@ -119,7 +115,6 @@ function EmblaTile({
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
-  // progress control (main only)
   const stopProgress = useCallback(() => {
     if (progressTimerRef.current) clearInterval(progressTimerRef.current);
     progressTimerRef.current = null;
@@ -146,7 +141,6 @@ function EmblaTile({
     }, 100);
   }, [mode, autoplay, isReducedMotion, emblaApi, autoplayIntervalMs, loop, scrollSnaps.length, stopProgress]);
 
-  // embla events
   useEffect(() => {
     if (!emblaApi) return;
     const onSelect = () => {
@@ -167,13 +161,12 @@ function EmblaTile({
     };
   }, [emblaApi, mode, startProgress]);
 
-  // hover/visibility handling for main autoplay
   useEffect(() => {
     if (!emblaApi || !autoplay || mode !== "main" || isReducedMotion || !hasMultiple) return;
 
     const start = () => {
       stop();
-      // safety timer; real timing is handled by progress interval
+
       timerRef.current = setInterval(() => {}, autoplayIntervalMs);
     };
     const stop = () => {
@@ -200,10 +193,6 @@ function EmblaTile({
 
   if (!totalSlides) return null;
 
-  // Button visibility logic:
-  // - Buttons hidden by default via CSS; visible on hover
-  // - If only 1 slide, never render buttons
-  // - First slide hides "prev", last slide hides "next"
   const showPrev = hasMultiple && selectedIndex > 0;
   const showNext = hasMultiple && selectedIndex < totalSlides - 1;
 
@@ -273,10 +262,8 @@ function SmallCard({ card }) {
   return (
     <div className={`small-card ${isHeader ? "small-card--header" : "small-card--item"}`}>
       {isHeader ? (
-        // Header uses its own image from JSON
         <div className="small-card__bg small-card__bg--image" style={{ backgroundImage: `url(${card.image})` }} aria-hidden="true" />
       ) : (
-        // Items use CSS background (solid or animated) via class hook
         <div className={`small-card__bg small-card__bg--css`} aria-hidden="true" />
       )}
       <div className="small-card__overlay" aria-hidden="true" />

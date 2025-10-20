@@ -55,9 +55,7 @@
   }
 }
 
-/* ===================== RESPONSIVE (SCALING ONLY) ===================== */
 
-/* Tablet (≤1024px): keep row layout, scale to fit vertically */
 @media (max-width: 1024px) {
   .service-description{
     height: auto;
@@ -68,14 +66,14 @@
       margin-right: $spacing-40;
 
       img{
-        width: 30rem;          /* was 40rem */
-        height: 48rem;         /* was 65rem */
+        width: 30rem;
+        height: 48rem;
         border-radius: $spacing-12;
       }
     }
 
     &__text{
-      width: auto;            /* allow flexible text column */
+      width: auto;
       max-width: 42rem;
       flex: 1 1 auto;
 
@@ -97,43 +95,46 @@
   }
 }
 
-/* Mobile (≤768px): still row layout; compress widths so both columns fit */
+
 @media (max-width: 768px) {
-  .service-description{
+  .service-description {
     height: auto;
     padding: 0 $spacing-16;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    margin-top: $spacing-24;
 
-    &__img{
-      margin-right: $spacing-16;
+    &__img {
+      display: none;
+    }
 
-      img{
-        width: 18rem;          /* compact but larger for clarity on phones */
-        height: auto;
-        aspect-ratio: 4 / 5;   /* preserve portrait proportion */
-        border-radius: $spacing-12;
+    &__text {
+      width: 100%;
+      max-width: 48rem;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      text-align: left;
+
+      div {
+        margin-top: $spacing-12;
       }
     }
 
-    &__text{
-      width: auto;            /* take remaining space */
-      flex: 1 1 auto;
-
-      div{ margin-top: $spacing-12; }
-    }
-
-    &__title{
+    &__title {
       font-size: $font-size-24;
       width: 100%;
       line-height: $line-height-15;
     }
 
-    &__subtitle{
+    &__subtitle {
       font-size: $font-size-18;
     }
 
-    &__brief{
+    &__brief {
       font-size: $font-size-16;
     }
   }
 }
+
