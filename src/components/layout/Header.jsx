@@ -150,7 +150,7 @@ export default function Header() {
             }}
           >
             <a
-              href="https://book.housecallpro.com/book/All-Bright-Home-Services/38acff17233d44ec9cdc0edf4aadf395?v2=true"
+              href="/pricing/location"
               className="primary-cta"
             >
               <img src="/icons/calendar.png" alt="" className="cta-icon" />
