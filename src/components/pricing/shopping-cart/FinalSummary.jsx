@@ -115,7 +115,7 @@ export default function FinalSummary() {
   const handleNextClick = async () => {
     try {
       await createLead();
-      window.location.href = "thank-you";
+      window.location.href = "/thank-you";
     } catch (error) {
       alert("❌ Failed to create lead. Please try again.");
       console.error(error);
