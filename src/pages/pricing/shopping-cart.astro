@@ -1,0 +1,14 @@
+---
+import Head from '../../components//layout/Head.astro'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+// @ts-ignore
+import ContextWrapper from '../../components/pricing/shopping-cart/ContextWrapper'
+---
+
+<Head></Head>
+<BaseLayout>
+
+  <ContextWrapper client:only="react"></ContextWrapper>
+
+</BaseLayout>
