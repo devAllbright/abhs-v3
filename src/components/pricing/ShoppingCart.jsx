@@ -2,7 +2,6 @@ import{ useEffect, useState } from "react";
 import RecurringServices from "./scroll-steps/RecurringServices";
 import OneTimeServices from "./scroll-steps/OneTimeServices";
 import CustomizeService from "./scroll-steps/CustomizeService";
-import CreateDeal from "./scroll-steps/CreateDeal";
 import ContactInfo from "./scroll-steps/ContactInfo";
 import Disclaimer from "./shopping-cart/Disclaimer";
 import BundleDisclaimer from "./shopping-cart/BundleDisclaimer";
@@ -25,10 +24,9 @@ export default function ShoppingCart() {
             <>
               <RecurringServices />
               <CustomizeService />
-              <CreateDeal />
             </>
           )}
-          <ContactInfo stepNumber={serviceType === "recurring" ? 4 : 2} />
+          <ContactInfo stepNumber={serviceType === "recurring" ? 3 : 2} />
         </div>
 
         <div className="cart-static-side">

@@ -5,26 +5,22 @@ import "../../../styles/pricing/shopping-cart/scroll-steps/recurring-services.cs
 export default function RecurringServices() {
   const { activeServices, addService, removeService, services, setFrequencyDiscount } = useShoppingCart();
 
-  // Get House Cleaning service details from context
   const houseCleaning = services.recurringServices.houseCleaning;
   const { frequencies } = houseCleaning;
 
-  // Check if House Cleaning is currently active
   const [isActive, setIsActive] = useState(
     activeServices.some((service) => service.id === "houseCleaning")
   );
 
-  // Track selected frequency
   const [selectedFrequency, setSelectedFrequency] = useState(isActive ? "weekly" : "");
 
-  // Handle House Cleaning selection/deselection
   const handleServiceClick = () => {
     if (isActive) {
       removeService("houseCleaning");
-      setSelectedFrequency(""); // Reset frequency selection
-      setFrequencyDiscount(0); // Reset frequency discount
+      setSelectedFrequency("");
+      setFrequencyDiscount(0);
     } else {
-      const discount = frequencies.weekly; // Default to Weekly
+      const discount = frequencies.weekly;
       addService({
         id: "houseCleaning",
         name: "House Cleaning",
@@ -33,18 +29,16 @@ export default function RecurringServices() {
         frequency: "weekly",
       });
       setSelectedFrequency("weekly");
-      setFrequencyDiscount((houseCleaning.price * discount) / 100); // Store discount in context
+      setFrequencyDiscount((houseCleaning.price * discount) / 100);
     }
     setIsActive(!isActive);
   };
 
-  // Handle frequency selection
   const handleFrequencyClick = (frequency) => {
-    if (!isActive) return; // Prevent selection if House Cleaning is not active
+    if (!isActive) return;
 
     setSelectedFrequency(frequency);
 
-    // Remove previous service entry and add the updated one with new discount
     removeService("houseCleaning");
 
     const discount = frequencies[frequency];
@@ -56,7 +50,7 @@ export default function RecurringServices() {
       frequency,
     });
 
-    setFrequencyDiscount((houseCleaning.price * discount) / 100); // Store discount in context
+    setFrequencyDiscount((houseCleaning.price * discount) / 100); 
   };
 
   return (
@@ -66,7 +60,6 @@ export default function RecurringServices() {
       </div>
 
       <div className="services-container">
-        {/* House Cleaning Service Button */}
         <button
           className={`service ${isActive ? "active-service" : ""}`}
           onClick={handleServiceClick}
@@ -74,7 +67,6 @@ export default function RecurringServices() {
           House Cleaning
         </button>
 
-        {/* Frequency Selection - Only visible when House Cleaning is selected */}
         {isActive && (
           <div className="service-frequency">
             {Object.keys(frequencies).map((frequency) => (

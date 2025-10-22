@@ -76,6 +76,7 @@ export default function ContactInfo({ stepNumber }) {
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateTimePicker
               label="Select Date & Time"
+              views={['year', 'day', 'hours']}
               value={contactInfo.appointment ? dayjs(contactInfo.appointment) : null}
               onChange={(date) => handleChange("appointment")(date?.toISOString())}
               renderInput={(params) => <TextField {...params} fullWidth />}

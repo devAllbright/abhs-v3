@@ -5,12 +5,12 @@ import SearchIcon from '../pages/our-services/SearchIcon';
 import SearchBar from '../pages/our-services/SearchBar';
 
 export default function Header() {
-  const [isVisible, setIsVisible] = useState(false);  // MegaMenu
-  const [showSearch, setShowSearch] = useState(false); // Search popover
+  const [isVisible, setIsVisible] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
   const popoverRef = useRef(null);
 
   const handleMouseEnterServices = () => {
-    setShowSearch(false); // close search if services opens
+    setShowSearch(false);
     setIsVisible(true);
   };
 
@@ -31,7 +31,6 @@ export default function Header() {
     }
   };
 
-  // Close search on click outside & Esc
   useEffect(() => {
     function onDocClick(e) {
       if (!showSearch) return;
@@ -50,10 +49,8 @@ export default function Header() {
     };
   }, [showSearch]);
 
-  // Autofocus the SearchBar input when popover opens (targets #service-search)
   useEffect(() => {
     if (showSearch) {
-      // slight delay to ensure the input is in the DOM
       const t = setTimeout(() => {
         const input = document.getElementById('service-search');
         if (input) input.focus();
@@ -110,7 +107,6 @@ export default function Header() {
             <a href="/contact-us">Contact Us</a>
           </div>
 
-          {/* 🔎 Search icon button */}
           <SearchIcon
             className="header__nav-icon"
             size={40}
@@ -121,7 +117,6 @@ export default function Header() {
             }}
           />
 
-          {/* Popover with SearchBar */}
           {showSearch && (
             <div ref={popoverRef} className="header__search-popover">
               <SearchBar />
