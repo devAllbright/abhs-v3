@@ -1,16 +1,16 @@
-.scroll-contact-info{
+.scroll-contact-info {
   min-height: 500px;
   width: 600px;
-  margin: 0px auto;
+  margin: 0 auto;
 }
 
-.scroll-title{
+.scroll-title {
   font-size: 40px;
   font-weight: bold;
   color: #303030;
 }
 
-.info-container{
+.info-container {
   display: flex;
   flex-wrap: wrap;
   width: 600px;
@@ -20,34 +20,67 @@
 .form-group:nth-child(1),
 .form-group:nth-child(2),
 .form-group:nth-child(3),
-.form-group:nth-child(4){
+.form-group:nth-child(4) {
   width: 50%;
 }
 
-.form-group:nth-child(5){
-  width: 100%
+.form-group:nth-child(5),
+.form-group.full-width {
+  width: 100%;
 }
 
-.MuiInputBase-input{
-  height: 30px !important;
+.form-group {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
 }
 
+.form-label {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #303030;
+  margin-bottom: 0.6rem;
+}
 
+.MuiInputBase-input {
+  font-size: 1.6rem !important;
+  padding: 1.4rem 1rem !important;
+  height: auto !important;
+}
 
+.MuiOutlinedInput-root {
+  border-radius: 0.5rem !important;
+}
+
+.MuiOutlinedInput-notchedOutline legend {
+  font-size: 1.6rem !important;
+}
+
+.MuiInputBase-input::placeholder {
+  font-size: 1.6rem !important;
+  opacity: 0.8;
+}
+
+.MuiPickersToolbar-root,
+.MuiPickersLayout-contentWrapper,
+.MuiPickersLayout-toolbar,
+.MuiPickersCalendarHeader-label,
+.MuiPickersDay-root,
+.MuiPickersClock-root,
+.MuiPickersClockPointer-root,
+.MuiPickersClockNumber-root {
+  font-size: 1.6rem !important;
+}
 
 .form-group input,
-.form-group textarea{
+.form-group textarea {
   width: 100%;
-  padding: 12px;
-  border: solid 1px #969696;
 }
 
-.form-group textarea{
+.form-group textarea {
   resize: none;
 }
 
-.form-group{
-  padding: 12px;
+.MuiPickersInputBase-sectionContent{
+  font-size: 1.6rem;
 }
-
-

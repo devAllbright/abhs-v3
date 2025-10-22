@@ -36,65 +36,79 @@ export default function ContactInfo({ stepNumber }) {
 
       <div className="info-container">
         <div className="form-group">
+          <span className="form-label">Full Name</span>
           <TextField
             className="form-input input-name"
             fullWidth
-            label="Full Name"
+            placeholder="Enter your full name"
             variant="outlined"
             name="fullName"
             value={contactInfo.fullName}
             onChange={handleChange("fullName")}
+            InputLabelProps={{ shrink: false }}
           />
         </div>
 
         <div className="form-group">
+          <span className="form-label">Phone Number</span>
           <TextField
             className="form-input input-phone"
             fullWidth
-            label="Phone Number"
+            placeholder="Enter your phone number"
             variant="outlined"
             type="tel"
             name="phoneNumber"
             value={contactInfo.phoneNumber}
             onChange={handleChange("phoneNumber")}
+            InputLabelProps={{ shrink: false }}
           />
         </div>
 
         <div className="form-group">
+          <span className="form-label">Your Address</span>
           <TextField
             className="form-input input-address"
             fullWidth
-            label="Your Address"
+            placeholder="Enter your address"
             variant="outlined"
             name="address"
             value={contactInfo.address}
             onChange={handleChange("address")}
+            InputLabelProps={{ shrink: false }}
           />
         </div>
 
         <div className="form-group">
+          <span className="form-label">Select Date & Time</span>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateTimePicker
-              label="Select Date & Time"
               views={['year', 'day', 'hours']}
               value={contactInfo.appointment ? dayjs(contactInfo.appointment) : null}
               onChange={(date) => handleChange("appointment")(date?.toISOString())}
-              renderInput={(params) => <TextField {...params} fullWidth />}
+              slotProps={{
+                textField: {
+                  fullWidth: true,
+                  placeholder: "Pick a date and hour",
+                  InputLabelProps: { shrink: false }
+                }
+              }}
             />
           </LocalizationProvider>
         </div>
 
-        <div className="form-group">
+        <div className="form-group full-width">
+          <span className="form-label">Comments / Details</span>
           <TextField
             className="form-input input-comments"
             fullWidth
-            label="Comments"
+            placeholder="Add additional details"
             variant="outlined"
             multiline
             rows={4}
             name="comments"
             value={contactInfo.comments}
             onChange={handleChange("comments")}
+            InputLabelProps={{ shrink: false }}
           />
         </div>
       </div>
