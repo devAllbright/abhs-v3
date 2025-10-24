@@ -8,7 +8,15 @@ import ContextWrapper from '../../components/pricing/shopping-cart/ContextWrappe
 
 <Head></Head>
 <BaseLayout>
-
-  <ContextWrapper client:only="react"></ContextWrapper>
+  <div class="shopping-cart-main-container">
+    <ContextWrapper client:only="react"></ContextWrapper>
+  </div>
+  
 
 </BaseLayout>
+
+<style>
+  .shopping-cart-main-container{
+    min-height: 100vh;
+  }
+</style>

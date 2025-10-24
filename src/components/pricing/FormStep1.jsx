@@ -31,7 +31,7 @@ const Step1 = () => {
         alert('Empty fields are not allowed');
       } else {
         sessionStorage.setItem('step1FormData', JSON.stringify(formData));
-        window.location.href = '/pricing/service-type';
+        window.location.href = '/pricing/home-details';
       }
     }, 500);
   };

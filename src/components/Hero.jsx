@@ -1,10 +1,11 @@
-import RedirectCTA from "./buttons/RedirectCTA";
+import { useState, useEffect } from "react";
+import CTAButton from "./buttons/CTAButton";
 import ModalCTA from "./buttons/ModalCTA";
 
 const StaticColumn = ({ images }) => (
   <div className="primary-banner__collage-column-wrapper">
     <div className="primary-banner__collage-column primary-banner__collage-column--animated">
-      {[...images, ...images].map((item, i) => (
+      {images.map((item, i) => (
         <img
           key={i}
           src={item.src}
@@ -25,17 +26,34 @@ export default function Hero({ bannerData }) {
     description,
     socialProof,
     images,
-    uiImages = [],
-    ctaAction,
+    uiImages,
   } = bannerData;
+
+  const [serviceType, setServiceType] = useState(null);
+
+  const columnOneImages = uiImages.slice(0, 8);
+  const columnTwoImages = uiImages.slice(8, 16);
+
+  useEffect(() => {
+    const storedServiceType = sessionStorage.getItem("serviceType");
+    setServiceType(storedServiceType);
+  }, []);
 
   return (
     <div className="primary-banner">
       <div className="primary-banner__content">
         <div>
           <div className="primary-banner__reviews">
-            <img src={images.googleLogo} className="primary-banner__reviews-icon" alt="Google Logo" />
-            <img src={images.ratingStars} className="primary-banner__reviews-icon" alt="Rating Star" />
+            <img
+              src={images.googleLogo}
+              className="primary-banner__reviews-icon"
+              alt="Google Logo"
+            />
+            <img
+              src={images.ratingStars}
+              className="primary-banner__reviews-icon"
+              alt="Rating Star"
+            />
             <p className="primary-banner__reviews-text">{ratingText}</p>
           </div>
 
@@ -49,7 +67,10 @@ export default function Hero({ bannerData }) {
 
           <div className="primary-banner__social-proof">
             {socialProof.map((text, index) => (
-              <div key={index} className="primary-banner__social-proof-item">
+              <div
+                key={index}
+                className="primary-banner__social-proof-item"
+              >
                 <img
                   className="primary-banner__social-proof-icon"
                   src={images.checkIcon}
@@ -61,14 +82,10 @@ export default function Hero({ bannerData }) {
           </div>
 
           <div className="primary-banner__cta">
-            {ctaAction === "redirect" ? (
-              <RedirectCTA
-                href="https://book.housecallpro.com/book/All-Bright-Home-Services/38acff17233d44ec9cdc0edf4aadf395?v2=true"
-                text="Book a Free Consultation"
-                buttonClass="primary-cta"
-              />
+            {serviceType === "recurring" || serviceType === "oneTime" ? (
+              <CTAButton buttonClass="primary-cta" />
             ) : (
-              <ModalCTA text="Book a Free Consultation" buttonClass="primary-cta" />
+              <ModalCTA buttonClass="primary-cta" />
             )}
           </div>
         </div>
@@ -76,8 +93,8 @@ export default function Hero({ bannerData }) {
 
       <div className="primary-banner__collage">
         <div className="primary-banner__collage-container">
-          <StaticColumn images={uiImages} />
-          <StaticColumn images={[...uiImages].reverse()} />
+          <StaticColumn images={columnOneImages} />
+          <StaticColumn images={columnTwoImages} />
         </div>
       </div>
     </div>

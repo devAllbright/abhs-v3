@@ -4,19 +4,16 @@
 .secondary-cta,
 .tertiary-cta {
   all: unset;
+  width: fit-content;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
-  gap: 0.5em;
-
   background-color: $primary-color-dark;
   font-size: $font-size-16;
   font-weight: $font-weight-bold;
   padding: $spacing-12 $spacing-8;
-
   text-decoration: none;
   color: $secondary-text;
-
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -35,8 +32,8 @@
 .cta-icon {
   width: 1.3em;
   height: 1.3em;
-  vertical-align: middle;
-  margin-top: -3px;
+  display: block;
+  margin-top: 0;
 }
 
 @media (max-width: 1024px) {

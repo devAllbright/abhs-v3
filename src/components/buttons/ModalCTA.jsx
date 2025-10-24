@@ -4,17 +4,23 @@ import LeadModal from "../LeadModal";
 export default function ModalCTA({ buttonClass, thankYouPath = "/thank-you" }) {
   const [showModal, setShowModal] = useState(false);
 
+  const handleOpenModal = (e) => {
+    e.preventDefault(); // ✅ prevents the default anchor navigation
+    setShowModal(true);
+  };
+
   return (
     <>
-      <button
-        type="button"
+      <a
+        href="#"
         className={buttonClass}
-        onClick={() => setShowModal(true)}
+        onClick={handleOpenModal}
+        role="button"
         aria-haspopup="dialog"
         aria-expanded={showModal}
       >
-        Book a Free Consultation
-      </button>
+        Get a Free Consultation
+      </a>
 
       <LeadModal
         isOpen={showModal}

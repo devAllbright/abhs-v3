@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import '../../styles/pricing/home-details.css';
 
 export default function HomeDetails() {
-  // Read serviceType from sessionStorage (defaulting to "recurring" if missing)
   const serviceType = sessionStorage.getItem("serviceType") || "recurring";
 
   const [counters, setCounters] = useState({
@@ -12,13 +11,11 @@ export default function HomeDetails() {
     otherRooms: 0,
   });
   
-  // For oneTime service, add a separate state for Square Footage with a default value of 1500.
   const [squareFootage, setSquareFootage] = useState(1500);
   
   const [condition, setCondition] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  // Handles increment/decrement for the other counters
   const handleCounterChange = (field, delta) => {
     setCounters((prev) => {
       const newValue = Math.min(5, Math.max(0, prev[field] + delta));
@@ -26,7 +23,6 @@ export default function HomeDetails() {
     });
   };
 
-  // Handles Square Footage changes for oneTime service type.
   const handleSquareFootageChange = (delta) => {
     if (delta < 0 && squareFootage - 100 >= 800) {
       setSquareFootage(squareFootage - 100);
@@ -51,7 +47,6 @@ export default function HomeDetails() {
       return;
     }
 
-    // Save additional squareFootage for oneTime service type.
     const homeDetails = serviceType === "oneTime"
       ? { squareFootage, counters, condition }
       : { counters, condition };
@@ -246,7 +241,7 @@ export default function HomeDetails() {
       </div>
 
       <div className="navigation-buttons">
-        <a href="/pricing/service-type">
+        <a href="/pricing/home-type">
           <button className="nav-button">Back</button>
         </a>
         <button className="nav-button" onClick={handleNextClick}>Next</button>

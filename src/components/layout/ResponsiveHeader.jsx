@@ -8,7 +8,7 @@ export default function ResponsiveHeader() {
   useEffect(() => {
     const media = window.matchMedia('(max-width: 1024px)');
     const handler = () => setIsMobile(media.matches);
-    handler(); // initial check
+    handler();
     media.addEventListener('change', handler);
     return () => media.removeEventListener('change', handler);
   }, []);

@@ -1,13 +1,20 @@
-// Header.jsx
 import { useState, useRef, useEffect } from 'react';
 import MegaMenu from './MegaMenu';
 import SearchIcon from '../pages/our-services/SearchIcon';
 import SearchBar from '../pages/our-services/SearchBar';
+import CTAButton from '../buttons/CTAButton';
+import ModalCTA from '../buttons/ModalCTA';
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [serviceType, setServiceType] = useState(null);
   const popoverRef = useRef(null);
+
+  useEffect(() => {
+    const storedServiceType = sessionStorage.getItem('serviceType');
+    setServiceType(storedServiceType);
+  }, []);
 
   const handleMouseEnterServices = () => {
     setShowSearch(false);
@@ -137,6 +144,7 @@ export default function Header() {
               <span className="header__cta-number-text">(408) - 280 - 1234</span>
             </a>
           </div>
+
           <div
             className="header__cta-button"
             onMouseEnter={() => {
@@ -144,13 +152,11 @@ export default function Header() {
               setShowSearch(false);
             }}
           >
-            <a
-              href="/pricing/location"
-              className="primary-cta"
-            >
-              <img src="/icons/calendar.png" alt="" className="cta-icon" />
-              <span>Book a Free Consultation</span>
-            </a>
+            {serviceType === 'recurring' || serviceType === 'oneTime' ? (
+              <CTAButton buttonClass={'primary-cta'} />
+            ) : (
+              <ModalCTA buttonClass={'primary-cta'} />
+            )}
           </div>
         </div>
       </header>

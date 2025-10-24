@@ -1,8 +1,7 @@
 ---
-import CTAButton from "../../buttons/CTAButton"
+import FinalCTA from "../../layout/FinalCTA.jsx";
 
 const { finalCTAData } = Astro.props;
-
 const { imgSrc, imgAlt, title, brief, callToActionText, contactText } = finalCTAData;
 ---
 
@@ -18,7 +17,7 @@ const { imgSrc, imgAlt, title, brief, callToActionText, contactText } = finalCTA
           {brief} {callToActionText} <span>{contactText}</span>
         </div>
         <div class="final-cta__cta">
-          <CTAButton href="https://book.housecallpro.com/book/All-Bright-Home-Services/38acff17233d44ec9cdc0edf4aadf395?v2=true" text="Contact Us" buttonClass="secondary-cta"/>
+          <FinalCTA buttonClass="secondary-cta" client:only="react" />
         </div>
       </div>
     </div>

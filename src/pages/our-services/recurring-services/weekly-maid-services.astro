@@ -43,6 +43,8 @@ const bannerData = {
 
 
   imgClass: "--secondary",
+
+  serviceType: "oneTime"
 }
 
 const descriptionData = {
@@ -187,3 +189,7 @@ const faqs = [
   <FinalCTASection finalCTAData={ finalCTAData }/>
 
 </BaseLayout>
+
+<script>
+  sessionStorage.setItem('serviceType', 'recurring');
+</script>

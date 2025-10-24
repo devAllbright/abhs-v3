@@ -5,7 +5,7 @@ import BenefitSection from "../components/pages/home/BenefitsSection";
 import WhyChooseUsSection from "../components/pages/home/WhyChooseUsSection.astro";
 import ReviewsWidget from "../components/pages/ReviewsWidget.astro";
 import PostCarousel from "../components/layout/PostCarousel";
-import FAQSection from "../components/pages/home/FAQSection.astro"
+import FAQSection from "../components/pages/home/FAQSection.astro";
 import FinalCTASection from "../components/pages/home/FinalCTASection.astro";
 
 const bannerData = {
@@ -25,17 +25,24 @@ const bannerData = {
   },
   uiImages: [
     { type: "a", src: "/banner-list/index/img-1.png" },
-    { type: "b", src: "/banner-list/index/img-2.png" },
+    { type: "b", src: "/banner-list/index/img-10.png" },
     { type: "a", src: "/banner-list/index/img-3.png" },
-    { type: "b", src: "/banner-list/index/img-4.png" },
+    { type: "b", src: "/banner-list/index/img-12.png" },
     { type: "a", src: "/banner-list/index/img-5.png" },
-    { type: "b", src: "/banner-list/index/img-6.png" },
+    { type: "b", src: "/banner-list/index/img-14.png" },
     { type: "a", src: "/banner-list/index/img-7.png" },
+    { type: "b", src: "/banner-list/index/img-16.png" },
+    { type: "b", src: "/banner-list/index/img-2.png" },
+    { type: "a", src: "/banner-list/index/img-9.png" },
+    { type: "b", src: "/banner-list/index/img-4.png" },
+    { type: "a", src: "/banner-list/index/img-11.png" },
+    { type: "b", src: "/banner-list/index/img-6.png" },
+    { type: "a", src: "/banner-list/index/img-13.png" },
     { type: "b", src: "/banner-list/index/img-8.png" },
-  ],  
+    { type: "a", src: "/banner-list/index/img-15.png" }
+  ],
 
   imgClass: "--main",
-
   ctaAction: "redirect"
 };
 
@@ -72,7 +79,7 @@ const finalCTAData = {
   title: "A cleaner home, a better life!",
   brief: "Everything we do is designed to make your life easier, your home fresher, and your time more enjoyable.",
   callToActionText: "Ready to experience the difference?",
-  contactText: "Contact us today!",
+  contactText: "Contact us today!"
 };
 
 const faqs = [
@@ -97,8 +104,6 @@ const faqs = [
     answer: "We proudly serve the Greater Silicon Valley and South Bay area. Our service areas include Atherton, Hillsborough, Palo Alto, Los Altos, Mountain View, Sunnyvale, Santa Clara, San Jose, Saratoga, Los Gatos, and surrounding neighborhoods."
   }
 ];
-
-
 ---
 
 <BaseLayout>
@@ -106,7 +111,11 @@ const faqs = [
   <BenefitSection client:only="react"/>
   <WhyChooseUsSection />
   <ReviewsWidget />
-  <PostCarousel posts={ blogPosts } client:only="react" />
-  <FAQSection faqs={ faqs } />
-  <FinalCTASection finalCTAData={ finalCTAData }/>
+  <PostCarousel posts={blogPosts} client:only="react" />
+  <FAQSection faqs={faqs} />
+  <FinalCTASection finalCTAData={finalCTAData} />
 </BaseLayout>
+
+<script>
+  sessionStorage.setItem('serviceType', 'recurring');
+</script>
