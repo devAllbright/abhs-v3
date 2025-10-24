@@ -41,7 +41,7 @@ export default function ShoppingCart() {
       </div>
 
       <div className="navigation-buttons">
-        <a href="/pricing/service-type">
+        <a href="/pricing/home-details">
           <button className="nav-button">Back</button>
         </a>
         <button className="nav-button" onClick={handleNext}>
