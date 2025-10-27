@@ -1,4 +1,4 @@
-export default function CTAButton({ buttonClass }) {
+export default function CTAButton({ primaryCta, buttonClass }) {
   const handleClick = (e) => {
     e.preventDefault();
     window.location.href = "/pricing/location";
@@ -15,7 +15,7 @@ export default function CTAButton({ buttonClass }) {
         alt=""
         className="cta-icon"
       />
-      <span>Book Now!</span>
+      <span>{ primaryCta }</span>
     </a>
   );
 }

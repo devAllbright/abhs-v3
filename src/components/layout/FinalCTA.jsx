@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CTAButton from "../buttons/CTAButton";
 import ModalCTA from "../buttons/ModalCTA";
 
-export default function FinalCTA({ buttonClass }) {
+export default function FinalCTA({ primaryCta, secondaryCta, buttonClass }) {
   const [serviceType, setServiceType] = useState(null);
 
   useEffect(() => {
@@ -13,9 +13,9 @@ export default function FinalCTA({ buttonClass }) {
   return (
     <>
       {(serviceType === "recurring" || serviceType === "oneTime") ? (
-        <CTAButton buttonClass={ buttonClass } />
+        <CTAButton primaryCta={ primaryCta } buttonClass={ buttonClass } />
       ) : (
-        <ModalCTA buttonClass={ buttonClass } />
+        <ModalCTA secondaryCta={ secondaryCta } buttonClass={ buttonClass } />
       )}
     </>
   );

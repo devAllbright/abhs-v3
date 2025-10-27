@@ -153,9 +153,9 @@ export default function Header() {
             }}
           >
             {serviceType === 'recurring' || serviceType === 'oneTime' ? (
-              <CTAButton buttonClass={'primary-cta'} />
+              <CTAButton primaryCta="Maid Services - Book Now!" buttonClass={'primary-cta'} />
             ) : (
-              <ModalCTA buttonClass={'primary-cta'} />
+              <ModalCTA secondaryCta="Maintenance - Get a Free Consultation" buttonClass={'primary-cta'} />
             )}
           </div>
         </div>

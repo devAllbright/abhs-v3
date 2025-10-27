@@ -1,11 +1,11 @@
 import { useState } from "react";
 import LeadModal from "../LeadModal";
 
-export default function ModalCTA({ buttonClass, thankYouPath = "/thank-you" }) {
+export default function ModalCTA({ secondaryCta, buttonClass, thankYouPath = "/thank-you" }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleOpenModal = (e) => {
-    e.preventDefault(); // ✅ prevents the default anchor navigation
+    e.preventDefault();
     setShowModal(true);
   };
 
@@ -19,7 +19,7 @@ export default function ModalCTA({ buttonClass, thankYouPath = "/thank-you" }) {
         aria-haspopup="dialog"
         aria-expanded={showModal}
       >
-        Get a Free Consultation
+        { secondaryCta }
       </a>
 
       <LeadModal
