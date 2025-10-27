@@ -1,76 +1,89 @@
 @use '../../abstracts/variables' as *;
 
-.why-choose-us{
+.why-choose-us {
   min-height: 50vh;
   padding-bottom: $spacing-64;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .reasons{
+  &__container {
+    width: 100%;
     display: flex;
-    justify-content: center; /* ✅ centered on desktop */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .reasons {
+    display: flex;
+    justify-content: center;
     align-items: flex-start;
+    gap: $spacing-24;
 
-    &__item{
+    &__item {
       width: 40rem;
+      padding: $spacing-24;
+      background-color: $background-light;
+      border-radius: $spacing-12;
+      box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.05);
 
-      &-icon{
-        img{ height: 5rem; }
+      &-icon img {
+        height: 5rem;
       }
 
-      &-title{
+      &-title {
         font-size: $font-size-28;
         font-family: $font-primary;
         font-weight: $font-weight-bold;
+        margin-top: $spacing-12;
       }
 
-      &-description{
+      &-description {
         font-size: $font-size-16;
         font-family: $font-secondary;
         font-weight: $font-weight-light;
+        margin-top: $spacing-8;
       }
-    }
-
-    &__item:not(:last-child){
-      margin-right: $spacing-64;
     }
   }
 
-  .review-container{
+  .review-container {
     display: flex;
     justify-content: center;
     margin-top: $spacing-64;
 
-    .individual-review{
+    .individual-review {
       width: 90rem;
       padding: $spacing-32;
       background-color: $tertiary-color-light;
 
-      p{
+      p {
         font-size: $font-size-24;
         font-weight: $font-weight-light;
         font-style: italic;
         text-align: center;
       }
 
-      &__info{
+      &__info {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-top: $spacing-16;
 
-        img{
+        img {
           height: 4.8rem;
           border-radius: 50%;
           margin-right: $spacing-12;
           margin-left: -4.8rem;
         }
 
-        &-name{
-          p{
+        &-name {
+          p {
             font-size: $font-size-16;
             font-weight: $font-weight-bold;
           }
 
-          p:last-child{
+          p:last-child {
             font-weight: $font-weight-light;
             font-style: italic;
           }
@@ -80,56 +93,47 @@
   }
 }
 
-/* ======== RESPONSIVE OVERRIDES (SCALING ONLY, KEEP ROW & CENTER) ======== */
-
-/* Tablet (≤1024px): centered row, scale down */
+/* ====== TABLET ====== */
 @media (max-width: 1024px) {
-  .why-choose-us{
+  .why-choose-us {
     padding: 0 $spacing-24 $spacing-64;
 
-    .reasons{
-      justify-content: center;
+    .reasons {
       gap: $spacing-24;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      padding: 0 $spacing-16;
 
-      &__item{
-        width: 28rem;
-        scroll-snap-align: start;
+      &__item {
+        width: 30rem;
 
-        &-icon img{ height: 4rem; }
-        &-title{ font-size: $font-size-24; }
-        &-description{ font-size: $font-size-16; }
+        &-icon img { height: 4rem; }
+        &-title { font-size: $font-size-24; }
+        &-description { font-size: $font-size-16; }
       }
-
-      &__item:not(:last-child){ margin-right: 0; }
     }
 
-    .review-container{
+    .review-container {
       margin-top: $spacing-48;
 
-      .individual-review{
+      .individual-review {
         width: 100%;
         max-width: 90rem;
         padding: $spacing-24;
 
-        p{ font-size: $font-size-20; }
+        p { font-size: $font-size-20; }
 
-        &__info{
-          img{
+        &__info {
+          img {
             height: 4rem;
             margin-left: -4rem;
           }
-          &-name p{ font-size: $font-size-16; }
+
+          &-name p { font-size: $font-size-16; }
         }
       }
     }
   }
 }
 
-/* Mobile (≤768px): centered row, smaller cards, optional scroll */
+/* ====== MOBILE ====== */
 @media (max-width: 767px) {
   .why-choose-us {
     padding: 0 $spacing-16 $spacing-48;
@@ -144,7 +148,6 @@
       padding: 0 $spacing-12;
       -webkit-overflow-scrolling: touch;
 
-      // ✅ Subtle edge fading mask (replaces strap)
       -webkit-mask-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0) 3%,
@@ -168,10 +171,6 @@
         scroll-snap-align: start;
         flex: 0 0 auto;
         width: 25rem;
-        padding: $spacing-24;
-        background-color: $background-light;
-        border-radius: $spacing-12;
-        box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.05);
 
         &-icon img {
           height: 3.2rem;
@@ -190,10 +189,6 @@
           font-weight: $font-weight-light;
           margin-top: $spacing-8;
         }
-      }
-
-      &__item:not(:last-child) {
-        margin-right: 0;
       }
     }
 
@@ -222,7 +217,3 @@
     }
   }
 }
-
-
-
-
