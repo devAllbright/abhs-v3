@@ -21,7 +21,7 @@
     gap: $spacing-24;
 
     &__item {
-      width: 40rem;
+      width:35rem;
       padding: $spacing-24;
       background-color: $background-light;
       border-radius: $spacing-12;
@@ -93,7 +93,6 @@
   }
 }
 
-/* ====== TABLET ====== */
 @media (max-width: 1024px) {
   .why-choose-us {
     padding: 0 $spacing-24 $spacing-64;
@@ -102,7 +101,7 @@
       gap: $spacing-24;
 
       &__item {
-        width: 30rem;
+        width: 25rem;
 
         &-icon img { height: 4rem; }
         &-title { font-size: $font-size-24; }
