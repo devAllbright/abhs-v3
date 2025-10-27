@@ -1,11 +1,15 @@
 @use '../../abstracts/variables' as *;
 
 .benefit-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  position: relative;
+
+  .benefits-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+
+  }
 
   &__list {
     margin-right: $spacing-64;
@@ -53,9 +57,10 @@
       overflow: hidden;
       opacity: 0;
       transform: translateY(-1rem);
-      transition: height 0.6s cubic-bezier(0.65, 0, 0.35, 1),
-                  opacity 0.5s ease-in-out,
-                  transform 0.5s ease-in-out;
+      transition:
+        height 0.6s cubic-bezier(0.65, 0, 0.35, 1),
+        opacity 0.5s ease-in-out,
+        transform 0.5s ease-in-out;
     }
 
     &.active {
@@ -75,26 +80,27 @@
 
   &__img {
     position: relative;
-    align-self: center; /* ✅ Keep image vertically centered even if list grows */
+    align-self: center;
 
     img {
       width: 35rem;
       height: 52.5rem;
-      border-radius: $spacing-24; /* 2.4rem */
+      border-radius: $spacing-24;
       object-fit: cover;
       transition: opacity 0.8s ease-in-out;
     }
   }
 }
 
-/* ======== RESPONSIVE OVERRIDES ======== */
+/* ======== RESPONSIVE ======== */
 
-/* Tablet (≤1024px) — keep side-by-side, just scale down */
 @media (max-width: 1024px) {
   .benefit-section {
-    height: auto;
-    padding: 0 $spacing-24;
-    align-items: center; /* ✅ keep centered on tablet too */
+    padding: $spacing-40 $spacing-24;
+
+    .benefits-container {
+      height: auto;
+    }
 
     &__list { margin-right: $spacing-40; }
 
@@ -115,7 +121,6 @@
     }
 
     &__img {
-      align-self: center; /* ✅ ensure vertical centering */
       img {
         width: 28rem;
         height: 42rem;
@@ -125,15 +130,17 @@
   }
 }
 
-/* Mobile (≤768px) — still side-by-side, tighter scale */
 @media (max-width: 767px) {
   .benefit-section {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center; // ✅ Vertically center image
-    padding: 0 $spacing-12;
-    gap: $spacing-16;
-    height: auto;
+    padding: $spacing-24 $spacing-12;
+
+    .benefits-container {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: $spacing-16;
+      height: auto;
+    }
 
     &__list {
       margin: 0;
@@ -165,7 +172,7 @@
     }
 
     &__img {
-      align-self: center; // ✅ Vertically center image alongside list
+      align-self: center;
       width: 40%;
 
       img {
@@ -177,4 +184,3 @@
     }
   }
 }
-
