@@ -91,10 +91,11 @@
       gap: $spacing-24;
       justify-content: center;
       align-items: flex-start;
-      height: 65vh;
+      width: 40rem;
+      height: 50rem;
       overflow: hidden;
       position: relative;
-      border-radius: 35% 35%;
+      border-radius: 10rem;
 
       &::before,
       &::after {
@@ -210,85 +211,85 @@
     height: 60vh;
     padding: 0 $spacing-24;
     text-align: left;
-  }
 
-  .primary-banner__content {
-    flex: 1 1 50%;
-    margin-right: 0;
+    &__content {
+      flex: 1 1 50%;
+      margin-right: 0;
 
-    > div {
+      > div {
+        width: 100%;
+        max-width: 35rem;
+      }
+    }
+
+    &__reviews {
+      &-icon {
+        height: 2rem;
+      }
+
+      &-text {
+        font-size: $font-size-14;
+      }
+    }
+
+    &__title {
+      font-size: $font-size-28;
+      line-height: $line-height-15;
+    }
+
+    &__description {
+      font-size: $font-size-16;
+      margin-top: $spacing-16;
       width: 100%;
-      max-width: 35rem;
-    }
-  }
-
-  .primary-banner__reviews {
-    &-icon {
-      height: 2rem;
     }
 
-    &-text {
-      font-size: $font-size-14;
-    }
-  }
-
-  .primary-banner__title {
-    font-size: $font-size-28;
-    line-height: $line-height-15;
-  }
-
-  .primary-banner__description {
-    font-size: $font-size-16;
-    margin-top: $spacing-16;
-    width: 100%;
-  }
-
-  .primary-banner__social-proof {
-    width: 30rem !important;
-    margin-top: $spacing-16;
-
-    &-item {
+    &__social-proof {
       width: 30rem !important;
-      margin-top: $spacing-8;
+      margin-top: $spacing-16;
+
+      &-item {
+        width: 30rem !important;
+        margin-top: $spacing-8;
+      }
+
+      &-icon {
+        height: 2rem;
+      }
+
+      &-text {
+        font-size: $font-size-14;
+      }
     }
 
-    &-icon {
-      height: 2rem;
+    &__cta {
+      margin-top: $spacing-24;
     }
 
-    &-text {
-      font-size: $font-size-14;
-    }
-  }
+    &__collage {
+      flex: 1 1 50%;
+      height: 40vh;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
 
-  .primary-banner__cta {
-    margin-top: $spacing-24;
-  }
+      &-container {
+        height: 40vh;
+        padding: $spacing-16;
+        gap: $spacing-12;
+        border-radius: 50rem;
+      }
 
-  .primary-banner__collage {
-    flex: 1 1 50%;
-    height: 40vh;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-  }
+      &-image {
+        width: 14rem !important;
 
-  .primary-banner__collage-container {
-    height: 40vh;
-    padding: $spacing-16;
-    gap: $spacing-12;
-    border-radius: $spacing-12;
-  }
+        &--type-a {
+          height: 18rem !important;
+        }
 
-  .primary-banner__collage-image {
-    width: 14rem !important;
-
-    &--type-a {
-      height: 18rem !important;
-    }
-
-    &--type-b {
-      height: 11rem !important;
+        &--type-b {
+          height: 11rem !important;
+        }
+      }
     }
   }
 
@@ -305,7 +306,6 @@
   }
 }
 
-
 @media (max-width: 767px) {
   .primary-banner {
     flex-direction: column;
@@ -313,90 +313,90 @@
     text-align: center;
     padding: 0 $spacing-16;
     height: auto;
-  }
 
-  .primary-banner__content {
-    margin: 0;
-    width: 100%;
-  }
+    &__content {
+      margin: 0;
+      width: 100%;
 
-  .primary-banner__content > div {
-    max-width: 100%;
-  }
-
-  .primary-banner__reviews {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: $spacing-8;
-    margin-bottom: $spacing-16;
-
-    &-icon {
-      height: 2rem;
+      > div {
+        max-width: 100%;
+      }
     }
 
-    &-text {
+    &__reviews {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: $spacing-8;
+      margin-bottom: $spacing-16;
+
+      &-icon {
+        height: 2rem;
+      }
+
+      &-text {
+        font-size: $font-size-14;
+      }
+    }
+
+    &__title {
+      font-size: $font-size-24;
+      line-height: $line-height-15;
+      word-break: break-word;
+      margin-bottom: $spacing-12;
+    }
+
+    &__description {
       font-size: $font-size-14;
+      margin-top: $spacing-12;
+      line-height: $line-height-15;
+      width: 100%;
     }
-  }
 
-  .primary-banner__title {
-    font-size: $font-size-24;
-    line-height: $line-height-15;
-    word-break: break-word;
-    margin-bottom: $spacing-12;
-  }
+    &__social-proof {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: $spacing-12;
+      margin-top: $spacing-16;
+      width: 100% !important;
+      flex-wrap: wrap;
 
-  .primary-banner__description {
-    font-size: $font-size-14;
-    margin-top: $spacing-12;
-    line-height: $line-height-15;
-    width: 100%;
-  }
+      &-item {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        word-break: break-word;
+        width: 100% !important;
+      }
 
-  .primary-banner__social-proof {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: $spacing-12;
-    margin-top: $spacing-16;
-    width: 100% !important;
-    flex-wrap: wrap;
-  }
+      &-icon {
+        height: 1rem;
+        width: 1rem;
+        margin-right: $spacing-12;
+        flex-shrink: 0;
+        margin-top: $spacing-4;
+      }
 
-  .primary-banner__social-proof-item {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    word-break: break-word;
-    width: 100% !important;
-  }
+      &-text {
+        font-size: $font-size-12;
+        line-height: $line-height-15;
+        text-align: left;
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+    }
 
-  .primary-banner__social-proof-icon {
-    height: 1rem;
-    width: 1rem;
-    margin-right: $spacing-12;
-    flex-shrink: 0;
-    margin-top: $spacing-4;
-  }
+    &__cta {
+      display: flex;
+      width: 100% !important;
+      height: 4.5rem !important;
+      margin-top: $spacing-24;
+    }
 
-  .primary-banner__social-proof-text {
-    font-size: $font-size-12;
-    line-height: $line-height-15;
-    text-align: left;
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-
-  .primary-banner__cta {
-    display: flex;
-    width: 100% !important;
-    height: 4.5rem !important;
-    margin-top: $spacing-24;
-  }
-
-  .primary-banner__collage {
-    display: none;
+    &__collage {
+      display: none;
+    }
   }
 
   .hero-text {
@@ -412,3 +412,4 @@
     }
   }
 }
+

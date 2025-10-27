@@ -14,17 +14,14 @@ export default function OneTimeServices() {
     updateBundleDiscount,
   } = useShoppingCart();
 
-  // ✅ State to safely handle sessionStorage access
   const [condition, setCondition] = useState(null);
 
-  // ✅ Load real condition after hydration
   useEffect(() => {
     const homeDetailsRaw = sessionStorage.getItem("homeDetails");
     const homeDetails = homeDetailsRaw ? JSON.parse(homeDetailsRaw) : {};
     setCondition(homeDetails.condition || "YES");
   }, []);
 
-  // ⛔ Prevent rendering until condition is loaded
   if (condition === null) return null;
 
   const oneTimeServices = services.oneTimeServices;
@@ -64,7 +61,6 @@ export default function OneTimeServices() {
 
       <div className="services-container">
         {Object.entries(oneTimeServices).map(([serviceId, service]) => {
-          // ⛔ Skip "OneTimeFreshenUp" if condition is "NO"
           if (serviceId === "OneTimeFreshenUp" && condition === "NO") return null;
 
           const isServiceActive = activeServices.some((s) => s.id === serviceId);

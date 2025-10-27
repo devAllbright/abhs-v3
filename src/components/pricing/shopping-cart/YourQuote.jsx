@@ -10,7 +10,6 @@ export default function YourQuote() {
         <p>YOUR QUOTE</p>
       </div>
 
-      {/* Service Lines */}
       {activeServices.length > 0 ? (
         activeServices.map((service) => (
           <div key={service.id}>
@@ -21,7 +20,6 @@ export default function YourQuote() {
               </div>
             </div>
 
-            {/* ✅ Extras for Each Service - Ensure they are displayed correctly */}
             {activeExtras[service.id] && activeExtras[service.id].length > 0 && (
               activeExtras[service.id].map((extra) => (
                 <div key={extra.id} className="quote-line discount-line">
@@ -38,7 +36,6 @@ export default function YourQuote() {
         <p className="no-services">No services selected</p>
       )}
 
-      {/* Initial Cleaning Line */}
       {initialCleaning && (
         <div className="quote-line initial-cleaning-line">
           <div className="quote-service">
@@ -48,7 +45,6 @@ export default function YourQuote() {
         </div>
       )}
 
-      {/* Frequency Discount Line - Now properly displayed */}
       {frequencyDiscount > 0 && (
         <div className="quote-line discount-line">
           <div className="bundle-discount">
@@ -58,7 +54,6 @@ export default function YourQuote() {
         </div>
       )}
 
-      {/* Bundle Discount Line */}
       {bundleDiscount > 0 && (
         <div className="quote-line discount-line">
           <div className="bundle-discount">
@@ -68,7 +63,6 @@ export default function YourQuote() {
         </div>
       )}
 
-      {/* Total Line */}
       <div className="quote-line total-line">
         <div className="quote-total">
           <p>Estimated Total</p>
