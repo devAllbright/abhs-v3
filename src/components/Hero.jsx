@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import CTAButton from "./buttons/CTAButton";
-import ModalCTA from "./buttons/ModalCTA";
+//import ModalCTA from "./buttons/ModalCTA";
+import HCPButton from "./buttons/HCPButton";
 
 const StaticColumn = ({ images }) => (
   <div className="primary-banner__collage-column-wrapper">
@@ -84,11 +85,11 @@ export default function Hero({ bannerData }) {
           <div className="primary-banner__cta">
             {serviceType === "recurring" || serviceType === "oneTime" ? (
               <div>
-                <CTAButton primaryCta="Maid Services - Book Now!" buttonClass="primary-cta banner-cta" />
-                <ModalCTA secondaryCta="Maintenance - Get a Free Consultation" buttonClass="primary-cta banner-cta" />
+                <CTAButton primaryCta="Maid Services - Request a Booking" buttonClass="primary-cta banner-cta" />
+                <HCPButton secondaryCta="Maintenance - Book a Free Consultation" buttonClass="primary-cta banner-cta" />
               </div>
             ) : (
-              <ModalCTA secondaryCta="Maintenance - Get a Free Consultation" buttonClass="primary-cta" />
+              <HCPButton secondaryCta="Maintenance - Book a Free Consultation" buttonClass="primary-cta" />
             )}
           </div>
         </div>

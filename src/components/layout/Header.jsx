@@ -3,7 +3,8 @@ import MegaMenu from './MegaMenu';
 import SearchIcon from '../pages/our-services/SearchIcon';
 import SearchBar from '../pages/our-services/SearchBar';
 import CTAButton from '../buttons/CTAButton';
-import ModalCTA from '../buttons/ModalCTA';
+//import ModalCTA from '../buttons/ModalCTA';
+import HCPButton from '../buttons/HCPButton';
 
 export default function Header() {
   const [isVisible, setIsVisible] = useState(false);
@@ -153,9 +154,9 @@ export default function Header() {
             }}
           >
             {serviceType === 'recurring' || serviceType === 'oneTime' ? (
-              <CTAButton primaryCta="Maid Services - Book Now!" buttonClass={'primary-cta'} />
+              <CTAButton primaryCta="Maid Services - Request a Booking" buttonClass={'primary-cta'} />
             ) : (
-              <ModalCTA secondaryCta="Maintenance - Get a Free Consultation" buttonClass={'primary-cta'} />
+              <HCPButton secondaryCta="Maintenance - Book a Free Consultation" buttonClass={'primary-cta'} />
             )}
           </div>
         </div>
