@@ -1,4 +1,6 @@
-export default function CTAButton({ primaryCta, buttonClass }) {
+export default function CTAButton({ buttonClass }) {
+  const primaryCTA = sessionStorage.getItem("primaryCta") || "Book Now";
+
   const handleClick = (e) => {
     e.preventDefault();
     window.location.href = "/pricing/location";
@@ -15,7 +17,7 @@ export default function CTAButton({ primaryCta, buttonClass }) {
         alt=""
         className="cta-icon"
       />
-      <span>{ primaryCta }</span>
+      <span>{primaryCTA}</span>
     </a>
   );
 }

@@ -85,7 +85,7 @@ export default function Hero({ bannerData }) {
           <div className="primary-banner__cta">
             {serviceType === "recurring" || serviceType === "oneTime" ? (
               <div>
-                <CTAButton primaryCta="Maid Services - Request a Booking" buttonClass="primary-cta banner-cta" />
+                <CTAButton buttonClass="primary-cta banner-cta" />
                 <HCPButton secondaryCta="Maintenance - Book a Free Consultation" buttonClass="primary-cta banner-cta" />
               </div>
             ) : (
