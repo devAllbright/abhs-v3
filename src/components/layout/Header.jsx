@@ -156,7 +156,7 @@ export default function Header() {
             {serviceType === 'recurring' || serviceType === 'oneTime' ? (
               <CTAButton buttonClass={'primary-cta'} />
             ) : (
-              <HCPButton secondaryCta="Book a Free Consultation" buttonClass={'primary-cta'} />
+              <HCPButton secondaryCta="Book a FREE Consultation" buttonClass={'primary-cta'} />
             )}
           </div>
         </div>

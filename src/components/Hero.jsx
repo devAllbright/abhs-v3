@@ -86,10 +86,10 @@ export default function Hero({ bannerData }) {
             {serviceType === "recurring" || serviceType === "oneTime" ? (
               <div>
                 <CTAButton buttonClass="primary-cta banner-cta" />
-                <HCPButton secondaryCta="Book a Free Consultation" buttonClass="primary-cta banner-cta" />
+                <HCPButton secondaryCta="Book a FREE Consultation" buttonClass="primary-cta banner-cta" />
               </div>
             ) : (
-              <HCPButton secondaryCta="Book a Free Consultation" buttonClass="primary-cta" />
+              <HCPButton secondaryCta="Book a FREE Consultation" buttonClass="primary-cta" />
             )}
           </div>
         </div>
