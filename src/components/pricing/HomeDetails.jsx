@@ -227,7 +227,7 @@ export default function HomeDetails() {
           </div>
           <div className="detail-info">
             <div>
-              <div className="detail-name">Home Condition</div>
+              <div className="detail-name">Home Condition?</div>
               <div
                 className="detail-counter condition-select"
                 onClick={() => setIsModalVisible(true)}
