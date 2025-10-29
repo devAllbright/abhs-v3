@@ -232,7 +232,7 @@ export default function HomeDetails() {
                 className="detail-counter condition-select"
                 onClick={() => setIsModalVisible(true)}
               >
-                {condition || "Condition"}
+               <b>{condition || "Choose"}</b>
               </div>
             </div>
           </div>
