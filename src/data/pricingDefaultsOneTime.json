@@ -1,0 +1,98 @@
+[
+  {
+    "sqFtRange": "800-950",
+    "basicPrice": 100,
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "normal": 165,
+    "badCondition": 185
+  },
+  {
+    "sqFtRange": "950-1200",
+    "basicPrice": 100,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "normal": 175,
+    "badCondition": 195
+  },
+  {
+    "sqFtRange": "1200-1400",
+    "basicPrice": 120,
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "normal": 195,
+    "badCondition": 215
+  },
+  {
+    "sqFtRange": "1400-1600",
+    "basicPrice": 80,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "normal": 205,
+    "badCondition": 225
+  },
+  {
+    "sqFtRange": "1600-1800",
+    "basicPrice": 90,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "normal": 215,
+    "badCondition": 235
+  },
+  {
+    "sqFtRange": "1800-2000",
+    "basicPrice": 100,
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "normal": 225,
+    "badCondition": 245
+  },
+  {
+    "sqFtRange": "2200-2400",
+    "basicPrice": 95,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "normal": 245,
+    "badCondition": 265
+  },
+  {
+    "sqFtRange": "2400-2800",
+    "basicPrice": 90,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "normal": 265,
+    "badCondition": 285
+  },
+  {
+    "sqFtRange": "2800-3000",
+    "basicPrice": 135,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "normal": 285,
+    "badCondition": 295
+  },
+  {
+    "sqFtRange": "3000-3200",
+    "basicPrice": 145,
+    "bedrooms": 3,
+    "bathrooms": 3,
+    "normal": 295,
+    "badCondition": 315
+  },
+  {
+    "sqFtRange": "3200-3400",
+    "basicPrice": 130,
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "normal": 305,
+    "badCondition": 325
+  },
+  {
+    "sqFtRange": "3400-3600",
+    "basicPrice": 125,
+    "bedrooms": 4,
+    "bathrooms": 4,
+    "normal": 325,
+    "badCondition": 345
+  }
+]

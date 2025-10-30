@@ -1,10 +1,14 @@
 ---
 import ShoppingLogic from '../components/ShoppingLogic'
+import OneTimeLogic from '../components/OneTimeLogic'
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
   <BaseLayout>
     <div class="shopping-logic">
       <ShoppingLogic client:only="react" />
+    </div>
+    <div class="shopping-logic">
+      <OneTimeLogic client:only="react" />
     </div>
   </BaseLayout>
 </div>
@@ -22,7 +26,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     align-items: center;
     width: 100%;
     height: 100%;
-    min-height: 90vh;
+    min-height: 45vh;
   }
 
 </style>
