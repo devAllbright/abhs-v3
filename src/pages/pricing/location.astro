@@ -1,25 +1,30 @@
 ---
 import ZipCode from '../../components/pricing/ZipCode.jsx';
+import BaseLayout from '../../layouts/BaseLayout.astro'
 ---
 
-<div class="hero-overlay-container">
-  <img class="hero-img" src="/maids-banner.jpeg" alt="">
-  <div class="img-overlay"></div>
-  <div class="hero-banner">
-    <div class="step-container">
-      <div class="title-container">
-        <div class="main-title">
-          <p>Get your</p>
-          <p class="colored">FREE Estimate</p>
+
+
+<BaseLayout>
+  <div class="hero-overlay-container">
+    <img class="hero-img" src="/maids-banner.jpeg" alt="">
+    <div class="img-overlay"></div>
+    <div class="hero-banner">
+      <div class="step-container">
+        <div class="title-container">
+          <div class="main-title">
+            <p>Get your</p>
+            <p class="colored">FREE Estimate</p>
+          </div>
+          <div class="title-description">
+            <p>Get a quick estimate by providing a few details about your home.</p>
+          </div>
         </div>
-        <div class="title-description">
-          <p>Get a quick estimate by providing a few details about your home.</p>
-        </div>
+        <ZipCode client:only="react"/>
       </div>
-      <ZipCode client:only="react"/>
     </div>
   </div>
-</div>
+</BaseLayout>
 
 
 <style>
