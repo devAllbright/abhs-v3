@@ -1,4 +1,5 @@
-import{ useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { ShoppingCartProvider } from "../../context/ShoppingCartContext";
 import RecurringServices from "./scroll-steps/RecurringServices";
 import OneTimeServices from "./scroll-steps/OneTimeServices";
 import CustomizeService from "./scroll-steps/CustomizeService";
@@ -9,14 +10,23 @@ import YourQuote from "./shopping-cart/YourQuote";
 import "../../styles/pricing/shopping-cart.css";
 
 export default function ShoppingCart() {
-  const [serviceType, setServiceType] = useState(sessionStorage.getItem("serviceType") || "");
+  const [serviceType, setServiceType] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stored = sessionStorage.getItem("serviceType");
+      if (stored) setServiceType(stored);
+    }
+  }, []);
 
   const handleNext = () => {
-    window.location.href = "/pricing/final-summary";
+    if (typeof window !== "undefined") {
+      window.location.href = "/pricing/final-summary";
+    }
   };
 
   return (
-    <>
+    <ShoppingCartProvider>
       <div className="shopping-cart-container">
         <div className="cart-scrolling-side">
           {serviceType === "oneTime" && <OneTimeServices />}
@@ -41,13 +51,13 @@ export default function ShoppingCart() {
       </div>
 
       <div className="navigation-buttons">
-        <a href="/pricing/home-details">
+        <a href="/pricing/pro-services">
           <button className="nav-button">Back</button>
         </a>
         <button className="nav-button" onClick={handleNext}>
           Next
         </button>
       </div>
-    </>
+    </ShoppingCartProvider>
   );
 }

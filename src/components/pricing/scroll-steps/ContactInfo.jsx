@@ -6,27 +6,33 @@ import dayjs from "dayjs";
 import "../../../styles/pricing/shopping-cart/scroll-steps/contact-info.css";
 
 export default function ContactInfo({ stepNumber }) {
-  const [contactInfo, setContactInfo] = useState(() => {
-    const stored = sessionStorage.getItem("contactInfo");
-    return stored
-      ? JSON.parse(stored)
-      : {
-          fullName: "",
-          phoneNumber: "",
-          address: "",
-          appointment: null,
-          comments: "",
-        };
+  const [contactInfo, setContactInfo] = useState({
+    fullName: "",
+    phoneNumber: "",
+    address: "",
+    appointment: null,
+    comments: "",
   });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const stored = sessionStorage.getItem("contactInfo");
+      if (stored) {
+        setContactInfo(JSON.parse(stored));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("contactInfo", JSON.stringify(contactInfo));
+    }
+  }, [contactInfo]);
 
   const handleChange = (field) => (event) => {
     const value = event?.target?.value ?? event;
     setContactInfo((prev) => ({ ...prev, [field]: value }));
   };
-
-  useEffect(() => {
-    sessionStorage.setItem("contactInfo", JSON.stringify(contactInfo));
-  }, [contactInfo]);
 
   return (
     <div className="scroll-contact-info">
@@ -82,15 +88,15 @@ export default function ContactInfo({ stepNumber }) {
           <span className="form-label">Select Date & Time</span>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateTimePicker
-              views={['year', 'day', 'hours']}
+              views={["year", "day", "hours"]}
               value={contactInfo.appointment ? dayjs(contactInfo.appointment) : null}
               onChange={(date) => handleChange("appointment")(date?.toISOString())}
               slotProps={{
                 textField: {
                   fullWidth: true,
                   placeholder: "Pick a date and hour",
-                  InputLabelProps: { shrink: false }
-                }
+                  InputLabelProps: { shrink: false },
+                },
               }}
             />
           </LocalizationProvider>

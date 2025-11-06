@@ -1,22 +1,18 @@
 ---
-import Head from '../../components//layout/Head.astro'
+import Head from '../../components/layout/Head.astro'
 import BaseLayout from '../../layouts/BaseLayout.astro'
-
-// @ts-ignore
-import ContextWrapper from '../../components/pricing/shopping-cart/ContextWrapper'
+import ShoppingCartComponent from '../../components/pricing/ShoppingCart'
 ---
 
-<Head></Head>
+<Head />
 <BaseLayout>
   <div class="shopping-cart-main-container">
-    <ContextWrapper client:only="react"></ContextWrapper>
+    <ShoppingCartComponent client:only="react"/>
   </div>
-  
-
 </BaseLayout>
 
 <style>
-  .shopping-cart-main-container{
+  .shopping-cart-main-container {
     min-height: 100vh;
   }
 </style>

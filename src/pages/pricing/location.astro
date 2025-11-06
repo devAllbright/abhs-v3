@@ -1,4 +1,5 @@
 ---
+import { ShoppingCartProvider } from "../../context/ShoppingCartContext";
 import ZipCode from '../../components/pricing/ZipCode.jsx';
 import BaseLayout from '../../layouts/BaseLayout.astro'
 ---
@@ -20,7 +21,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
             <p>Get a quick estimate by providing a few details about your home.</p>
           </div>
         </div>
-        <ZipCode client:only="react"/>
+        <ShoppingCartProvider>
+          <ZipCode client:only="react"/>
+        </ShoppingCartProvider>
+
+        
       </div>
     </div>
   </div>

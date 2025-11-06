@@ -1,0 +1,109 @@
+{
+  "serviceName": "Maid Services",
+  "priceTiers": [
+    {
+      "sqftRange": "800-1000",
+      "basicPrice": 100,
+      "includedRooms": { "bedrooms": 1, "bathrooms": 1 },
+      "initialCleaning": 380,
+      "minimum": 150
+    },
+    {
+      "sqftRange": "1000-1200",
+      "basicPrice": 95,
+      "includedRooms": { "bedrooms": 2, "bathrooms": 2 },
+      "initialCleaning": 380,
+      "minimum": 195
+    },
+    {
+      "sqftRange": "1200-1400",
+      "basicPrice": 120,
+      "includedRooms": { "bedrooms": 2, "bathrooms": 1 },
+      "initialCleaning": 585,
+      "minimum": 195
+    },
+    {
+      "sqftRange": "1400-1600",
+      "basicPrice": 80,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
+      "initialCleaning": 585,
+      "minimum": 205
+    },
+    {
+      "sqftRange": "1600-1800",
+      "basicPrice": 90,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
+      "initialCleaning": 585,
+      "minimum": 215
+    },
+    {
+      "sqftRange": "1800-2000",
+      "basicPrice": 100,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
+      "initialCleaning": 585,
+      "minimum": 225
+    },
+    {
+      "sqftRange": "2000-2200",
+      "basicPrice": 85,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
+      "initialCleaning": 685,
+      "minimum": 235
+    },
+    {
+      "sqftRange": "2200-2400",
+      "basicPrice": 95,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
+      "initialCleaning": 685,
+      "minimum": 245
+    },
+    {
+      "sqftRange": "2400-2800",
+      "basicPrice": 90,
+      "includedRooms": { "bedrooms": 4, "bathrooms": 3 },
+      "initialCleaning": 685,
+      "minimum": 265
+    },
+    {
+      "sqftRange": "2800-3000",
+      "basicPrice": 135,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
+      "initialCleaning": 780,
+      "minimum": 285
+    },
+    {
+      "sqftRange": "3000-3200",
+      "basicPrice": 145,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
+      "initialCleaning": 780,
+      "minimum": 295
+    },
+    {
+      "sqftRange": "3200-3400",
+      "basicPrice": 130,
+      "includedRooms": { "bedrooms": 4, "bathrooms": 3 },
+      "initialCleaning": 780,
+      "minimum": 305
+    },
+    {
+      "sqftRange": "3400-3600",
+      "basicPrice": 125,
+      "includedRooms": { "bedrooms": 4, "bathrooms": 4 },
+      "initialCleaning": 780,
+      "minimum": 325
+    }
+  ],
+  "globalExtras": {
+    "bedroomPrice": 25,
+    "bathroomPrice": 25,
+    "halfBathroomPrice": 25,
+    "changeLinensPrice": 15,
+    "furryPetsPrice": 15,
+    "shuttersAndBlindsPrice": 15,
+    "insideOvenPrice": 45,
+    "insideRefrigeratorPrice": 45,
+    "weeklyDiscount": 0.15,
+    "biMonthlyDiscount": 0.10,
+    "monthlyDiscount": 0.05
+  }
+}

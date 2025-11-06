@@ -1,12 +1,12 @@
 import { ShoppingCartProvider } from "../../context/ShoppingCartContext";
-import Step1 from "./Step1.jsx";
+import Step3 from "./Step3.jsx";
 
-const FormStep1 = () => {
+const HomeCondition = () => {
   return (
     <ShoppingCartProvider>
-      <Step1 />
+      <Step3 />
     </ShoppingCartProvider>
   );
 };
 
-export default FormStep1;
+export default HomeCondition;

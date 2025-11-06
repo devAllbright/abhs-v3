@@ -1,99 +1,95 @@
-.details-container{
-/*   width: 100%; */
+.details-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
-  padding-left: 5vw;
+  height: fit-content;
 }
 
-
-.detail-element{
+.detail-element {
   width: 180px;
-  margin-top: 48px;
+  margin-top: 43px;
   border: solid 1px #CCCCCC;
 }
 
 .detail-element:not(:nth-child(4n)):not(:nth-child(8n)) {
-  margin-right: 90px;
+  margin-right: 81px;
 }
 
-
-
-.detail-img, .detail-img img{
-  width: 180px;
-  height: 200px;
+.detail-img, .detail-img img {
+  width: 100%;
+  height: 100%;
 }
 
-.detail-info{
+.detail-info {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 50px;
+  height: 65px;
 }
 
-.detail-name, .detail-counter{
+.detail-name, .detail-counter {
   text-align: center;
 }
 
-.detail-name{
-  font-size: 18px;
+.detail-name {
+  font-size: 16.2px;
 }
 
-.detail-counter{
+.detail-counter {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 14.4px;
 }
 
-.detail-counter img{
-  width: 20px;
-  height: 20px;
+.detail-counter img {
+  width: 18px;
+  height: 18px;
 }
 
-.detail-counter span{
-  margin-left: 12px;
-  margin-right: 12px;
+.detail-counter span {
+  margin-left: 10.8px;
+  margin-right: 10.8px;
 }
 
-.active-detail{
+.active-detail {
   background-color: #F58413;
   color: #fff;
 }
 
-.active-detail .detail-name{
+.active-detail .detail-name {
   font-weight: bold;
 }
 
-.condition-select{
+.condition-select {
   cursor: pointer;
 }
 
-.navigation-buttons{
+.navigation-buttons {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 24px;
+  margin-top: 21.6px;
 }
 
-.nav-button{
+.nav-button {
   all: unset;
-  width: 60px;
-  height: 25px;
-  border-radius: 6px;
+  width: 54px;
+  height: 22.5px;
+  border-radius: 5.4px;
   background-color: #F5B452;
   color: #FBFCF8;
   text-align: center;
   cursor: pointer;
 }
 
-.nav-button:nth-child(1){
-  margin-right: 24px;
+.nav-button:nth-child(1) {
+  margin-right: 21.6px;
 }
 
-.navigation-buttons a{
+.navigation-buttons a {
   text-decoration: none;
 }
 
@@ -113,40 +109,40 @@
 .modal {
   position: relative;
   background-color: #fff;
-  border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 48px;
-  width: 500px;
-  height: 300px;
+  border-radius: 5.4px;
+  box-shadow: 0 3.6px 7.2px rgba(0, 0, 0, 0.2);
+  padding: 43.2px;
+  width: 450px;
+  height: 270px;
   z-index: 1000;
   text-align: center;
 }
 
 .modal-close {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 14.4px;
+  right: 14.4px;
   background: transparent;
   border: none;
-  font-size: 18px;
+  font-size: 16.2px;
   cursor: pointer;
 }
 
 .modal-options {
   display: flex;
   justify-content: space-around;
-  margin-top: 20px;
+  margin-top: 18px;
 }
 
 .modal-option {
-  width: 100px;
-  height: 50px;
+  width: 90px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f0f0f0;
-  border: solid 2px #ec6b33;
-  border-radius: 4px;
+  border: solid 1.8px #ec6b33;
+  border-radius: 3.6px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -156,6 +152,54 @@
 }
 
 .modal p {
-  font-size: 30px;
+  font-size: 27px;
   font-weight: bold;
+}
+
+.detail-counter select {
+  width: 120px;
+  padding: 2px 12px;
+  border: none;
+  border-radius: 0;
+  background-color: #FBFCF8;
+  color: #333;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.detail-counter select{
+  background-color: #f6f6f6;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.detail-counter select:focus {
+  box-shadow: 0 0 0 2px #DE9C38;
+}
+
+.detail-counter select option {
+  background-color: #FBFCF8;
+  color: #333;
+  font-size: 15px;
+  padding: 6px;
+}
+
+.detail-counter select {
+  overflow-y: auto;
+}
+
+.detail-counter select::-webkit-scrollbar {
+  width: 6px;
+}
+
+.detail-counter select::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+.detail-counter select::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.3);
 }

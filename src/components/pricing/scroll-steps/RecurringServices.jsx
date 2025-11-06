@@ -1,56 +1,44 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
+import recurringPrices from "../../../data/recurringPrices.json";
 import "../../../styles/pricing/shopping-cart/scroll-steps/recurring-services.css";
 
 export default function RecurringServices() {
-  const { activeServices, addService, removeService, services, setFrequencyDiscount } = useShoppingCart();
+  const { cartData, updateCartData } = useShoppingCart();
+  const { serviceName, globalExtras } = recurringPrices;
 
-  const houseCleaning = services.recurringServices.houseCleaning;
-  const { frequencies } = houseCleaning;
+  const frequencies = [
+    { label: "Weekly", value: globalExtras.weeklyDiscount },
+    { label: "Bi-Weekly", value: globalExtras.biMonthlyDiscount },
+    { label: "Monthly", value: globalExtras.monthlyDiscount },
+  ];
 
-  const [isActive, setIsActive] = useState(
-    activeServices.some((service) => service.id === "houseCleaning")
-  );
+  const isActive = true;
 
-  const [selectedFrequency, setSelectedFrequency] = useState(isActive ? "weekly" : "");
-
-  const handleServiceClick = () => {
-    if (isActive) {
-      removeService("houseCleaning");
-      setSelectedFrequency("");
-      setFrequencyDiscount(0);
-    } else {
-      const discount = frequencies.weekly;
-      addService({
-        id: "houseCleaning",
-        name: "House Cleaning",
-        price: houseCleaning.price,
-        discount,
-        frequency: "weekly",
-      });
-      setSelectedFrequency("weekly");
-      setFrequencyDiscount((houseCleaning.price * discount) / 100);
+  const [selectedFrequency, setSelectedFrequency] = useState(() => {
+    if (typeof window !== "undefined") {
+      const stored = sessionStorage.getItem("frequency");
+      return stored || cartData.selectedFrequency || "Weekly";
     }
-    setIsActive(!isActive);
-  };
+    return cartData.selectedFrequency || "Weekly";
+  });
 
-  const handleFrequencyClick = (frequency) => {
-    if (!isActive) return;
-
-    setSelectedFrequency(frequency);
-
-    removeService("houseCleaning");
-
-    const discount = frequencies[frequency];
-    addService({
-      id: "houseCleaning",
-      name: "House Cleaning",
-      price: houseCleaning.price,
-      discount,
-      frequency,
+  useEffect(() => {
+    updateCartData({
+      selectedServiceType: "recurring",
+      selectedService: serviceName,
+      selectedFrequency,
+      discount:
+        frequencies.find((f) => f.label === selectedFrequency)?.value || 0,
     });
 
-    setFrequencyDiscount((houseCleaning.price * discount) / 100); 
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("frequency", selectedFrequency);
+    }
+  }, [selectedFrequency]);
+
+  const handleFrequencyClick = (label) => {
+    setSelectedFrequency(label);
   };
 
   return (
@@ -60,28 +48,25 @@ export default function RecurringServices() {
       </div>
 
       <div className="services-container">
-        <button
-          className={`service ${isActive ? "active-service" : ""}`}
-          onClick={handleServiceClick}
-        >
-          House Cleaning
+        <button className="service active-service" disabled>
+          {serviceName}
         </button>
 
-        {isActive && (
-          <div className="service-frequency">
-            {Object.keys(frequencies).map((frequency) => (
-              <div key={frequency} className="frequency-element">
-                <button
-                  className={`frequency-btn ${selectedFrequency === frequency ? "active-frequency" : ""}`}
-                  onClick={() => handleFrequencyClick(frequency)}
-                >
-                  {frequency === "weekly" ? "Weekly" : frequency === "biWeekly" ? "Bi-Weekly" : "Monthly"}
-                </button>
-                <p className="discount-text">{frequencies[frequency]}% Discount</p>
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="service-frequency">
+          {frequencies.map(({ label, value }) => (
+            <div key={label} className="frequency-element">
+              <button
+                className={`frequency-btn ${
+                  selectedFrequency === label ? "active-frequency" : ""
+                }`}
+                onClick={() => handleFrequencyClick(label)}
+              >
+                {label}
+              </button>
+              <p className="discount-text">{(value * 100).toFixed(0)}% Discount</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
