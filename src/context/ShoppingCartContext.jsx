@@ -4,45 +4,47 @@ import { calculateRecurringPrice } from "../helpers/recurringCalculations";
 
 const ShoppingCartContext = createContext();
 
+const defaultCartData = {
+  zipCode: "",
+
+  livingRoomIncluded: true,
+  kitchenIncluded: true,
+  dinningRoomIncluded: true,
+
+  bedroomNumber: 1,
+  bathroomNumber: 1,
+  halfBathroomNumber: 0,
+  otherRoomNumber: 0,
+
+  squareFootage: null,
+  hadProServices: null,
+
+  selectedServiceType: "",
+  selectedFrequency: "",
+
+  extras: {
+    changeLinens: 0,
+    furryPets: false,
+    dustShutters: false,
+    insideOven: false,
+    insideRefrigerator: false
+  },
+
+  contactInfo: {
+    name: "",
+    phone: "",
+    email: "",
+    address: ""
+  },
+
+  recurringPrice: 0,
+  initialCleaningPrice: 0,
+  isStepComplete: false
+};
+
 export function ShoppingCartProvider({ children }) {
-  const [cartData, setCartData] = useState(() =>
-    loadFromStorage("cartData") || {
-      zipCode: "",
-
-      livingRoomIncluded: false,
-      kitchenIncluded: false,
-      dinningRoomIncluded: false,
-
-      bedroomNumber: 0,
-      bathroomNumber: 0,
-      halfBathroomNumber: 0,
-      otherRoomNumber: 0,
-
-      squareFootage: null,
-      hadProServices: null,
-
-      selectedServiceType: "",
-      selectedFrequency: "",
-
-      extras: {
-        linens: false,
-        pets: false,
-        shutters: false,
-        oven: false,
-        refrigerator: false
-      },
-
-      contactInfo: {
-        name: "",
-        phone: "",
-        email: "",
-        address: ""
-      },
-
-      recurringPrice: 0,
-      initialCleaningPrice: 0,
-      isStepComplete: false
-    }
+  const [cartData, setCartData] = useState(
+    () => loadFromStorage("cartData") || defaultCartData
   );
 
   useEffect(() => {
@@ -65,39 +67,8 @@ export function ShoppingCartProvider({ children }) {
   };
 
   const resetCart = () => {
-    const reset = {
-      zipCode: "",
-
-      livingRoomIncluded: false,
-      kitchenIncluded: false,
-      dinningRoomIncluded: false,
-      bedroomNumber: 0,
-      bathroomNumber: 0,
-      halfBathroomNumber: 0,
-      otherRoomNumber: 0,
-      squareFootage: null,
-      hadProServices: null,
-      selectedServiceType: "",
-      selectedFrequency: "",
-      extras: {
-        linens: false,
-        pets: false,
-        shutters: false,
-        oven: false,
-        refrigerator: false
-      },
-      contactInfo: {
-        name: "",
-        phone: "",
-        email: "",
-        address: ""
-      },
-      recurringPrice: 0,
-      initialCleaningPrice: 0,
-      isStepComplete: false
-    };
-    setCartData(reset);
-    saveToStorage("cartData", reset);
+    setCartData(defaultCartData);
+    saveToStorage("cartData", defaultCartData);
   };
 
   return (

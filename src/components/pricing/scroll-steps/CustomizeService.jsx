@@ -5,16 +5,19 @@ import "../../../styles/pricing/shopping-cart/scroll-steps/customize-service.css
 
 export default function CustomizeService() {
   const { cartData, updateCartData } = useShoppingCart();
-  const { extras = {}, hadProServices } = cartData;
+  const extras = cartData.extras || {};
+  const hadProServices = cartData.hadProServices;
   const extrasList = recurringPrices.globalExtras;
 
-  const [linenCount, setLinenCount] = useState(extras.linens || 0);
+  const [linensCount, setLinensCount] = useState(extras.changeLinens || 0);
 
   useEffect(() => {
-    updateCartData({
-      extras: { ...extras, linens: linenCount }
-    });
-  }, [linenCount]);
+    if (extras.changeLinens !== linensCount) {
+      updateCartData({
+        extras: { ...extras, changeLinens: linensCount }
+      });
+    }
+  }, [linensCount]);
 
   const toggleExtra = (key) => {
     updateCartData({
@@ -22,24 +25,51 @@ export default function CustomizeService() {
     });
   };
 
-  const incrementLinen = () => {
-    if (linenCount < 10) setLinenCount((prev) => prev + 1);
+  const handleLinensChange = (increment) => {
+    const next = Math.min(10, Math.max(0, linensCount + increment));
+    setLinensCount(next);
   };
 
-  const decrementLinen = () => {
-    if (linenCount > 0) setLinenCount((prev) => prev - 1);
-  };
+  const isDisabled =
+    !cartData.selectedServiceType ||
+    !cartData.selectedFrequency ||
+    !cartData.squareFootage;
 
-  const formattedExtras = hadProServices
+  const activeExtras = hadProServices
     ? [
-        { id: "shutterAndBlinds", name: "Shutters & Blinds", price: extrasList.shuttersAndBlindsPrice, type: "toggle" },
-        { id: "furryPets", name: "Furry Pets", price: extrasList.furryPetsPrice, type: "toggle" },
-        { id: "changeLinens", name: "Change Linens", price: extrasList.changeLinensPrice, type: "counter" }
+        {
+          id: "dustShutters",
+          name: "Shutters & Blinds",
+          price: extrasList.dustShuttersPrice
+        },
+        {
+          id: "furryPets",
+          name: "Pet Fee",
+          price: extrasList.furryPetsPrice
+        },
+        {
+          id: "changeLinens",
+          name: "Change Linens",
+          price: extrasList.changeLinensPrice,
+          isCounter: true
+        }
       ]
     : [
-        { id: "furryPets", name: "Furry Pets", price: extrasList.furryPetsPrice, type: "toggle" },
-        { id: "insideOven", name: "Inside Oven", price: extrasList.insideOvenPrice, type: "toggle" },
-        { id: "insideRefrigerator", name: "Inside Refrigerator", price: extrasList.insideRefrigeratorPrice, type: "toggle" }
+        {
+          id: "furryPets",
+          name: "Pet Fee",
+          price: extrasList.furryPetsPrice
+        },
+        {
+          id: "insideOven",
+          name: "Oven Cleaning",
+          price: extrasList.insideOvenPrice
+        },
+        {
+          id: "insideRefrigerator",
+          name: "Refrigerator Cleaning",
+          price: extrasList.insideRefrigeratorPrice
+        }
       ];
 
   return (
@@ -49,47 +79,52 @@ export default function CustomizeService() {
       </div>
 
       <div className="extras-container">
-        {formattedExtras.map((extra) => (
-          <div key={extra.id} className="extra-element-wrapper">
-            {extra.type === "toggle" ? (
-              <button
-                className={`extra-element ${extras[extra.id] ? "active-extra" : ""}`}
-                onClick={() => toggleExtra(extra.id)}
-              >
-                <div className="extra-name">
-                  <p>
-                    {extra.name} (+${extra.price})
-                  </p>
-                </div>
-              </button>
-            ) : (
-              <div
-                className={`extra-element ${linenCount > 0 ? "active-extra" : ""}`}
-              >
-                <div className="extra-name linen-name">
-                  <p>{extra.name} (+${extra.price} each)</p>
-                </div>
-                <div className="linen-counter">
-                  <button
-                    className="linen-btn"
-                    onClick={decrementLinen}
-                    disabled={linenCount <= 0}
-                  >
-                    -
-                  </button>
-                  <span className="linen-value">{linenCount}</span>
-                  <button
-                    className="linen-btn"
-                    onClick={incrementLinen}
-                    disabled={linenCount >= 10}
-                  >
-                    +
-                  </button>
-                </div>
+        {activeExtras.map((extra) =>
+          extra.isCounter ? (
+            <div
+              key={extra.id}
+              className={`extra-element counter-element ${
+                linensCount > 0 ? "active-extra" : ""
+              }`}
+            >
+              <div className="extra-name">
+                <p>
+                  {extra.name} (+${extra.price} each)
+                </p>
               </div>
-            )}
-          </div>
-        ))}
+              <div className="counter-controls">
+                <button
+                  onClick={() => !isDisabled && handleLinensChange(-1)}
+                  disabled={isDisabled || linensCount === 0}
+                >
+                  -
+                </button>
+                <span>{linensCount}</span>
+                <button
+                  onClick={() => !isDisabled && handleLinensChange(1)}
+                  disabled={isDisabled || linensCount >= 10}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          ) : (
+            <button
+              key={extra.id}
+              className={`extra-element ${
+                extras[extra.id] ? "active-extra" : ""
+              }`}
+              onClick={() => !isDisabled && toggleExtra(extra.id)}
+              disabled={isDisabled}
+            >
+              <div className="extra-name">
+                <p>
+                  {extra.name} (+${extra.price})
+                </p>
+              </div>
+            </button>
+          )
+        )}
       </div>
     </div>
   );
