@@ -25,7 +25,7 @@ export default function RecurringServices() {
 
   useEffect(() => {
     updateCartData({
-      selectedServiceType: "recurring",
+      selectedServiceType: "recurringMaids",
       selectedService: serviceName,
       selectedFrequency,
       discount:

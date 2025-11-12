@@ -77,6 +77,10 @@
 
   &__cta {
     margin-top: $spacing-24;
+
+    span{
+      margin: 0 auto;
+    }
   }
 
   &__collage {

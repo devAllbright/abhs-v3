@@ -1,0 +1,99 @@
+{
+  "serviceName": "Professional Cleaning",
+  "priceTiers": [
+    {
+      "sqftRange": "800-950",
+      "basicPrice": 100,
+      "includedRooms": { "bedrooms": 1, "bathrooms": 1 },
+      "minimum": 165,
+      "badCondition": 185
+    },
+    {
+      "sqftRange": "950-1200",
+      "basicPrice": 100,
+      "includedRooms": { "bedrooms": 2, "bathrooms": 1 },
+      "minimum": 175,
+      "badCondition": 195
+    },
+    {
+      "sqftRange": "1200-1400",
+      "basicPrice": 120,
+      "includedRooms": { "bedrooms": 2, "bathrooms": 1 },
+      "minimum": 195,
+      "badCondition": 215
+    },
+    {
+      "sqftRange": "1400-1600",
+      "basicPrice": 80,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
+      "minimum": 205,
+      "badCondition": 225
+    },
+    {
+      "sqftRange": "1600-1800",
+      "basicPrice": 90,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
+      "minimum": 215,
+      "badCondition": 235
+    },
+    {
+      "sqftRange": "1800-2000",
+      "basicPrice": 100,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
+      "minimum": 225,
+      "badCondition": 245
+    },
+    {
+      "sqftRange": "2200-2400",
+      "basicPrice": 95,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
+      "minimum": 245,
+      "badCondition": 265
+    },
+    {
+      "sqftRange": "2400-2800",
+      "basicPrice": 90,
+      "includedRooms": { "bedrooms": 4, "bathrooms": 3 },
+      "minimum": 265,
+      "badCondition": 285
+    },
+    {
+      "sqftRange": "2800-3000",
+      "basicPrice": 135,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
+      "minimum": 285,
+      "badCondition": 295
+    },
+    {
+      "sqftRange": "3000-3200",
+      "basicPrice": 145,
+      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
+      "minimum": 295,
+      "badCondition": 315
+    },
+    {
+      "sqftRange": "3200-3400",
+      "basicPrice": 130,
+      "includedRooms": { "bedrooms": 4, "bathrooms": 3 },
+      "minimum": 305,
+      "badCondition": 325
+    },
+    {
+      "sqftRange": "3400-3600",
+      "basicPrice": 125,
+      "includedRooms": { "bedrooms": 4, "bathrooms": 4 },
+      "minimum": 325,
+      "badCondition": 345
+    }
+  ],
+  "globalExtras": {
+    "bedroomPrice": 25,
+    "bathroomPrice": 25,
+    "halfBathroomPrice": 25,
+    "changeLinensPrice": 15,
+    "furryPetsPrice": 15,
+    "shuttersAndBlindsPrice": 15,
+    "insideOvenPrice": 45,
+    "insideRefrigeratorPrice": 45
+  }
+}

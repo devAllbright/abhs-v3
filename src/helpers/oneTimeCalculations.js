@@ -1,23 +1,22 @@
-import data from "../data/recurringPrices.json";
+import data from "../data/oneTimePrices.json";
 import { getTierBySqft } from "./getTierBySqft";
 
-export function calculateRecurringPrice(formData) {
+export function calculateOneTimePrice(formData) {
   const {
     houseSize = 0,
     bedrooms = 0,
     bathrooms = 0,
-    hadProServices = false,
-    extras = {},
-    selectedFrequency = ""
+    condition = "normal",
+    extras = {}
   } = formData;
 
   const tier = getTierBySqft(data, houseSize);
   if (!tier) return { basePrice: 0, extrasTotal: 0, finalPrice: 0 };
 
-  const { includedRooms, minimum, initialCleaning } = tier;
+  const { includedRooms, minimum, badCondition } = tier;
   const global = data.globalExtras;
 
-  let basePrice = hadProServices ? minimum : initialCleaning;
+  let basePrice = condition === "bad" ? badCondition : minimum;
   let extrasTotal = 0;
 
   if (bedrooms > includedRooms.bedrooms)
@@ -33,18 +32,7 @@ export function calculateRecurringPrice(formData) {
   if (extras.insideOven) extrasTotal += global.insideOvenPrice;
   if (extras.insideRefrigerator) extrasTotal += global.insideRefrigeratorPrice;
 
-  let discount = 0;
-  if (selectedFrequency === "Weekly") discount = global.weeklyDiscount;
-  else if (selectedFrequency === "Bi-Weekly") discount = global.biMonthlyDiscount;
-  else if (selectedFrequency === "Monthly") discount = global.monthlyDiscount;
-
-  let finalPrice;
-
-  if (hadProServices) {
-    finalPrice = (basePrice + extrasTotal) * (1 - discount);
-  } else {
-    finalPrice = basePrice + extrasTotal + initialCleaning;
-  }
+  const finalPrice = basePrice + extrasTotal;
 
   return {
     basePrice,

@@ -1,0 +1,13 @@
+{
+  "serviceName": "Carpet Cleaning",
+  "pricing": {
+    "minimum": 145,
+    "normalConditionPerSqft": 0.22,
+    "badConditionPerSqft": 0.38
+  },
+  "extras": {
+    "deodorize": 10,
+    "stainsRemove": 20,
+    "petUrineTreatment": 30
+  }
+}

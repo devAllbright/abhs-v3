@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { ShoppingCartProvider } from "../../context/ShoppingCartContext";
+
 import RecurringServices from "./scroll-steps/RecurringServices";
 import OneTimeServices from "./scroll-steps/OneTimeServices";
+import CarpetCleaning from "./scroll-steps/CarpetCleaning";
 import CustomizeService from "./scroll-steps/CustomizeService";
 import ContactInfo from "./scroll-steps/ContactInfo";
+
 import Disclaimer from "./shopping-cart/Disclaimer";
 import BundleDisclaimer from "./shopping-cart/BundleDisclaimer";
 import YourQuote from "./shopping-cart/YourQuote";
+
 import "../../styles/pricing/shopping-cart.css";
 
 export default function ShoppingCart() {
@@ -29,14 +33,20 @@ export default function ShoppingCart() {
     <ShoppingCartProvider>
       <div className="shopping-cart-container">
         <div className="cart-scrolling-side">
-          {serviceType === "oneTime" && <OneTimeServices />}
-          {serviceType === "recurring" && (
-            <>
-              <RecurringServices />
-              <CustomizeService />
-            </>
-          )}
-          <ContactInfo stepNumber={serviceType === "recurring" ? 3 : 2} />
+          {serviceType === "recurringMaids" && <RecurringServices />}
+          {serviceType === "oneTimeMaids" && <OneTimeServices />}
+          {serviceType === "carpetCleaning" && <CarpetCleaning />}
+
+          <CustomizeService />
+          <ContactInfo
+            stepNumber={
+              serviceType === "recurringMaids" ||
+              serviceType === "carpetCleaning" ||
+              serviceType === "oneTimeMaids"
+                ? 3
+                : 2
+            }
+          />
         </div>
 
         <div className="cart-static-side">
@@ -45,7 +55,11 @@ export default function ShoppingCart() {
           </div>
 
           <div className="disclaimer">
-            {serviceType === "oneTime" ? <BundleDisclaimer /> : <Disclaimer />}
+            {serviceType === "oneTimeMaids" ? (
+              <BundleDisclaimer />
+            ) : (
+              <Disclaimer />
+            )}
           </div>
         </div>
       </div>

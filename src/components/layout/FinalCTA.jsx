@@ -12,11 +12,15 @@ export default function FinalCTA({ secondaryCta, buttonClass }) {
 
   return (
     <>
+      {/* 
       {(serviceType === "recurring" || serviceType === "oneTime") ? (
         <CTAButton buttonClass={ buttonClass } />
       ) : (
         <HCPButton secondaryCta={ secondaryCta } buttonClass={ buttonClass } />
       )}
+      */}
+
+      <HCPButton secondaryCta={ secondaryCta } buttonClass={ buttonClass } />
     </>
   );
 }

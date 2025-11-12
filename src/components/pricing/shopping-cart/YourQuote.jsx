@@ -1,5 +1,5 @@
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
-import { calculateRecurringPrice, getTierBySqft } from "../../../helpers/recurringCalculations";
+import { calculateRecurringPrice, getTierBySqft } from "../../../helpers";
 import recurringPrices from "../../../data/recurringPrices.json";
 import "../../../styles/pricing/shopping-cart/scroll-steps/your-quote.css";
 
@@ -13,10 +13,10 @@ export default function YourQuote() {
     bedroomNumber,
     bathroomNumber,
     hadProServices,
-    extras = {}
+    extras = {},
   } = cartData;
 
-  if (!selectedServiceType || !selectedFrequency || !squareFootage) {
+  if (!selectedServiceType || !squareFootage) {
     return (
       <div className="quote-container">
         <div className="quote-header">
@@ -28,22 +28,11 @@ export default function YourQuote() {
   }
 
   const { serviceName, globalExtras } = recurringPrices;
-  const tier = getTierBySqft(Number(squareFootage) || 0);
-
-  const baseCalcTotal = calculateRecurringPrice({
-    houseSize: Number(squareFootage) || 0,
-    bedrooms: bedroomNumber || 0,
-    bathrooms: bathroomNumber || 0,
-    hadProServices: !!hadProServices,
-    extras
-  });
+  const tier = getTierBySqft(recurringPrices, Number(squareFootage) || 0);
+  if (!tier) return null;
 
   const activeExtras = Object.entries(extras)
-    .filter(([_, value]) => {
-      if (typeof value === "boolean") return value === true;
-      if (typeof value === "number") return value > 0;
-      return false;
-    })
+    .filter(([_, v]) => (typeof v === "boolean" ? v : v > 0))
     .map(([key, value]) => ({
       key,
       name: key
@@ -51,7 +40,7 @@ export default function YourQuote() {
         .replace(/^\w/, (c) => c.toUpperCase()),
       price:
         (globalExtras[`${key}Price`] || 0) *
-        (typeof value === "number" ? value : 1)
+        (typeof value === "number" ? value : 1),
     }));
 
   const maidExtras = activeExtras.filter(
@@ -64,25 +53,24 @@ export default function YourQuote() {
   const maidExtrasTotal = maidExtras.reduce((sum, e) => sum + e.price, 0);
   const cleaningExtrasTotal = cleaningExtras.reduce((sum, e) => sum + e.price, 0);
 
-  const baseMaid = tier.minimum;
-  const baseInitial = tier.initialCleaning;
+  const baseMaid = tier.minimum ?? 0;
+  const baseInitial = tier.initialCleaning ?? 0;
 
-  const maidSubtotal = baseMaid + maidExtrasTotal;
-  const cleaningSubtotal = baseInitial + cleaningExtrasTotal;
-
-  const discount =
+  const discountValue =
     selectedFrequency === "Weekly"
       ? globalExtras.weeklyDiscount
       : selectedFrequency === "Bi-Weekly"
       ? globalExtras.biMonthlyDiscount
       : globalExtras.monthlyDiscount;
 
-  let finalTotal;
-  if (hadProServices) {
-    finalTotal = maidSubtotal * (1 - (discount || 0));
-  } else {
-    finalTotal = maidSubtotal * (1 - (discount || 0)) + cleaningSubtotal;
-  }
+  const maidSubtotal =
+    (baseMaid + maidExtrasTotal) * (1 - (discountValue || 0));
+  const cleaningSubtotal = baseInitial + cleaningExtrasTotal;
+
+  const discountLabel = `${selectedFrequency} Discount`;
+  const discountAmount = (baseMaid + maidExtrasTotal) * (discountValue || 0);
+
+  const finalTotal = maidSubtotal + cleaningSubtotal;
 
   return (
     <div className="quote-container">
@@ -90,10 +78,11 @@ export default function YourQuote() {
         <p>YOUR QUOTE</p>
       </div>
 
+      {/* 🧩 Maid Services Section */}
       <div className="quote-line service-line">
         <div className="quote-service">
           <p>{serviceName}</p>
-          <p>${tier.minimum.toFixed(2)}</p>
+          <p>${baseMaid.toFixed(2)}</p>
         </div>
       </div>
 
@@ -106,12 +95,29 @@ export default function YourQuote() {
         </div>
       ))}
 
+      {discountValue > 0 && (
+        <div className="quote-line discount-line">
+          <div className="quote-service extras-line">
+            <p className="extra-text">- {discountLabel}</p>
+            <p className="extra-text">-${discountAmount.toFixed(2)}</p>
+          </div>
+        </div>
+      )}
+
+      <div className="quote-line subtotal-line">
+        <div className="quote-total">
+          <p>Subtotal (Maid Services)</p>
+          <p>${maidSubtotal.toFixed(2)}</p>
+        </div>
+      </div>
+
+      {/* 🧩 Initial Cleaning Section (if hadProServices = false) */}
       {!hadProServices && (
         <>
           <div className="quote-line service-line">
             <div className="quote-service">
               <p>Initial Cleaning</p>
-              <p>${tier.initialCleaning.toFixed(2)}</p>
+              <p>${baseInitial.toFixed(2)}</p>
             </div>
           </div>
 
@@ -123,14 +129,22 @@ export default function YourQuote() {
               </div>
             </div>
           ))}
+
+          <div className="quote-line subtotal-line">
+            <div className="quote-total">
+              <p>Subtotal (Initial Cleaning)</p>
+              <p>${cleaningSubtotal.toFixed(2)}</p>
+            </div>
+          </div>
         </>
       )}
 
+      {/* 🧩 Show Total only when hadProServices = true */}
       {hadProServices && (
         <div className="quote-line total-line">
           <div className="quote-total">
             <p>Estimated Total</p>
-            <p>${finalTotal.toFixed(2)}</p>
+            <p>${maidSubtotal.toFixed(2)}</p>
           </div>
         </div>
       )}

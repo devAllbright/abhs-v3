@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import zipCodeMap from "../../data/zipCodeMap.json";
-import { loadFromStorage, updateStorage } from "../../helpers/storageUtils";
+import { loadFromStorage, saveToStorage } from "../../helpers/storageUtils";
 import "../../styles/pricing/zip-code.css";
 
 const ZipCode = () => {
@@ -58,7 +58,7 @@ const ZipCode = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isValid) {
-      updateStorage("cartData", { zipCode });
+      saveToStorage("cartData", { zipCode });
       window.location.href = "/pricing/home-type";
     }
   };

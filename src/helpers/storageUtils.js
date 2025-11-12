@@ -1,19 +1,41 @@
 export function saveToStorage(key, value) {
-  if (typeof window === "undefined") return;
-  sessionStorage.setItem(key, JSON.stringify(value));
+  if (typeof window !== "undefined") {
+    try {
+      sessionStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error("Error saving to storage:", error);
+    }
+  }
 }
 
 export function loadFromStorage(key) {
   if (typeof window === "undefined") return null;
-  const item = sessionStorage.getItem(key);
-  return item ? JSON.parse(item) : null;
+  try {
+    const stored = sessionStorage.getItem(key);
+    return stored ? JSON.parse(stored) : null;
+  } catch (error) {
+    console.error("Error loading from storage:", error);
+    return null;
+  }
 }
 
-export function updateStorage(key, updater) {
-  if (typeof window === "undefined") return;
-  const current = loadFromStorage(key) || {};
-  const updated =
-    typeof updater === "function" ? updater(current) : { ...current, ...updater };
-  saveToStorage(key, updated);
-  return updated;
+export function removeFromStorage(key) {
+  if (typeof window !== "undefined") {
+    try {
+      sessionStorage.removeItem(key);
+    } catch (error) {
+      console.error("Error removing from storage:", error);
+    }
+  }
+}
+
+
+export function clearStorage() {
+  if (typeof window !== "undefined") {
+    try {
+      sessionStorage.clear();
+    } catch (error) {
+      console.error("Error clearing storage:", error);
+    }
+  }
 }
