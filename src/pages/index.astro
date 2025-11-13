@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero";
+import ServiceFinder from "../components/pages/home/ServiceFinder";
 import BenefitSection from "../components/pages/home/BenefitsSection";
 import WhyChooseUsSection from "../components/pages/home/WhyChooseUsSection.astro";
 import ReviewsWidget from "../components/pages/ReviewsWidget.astro";
@@ -107,6 +108,7 @@ const faqs = [
 
 <BaseLayout>
   <Hero bannerData={bannerData} client:only="react"/>
+  <ServiceFinder client:only="react"/>
   <BenefitSection client:only="react"/>
   <WhyChooseUsSection />
   <ReviewsWidget />

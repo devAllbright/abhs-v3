@@ -1,0 +1,70 @@
+{
+  "Maid Services": {
+    "title": "Maid Services",
+    "sections": [
+      {
+        "label": "What it is?",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore..."
+      },
+      {
+        "label": "How it works?",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore..."
+      },
+      {
+        "label": "Why you should buy it?",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore..."
+      }
+    ]
+  },
+  "One-Time Professional Services": {
+    "title": "One-Time Professional Services",
+    "sections": [
+      {
+        "label": "What it is?",
+        "text": "Description for one-time professional services..."
+      },
+      {
+        "label": "How it works?",
+        "text": "How it works for one-time jobs..."
+      },
+      {
+        "label": "Why you should buy it?",
+        "text": "Reasoning for buying one-time services..."
+      }
+    ]
+  },
+  "Bundles": {
+    "title": "Bundles",
+    "sections": [
+      {
+        "label": "What it is?",
+        "text": "Description for service bundles..."
+      },
+      {
+        "label": "How it works?",
+        "text": "How bundles function..."
+      },
+      {
+        "label": "Why you should buy it?",
+        "text": "Reasons why bundles are valuable..."
+      }
+    ]
+  },
+  "Yearly Maintenance Plan": {
+    "title": "Yearly Maintenance Plan",
+    "sections": [
+      {
+        "label": "What it is?",
+        "text": "A description of the yearly maintenance plan..."
+      },
+      {
+        "label": "How it works?",
+        "text": "Maintenance plan operational details..."
+      },
+      {
+        "label": "Why you should buy it?",
+        "text": "Reasons to purchase a maintenance plan..."
+      }
+    ]
+  }
+}

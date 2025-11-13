@@ -2,7 +2,6 @@ import { useState, useMemo, useRef, useEffect } from "react";
 import Fuse from "fuse.js";
 import serviceTypes from "../../../data/serviceTypes.json";
 
-// 🔧 Extract and flatten all services from serviceTypes.json
 function extractServices(json) {
   const services = [];
 
@@ -10,7 +9,7 @@ function extractServices(json) {
     (typeData.categories || []).forEach((category) => {
       (category.services || []).forEach((service) => {
         services.push({
-          type: typeName, // keep track of the parent type (Recurring Services, Maintenance Plans, Bundles)
+          type: typeName,
           name: service.name,
           slug: service.url.replace("/our-services/", ""),
           url: service.url,
@@ -26,26 +25,21 @@ function extractServices(json) {
 
 const allServices = extractServices(serviceTypes);
 
-// Fuse.js config
 const fuse = new Fuse(allServices, {
   keys: ["name", "keywords"],
   threshold: 0.4,
   includeMatches: true,
 });
 
-// Price formatter with type-based rules
 function formatPrice(price, type) {
   if (price == null) return "";
   const num = Number(price);
   if (!Number.isNaN(num)) {
-    // For Maintenance Plans and Bundles, show plain price (no "Starting at")
     if (type === "Maintenance Plans" || type === "Bundles") {
       return `$${num.toLocaleString("en-US")}`;
     }
-    // Default (e.g., Recurring Services): show "Starting at"
     return `Starting at $${num.toLocaleString("en-US")}`;
   }
-  // If price is a string like "Custom", "Free estimate", etc., pass through
   return String(price);
 }
 
@@ -67,7 +61,6 @@ export default function SearchBar() {
     });
   }, [query]);
 
-  // Keyboard nav: ↑ ↓ Enter
   const handleKeyDown = (e) => {
     if (!filteredResults.length) return;
 
@@ -85,12 +78,10 @@ export default function SearchBar() {
     }
   };
 
-  // Reset activeIndex if results change
   useEffect(() => {
     setActiveIndex(-1);
   }, [filteredResults]);
 
-  // Highlight matched terms
   const highlightMatch = (text, match) => {
     if (!match?.indices?.length) return text;
 
