@@ -97,7 +97,7 @@ export default function ServiceFinderSection() {
         {/* ------------------ HEADING ------------------ */}
         <div className="service-finder__heading">
           <h2 className="service-finder__title">
-            Your Home, Your Needs, One Search
+            Your Home, Your Needs, One Search 🏠
           </h2>
         </div>
 
