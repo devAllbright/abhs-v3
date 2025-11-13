@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import CTAButton from "./buttons/CTAButton";
+/* import CTAButton from "./buttons/CTAButton"; */
 //import ModalCTA from "./buttons/ModalCTA";
 import HCPButton from "./buttons/HCPButton";
 
@@ -23,7 +23,7 @@ export default function Hero({ bannerData }) {
   const {
     ratingText,
     title,
-    subtitle,
+    /* subtitle, */
     description,
     socialProof,
     images,
@@ -61,7 +61,7 @@ export default function Hero({ bannerData }) {
           <h1 className="primary-banner__title">
             {title}
             <br />
-            <span>{subtitle}</span>
+            {/* <span>{subtitle}</span> */}
           </h1>
 
           <p className="primary-banner__description">{description}</p>

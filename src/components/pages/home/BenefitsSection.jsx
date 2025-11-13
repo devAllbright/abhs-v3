@@ -85,10 +85,10 @@ export default function BenefitsSection() {
 
   return (
     <div className="benefit-section">
-      <SectionHeading
+{/*       <SectionHeading
         title="Painless Home Care, Exceptional Results"
         subtitle="Owning a home is rewarding, but keeping it clean and well-maintained shouldn’t be a hassle. We make the process seamless, efficient, and stress-free."
-      />
+      /> */}
 
       <div className="benefits-container">
         <div className="benefit-section__list">

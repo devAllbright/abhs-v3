@@ -47,12 +47,11 @@
 
   &__description {
     width: 40rem;
-    font-size: $font-size-20;
-    font-weight: $font-weight-light;
+    font-size: $font-size-24;
+    font-weight: $font-weight-bold;
     line-height: $line-height-13;
     font-family: $font-secondary;
     margin-top: $spacing-24;
-    font-style: italic;
   }
 
   &__social-proof {
@@ -65,13 +64,13 @@
     }
 
     &-icon {
-      height: 2.5rem;
+      height: 3rem;
       margin-right: $spacing-12;
     }
 
     &-text {
       font-family: $font-secondary;
-      font-size: $font-size-16;
+      font-size: $font-size-18;
     }
   }
 
