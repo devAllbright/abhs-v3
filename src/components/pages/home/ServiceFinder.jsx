@@ -85,9 +85,9 @@ export default function ServiceFinderSection() {
 
   const buttons = [
     "Maid Services",
-    "One-Time Professional Services",
+    "Maintenance Services",
     "Bundles",
-    "Yearly Maintenance Plan"
+    "Yearly Maintenance Plans"
   ];
 
   return (
@@ -101,9 +101,9 @@ export default function ServiceFinderSection() {
         </div>
 
         <div className="service-finder__search">
-          <div className="service-finder__logo">
+{/*           <div className="service-finder__logo">
             <img src="/abhs-logo.png" alt="Allbright Logo" />
-          </div>
+          </div> */}
           <div className="search-bar__input-group">
             <input
               type="text"
