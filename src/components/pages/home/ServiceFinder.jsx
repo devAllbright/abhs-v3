@@ -1,5 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import Fuse from "fuse.js";
+import SearchIconTest from "../../SearchIconTest";
 import serviceFinderInfo from "../../../data/serviceFinderInfo.json";
 import serviceTypes from "../../../data/serviceTypes.json";
 
@@ -73,9 +74,7 @@ export default function ServiceFinderSection() {
       setActiveIndex((p) => (p + 1) % results.length);
     } else if (e.key === "ArrowUp") {
       e.preventDefault();
-      setActiveIndex((p) =>
-        p <= 0 ? results.length - 1 : p - 1
-      );
+      setActiveIndex((p) => (p <= 0 ? results.length - 1 : p - 1));
     } else if (e.key === "Enter" && activeIndex >= 0) {
       window.location.href = results[activeIndex].url;
     }
@@ -84,38 +83,54 @@ export default function ServiceFinderSection() {
   useEffect(() => setActiveIndex(-1), [results]);
 
   const buttons = [
-    "Maid Services",
-    "Maintenance Services",
-    "Bundles",
-    "Yearly Maintenance Plans"
+    { label: "Maid Services", icon: "/searchbar-icons/maid-services.png" },
+    { label: "Home Maintenance Services", icon: "/searchbar-icons/maintenance-services.png" },
+    { label: "Bundles", icon: "/searchbar-icons/bundles.png" },
+    { label: "Yearly Maintenance Plans", icon: "/searchbar-icons/maintenance-plans.png" }
   ];
+
 
   return (
     <div className="service-finder-wrapper">
       <div className="service-finder">
 
+        {/* ------------------ HEADING ------------------ */}
         <div className="service-finder__heading">
           <h2 className="service-finder__title">
             Your Home, Your Needs, One Search
           </h2>
         </div>
 
+        {/* ---------------- SEARCH BAR ---------------- */}
         <div className="service-finder__search">
-{/*           <div className="service-finder__logo">
-            <img src="/abhs-logo.png" alt="Allbright Logo" />
-          </div> */}
           <div className="search-bar__input-group">
-            <input
-              type="text"
-              ref={inputRef}
-              className="search-bar__input"
-              placeholder="What do you need help with?"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
-              autoComplete="off"
-            />
 
+            <div className="search-bar__input-wrapper">
+
+              {/* left icon */}
+              <SearchIconTest className="search-bar__icon" size={22} />
+
+              {/* input */}
+              <input
+                type="text"
+                ref={inputRef}
+                className="search-bar__input"
+                placeholder="What do you need help with?"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
+                autoComplete="off"
+              />
+
+              {/* right logo */}
+              <img
+                src="/abhs-logo.png"
+                alt="Allbright Logo"
+                className="search-bar__logo"
+              />
+            </div>
+
+            {/* RESULTS */}
             {query.trim() && (
               <ul className="search-bar__results">
                 {results.length ? (
@@ -145,25 +160,46 @@ export default function ServiceFinderSection() {
                 )}
               </ul>
             )}
+
           </div>
         </div>
 
+        {/* ---------------- BUTTON GROUP ---------------- */}
         <div className="service-finder__button-group">
-          {buttons.map((label) => (
+          {buttons.map((btn) => (
             <button
-              key={label}
+              key={btn.label}
               className={`service-finder__button ${
-                active === label ? "service-finder__button--active" : ""
+                active === btn.label ? "service-finder__button--active" : ""
               }`}
               onClick={() =>
-                setActive((prev) => (prev === label ? null : label))
+                setActive((prev) => (prev === btn.label ? null : btn.label))
               }
             >
-              {label}
+              {/* LEFT ICON — always visible */}
+              <img
+                src={btn.icon}
+                alt=""
+                className="service-finder__button-icon"
+              />
+
+              {/* TEXT */}
+              <span className="service-finder__button-text">{btn.label}</span>
+
+              {/* RIGHT ARROW — only visible if NOT active */}
+              {active !== btn.label && (
+                <img
+                  src="/searchbar-icons/down-arrow.png"
+                  alt=""
+                  className="service-finder__button-icon"
+                />
+              )}
             </button>
           ))}
         </div>
 
+
+        {/* ---------------- DROPDOWN ---------------- */}
         {active && (
           <div className="service-finder__dropdown">
             <h3 className="service-finder__dropdown-title">

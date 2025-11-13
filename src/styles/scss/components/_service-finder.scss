@@ -1,7 +1,7 @@
 @use "../abstracts/variables" as *;
 
 /* ------------------------------
-   OUTER WRAPPER (CENTERS ALL)
+   OUTER WRAPPER
 ------------------------------ */
 
 .service-finder-wrapper {
@@ -45,57 +45,92 @@
 }
 
 /* ------------------------------
-   SEARCH BAR
+   SEARCH BAR CONTAINER
 ------------------------------ */
 
 .service-finder__search {
-  display: flex;
   width: 100%;
   max-width: 750px;
   margin-bottom: $spacing-32;
   position: relative;
-  z-index: 100; // FIX — ensures results dropdown always stays on top
-
-  .service-finder__logo,
-  .service-finder__logo img {
-    width: 7rem;
-    height: 7rem;
-  }
+  z-index: 500;
 }
 
-/* INPUT WRAPPER */
+/* INPUT GROUP WRAPPER */
 .search-bar__input-group {
   width: 100%;
   position: relative;
 }
 
-/* INPUT FIELD */
-.search-bar__input {
-  all: unset;
-  width: 90%;
-  padding: 2.2rem;
+/* ------------------------------
+   SEARCH BAR INPUT WRAPPER
+   (icon | input | logo)
+------------------------------ */
+
+.search-bar__input-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: $spacing-16;
+
+  padding: 0rem 2rem;
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.31);
-  font-size: 1.3em;
-  color: $primary-text;
-  background-color: $background-light;
+  background: $background-light;
+  position: relative;
+}
 
-  &::placeholder {
-    font-size: 1.3em;
-    color: $neutral-text;
+/* LEFT SEARCH ICON */
+.search-bar__icon {
+  flex-shrink: 0;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+
+  svg {
+    width: 22px;
+    height: 22px;
   }
 }
 
-/* RESULTS DROPDOWN */
+/* INPUT FIELD */
+.search-bar__input {
+  all: unset;
+  flex: 1;
+  font-size: 1.25rem;
+  color: $primary-text;
+  text-align: left;
+
+  &::placeholder {
+    color: $neutral-text;
+    text-align: left;
+  }
+}
+
+/* RIGHT LOGO */
+.search-bar__logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* ------------------------------
+   RESULTS DROPDOWN
+------------------------------ */
+
 .search-bar__results {
   position: absolute;
   top: calc(100% + $spacing-8);
   left: 0;
   right: 0;
-  z-index: 9999; // always above all elements
+
+  z-index: 99999;
+
   max-height: 19rem;
   overflow-y: auto;
   background-color: $background-light;
+
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
@@ -106,22 +141,25 @@
   justify-content: space-between;
   align-items: center;
   padding: $spacing-16 $spacing-24;
+
+  font-size: 1.15rem;
   text-decoration: none;
   color: $primary-text;
   cursor: pointer;
-  font-size: 1.3em;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.05);
   }
 
   &.active {
-    background-color: #f3f3f3;
+    background: #f3f3f3;
   }
-}
 
-.search-bar__result-name {
-  font-weight: $font-weight-bold;
+  mark {
+    background: transparent;
+    color: $highlight-text;
+    font-weight: bold;
+  }
 }
 
 .search-bar__result-price {
@@ -129,14 +167,13 @@
   color: $neutral-text;
 }
 
-.search-bar__result-item mark {
-  background-color: transparent;
-  color: $highlight-text;
-  font-weight: bold;
+.search-bar__no-results {
+  padding: $spacing-16 $spacing-24;
+  color: $neutral-text;
 }
 
 /* ------------------------------
-   BUTTON GROUP
+   BUTTON GROUP (UPDATED)
 ------------------------------ */
 
 .service-finder__button-group {
@@ -146,15 +183,21 @@
   gap: $spacing-16;
   margin-bottom: $spacing-32;
   position: relative;
-  z-index: 10; // LOWER than search results
+  z-index: 10;
 }
 
 .service-finder__button {
-  padding: $spacing-12 $spacing-24;
-  border: 1px solid #D9D9D9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-8;
+
+  padding: $spacing-12 $spacing-12;
+  border: 1px solid #d9d9d9;
   background: #f0f0f0;
   border-radius: 6px;
   cursor: pointer;
+
   font-size: $font-size-16;
   font-weight: $font-weight-bold;
   color: $primary-text;
@@ -170,17 +213,32 @@
   }
 }
 
+/* BUTTON ICON */
+.service-finder__button-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+/* BUTTON TEXT */
+.service-finder__button-text {
+  display: inline-block;
+}
+
 /* ------------------------------
-   DROPDOWN PANEL
+   DROPDOWN PANEL (CONTENT)
 ------------------------------ */
 
 .service-finder__dropdown {
   width: min(700px, 95%);
   margin: 0 auto;
   background: white;
+
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-radius: 12px;
   padding: $spacing-32;
+
   text-align: left;
   position: relative;
   z-index: 5;
