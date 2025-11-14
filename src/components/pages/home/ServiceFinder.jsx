@@ -1,7 +1,7 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import Fuse from "fuse.js";
 import SearchIconTest from "../../SearchIconTest";
-import serviceFinderInfo from "../../../data/serviceFinderInfo.json";
+import { serviceFinderInfo } from "../../../data/serviceFinderInfo.js";
 import serviceTypes from "../../../data/serviceTypes.json";
 
 function extractServices(json) {
@@ -94,23 +94,19 @@ export default function ServiceFinderSection() {
     <div className="service-finder-wrapper">
       <div className="service-finder">
 
-        {/* ------------------ HEADING ------------------ */}
         <div className="service-finder__heading">
           <h2 className="service-finder__title">
             Your Home, Your Needs, One Search 🏠
           </h2>
         </div>
 
-        {/* ---------------- SEARCH BAR ---------------- */}
         <div className="service-finder__search">
           <div className="search-bar__input-group">
 
             <div className="search-bar__input-wrapper">
 
-              {/* left icon */}
               <SearchIconTest className="search-bar__icon" size={22} />
 
-              {/* input */}
               <input
                 type="text"
                 ref={inputRef}
@@ -122,7 +118,6 @@ export default function ServiceFinderSection() {
                 autoComplete="off"
               />
 
-              {/* right logo */}
               <img
                 src="/abhs-logo.png"
                 alt="Allbright Logo"
@@ -130,7 +125,6 @@ export default function ServiceFinderSection() {
               />
             </div>
 
-            {/* RESULTS */}
             {query.trim() && (
               <ul className="search-bar__results">
                 {results.length ? (
@@ -164,7 +158,6 @@ export default function ServiceFinderSection() {
           </div>
         </div>
 
-        {/* ---------------- BUTTON GROUP ---------------- */}
         <div className="service-finder__button-group">
           {buttons.map((btn) => (
             <button
@@ -176,17 +169,14 @@ export default function ServiceFinderSection() {
                 setActive((prev) => (prev === btn.label ? null : btn.label))
               }
             >
-              {/* LEFT ICON — always visible */}
               <img
                 src={btn.icon}
                 alt=""
                 className="service-finder__button-icon"
               />
 
-              {/* TEXT */}
               <span className="service-finder__button-text">{btn.label}</span>
 
-              {/* RIGHT ARROW — only visible if NOT active */}
               {active !== btn.label && (
                 <img
                   src="/searchbar-icons/down-arrow.png"
@@ -198,8 +188,6 @@ export default function ServiceFinderSection() {
           ))}
         </div>
 
-
-        {/* ---------------- DROPDOWN ---------------- */}
         {active && (
           <div className="service-finder__dropdown">
             <h3 className="service-finder__dropdown-title">
@@ -208,16 +196,22 @@ export default function ServiceFinderSection() {
 
             {serviceFinderInfo[active].sections.map((section, i) => (
               <div key={i} className="service-finder__dropdown-section">
-                <h4 className="service-finder__dropdown-label">
-                  {section.label}
-                </h4>
-                <p className="service-finder__dropdown-text">
-                  {section.text}
-                </p>
+                <h4 className="service-finder__dropdown-label">{section.label}</h4>
+
+                <div
+                  className="service-finder__dropdown-text desktop-version"
+                  dangerouslySetInnerHTML={{ __html: section.htmlDesktop }}
+                />
+
+                <div
+                  className="service-finder__dropdown-text mobile-version"
+                  dangerouslySetInnerHTML={{ __html: section.htmlMobile }}
+                />
               </div>
             ))}
           </div>
         )}
+
 
       </div>
     </div>
