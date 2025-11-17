@@ -5,62 +5,57 @@ import "../../styles/pricing/zip-code.css";
 
 const ZipCode = () => {
   const [zipCode, setZipCode] = useState("");
-  const [isValid, setIsValid] = useState(false);
+  const [isValidLength, setIsValidLength] = useState(false);
   const [location, setLocation] = useState("");
 
   useEffect(() => {
     const saved = loadFromStorage("cartData");
     if (saved?.zipCode) {
-      setZipCode(saved.zipCode);
-
-      let foundLocation = "";
-      for (let area in zipCodeMap) {
-        if (zipCodeMap[area].includes(saved.zipCode)) {
-          foundLocation = area;
-          break;
-        }
-      }
-
-      if (foundLocation) {
-        setIsValid(true);
-        setLocation(foundLocation);
-      }
+      const z = saved.zipCode;
+      setZipCode(z);
+      setIsValidLength(z.length === 5);
+      const foundLocation = findLocation(z);
+      if (foundLocation) setLocation(foundLocation);
     }
   }, []);
 
-  const handleChange = (event) => {
-    const enteredZipCode = event.target.value.replace(/\D/g, "");
-    setZipCode(enteredZipCode);
-
-    if (enteredZipCode.length !== 5) {
-      setIsValid(false);
-      setLocation("");
-      return;
-    }
-
-    let foundLocation = "";
+  const findLocation = (zip) => {
     for (let area in zipCodeMap) {
-      if (zipCodeMap[area].includes(enteredZipCode)) {
-        foundLocation = area;
-        break;
+      if (zipCodeMap[area].includes(zip)) {
+        return area;
       }
     }
+    return "";
+  };
 
-    if (foundLocation) {
-      setIsValid(true);
-      setLocation(foundLocation);
+  const handleChange = (event) => {
+    const entered = event.target.value.replace(/\D/g, "").slice(0, 5);
+    setZipCode(entered);
+    setIsValidLength(entered.length === 5);
+
+    if (entered.length === 5) {
+      const found = findLocation(entered);
+      setLocation(found);
     } else {
-      setIsValid(false);
       setLocation("");
     }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (isValid) {
-      saveToStorage("cartData", { zipCode });
-      window.location.href = "/pricing/home-type";
+
+    if (!isValidLength) return;
+
+    const foundLocation = findLocation(zipCode);
+
+    if (!foundLocation) {
+      alert("Sorry, we currently do not serve this location.");
+      window.location.href = "/";
+      return;
     }
+
+    saveToStorage("cartData", { zipCode });
+    window.location.href = "/pricing/home-type";
   };
 
   return (
@@ -71,6 +66,7 @@ const ZipCode = () => {
             <div className="img-container">
               <img src="/icon-location.png" alt="location icon" />
             </div>
+
             <input
               type="text"
               id="postal-code"
@@ -81,19 +77,21 @@ const ZipCode = () => {
               maxLength="5"
               inputMode="numeric"
             />
+
             <button
               type="submit"
               id="submit-button"
-              className={isValid ? "submit-enabled" : "submit-disabled"}
-              disabled={!isValid}
+              className={isValidLength ? "submit-enabled" : "submit-disabled"}
+              disabled={!isValidLength}
             >
               NEXT
             </button>
           </div>
         </form>
       </div>
+
       <div className="location-container">
-        {isValid && <p id="location-display">{location}</p>}
+        {location && <p id="location-display">{location}</p>}
       </div>
     </>
   );

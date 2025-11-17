@@ -1,23 +1,58 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
+import maidData from "../../data/maidServicesPrices.json";
+import proData from "../../data/professionalServicesPrices.json";
 import "../../styles/pricing/home-details.css";
 
 export default function StepHomeDetails() {
   const { cartData, updateCartData } = useShoppingCart();
-  const serviceType = cartData.selectedServiceType || "recurring";
+  const selectedService = cartData.selectedService;
+
+  console.log(cartData)
 
   const [counters, setCounters] = useState({
     bedrooms: cartData.bedroomNumber || 1,
     fullBathrooms: cartData.bathroomNumber || 1,
     halfBathrooms: cartData.halfBathroomNumber || 0,
-    otherRooms: cartData.otherRoomNumber || 0,
+    otherRooms: cartData.otherRoomNumber || 0
   });
 
   const [squareFootage, setSquareFootage] = useState(
-    cartData.squareFootage || "1500-1800"
+    cartData.squareFootage || ""
   );
 
+  const maidOptions = useMemo(() => {
+    return maidData.priceTiers.map((t) => t.sqftRange);
+  }, []);
+
+  const proOptions = useMemo(() => {
+    return proData.priceTiers.map((t) => t.sqftRange);
+  }, []);
+
+  const carpetOptions = useMemo(() => {
+    const arr = [];
+    for (let sqft = 800; sqft <= 3600; sqft += 200) {
+      const next = sqft + 200;
+      arr.push(`${sqft}-${next}`);
+    }
+    arr.push("More than 3600");
+    return arr;
+  }, []);
+
+  const squareFootageOptions = useMemo(() => {
+    if (selectedService === "Maid Services") return [...maidOptions, "More than 3600"];
+    if (selectedService === "Professional Services") return [...proOptions, "More than 3600"];
+    if (selectedService === "Carpet Cleaning") return carpetOptions;
+    return [];
+  }, [selectedService, maidOptions, proOptions, carpetOptions]);
+
   useEffect(() => {
+    if (squareFootage === "More than 3600") {
+      alert("For homes larger than 3600 sq ft, please request a free in-home consultation.");
+      window.location.href = "/";
+      return;
+    }
+
     updateCartData({
       livingRoomIncluded: true,
       kitchenIncluded: true,
@@ -26,7 +61,7 @@ export default function StepHomeDetails() {
       bathroomNumber: counters.fullBathrooms,
       halfBathroomNumber: counters.halfBathrooms,
       otherRoomNumber: counters.otherRooms,
-      squareFootage,
+      squareFootage
     });
   }, [counters, squareFootage]);
 
@@ -37,7 +72,7 @@ export default function StepHomeDetails() {
         bedrooms: { min: 1, max: 5 },
         fullBathrooms: { min: 1, max: 5 },
         halfBathrooms: { min: 0, max: 5 },
-        otherRooms: { min: 0, max: 5 },
+        otherRooms: { min: 0, max: 5 }
       };
       const { min, max } = limits[field];
       if (newValue < min) newValue = min;
@@ -47,36 +82,14 @@ export default function StepHomeDetails() {
   };
 
   const handleNextClick = () => {
-    updateCartData({
-      livingRoomIncluded: true,
-      kitchenIncluded: true,
-      dinningRoomIncluded: true,
-      bedroomNumber: counters.bedrooms,
-      bathroomNumber: counters.fullBathrooms,
-      halfBathroomNumber: counters.halfBathrooms,
-      otherRoomNumber: counters.otherRooms,
-      squareFootage,
-    });
+    if (squareFootage === "More than 3600") {
+      alert("For homes larger than 3600 sq ft, please request a free in-home consultation.");
+      window.location.href = "/";
+      return;
+    }
 
     window.location.href = "/pricing/pro-services";
   };
-
-  const squareFootageOptions = [
-    "800-1000",
-    "1000-1200",
-    "1200-1400",
-    "1400-1600",
-    "1600-1800",
-    "1800-2000",
-    "2000-2200",
-    "2200-2400",
-    "2400-2800",
-    "2800-3000",
-    "3000-3200",
-    "3200-3400",
-    "3400-3600",
-    "More than 3600",
-  ];
 
   return (
     <>
@@ -111,9 +124,10 @@ export default function StepHomeDetails() {
                   value={squareFootage}
                   onChange={(e) => setSquareFootage(e.target.value)}
                 >
-                  {squareFootageOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                  <option value="">Select a range</option>
+                  {squareFootageOptions.map((opt) => (
+                    <option key={opt} value={opt}>
+                      {opt}
                     </option>
                   ))}
                 </select>
@@ -126,7 +140,7 @@ export default function StepHomeDetails() {
           { key: "bedrooms", label: "Bedroom(s)", img: "bedroom.png" },
           { key: "fullBathrooms", label: "Full Bathroom(s)", img: "full-bathroom.png" },
           { key: "halfBathrooms", label: "Half Bathroom(s)", img: "half-bathroom.png" },
-          { key: "otherRooms", label: "Other Room(s)", img: "other-room.png" },
+          { key: "otherRooms", label: "Other Room(s)", img: "other-room.png" }
         ].map(({ key, label, img }) => (
           <div
             key={key}

@@ -1,4 +1,4 @@
-import data from "../data/oneTimePrices.json";
+import data from "../data/professionalServicesPrices.json";
 import { getTierBySqft } from "./getTierBySqft";
 
 export function calculateOneTimePrice(formData) {

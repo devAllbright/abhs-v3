@@ -1,4 +1,4 @@
-import data from "../data/carpetPrices.json";
+import data from "../data/carpetCleaningPrices.json";
 
 export function calculateCarpetPrice(formData) {
   const {

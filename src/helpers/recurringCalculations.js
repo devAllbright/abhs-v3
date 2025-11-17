@@ -1,4 +1,4 @@
-import data from "../data/recurringPrices.json";
+import data from "../data/maidServicesPrices.json";
 import { getTierBySqft } from "./getTierBySqft";
 
 export function calculateRecurringPrice(formData) {

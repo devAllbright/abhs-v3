@@ -1,8 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import {
-  saveToStorage,
-  loadFromStorage
-} from "../helpers/storageUtils";
+import { saveToStorage, loadFromStorage } from "../helpers/storageUtils";
 import {
   calculateRecurringPrice,
   calculateOneTimePrice,
@@ -12,24 +9,19 @@ import {
 const ShoppingCartContext = createContext();
 
 const defaultCartData = {
-  // --- General Info ---
   zipCode: "",
-  selectedServiceType: "", // recurringMaids | oneTimeMaids | carpetCleaning
-  selectedService: "", // human-readable name (e.g., "Maid Services")
-  selectedFrequency: "", // weekly, biweekly, etc.
-  condition: "normal", // only for oneTime & carpet
+  selectedService: "",
+  selectedFrequency: "",
+  condition: "normal",
 
-  // --- Property Info ---
   squareFootage: null,
   bedroomNumber: 1,
   bathroomNumber: 1,
   halfBathroomNumber: 0,
   otherRoomNumber: 0,
 
-  // --- Cleaning Type ---
-  hadProServices: null, // recurring only
+  hadProServices: null,
 
-  // --- Extras ---
   extras: {
     changeLinens: 0,
     furryPets: false,
@@ -41,7 +33,6 @@ const defaultCartData = {
     petUrineTreatment: false
   },
 
-  // --- Contact Info ---
   contactInfo: {
     name: "",
     phone: "",
@@ -49,44 +40,39 @@ const defaultCartData = {
     address: ""
   },
 
-  // --- Prices ---
   basePrice: 0,
   extrasTotal: 0,
   finalPrice: 0,
 
-  // --- UI Control ---
   isStepComplete: false
 };
 
 export function ShoppingCartProvider({ children }) {
-  const [cartData, setCartData] = useState(
-    () => loadFromStorage("cartData") || defaultCartData
-  );
+  const [cartData, setCartData] = useState(() => {
+    const stored = loadFromStorage("cartData");
+    return stored ? { ...defaultCartData, ...stored } : defaultCartData;
+  });
 
-  // --- Keep sessionStorage in sync ---
   useEffect(() => {
     saveToStorage("cartData", cartData);
   }, [cartData]);
 
-  // --- Core Update Function ---
   const updateCartData = (updates) =>
     setCartData((prev) => ({ ...prev, ...updates }));
 
-  // --- Centralized Price Calculation Logic ---
   const calculateTotal = () => {
-    const { selectedServiceType } = cartData;
-
-    if (!selectedServiceType) return;
+    const { selectedService } = cartData;
+    if (!selectedService) return;
 
     let pricingFn;
-    switch (selectedServiceType) {
-      case "recurringMaids":
+    switch (selectedService) {
+      case "Maid Services":
         pricingFn = calculateRecurringPrice;
         break;
-      case "oneTimeMaids":
+      case "Professional Services":
         pricingFn = calculateOneTimePrice;
         break;
-      case "carpetCleaning":
+      case "Carpet Cleaning":
         pricingFn = calculateCarpetPrice;
         break;
       default:
@@ -105,7 +91,6 @@ export function ShoppingCartProvider({ children }) {
     return { basePrice, extrasTotal, finalPrice };
   };
 
-  // --- Resets Entire Cart ---
   const resetCart = () => {
     setCartData(defaultCartData);
     saveToStorage("cartData", defaultCartData);
