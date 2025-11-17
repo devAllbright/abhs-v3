@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
-import recurringPrices from "../../../data/recurringPrices.json";
+import recurringPrices from "../../../data/maidServicesPrices.json";
 import "../../../styles/pricing/shopping-cart/scroll-steps/recurring-services.css";
 
 export default function RecurringServices() {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
-import oneTimePrices from "../../../data/oneTimePrices.json";
+import oneTimePrices from "../../../data/professionalServicesPrices.json";
 import "../../../styles/pricing/shopping-cart/scroll-steps/one-time-services.css";
 
 export default function OneTimeServices() {
