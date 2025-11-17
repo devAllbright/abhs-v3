@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
-
-import recurringPrices from "../../../data/recurringPrices.json";
-import oneTimePrices from "../../../data/oneTimePrices.json";
-import carpetPrices from "../../../data/carpetPrices.json";
+import recurringPrices from "../../../data/maidServicesPrices.json";
+import oneTimePrices from "../../../data/professionalServicesPrices.json";
+import carpetPrices from "../../../data/carpetCleaningPrices.json";
 
 import "../../../styles/pricing/shopping-cart/scroll-steps/customize-service.css";
 
