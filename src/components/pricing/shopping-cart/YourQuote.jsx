@@ -1,6 +1,6 @@
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
 import { calculateRecurringPrice, getTierBySqft } from "../../../helpers";
-import recurringPrices from "../../../data/recurringPrices.json";
+import recurringPrices from "../../../data/maidServicesPrices.json";
 import "../../../styles/pricing/shopping-cart/scroll-steps/your-quote.css";
 
 export default function YourQuote() {
