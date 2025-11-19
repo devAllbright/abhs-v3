@@ -64,6 +64,16 @@ export function ShoppingCartProvider({ children }) {
     const { selectedService } = cartData;
     if (!selectedService) return;
 
+    const normalized = {
+      houseSize: cartData.squareFootage ?? 0,
+      bedrooms: cartData.bedroomNumber ?? 0,
+      bathrooms: cartData.bathroomNumber ?? 0,
+      condition: cartData.condition,
+      extras: cartData.extras || {},
+      selectedFrequency: cartData.selectedFrequency,
+      hadProServices: cartData.hadProServices ?? false
+    };
+
     let pricingFn;
     switch (selectedService) {
       case "Maid Services":
@@ -79,7 +89,7 @@ export function ShoppingCartProvider({ children }) {
         return;
     }
 
-    const { basePrice, extrasTotal, finalPrice } = pricingFn(cartData);
+    const { basePrice, extrasTotal, finalPrice } = pricingFn(normalized);
 
     setCartData((prev) => ({
       ...prev,

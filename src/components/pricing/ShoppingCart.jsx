@@ -1,16 +1,11 @@
 import { useEffect, useState } from "react";
 import { ShoppingCartProvider } from "../../context/ShoppingCartContext";
-
-import RecurringServices from "./scroll-steps/RecurringServices";
-import OneTimeServices from "./scroll-steps/OneTimeServices";
-import CarpetCleaning from "./scroll-steps/CarpetCleaning";
+import SelectedService from "./scroll-steps/SelectedService";
 import CustomizeService from "./scroll-steps/CustomizeService";
 import ContactInfo from "./scroll-steps/ContactInfo";
-
 import Disclaimer from "./shopping-cart/Disclaimer";
 import BundleDisclaimer from "./shopping-cart/BundleDisclaimer";
 import YourQuote from "./shopping-cart/YourQuote";
-
 import "../../styles/pricing/shopping-cart.css";
 
 export default function ShoppingCart() {
@@ -33,10 +28,7 @@ export default function ShoppingCart() {
     <ShoppingCartProvider>
       <div className="shopping-cart-container">
         <div className="cart-scrolling-side">
-          {serviceType === "recurringMaids" && <RecurringServices />}
-          {serviceType === "oneTimeMaids" && <OneTimeServices />}
-          {serviceType === "carpetCleaning" && <CarpetCleaning />}
-
+          <SelectedService />
           <CustomizeService />
           <ContactInfo
             stepNumber={

@@ -1,22 +1,36 @@
+import { useEffect } from "react";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
-import { calculateRecurringPrice, getTierBySqft } from "../../../helpers";
-import recurringPrices from "../../../data/maidServicesPrices.json";
 import "../../../styles/pricing/shopping-cart/scroll-steps/your-quote.css";
 
 export default function YourQuote() {
-  const { cartData } = useShoppingCart();
+  const { cartData, calculateTotal } = useShoppingCart();
 
   const {
-    selectedServiceType,
+    selectedService,
     selectedFrequency,
     squareFootage,
-    bedroomNumber,
-    bathroomNumber,
-    hadProServices,
-    extras = {},
+    condition,
+    basePrice,
+    extrasTotal,
+    finalPrice,
+    hadProServices
   } = cartData;
 
-  if (!selectedServiceType || !squareFootage) {
+  useEffect(() => {
+    if (!selectedService) return;
+    calculateTotal();
+  }, [
+    selectedService,
+    selectedFrequency,
+    squareFootage,
+    cartData.bedroomNumber,
+    cartData.bathroomNumber,
+    condition,
+    cartData.extras,
+    hadProServices
+  ]);
+
+  if (!selectedService) {
     return (
       <div className="quote-container">
         <div className="quote-header">
@@ -27,50 +41,18 @@ export default function YourQuote() {
     );
   }
 
-  const { serviceName, globalExtras } = recurringPrices;
-  const tier = getTierBySqft(recurringPrices, Number(squareFootage) || 0);
-  if (!tier) return null;
-
-  const activeExtras = Object.entries(extras)
-    .filter(([_, v]) => (typeof v === "boolean" ? v : v > 0))
-    .map(([key, value]) => ({
-      key,
-      name: key
-        .replace(/([A-Z])/g, " $1")
-        .replace(/^\w/, (c) => c.toUpperCase()),
-      price:
-        (globalExtras[`${key}Price`] || 0) *
-        (typeof value === "number" ? value : 1),
-    }));
-
-  const maidExtras = activeExtras.filter(
-    (e) => !["insideOven", "insideRefrigerator"].includes(e.key)
-  );
-  const cleaningExtras = activeExtras.filter((e) =>
-    ["insideOven", "insideRefrigerator"].includes(e.key)
-  );
-
-  const maidExtrasTotal = maidExtras.reduce((sum, e) => sum + e.price, 0);
-  const cleaningExtrasTotal = cleaningExtras.reduce((sum, e) => sum + e.price, 0);
-
-  const baseMaid = tier.minimum ?? 0;
-  const baseInitial = tier.initialCleaning ?? 0;
-
-  const discountValue =
-    selectedFrequency === "Weekly"
-      ? globalExtras.weeklyDiscount
-      : selectedFrequency === "Bi-Weekly"
-      ? globalExtras.biMonthlyDiscount
-      : globalExtras.monthlyDiscount;
-
-  const maidSubtotal =
-    (baseMaid + maidExtrasTotal) * (1 - (discountValue || 0));
-  const cleaningSubtotal = baseInitial + cleaningExtrasTotal;
-
-  const discountLabel = `${selectedFrequency} Discount`;
-  const discountAmount = (baseMaid + maidExtrasTotal) * (discountValue || 0);
-
-  const finalTotal = maidSubtotal + cleaningSubtotal;
+  if (!finalPrice || finalPrice <= 0) {
+    return (
+      <div className="quote-container">
+        <div className="quote-header">
+          <p>YOUR QUOTE</p>
+        </div>
+        <p className="no-services">
+          We will calculate your quote as soon as you complete the details.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="quote-container">
@@ -78,75 +60,113 @@ export default function YourQuote() {
         <p>YOUR QUOTE</p>
       </div>
 
-      {/* 🧩 Maid Services Section */}
-      <div className="quote-line service-line">
-        <div className="quote-service">
-          <p>{serviceName}</p>
-          <p>${baseMaid.toFixed(2)}</p>
-        </div>
-      </div>
-
-      {maidExtras.map((extra) => (
-        <div key={extra.key} className="quote-line discount-line">
-          <div className="quote-service extras-line">
-            <p className="extra-text">+ {extra.name}</p>
-            <p className="extra-text">${extra.price.toFixed(2)}</p>
-          </div>
-        </div>
-      ))}
-
-      {discountValue > 0 && (
-        <div className="quote-line discount-line">
-          <div className="quote-service extras-line">
-            <p className="extra-text">- {discountLabel}</p>
-            <p className="extra-text">-${discountAmount.toFixed(2)}</p>
-          </div>
-        </div>
-      )}
-
-      <div className="quote-line subtotal-line">
-        <div className="quote-total">
-          <p>Subtotal (Maid Services)</p>
-          <p>${maidSubtotal.toFixed(2)}</p>
-        </div>
-      </div>
-
-      {/* 🧩 Initial Cleaning Section (if hadProServices = false) */}
-      {!hadProServices && (
+      {selectedService === "Maid Services" && (
         <>
           <div className="quote-line service-line">
             <div className="quote-service">
-              <p>Initial Cleaning</p>
-              <p>${baseInitial.toFixed(2)}</p>
+              <p>{selectedService}</p>
+              <p>${basePrice.toFixed(2)}</p>
             </div>
           </div>
 
-          {cleaningExtras.map((extra) => (
-            <div key={extra.key} className="quote-line discount-line">
-              <div className="quote-service extras-line">
-                <p className="extra-text">+ {extra.name}</p>
-                <p className="extra-text">${extra.price.toFixed(2)}</p>
+          {selectedFrequency && (
+            <div className="quote-line subtotal-line">
+              <div className="quote-total">
+                <p>Frequency</p>
+                <p>{selectedFrequency}</p>
               </div>
             </div>
-          ))}
+          )}
 
           <div className="quote-line subtotal-line">
             <div className="quote-total">
-              <p>Subtotal (Initial Cleaning)</p>
-              <p>${cleaningSubtotal.toFixed(2)}</p>
+              <p>Extras</p>
+              <p>${extrasTotal.toFixed(2)}</p>
+            </div>
+          </div>
+
+          {hadProServices === false && (
+            <div className="quote-line subtotal-line">
+              <div className="quote-total">
+                <p>Includes Initial Cleaning</p>
+                <p>Yes</p>
+              </div>
+            </div>
+          )}
+
+          <div className="quote-line total-line">
+            <div className="quote-total">
+              <p>Estimated Total</p>
+              <p>${finalPrice.toFixed(2)}</p>
             </div>
           </div>
         </>
       )}
 
-      {/* 🧩 Show Total only when hadProServices = true */}
-      {hadProServices && (
-        <div className="quote-line total-line">
-          <div className="quote-total">
-            <p>Estimated Total</p>
-            <p>${maidSubtotal.toFixed(2)}</p>
+      {selectedService === "Professional Services" && (
+        <>
+          <div className="quote-line service-line">
+            <div className="quote-service">
+              <p>{selectedService}</p>
+              <p>${basePrice.toFixed(2)}</p>
+            </div>
           </div>
-        </div>
+
+          <div className="quote-line subtotal-line">
+            <div className="quote-total">
+              <p>Condition</p>
+              <p>{condition === "bad" ? "Bad" : "Normal"}</p>
+            </div>
+          </div>
+
+          <div className="quote-line subtotal-line">
+            <div className="quote-total">
+              <p>Extras</p>
+              <p>${extrasTotal.toFixed(2)}</p>
+            </div>
+          </div>
+
+          <div className="quote-line total-line">
+            <div className="quote-total">
+              <p>Estimated Total</p>
+              <p>${finalPrice.toFixed(2)}</p>
+            </div>
+          </div>
+        </>
+      )}
+
+      {selectedService === "Carpet Cleaning" && (
+        <>
+          <div className="quote-line service-line">
+            <div className="quote-service">
+              <p>{selectedService}</p>
+              <p>${basePrice.toFixed(2)}</p>
+            </div>
+          </div>
+
+          {squareFootage && (
+            <div className="quote-line subtotal-line">
+              <div className="quote-total">
+                <p>Square Footage</p>
+                <p>{squareFootage} sq ft</p>
+              </div>
+            </div>
+          )}
+
+          <div className="quote-line subtotal-line">
+            <div className="quote-total">
+              <p>Extras</p>
+              <p>${extrasTotal.toFixed(2)}</p>
+            </div>
+          </div>
+
+          <div className="quote-line total-line">
+            <div className="quote-total">
+              <p>Estimated Total</p>
+              <p>${finalPrice.toFixed(2)}</p>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );

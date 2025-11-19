@@ -43,7 +43,6 @@ const ZipCode = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     if (!isValidLength) return;
 
     const foundLocation = findLocation(zipCode);
@@ -54,7 +53,15 @@ const ZipCode = () => {
       return;
     }
 
-    saveToStorage("cartData", { zipCode });
+    const saved = loadFromStorage("cartData") || {};
+    const selectedService = sessionStorage.getItem("selectedService") || saved.selectedService || "";
+
+    saveToStorage("cartData", { 
+      ...saved,
+      zipCode,
+      selectedService 
+    });
+
     window.location.href = "/pricing/home-type";
   };
 

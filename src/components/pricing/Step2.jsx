@@ -8,8 +8,6 @@ export default function StepHomeDetails() {
   const { cartData, updateCartData } = useShoppingCart();
   const selectedService = cartData.selectedService;
 
-  console.log(cartData)
-
   const [counters, setCounters] = useState({
     bedrooms: cartData.bedroomNumber || 1,
     fullBathrooms: cartData.bathroomNumber || 1,
