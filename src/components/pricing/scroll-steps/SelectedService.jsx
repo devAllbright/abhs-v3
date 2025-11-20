@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
 import maidServicesPrices from "../../../data/maidServicesPrices.json";
 import professionalServicesPrices from "../../../data/professionalServicesPrices.json";
@@ -8,43 +9,49 @@ import "../../../styles/pricing/shopping-cart/scroll-steps/one-time-services.css
 
 export default function SelectedService() {
   const { cartData } = useShoppingCart();
-  const selected = cartData.selectedService;
+  const { selectedService } = cartData;
 
-  if (!selected) return null;
+  if (!selectedService) return null;
 
-  if (selected === "Maid Services") return <RecurringServiceSection />;
-  if (selected === "Professional Services") return <OneTimeServiceSection />;
-  if (selected === "Carpet Cleaning") return <CarpetServiceSection />;
-
-  return null;
+  switch (selectedService) {
+    case "Maid Services":
+      return <MaidServicesBlock />;
+    case "Professional Services":
+      return <ProfessionalServicesBlock />;
+    case "Carpet Cleaning":
+      return <CarpetCleaningBlock />;
+    default:
+      return null;
+  }
 }
 
-function RecurringServiceSection() {
+/* ========================================================================
+   MAID SERVICES (Recurring)
+======================================================================== */
+function MaidServicesBlock() {
   const { cartData, updateCartData } = useShoppingCart();
-  const { serviceName, globalExtras } = maidServicesPrices;
+  const { globalExtras, serviceName } = maidServicesPrices;
 
   const frequencies = [
     { label: "Weekly", value: globalExtras.weeklyDiscount },
     { label: "Bi-Weekly", value: globalExtras.biMonthlyDiscount },
-    { label: "Monthly", value: globalExtras.monthlyDiscount }
+    { label: "Monthly", value: globalExtras.monthlyDiscount },
   ];
 
-  const [selectedFrequency, setSelectedFrequency] = useState(
-    cartData.selectedFrequency || "Weekly"
-  );
+  const selected = cartData.selectedFrequency || "Weekly";
 
-  useEffect(() => {
+  const handleFrequencyClick = (label) => {
     updateCartData({
-      selectedService: serviceName,
-      selectedFrequency
+      selectedService: "Maid Services",
+      selectedFrequency: label,
+      discount: frequencies.find((f) => f.label === label)?.value || 0,
+      condition: cartData.hadProServices ? "normal" : "bad",
     });
-  }, [selectedFrequency]);
+  };
 
   return (
     <div className="scroll-choose-service">
-      <div className="scroll-title">
-        <p>1. Choose your Service</p>
-      </div>
+      <div className="scroll-title"><p>Choose your Service</p></div>
 
       <div className="services-container">
         <button className="service active-service" disabled>
@@ -55,10 +62,8 @@ function RecurringServiceSection() {
           {frequencies.map(({ label, value }) => (
             <div key={label} className="frequency-element">
               <button
-                className={`frequency-btn ${
-                  selectedFrequency === label ? "active-frequency" : ""
-                }`}
-                onClick={() => setSelectedFrequency(label)}
+                className={`frequency-btn ${selected === label ? "active-frequency" : ""}`}
+                onClick={() => handleFrequencyClick(label)}
               >
                 {label}
               </button>
@@ -71,29 +76,28 @@ function RecurringServiceSection() {
   );
 }
 
-function OneTimeServiceSection() {
+/* ========================================================================
+   PROFESSIONAL SERVICES (One-Time)
+======================================================================== */
+function ProfessionalServicesBlock() {
   const { cartData, updateCartData } = useShoppingCart();
   const { serviceName } = professionalServicesPrices;
 
-  const isActive = cartData.selectedService === serviceName;
-
-  const handleSelect = () => {
+  useEffect(() => {
     updateCartData({
-      selectedService: serviceName
+      selectedService: "Professional Services",
+      condition: cartData.hadProServices ? "normal" : "bad",
+      selectedFrequency: "",
+      discount: 0,
     });
-  };
+  }, []);
 
   return (
     <div className="scroll-choose-service">
-      <div className="scroll-title">
-        <p>1. Choose your Service</p>
-      </div>
+      <div className="scroll-title"><p>Choose your Service</p></div>
 
       <div className="services-container">
-        <button
-          className={`service ${isActive ? "active-service" : ""}`}
-          onClick={handleSelect}
-        >
+        <button className="service active-service" disabled>
           {serviceName}
         </button>
       </div>
@@ -101,57 +105,67 @@ function OneTimeServiceSection() {
   );
 }
 
-function CarpetServiceSection() {
+/* ========================================================================
+   CARPET CLEANING
+======================================================================== */
+function CarpetCleaningBlock() {
   const { cartData, updateCartData } = useShoppingCart();
   const { serviceName } = carpetCleaningPrices;
 
-  const [size, setSize] = useState(
-    typeof cartData.squareFootage === "number" && cartData.squareFootage > 0
-      ? cartData.squareFootage
-      : 400
-  );
+  const sqft = cartData.squareFootage || 500;
 
-  useEffect(() => {
+  const adjustSqft = (value) => {
+    if (value < 500) return 500;
+    if (value > 2500) return 2500;
+    return value;
+  };
+
+  const updateSqft = (value) => {
+    const newValue = adjustSqft(value);
     updateCartData({
-      selectedService: serviceName,
-      squareFootage: size
-    });
-  }, [size]);
-
-  const changeSize = (delta) => {
-    setSize((prev) => {
-      const next = prev + delta;
-      return next < 100 ? 100 : next;
+      selectedService: "Carpet Cleaning",
+      squareFootage: newValue,
+      condition: cartData.hadProServices ? "normal" : "bad",
+      selectedFrequency: "",
+      discount: 0,
     });
   };
 
-  const handleInputChange = (e) => {
-    const value = Number(e.target.value.replace(/\D/g, ""));
-    if (!value) {
-      setSize(0);
-      return;
-    }
-    setSize(value);
+  const handleInput = (e) => {
+    const raw = parseInt(e.target.value.replace(/\D/g, ""), 10);
+    updateSqft(raw || 500);
   };
 
   return (
     <div className="scroll-choose-service">
-      <div className="scroll-title">
-        <p>1. Choose your Service</p>
-      </div>
+      <div className="scroll-title"><p>Choose your Service</p></div>
 
       <div className="services-container">
         <button className="service active-service" disabled>
           {serviceName}
         </button>
 
-        <div className="carpet-size-section">
-          <div className="size-controls">
-            <button onClick={() => changeSize(-100)}>-100</button>
-            <input type="text" value={size} onChange={handleInputChange} />
-            <button onClick={() => changeSize(100)}>+100</button>
+        <div className="service-frequency">
+          <div className="frequency-element">
+            <div className="sqft-control">
+              <button className="frequency-btn" onClick={() => updateSqft(sqft - 100)}>
+                -100
+              </button>
+
+              <input
+                type="number"
+                className="sqft-input"
+                value={sqft}
+                onChange={handleInput}
+              />
+
+              <button className="frequency-btn" onClick={() => updateSqft(sqft + 100)}>
+                +100
+              </button>
+            </div>
+
+            <p className="discount-text">Enter Sq Ft (500–2500)</p>
           </div>
-          <p className="sqft-label">{size} sq ft</p>
         </div>
       </div>
     </div>

@@ -1,10 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { saveToStorage, loadFromStorage } from "../helpers/storageUtils";
-import {
-  calculateRecurringPrice,
-  calculateOneTimePrice,
-  calculateCarpetPrice
-} from "../helpers";
+import { calculatePrice } from "../helpers/calculatePrice";
 
 const ShoppingCartContext = createContext();
 
@@ -13,15 +9,12 @@ const defaultCartData = {
   selectedService: "",
   selectedFrequency: "",
   condition: "normal",
-
   squareFootage: null,
   bedroomNumber: 1,
   bathroomNumber: 1,
   halfBathroomNumber: 0,
   otherRoomNumber: 0,
-
   hadProServices: null,
-
   extras: {
     changeLinens: 0,
     furryPets: false,
@@ -32,78 +25,89 @@ const defaultCartData = {
     stainsRemove: false,
     petUrineTreatment: false
   },
-
   contactInfo: {
     name: "",
     phone: "",
     email: "",
     address: ""
   },
-
   basePrice: 0,
   extrasTotal: 0,
   finalPrice: 0,
-
+  priceBreakdown: null,
+  discount: 0,
   isStepComplete: false
 };
 
+function setByPath(obj, path, value) {
+  const keys = path.split(".");
+  const newObj = { ...obj };
+  let current = newObj;
+  for (let i = 0; i < keys.length - 1; i++) {
+    const key = keys[i];
+    current[key] = { ...(current[key] || {}) };
+    current = current[key];
+  }
+  current[keys[keys.length - 1]] = value;
+  return newObj;
+}
+
+function withRecomputedTotals(cart) {
+  const result = calculatePrice(cart) || {};
+  const {
+    basePrice = 0,
+    extrasTotal = 0,
+    finalPrice = 0,
+    priceBreakdown = null
+  } = result;
+  return {
+    ...cart,
+    basePrice,
+    extrasTotal,
+    finalPrice,
+    priceBreakdown
+  };
+}
+
+function buildInitialCart() {
+  const stored = loadFromStorage("cartData");
+  const base = stored ? { ...defaultCartData, ...stored } : defaultCartData;
+  return withRecomputedTotals(base);
+}
+
 export function ShoppingCartProvider({ children }) {
-  const [cartData, setCartData] = useState(() => {
-    const stored = loadFromStorage("cartData");
-    return stored ? { ...defaultCartData, ...stored } : defaultCartData;
-  });
+  const [cartData, setCartData] = useState(buildInitialCart);
 
   useEffect(() => {
     saveToStorage("cartData", cartData);
   }, [cartData]);
 
-  const updateCartData = (updates) =>
-    setCartData((prev) => ({ ...prev, ...updates }));
+  const updateCartData = (updatesOrPath, value) => {
+    setCartData((prev) => {
+      let draft = { ...prev };
+      if (typeof updatesOrPath === "string") {
+        draft = setByPath(draft, updatesOrPath, value);
+        return withRecomputedTotals(draft);
+      }
+      if (updatesOrPath && typeof updatesOrPath === "object") {
+        const { extras: ex, contactInfo: ci, ...rest } = updatesOrPath;
+        if (ex) draft.extras = { ...draft.extras, ...ex };
+        if (ci) draft.contactInfo = { ...draft.contactInfo, ...ci };
+        draft = { ...draft, ...rest };
+        return withRecomputedTotals(draft);
+      }
+      return prev;
+    });
+  };
 
   const calculateTotal = () => {
-    const { selectedService } = cartData;
-    if (!selectedService) return;
-
-    const normalized = {
-      houseSize: cartData.squareFootage ?? 0,
-      bedrooms: cartData.bedroomNumber ?? 0,
-      bathrooms: cartData.bathroomNumber ?? 0,
-      condition: cartData.condition,
-      extras: cartData.extras || {},
-      selectedFrequency: cartData.selectedFrequency,
-      hadProServices: cartData.hadProServices ?? false
-    };
-
-    let pricingFn;
-    switch (selectedService) {
-      case "Maid Services":
-        pricingFn = calculateRecurringPrice;
-        break;
-      case "Professional Services":
-        pricingFn = calculateOneTimePrice;
-        break;
-      case "Carpet Cleaning":
-        pricingFn = calculateCarpetPrice;
-        break;
-      default:
-        return;
-    }
-
-    const { basePrice, extrasTotal, finalPrice } = pricingFn(normalized);
-
-    setCartData((prev) => ({
-      ...prev,
-      basePrice,
-      extrasTotal,
-      finalPrice
-    }));
-
-    return { basePrice, extrasTotal, finalPrice };
+    setCartData((prev) => withRecomputedTotals({ ...prev }));
   };
 
   const resetCart = () => {
-    setCartData(defaultCartData);
-    saveToStorage("cartData", defaultCartData);
+    const reset = withRecomputedTotals({ ...defaultCartData });
+    setCartData(reset);
+    saveToStorage("cartData", reset);
   };
 
   return (

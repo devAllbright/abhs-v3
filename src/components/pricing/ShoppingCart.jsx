@@ -30,15 +30,7 @@ export default function ShoppingCart() {
         <div className="cart-scrolling-side">
           <SelectedService />
           <CustomizeService />
-          <ContactInfo
-            stepNumber={
-              serviceType === "recurringMaids" ||
-              serviceType === "carpetCleaning" ||
-              serviceType === "oneTimeMaids"
-                ? 3
-                : 2
-            }
-          />
+          <ContactInfo />
         </div>
 
         <div className="cart-static-side">

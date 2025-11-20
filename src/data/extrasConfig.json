@@ -1,0 +1,92 @@
+{
+  "maid": {
+    "changeLinens": {
+      "label": "Change Linens",
+      "type": "count",
+      "price": 15,
+      "img": "extra-linens.png"
+    },
+    "furryPets": {
+      "label": "Furry Pets",
+      "type": "boolean",
+      "price": 15,
+      "img": "extra-furry.png"
+    },
+    "shuttersAndBlinds": {
+      "label": "Shutters & Blinds",
+      "type": "boolean",
+      "price": 15,
+      "img": "extra-shutters.png"
+    }
+  },
+
+  "maidInitial": {
+    "insideOven": {
+      "label": "Inside Oven",
+      "type": "boolean",
+      "price": 45,
+      "img": "extra-oven.png"
+    },
+    "insideRefrigerator": {
+      "label": "Inside Refrigerator",
+      "type": "boolean",
+      "price": 45,
+      "img": "extra-refrigerator.png"
+    }
+  },
+
+  "professional": {
+    "changeLinens": {
+      "label": "Change Linens",
+      "type": "count",
+      "price": 15,
+      "img": "extra-linens.png"
+    },
+    "furryPets": {
+      "label": "Furry Pets",
+      "type": "boolean",
+      "price": 15,
+      "img": "extra-furry.png"
+    },
+    "shuttersAndBlinds": {
+      "label": "Shutters & Blinds",
+      "type": "boolean",
+      "price": 15,
+      "img": "extra-shutters.png"
+    },
+    "insideOven": {
+      "label": "Inside Oven",
+      "type": "boolean",
+      "price": 45,
+      "img": "extra-oven.png"
+    },
+    "insideRefrigerator": {
+      "label": "Inside Refrigerator",
+      "type": "boolean",
+      "price": 45,
+      "img": "extra-refrigerator.png"
+    }
+  },
+
+  "carpet": {
+    "deodorize": {
+      "label": "Deodorize",
+      "type": "boolean",
+      "price": 10,
+      "img": "extra-deodorize.png"
+    },
+    "stainsRemove": {
+      "label": "Stains Removal",
+      "type": "boolean",
+      "price": 20,
+      "img": "extra-stain.png"
+    },
+    "petUrineTreatment": {
+      "label": "Pet Urine Treatment",
+      "type": "boolean",
+      "price": 30,
+      "img": "extra-urine.png"
+    }
+  }
+}
+

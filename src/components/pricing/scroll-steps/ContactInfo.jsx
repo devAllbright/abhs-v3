@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import dayjs from "dayjs";
 import "../../../styles/pricing/shopping-cart/scroll-steps/contact-info.css";
 
-export default function ContactInfo({ stepNumber }) {
+export default function ContactInfo() {
   const [contactInfo, setContactInfo] = useState({
     fullName: "",
     phoneNumber: "",
@@ -37,7 +37,7 @@ export default function ContactInfo({ stepNumber }) {
   return (
     <div className="scroll-contact-info">
       <div className="scroll-title">
-        <p>{stepNumber}. Contact Information</p>
+        <p>Contact Information</p>
       </div>
 
       <div className="info-container">

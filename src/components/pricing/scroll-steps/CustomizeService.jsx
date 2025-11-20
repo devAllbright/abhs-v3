@@ -1,187 +1,151 @@
-import { useState, useEffect } from "react";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
-import recurringPrices from "../../../data/maidServicesPrices.json";
-import oneTimePrices from "../../../data/professionalServicesPrices.json";
-import carpetPrices from "../../../data/carpetCleaningPrices.json";
-
+import extrasConfig from "../../../data/extrasConfig.json";
 import "../../../styles/pricing/shopping-cart/scroll-steps/customize-service.css";
+
+function ExtrasSection({ title, extrasMap, extrasState, onToggle, onCount }) {
+  return (
+    <div className="scroll-customize-service">
+      <div className="scroll-title">
+        <p>{title}</p>
+      </div>
+
+      <div className="extras-container">
+        {Object.entries(extrasMap).map(([key, def]) => {
+          const { label, img, type } = def;
+          const value = extrasState[key];
+          const isActive =
+            type === "boolean" ? value === true : (value || 0) > 0;
+
+          const isCounter = type === "count";
+
+          return (
+            <div
+              key={key}
+              className={`extra-element ${isActive ? "active-extra" : ""}`}
+              onClick={() => {
+                if (!isCounter) onToggle(key, type);
+              }}
+            >
+              <div className="extra-img">
+                <img src={`/shopping-cart/${img}`} alt={label} />
+              </div>
+
+              <div className="extra-name">
+                <span className="extra-name__label">{label}</span>
+
+                {isCounter && (
+                  <div className="extra-counter-wrapper">
+                    <img
+                      src={
+                        value === 0
+                          ? "/shopping-cart/colored-remove.png"
+                          : "/shopping-cart/remove.png"
+                      }
+                      alt="Decrease"
+                      className="counter-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onCount(key, -1);
+                      }}
+                    />
+
+                    <span className="counter-value">{value || 0}</span>
+
+                    <img
+                      src={
+                        value === 0
+                          ? "/shopping-cart/colored-add.png"
+                          : "/shopping-cart/add.png"
+                      }
+                      alt="Increase"
+                      className="counter-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onCount(key, 1);
+                      }}
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export default function CustomizeService() {
   const { cartData, updateCartData } = useShoppingCart();
-  const { extras = {}, hadProServices, selectedServiceType } = cartData;
+  const { selectedService, condition, extras } = cartData;
 
-  const [linensCount, setLinensCount] = useState(extras.changeLinens || 0);
+  if (!selectedService) return null;
 
-  useEffect(() => {
-    if (extras.changeLinens !== linensCount) {
+  const isMaid = selectedService === "Maid Services";
+
+  const baseExtrasKey =
+    selectedService === "Maid Services"
+      ? "maid"
+      : selectedService === "Professional Services"
+      ? "professional"
+      : selectedService === "Carpet Cleaning"
+      ? "carpet"
+      : null;
+
+  if (!baseExtrasKey) return null;
+
+  const baseExtras = extrasConfig[baseExtrasKey];
+  const maidInitialExtras =
+    isMaid && condition === "bad" ? extrasConfig.maidInitial : null;
+
+  const handleToggle = (key, type) => {
+    if (type === "boolean") {
       updateCartData({
-        extras: { ...extras, changeLinens: linensCount },
+        extras: {
+          ...extras,
+          [key]: !extras[key]
+        }
       });
     }
-  }, [linensCount]);
-
-  const serviceMap = {
-    recurringMaids: recurringPrices,
-    oneTimeMaids: oneTimePrices,
-    carpetCleaning: carpetPrices,
   };
 
-  const currentService = serviceMap[selectedServiceType] || {};
-  const extrasList = currentService.globalExtras || currentService.extras || {};
+  const handleCounter = (key, delta) => {
+    const current = extras[key] || 0;
+    let newValue = current + delta;
+    if (newValue < 0) newValue = 0;
+    if (newValue > 5) newValue = 5;
 
-  // Maid extras
-  const maidExtras = [
-    {
-      id: "changeLinens",
-      name: "Change Linens",
-      price: extrasList.changeLinensPrice,
-      isCounter: true,
-    },
-    {
-      id: "shuttersAndBlinds",
-      name: "Shutters & Blinds",
-      price: extrasList.shuttersAndBlindsPrice,
-    },
-    {
-      id: "furryPets",
-      name: "Pet Fee",
-      price: extrasList.furryPetsPrice,
-    },
-  ].filter((e) => e.price);
-
-  // Initial cleaning extras
-  const initialCleaningExtras = [
-    {
-      id: "insideOven",
-      name: "Oven Cleaning",
-      price: extrasList.insideOvenPrice,
-    },
-    {
-      id: "insideRefrigerator",
-      name: "Refrigerator Cleaning",
-      price: extrasList.insideRefrigeratorPrice,
-    },
-  ].filter((e) => e.price);
-
-  // Carpet extras
-  const carpetExtras = [
-    { id: "deodorize", name: "Deodorize", price: extrasList.deodorize },
-    { id: "stainsRemove", name: "Stains Removal", price: extrasList.stainsRemove },
-    { id: "petUrineTreatment", name: "Pet Urine Treatment", price: extrasList.petUrineTreatment },
-  ].filter((e) => e.price);
-
-  const toggleExtra = (key) => {
     updateCartData({
-      extras: { ...extras, [key]: !extras[key] },
+      extras: {
+        ...extras,
+        [key]: newValue
+      }
     });
   };
 
-  const handleLinensChange = (increment) => {
-    const next = Math.min(10, Math.max(0, linensCount + increment));
-    setLinensCount(next);
-  };
-
-  const isDisabled =
-    !selectedServiceType ||
-    (selectedServiceType !== "carpetCleaning" &&
-      (!cartData.selectedFrequency || !cartData.squareFootage));
-
-  const renderExtraButton = (extra) => {
-    const active = !!extras[extra.id];
-    if (extra.isCounter) {
-      return (
-        <div
-          key={extra.id}
-          className={`extra-element counter-element ${
-            linensCount > 0 ? "active-extra" : ""
-          }`}
-        >
-          <div className="extra-name">
-            <p>
-              {extra.name} (+${extra.price} each)
-            </p>
-          </div>
-          <div className="counter-controls">
-            <button
-              onClick={() => !isDisabled && handleLinensChange(-1)}
-              disabled={isDisabled || linensCount === 0}
-            >
-              -
-            </button>
-            <span>{linensCount}</span>
-            <button
-              onClick={() => !isDisabled && handleLinensChange(1)}
-              disabled={isDisabled || linensCount >= 10}
-            >
-              +
-            </button>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <button
-        key={extra.id}
-        className={`extra-element ${active ? "active-extra" : ""}`}
-        onClick={() => !isDisabled && toggleExtra(extra.id)}
-        disabled={isDisabled}
-      >
-        <div className="extra-name">
-          <p>
-            {extra.name} (+${extra.price})
-          </p>
-        </div>
-      </button>
-    );
-  };
-
-  // ------------------------------
-  // Render logic
-  // ------------------------------
-  const showCarpet = selectedServiceType === "carpetCleaning";
-  const showMaid = selectedServiceType === "recurringMaids" || selectedServiceType === "oneTimeMaids";
-
   return (
-    <div className="scroll-customize-service">
-      {/* 🧩 Maid / One-time services */}
-      {showMaid && (
-        <>
-          <div className="scroll-title">
-            <p>2. Customize your Maid Service</p>
-          </div>
+    <>
+      <ExtrasSection
+        title={
+          isMaid
+            ? "Customize your Maid Services"
+            : `Customize your ${selectedService}`
+        }
+        extrasMap={baseExtras}
+        extrasState={extras}
+        onToggle={handleToggle}
+        onCount={handleCounter}
+      />
 
-          <div className="extras-container">
-            {maidExtras.map(renderExtraButton)}
-          </div>
-
-          {/* Duplicate only if initial cleaning extras exist and hadProServices is false */}
-          {!hadProServices && initialCleaningExtras.length > 0 && (
-            <>
-              <div className="scroll-title second-extras-title">
-                <p>3. Customize your Initial Cleaning Service</p>
-              </div>
-
-              <div className="extras-container">
-                {initialCleaningExtras.map(renderExtraButton)}
-              </div>
-            </>
-          )}
-        </>
+      {maidInitialExtras && (
+        <ExtrasSection
+          title="Customize your Initial Cleaning"
+          extrasMap={maidInitialExtras}
+          extrasState={extras}
+          onToggle={handleToggle}
+          onCount={handleCounter}
+        />
       )}
-
-      {/* 🧩 Carpet cleaning */}
-      {showCarpet && (
-        <>
-          <div className="scroll-title">
-            <p>2. Customize your Carpet Cleaning Service</p>
-          </div>
-
-          <div className="extras-container">
-            {carpetExtras.map(renderExtraButton)}
-          </div>
-        </>
-      )}
-    </div>
+    </>
   );
 }
