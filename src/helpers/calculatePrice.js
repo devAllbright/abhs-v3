@@ -15,10 +15,11 @@ export function calculatePrice(cart) {
     bathroomNumber,
     halfBathroomNumber,
     otherRoomNumber,
-    extras
+    extras,
+    carpetSquareFootage // NEW variable (may be undefined)
   } = cart;
 
-  // Normalize sqft (convert "800-1000" → 1000)
+  // Normalize sqft (convert "800-1000" → 1000) for Maid & Pro
   const normalizedSqft = normalizeSqft(squareFootage);
 
   let base = 0;
@@ -163,18 +164,20 @@ export function calculatePrice(cart) {
   }
 
   // ---------------------------------------------------------
-  // CARPET CLEANING
+  // CARPET CLEANING  (UPDATED)
   // ---------------------------------------------------------
   if (selectedService === "Carpet Cleaning") {
-    if (!normalizedSqft) {
-      return null;
-    }
+    // Use carpetSquareFootage if available, otherwise fallback
+    const carpetSqft = carpetSquareFootage ?? normalizedSqft;
 
-    const rate = condition === "bad"
-      ? carpetData.pricing.badConditionPerSqft
-      : carpetData.pricing.normalConditionPerSqft;
+    if (!carpetSqft) return null;
 
-    base = normalizedSqft * rate;
+    const rate =
+      condition === "bad"
+        ? carpetData.pricing.badConditionPerSqft
+        : carpetData.pricing.normalConditionPerSqft;
+
+    base = carpetSqft * rate;
 
     const carpetExtras = carpetData.extras;
 
@@ -196,9 +199,9 @@ export function calculatePrice(cart) {
   }
 
   // ---------------------------------------------------------
-  // RESULT (with log)
+  // FINAL RESULT
   // ---------------------------------------------------------
-  const result = {
+  return {
     basePrice: base,
     extrasTotal,
     finalPrice: final,
@@ -212,8 +215,6 @@ export function calculatePrice(cart) {
       additionalBlocks
     }
   };
-
-  return result;
 }
 
 // ---------------------------------------------------------

@@ -10,6 +10,7 @@ const defaultCartData = {
   selectedFrequency: "",
   condition: "normal",
   squareFootage: null,
+  carpetSquareFootage: 0,
   bedroomNumber: 1,
   bathroomNumber: 1,
   halfBathroomNumber: 0,

@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
 import { useShoppingCart } from "../../../context/ShoppingCartContext";
 import maidServicesPrices from "../../../data/maidServicesPrices.json";
 import professionalServicesPrices from "../../../data/professionalServicesPrices.json";
@@ -25,9 +24,6 @@ export default function SelectedService() {
   }
 }
 
-/* ========================================================================
-   MAID SERVICES (Recurring)
-======================================================================== */
 function MaidServicesBlock() {
   const { cartData, updateCartData } = useShoppingCart();
   const { globalExtras, serviceName } = maidServicesPrices;
@@ -35,8 +31,29 @@ function MaidServicesBlock() {
   const frequencies = [
     { label: "Weekly", value: globalExtras.weeklyDiscount },
     { label: "Bi-Weekly", value: globalExtras.biMonthlyDiscount },
-    { label: "Monthly", value: globalExtras.monthlyDiscount },
+    { label: "Monthly", value: globalExtras.monthlyDiscount }
   ];
+
+  // --------------------------
+  // NEW: Initialize on mount
+  // --------------------------
+  useEffect(() => {
+    // Only set defaults if nothing is selected
+    if (!cartData.selectedFrequency) {
+      updateCartData({
+        selectedService: "Maid Services",
+        selectedFrequency: "Weekly",
+        discount: globalExtras.weeklyDiscount,
+        condition: cartData.hadProServices ? "normal" : "bad",
+      });
+    } else {
+      // Ensure correct service + condition when user returns to this step
+      updateCartData({
+        selectedService: "Maid Services",
+        condition: cartData.hadProServices ? "normal" : "bad",
+      });
+    }
+  }, []);
 
   const selected = cartData.selectedFrequency || "Weekly";
 
@@ -76,9 +93,7 @@ function MaidServicesBlock() {
   );
 }
 
-/* ========================================================================
-   PROFESSIONAL SERVICES (One-Time)
-======================================================================== */
+
 function ProfessionalServicesBlock() {
   const { cartData, updateCartData } = useShoppingCart();
   const { serviceName } = professionalServicesPrices;
@@ -88,7 +103,7 @@ function ProfessionalServicesBlock() {
       selectedService: "Professional Services",
       condition: cartData.hadProServices ? "normal" : "bad",
       selectedFrequency: "",
-      discount: 0,
+      discount: 0
     });
   }, []);
 
@@ -105,14 +120,26 @@ function ProfessionalServicesBlock() {
   );
 }
 
-/* ========================================================================
-   CARPET CLEANING
-======================================================================== */
 function CarpetCleaningBlock() {
   const { cartData, updateCartData } = useShoppingCart();
   const { serviceName } = carpetCleaningPrices;
 
-  const sqft = cartData.squareFootage || 500;
+  const DEFAULT_SQFT = 500;
+
+    // --------------------------
+    // NEW: Initialize on mount
+    // --------------------------
+    useEffect(() => {
+      updateCartData({
+        selectedService: "Carpet Cleaning",
+        carpetSquareFootage: DEFAULT_SQFT,
+        condition: cartData.hadProServices ? "normal" : "bad",
+        selectedFrequency: "",
+        discount: 0
+      });
+    }, []);
+
+  const [carpetSqft, setCarpetSqft] = useState(DEFAULT_SQFT);
 
   const adjustSqft = (value) => {
     if (value < 500) return 500;
@@ -122,18 +149,20 @@ function CarpetCleaningBlock() {
 
   const updateSqft = (value) => {
     const newValue = adjustSqft(value);
+    setCarpetSqft(newValue);
+
     updateCartData({
       selectedService: "Carpet Cleaning",
-      squareFootage: newValue,
+      carpetSquareFootage: newValue,
       condition: cartData.hadProServices ? "normal" : "bad",
       selectedFrequency: "",
-      discount: 0,
+      discount: 0
     });
   };
 
   const handleInput = (e) => {
     const raw = parseInt(e.target.value.replace(/\D/g, ""), 10);
-    updateSqft(raw || 500);
+    updateSqft(raw || DEFAULT_SQFT);
   };
 
   return (
@@ -148,18 +177,24 @@ function CarpetCleaningBlock() {
         <div className="service-frequency">
           <div className="frequency-element">
             <div className="sqft-control">
-              <button className="frequency-btn" onClick={() => updateSqft(sqft - 100)}>
+              <button
+                className="frequency-btn"
+                onClick={() => updateSqft(carpetSqft - 100)}
+              >
                 -100
               </button>
 
               <input
                 type="number"
                 className="sqft-input"
-                value={sqft}
+                value={carpetSqft}
                 onChange={handleInput}
               />
 
-              <button className="frequency-btn" onClick={() => updateSqft(sqft + 100)}>
+              <button
+                className="frequency-btn"
+                onClick={() => updateSqft(carpetSqft + 100)}
+              >
                 +100
               </button>
             </div>
@@ -171,3 +206,4 @@ function CarpetCleaningBlock() {
     </div>
   );
 }
+
