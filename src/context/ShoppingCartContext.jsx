@@ -19,7 +19,7 @@ const defaultCartData = {
   extras: {
     changeLinens: 0,
     furryPets: false,
-    shuttersAndBlinds: false,
+    shuttersAndBlinds: 0,
     insideOven: false,
     insideRefrigerator: false,
     deodorize: false,

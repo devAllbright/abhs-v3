@@ -37,7 +37,7 @@ function ExtrasSection({ title, extrasMap, extrasState, onToggle, onCount }) {
                   <div className="extra-counter-wrapper">
                     <img
                       src={
-                        value === 0
+                        (value || 0) === 0
                           ? "/shopping-cart/colored-remove.png"
                           : "/shopping-cart/remove.png"
                       }
@@ -53,7 +53,7 @@ function ExtrasSection({ title, extrasMap, extrasState, onToggle, onCount }) {
 
                     <img
                       src={
-                        value === 0
+                        (value || 0) === 0
                           ? "/shopping-cart/colored-add.png"
                           : "/shopping-cart/add.png"
                       }

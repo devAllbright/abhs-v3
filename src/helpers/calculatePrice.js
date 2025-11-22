@@ -3,7 +3,6 @@ import proData from "../data/professionalServicesPrices.json";
 import carpetData from "../data/carpetCleaningPrices.json";
 
 export function calculatePrice(cart) {
-
   if (!cart?.selectedService) return null;
 
   const {
@@ -16,10 +15,9 @@ export function calculatePrice(cart) {
     halfBathroomNumber,
     otherRoomNumber,
     extras,
-    carpetSquareFootage // NEW variable (may be undefined)
+    carpetSquareFootage
   } = cart;
 
-  // Normalize sqft (convert "800-1000" → 1000) for Maid & Pro
   const normalizedSqft = normalizeSqft(squareFootage);
 
   let base = 0;
@@ -34,14 +32,12 @@ export function calculatePrice(cart) {
   else if (selectedFrequency === "Bi-Weekly") frequencyRate = 0.10;
   else if (selectedFrequency === "Monthly") frequencyRate = 0.05;
 
-  // ---------------------------------------------------------
-  // MAID SERVICES
-  // ---------------------------------------------------------
+  //---------------------------------------------------------
+  // MAID SERVICES (WITH MARKUP BEFORE DISCOUNT)
+  //---------------------------------------------------------
   if (selectedService === "Maid Services") {
     const tier = findTier(maidData.priceTiers, normalizedSqft);
-    if (!tier) {
-      return null;
-    }
+    if (!tier) return null;
 
     const includedBeds = tier.includedRooms.bedrooms;
     const includedBaths = tier.includedRooms.bathrooms;
@@ -52,7 +48,6 @@ export function calculatePrice(cart) {
     const extraOther = Math.max(0, otherRoomNumber);
 
     base = tier.minimum;
-
     const perRoom = maidData.globalExtras;
 
     const roomExtras = [
@@ -81,12 +76,14 @@ export function calculatePrice(cart) {
       extrasTotal += perRoom.furryPetsPrice;
     }
 
-    if (extras.shuttersAndBlinds) {
-      extrasList.push({ name: "Shutters & Blinds", price: perRoom.shuttersAndBlindsPrice });
-      extrasTotal += perRoom.shuttersAndBlindsPrice;
+    // ✅ UPDATED: Shutters & Blinds is now a COUNTER (qty × price)
+    if (extras.shuttersAndBlinds > 0) {
+      const qty = extras.shuttersAndBlinds;
+      const price = qty * perRoom.shuttersAndBlindsPrice;
+      extrasList.push({ name: `Shutters & Blinds ×${qty}`, price });
+      extrasTotal += price;
     }
 
-    // INITIAL CLEANING SECTION (if applicable)
     if (condition === "bad") {
       const initialBase = tier.initialCleaning;
       let initialExtrasTotal = 0;
@@ -105,32 +102,35 @@ export function calculatePrice(cart) {
         initialExtrasTotal += perRoom.insideRefrigeratorPrice;
       }
 
-      const initialFinal = initialBase + initialExtrasTotal;
-
       additionalBlocks.push({
         label: "Initial Cleaning",
         base: initialBase,
         extrasList: initialExtrasList,
-        final: initialFinal
+        final: initialBase + initialExtrasTotal
       });
     }
 
-    const subtotal = base + extrasTotal;
-    discountAmount = subtotal * frequencyRate;
-    final = subtotal - discountAmount;
+    const originalSubtotal = base + extrasTotal;
+    const originalDiscount = originalSubtotal * frequencyRate;
+    const halfDiscount = originalDiscount / 2;
+
+    const adjustedBase = base + halfDiscount;
+
+    const newSubtotal = adjustedBase + extrasTotal;
+    discountAmount = newSubtotal * frequencyRate;
+    final = newSubtotal - discountAmount;
+
+    base = adjustedBase;
   }
 
-  // ---------------------------------------------------------
+  //---------------------------------------------------------
   // PROFESSIONAL SERVICES
-  // ---------------------------------------------------------
+  //---------------------------------------------------------
   if (selectedService === "Professional Services") {
     const tier = findTier(proData.priceTiers, normalizedSqft);
-    if (!tier) {
-      return null;
-    }
+    if (!tier) return null;
 
     base = condition === "bad" ? tier.badCondition : tier.minimum;
-
     const perRoom = proData.globalExtras;
 
     const extrasConfig = [
@@ -146,12 +146,10 @@ export function calculatePrice(cart) {
 
       if (!value) return;
 
-      if (typeof value === "number") {
-        if (value > 0) {
-          const total = value * e.price;
-          extrasList.push({ name: `${e.label} ×${value}`, price: total });
-          extrasTotal += total;
-        }
+      if (typeof value === "number" && value > 0) {
+        const total = value * e.price;
+        extrasList.push({ name: `${e.label} ×${value}`, price: total });
+        extrasTotal += total;
       } else if (value === true) {
         extrasList.push({ name: e.label, price: e.price });
         extrasTotal += e.price;
@@ -163,13 +161,11 @@ export function calculatePrice(cart) {
     final = subtotal - discountAmount;
   }
 
-  // ---------------------------------------------------------
-  // CARPET CLEANING  (UPDATED)
-  // ---------------------------------------------------------
+  //---------------------------------------------------------
+  // CARPET CLEANING
+  //---------------------------------------------------------
   if (selectedService === "Carpet Cleaning") {
-    // Use carpetSquareFootage if available, otherwise fallback
     const carpetSqft = carpetSquareFootage ?? normalizedSqft;
-
     if (!carpetSqft) return null;
 
     const rate =
@@ -179,28 +175,26 @@ export function calculatePrice(cart) {
 
     base = carpetSqft * rate;
 
-    const carpetExtras = carpetData.extras;
-
     if (extras.deodorize) {
-      extrasList.push({ name: "Deodorize", price: carpetExtras.deodorize });
-      extrasTotal += carpetExtras.deodorize;
+      extrasList.push({ name: "Deodorize", price: carpetData.extras.deodorize });
+      extrasTotal += carpetData.extras.deodorize;
     }
     if (extras.stainsRemove) {
-      extrasList.push({ name: "Stains Removal", price: carpetExtras.stainsRemove });
-      extrasTotal += carpetExtras.stainsRemove;
+      extrasList.push({ name: "Stains Removal", price: carpetData.extras.stainsRemove });
+      extrasTotal += carpetData.extras.stainsRemove;
     }
     if (extras.petUrineTreatment) {
-      extrasList.push({ name: "Pet Urine Treatment", price: carpetExtras.petUrineTreatment });
-      extrasTotal += carpetExtras.petUrineTreatment;
+      extrasList.push({
+        name: "Pet Urine Treatment",
+        price: carpetData.extras.petUrineTreatment
+      });
+      extrasTotal += carpetData.extras.petUrineTreatment;
     }
 
     final = base + extrasTotal;
     discountAmount = 0;
   }
 
-  // ---------------------------------------------------------
-  // FINAL RESULT
-  // ---------------------------------------------------------
   return {
     basePrice: base,
     extrasTotal,
@@ -217,13 +211,8 @@ export function calculatePrice(cart) {
   };
 }
 
-// ---------------------------------------------------------
-// HELPERS
-// ---------------------------------------------------------
-
 function normalizeSqft(sqft) {
   if (!sqft) return null;
-
   if (typeof sqft === "number") return sqft;
 
   if (typeof sqft === "string" && sqft.includes("-")) {
