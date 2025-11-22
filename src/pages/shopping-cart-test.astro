@@ -1,0 +1,54 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <section class="service-selector">
+    <button data-service="Maid Services" class="service-btn">Maid Services</button>
+    <button data-service="Professional Services" class="service-btn">Professional Services</button>
+    <button data-service="Carpet Cleaning" class="service-btn">Carpet Cleaning</button>
+  </section>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      window.sessionStorage.clear()
+      const buttons = document.querySelectorAll(".service-btn");
+
+      buttons.forEach((btn) => {
+        const element = btn as HTMLElement;
+        element.addEventListener("click", () => {
+          const selected = element.dataset.service!;
+          sessionStorage.setItem("selectedService", selected);
+          window.location.href = "/pricing/location";
+        });
+      });
+    });
+  </script>
+
+  <style>
+    .service-selector {
+      width: 100%;
+      min-height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .service-btn {
+      padding: 16px 28px;
+      font-size: 18px;
+      background: #fc8551;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .service-btn:hover {
+      background: #e46d33;
+    }
+  </style>
+</BaseLayout>
