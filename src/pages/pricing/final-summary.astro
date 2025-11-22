@@ -1,5 +1,5 @@
 ---
-import FinalSummaryComponent from '../../components/pricing/shopping-cart/FinalSummary'
+import FinalSummaryWrapper from '../../components/pricing/shopping-cart/FinalSummaryWrapper'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 ---
 
@@ -13,7 +13,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
     <BaseLayout>
       
       <div class="summary-container">
-        <FinalSummaryComponent client:only="react"></FinalSummaryComponent>
+        <FinalSummaryWrapper client:only="react"></FinalSummaryWrapper>
       </div>
     
     </BaseLayout>
