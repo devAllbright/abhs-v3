@@ -50,7 +50,7 @@
     },
     "shuttersAndBlinds": {
       "label": "Shutters & Blinds",
-      "type": "boolean",
+      "type": "count",
       "price": 15,
       "img": "extra-shutters.png"
     },

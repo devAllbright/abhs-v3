@@ -1,12 +1,9 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
-import maidData from "../../data/maidServicesPrices.json";
-import proData from "../../data/professionalServicesPrices.json";
 import "../../styles/pricing/home-details.css";
 
 export default function StepHomeDetails() {
   const { cartData, updateCartData } = useShoppingCart();
-  const selectedService = cartData.selectedService;
 
   const [counters, setCounters] = useState({
     bedrooms: cartData.bedroomNumber || 1,
@@ -16,41 +13,55 @@ export default function StepHomeDetails() {
   });
 
   const [squareFootage, setSquareFootage] = useState(
-    cartData.squareFootage || ""
+    Number(cartData.squareFootage) || 800
   );
 
-  const maidOptions = useMemo(() => {
-    return maidData.priceTiers.map((t) => t.sqftRange);
-  }, []);
+  // -----------------------------------------
+  // COUNTERS
+  // -----------------------------------------
+  const handleCounterChange = (field, delta) => {
+    setCounters((prev) => {
+      let newValue = prev[field] + delta;
 
-  const proOptions = useMemo(() => {
-    return proData.priceTiers.map((t) => t.sqftRange);
-  }, []);
+      const limits = {
+        bedrooms: { min: 1, max: 5 },
+        fullBathrooms: { min: 1, max: 5 },
+        halfBathrooms: { min: 0, max: 5 },
+        otherRooms: { min: 0, max: 5 }
+      };
 
-  const carpetOptions = useMemo(() => {
-    const arr = [];
-    for (let sqft = 800; sqft <= 3600; sqft += 200) {
-      const next = sqft + 200;
-      arr.push(`${sqft}-${next}`);
-    }
-    arr.push("More than 3600");
-    return arr;
-  }, []);
+      const { min, max } = limits[field];
+      if (newValue < min) newValue = min;
+      if (newValue > max) newValue = max;
 
-  const squareFootageOptions = useMemo(() => {
-    if (selectedService === "Maid Services") return [...maidOptions, "More than 3600"];
-    if (selectedService === "Professional Services") return [...proOptions, "More than 3600"];
-    if (selectedService === "Carpet Cleaning") return carpetOptions;
-    return [];
-  }, [selectedService, maidOptions, proOptions, carpetOptions]);
+      return { ...prev, [field]: newValue };
+    });
+  };
 
+  // -----------------------------------------
+  // SQFT INPUT — CORRECT BEHAVIOR
+  // -----------------------------------------
+
+  // Allow typing any number (no auto-correct here)
+  const handleSqftChange = (e) => {
+    let raw = e.target.value.replace(/\D/g, "");
+    const value = raw === "" ? "" : Number(raw);
+    setSquareFootage(value);
+  };
+
+  // Apply correction when leaving the field
+  const handleSqftBlur = () => {
+    let value = Number(squareFootage);
+
+    if (!value || value < 800) value = 800;
+
+    setSquareFootage(value);
+  };
+
+  // -----------------------------------------
+  // SYNC WITH CONTEXT
+  // -----------------------------------------
   useEffect(() => {
-    if (squareFootage === "More than 3600") {
-      alert("For homes larger than 3600 sq ft, please request a free in-home consultation.");
-      window.location.href = "/";
-      return;
-    }
-
     updateCartData({
       livingRoomIncluded: true,
       kitchenIncluded: true,
@@ -59,29 +70,18 @@ export default function StepHomeDetails() {
       bathroomNumber: counters.fullBathrooms,
       halfBathroomNumber: counters.halfBathrooms,
       otherRoomNumber: counters.otherRooms,
-      squareFootage
+      squareFootage: Number(squareFootage) || 800
     });
   }, [counters, squareFootage]);
 
-  const handleCounterChange = (field, delta) => {
-    setCounters((prev) => {
-      let newValue = prev[field] + delta;
-      const limits = {
-        bedrooms: { min: 1, max: 5 },
-        fullBathrooms: { min: 1, max: 5 },
-        halfBathrooms: { min: 0, max: 5 },
-        otherRooms: { min: 0, max: 5 }
-      };
-      const { min, max } = limits[field];
-      if (newValue < min) newValue = min;
-      if (newValue > max) newValue = max;
-      return { ...prev, [field]: newValue };
-    });
-  };
-
+  // -----------------------------------------
+  // NEXT BUTTON VALIDATION
+  // -----------------------------------------
   const handleNextClick = () => {
-    if (squareFootage === "More than 3600") {
-      alert("For homes larger than 3600 sq ft, please request a free in-home consultation.");
+    if (squareFootage > 3600) {
+      alert(
+        "For homes larger than 3600 sq ft, please speak with our Personal Concierge for a custom quote."
+      );
       window.location.href = "/";
       return;
     }
@@ -92,6 +92,8 @@ export default function StepHomeDetails() {
   return (
     <>
       <div className="details-container">
+
+        {/* Included Rooms */}
         {["Living Room", "Kitchen", "Dinning Room"].map((room) => (
           <div key={room} className="detail-element active-detail">
             <div className="detail-img">
@@ -109,7 +111,8 @@ export default function StepHomeDetails() {
           </div>
         ))}
 
-        <div className="detail-element">
+        {/* Square Footage Input */}
+        <div className="detail-element active-detail">
           <div className="detail-img">
             <img src="/shopping-cart/square-footage.png" alt="Square Footage" />
           </div>
@@ -117,23 +120,19 @@ export default function StepHomeDetails() {
             <div>
               <div className="detail-name">Square Footage</div>
               <div className="detail-counter">
-                <select
-                  id="square-footage"
+                <input
+                  className="sqft-input"
                   value={squareFootage}
-                  onChange={(e) => setSquareFootage(e.target.value)}
-                >
-                  <option value="">Select a range</option>
-                  {squareFootageOptions.map((opt) => (
-                    <option key={opt} value={opt}>
-                      {opt}
-                    </option>
-                  ))}
-                </select>
+                  onChange={handleSqftChange}
+                  onBlur={handleSqftBlur}
+                  min="0" 
+                />
               </div>
             </div>
           </div>
         </div>
 
+        {/* Counters */}
         {[
           { key: "bedrooms", label: "Bedroom(s)", img: "bedroom.png" },
           { key: "fullBathrooms", label: "Full Bathroom(s)", img: "full-bathroom.png" },
@@ -175,6 +174,7 @@ export default function StepHomeDetails() {
             </div>
           </div>
         ))}
+
       </div>
 
       <div className="navigation-buttons">

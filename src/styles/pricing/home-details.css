@@ -203,3 +203,7 @@
 .detail-counter select::-webkit-scrollbar-thumb:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.sqft-input{
+  text-align: center;
+}
