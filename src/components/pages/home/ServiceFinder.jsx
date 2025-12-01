@@ -89,7 +89,6 @@ export default function ServiceFinderSection() {
     { label: "Bundles", icon: "/searchbar-icons/bundles.png" }
   ];
 
-
   return (
     <div className="service-finder-wrapper">
       <div className="service-finder">
@@ -102,7 +101,6 @@ export default function ServiceFinderSection() {
 
         <div className="service-finder__search">
           <div className="search-bar__input-group">
-
             <div className="search-bar__input-wrapper">
 
               <SearchIconTest className="search-bar__icon" size={22} />
@@ -154,7 +152,6 @@ export default function ServiceFinderSection() {
                 )}
               </ul>
             )}
-
           </div>
         </div>
 
@@ -190,6 +187,16 @@ export default function ServiceFinderSection() {
 
         {active && (
           <div className="service-finder__dropdown">
+
+            {/* CLOSE BUTTON */}
+            <button
+              className="service-finder__close"
+              onClick={() => setActive(null)}
+              aria-label="Close"
+            >
+              ✕
+            </button>
+
             <h3 className="service-finder__dropdown-title">
               {serviceFinderInfo[active].title}
             </h3>
@@ -211,7 +218,6 @@ export default function ServiceFinderSection() {
             ))}
           </div>
         )}
-
 
       </div>
     </div>
