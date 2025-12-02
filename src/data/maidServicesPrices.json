@@ -7,7 +7,7 @@
       "includedRooms": { "bedrooms": 1, "bathrooms": 1 },
       "initialCleaning": 380,
       "minimum": 150,
-      "priceAdjust": 1
+      "priceAdjust": 1.1
     },
     {
       "sqftRange": "1001-1200",
