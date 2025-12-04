@@ -13,7 +13,6 @@ export function calculatePrice(cart) {
     bedroomNumber,
     bathroomNumber,
     halfBathroomNumber,
-    otherRoomNumber,
     extras,
     carpetSquareFootage
   } = cart;
@@ -33,7 +32,7 @@ export function calculatePrice(cart) {
   else if (selectedFrequency === "Monthly") frequencyRate = 0.05;
 
   // ---------------------------------------------------------
-  // MAID SERVICES (GOOD CONDITION ALWAYS + INITIAL CLEANING)
+  // MAID SERVICES
   // ---------------------------------------------------------
   if (selectedService === "Maid Services") {
     const tier = findTier(maidData.priceTiers, sqft);
@@ -41,11 +40,12 @@ export function calculatePrice(cart) {
 
     const includedBeds = tier.includedRooms.bedrooms;
     const includedBaths = tier.includedRooms.bathrooms;
+    const includedHalfBaths = tier.includedRooms.halfBathrooms;
     const priceAdjust = tier.priceAdjust ?? 1;
 
     const extraBedrooms = Math.max(0, bedroomNumber - includedBeds);
     const extraBathrooms = Math.max(0, bathroomNumber - includedBaths);
-    const extraHalfBaths = Math.max(0, halfBathroomNumber);
+    const extraHalfBaths = Math.max(0, halfBathroomNumber - includedHalfBaths);
 
     const perRoom = maidData.globalExtras;
 
@@ -71,7 +71,7 @@ export function calculatePrice(cart) {
     }
 
     // ---------------------------------------------------------
-    // GOOD CONDITION FORMULA — Updated with priceAdjust
+    // GOOD CONDITION FORMULA
     // ---------------------------------------------------------
     const conditionMultiplierGood = 1.25;
 
@@ -83,13 +83,12 @@ export function calculatePrice(cart) {
 
     const serviceBaseBeforeDiscount =
       roomFactorGood *
-      priceAdjust *                // ← NEW
+      priceAdjust *
       conditionMultiplierGood *
       55;
 
     const serviceAfterDiscount =
-      serviceBaseBeforeDiscount *
-      (1 - frequencyRate);
+      serviceBaseBeforeDiscount * (1 - frequencyRate);
 
     const maidServiceFinal = serviceAfterDiscount;
 
@@ -97,22 +96,13 @@ export function calculatePrice(cart) {
       serviceBaseBeforeDiscount - serviceAfterDiscount;
 
     // ---------------------------------------------------------
-    // INITIAL CLEANING (BAD CONDITION FORMULA WITH priceAdjust)
+    // INITIAL CLEANING (NEW FORMULA)
+    // Initial Cleaning = Normal Base × (2.6 / 1.25)
     // ---------------------------------------------------------
     if (condition === "bad") {
-      const conditionMultiplierBad = 2.6;
+      const initialMultiplier = 2.6 / 1.25; // ≈ 2.08
 
-      const roomFactorBad =
-        (sqft / 400) +
-        (extraBedrooms * 1) +
-        (extraBathrooms * 1) +
-        (extraHalfBaths * 1);
-
-      const initialBase =
-        roomFactorBad *
-        priceAdjust *             // ← NEW
-        conditionMultiplierBad *
-        55;
+      const initialBase = serviceBaseBeforeDiscount * initialMultiplier;
 
       let initialExtrasTotal = 0;
       let initialExtrasList = [];
@@ -146,7 +136,7 @@ export function calculatePrice(cart) {
   }
 
   // ---------------------------------------------------------
-  // PROFESSIONAL SERVICES (UPDATED FORMULA USING priceAdjust)
+  // PROFESSIONAL SERVICES
   // ---------------------------------------------------------
   if (selectedService === "Professional Services") {
     const tier = findTier(proData.priceTiers, sqft);
@@ -170,15 +160,12 @@ export function calculatePrice(cart) {
 
     base =
       factor *
-      priceAdjust *          // ← NEW
+      priceAdjust *
       multiplier *
       55;
 
     const perRoom = proData.globalExtras;
 
-    // -----------------------------
-    // EXTRAS
-    // -----------------------------
     const extrasConfig = [
       { key: "changeLinens", label: "Change Linens", type: "count", price: perRoom.changeLinensPrice },
       { key: "furryPets", label: "Furry Pets", type: "boolean", price: perRoom.furryPetsPrice },
@@ -209,7 +196,7 @@ export function calculatePrice(cart) {
   }
 
   // ---------------------------------------------------------
-  // CARPET CLEANING (UNCHANGED)
+  // CARPET CLEANING
   // ---------------------------------------------------------
   if (selectedService === "Carpet Cleaning") {
     const carpetSqft = carpetSquareFootage ?? sqft;

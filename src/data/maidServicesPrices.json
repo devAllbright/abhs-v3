@@ -2,108 +2,69 @@
   "serviceName": "Maid Services",
   "priceTiers": [
     {
-      "sqftRange": "800-1000",
-      "basicPrice": 100,
-      "includedRooms": { "bedrooms": 1, "bathrooms": 1 },
-      "initialCleaning": 380,
-      "minimum": 150,
-      "priceAdjust": 1.1
+      "sqftRange": "800-999",
+      "includedRooms": { "bedrooms": 1, "bathrooms": 1, "halfBathrooms": 0 },
+      "priceAdjust": 1.1273
     },
     {
-      "sqftRange": "1001-1200",
-      "basicPrice": 95,
-      "includedRooms": { "bedrooms": 2, "bathrooms": 2 },
-      "initialCleaning": 380,
-      "minimum": 195,
-      "priceAdjust": 1.03
+      "sqftRange": "1000-1199",
+      "includedRooms": { "bedrooms": 2, "bathrooms": 2, "halfBathrooms": 0 },
+      "priceAdjust": 1.1345
     },
     {
-      "sqftRange": "1201-1400",
-      "basicPrice": 120,
-      "includedRooms": { "bedrooms": 2, "bathrooms": 1 },
-      "initialCleaning": 585,
-      "minimum": 195,
-      "priceAdjust": 1
+      "sqftRange": "1200-1399",
+      "includedRooms": { "bedrooms": 2, "bathrooms": 2, "halfBathrooms": 0 },
+      "priceAdjust": 0.9939
     },
     {
-      "sqftRange": "1401-1600",
-      "basicPrice": 80,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
-      "initialCleaning": 585,
-      "minimum": 205,
-      "priceAdjust": 1
+      "sqftRange": "1400-1599",
+      "includedRooms": { "bedrooms": 3, "bathrooms": 2, "halfBathrooms": 1 },
+      "priceAdjust": 0.8519
     },
     {
-      "sqftRange": "1601-1800",
-      "basicPrice": 90,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
-      "initialCleaning": 585,
-      "minimum": 215,
-      "priceAdjust": 1
+      "sqftRange": "1600-1799",
+      "includedRooms": { "bedrooms": 3, "bathrooms": 2, "halfBathrooms": 1 },
+      "priceAdjust": 0.7818
     },
     {
-      "sqftRange": "1801-2000",
-      "basicPrice": 100,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
-      "initialCleaning": 585,
-      "minimum": 225,
-      "priceAdjust": 1
+      "sqftRange": "1800-1999",
+      "includedRooms": { "bedrooms": 3, "bathrooms": 2, "halfBathrooms": 1 },
+      "priceAdjust": 0.7273
     },
     {
-      "sqftRange": "2001-2200",
-      "basicPrice": 85,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
-      "initialCleaning": 685,
-      "minimum": 235,
-      "priceAdjust": 1
+      "sqftRange": "2000-2199",
+      "includedRooms": { "bedrooms": 3, "bathrooms": 2, "halfBathrooms": 1 },
+      "priceAdjust": 0.6836
     },
     {
-      "sqftRange": "2201-2400",
-      "basicPrice": 95,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
-      "initialCleaning": 685,
-      "minimum": 245,
-      "priceAdjust": 1
+      "sqftRange": "2200-2399",
+      "includedRooms": { "bedrooms": 3, "bathrooms": 2, "halfBathrooms": 1 },
+      "priceAdjust": 0.6215
     },
     {
-      "sqftRange": "2401-2800",
-      "basicPrice": 90,
-      "includedRooms": { "bedrooms": 4, "bathrooms": 3 },
-      "initialCleaning": 685,
-      "minimum": 265,
-      "priceAdjust": 1
+      "sqftRange": "2400-2599",
+      "includedRooms": { "bedrooms": 4, "bathrooms": 3, "halfBathrooms": 0 },
+      "priceAdjust": 0.5939
     },
     {
-      "sqftRange": "2801-3000",
-      "basicPrice": 135,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
-      "initialCleaning": 780,
-      "minimum": 285,
-      "priceAdjust": 1
+      "sqftRange": "2600-2799",
+      "includedRooms": { "bedrooms": 3, "bathrooms": 3, "halfBathrooms": 0 },
+      "priceAdjust": 0.5930
     },
     {
-      "sqftRange": "3001-3200",
-      "basicPrice": 145,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
-      "initialCleaning": 780,
-      "minimum": 295,
-      "priceAdjust": 1
+      "sqftRange": "2800-2999",
+      "includedRooms": { "bedrooms": 3, "bathrooms": 3, "halfBathrooms": 0 },
+      "priceAdjust": 0.5714
     },
     {
-      "sqftRange": "3201-3400",
-      "basicPrice": 130,
-      "includedRooms": { "bedrooms": 4, "bathrooms": 3 },
-      "initialCleaning": 780,
-      "minimum": 305,
-      "priceAdjust": 1
+      "sqftRange": "3000-3199",
+      "includedRooms": { "bedrooms": 4, "bathrooms": 4, "halfBathrooms": 0 },
+      "priceAdjust": 0.5527
     },
     {
-      "sqftRange": "3401-3600",
-      "basicPrice": 125,
-      "includedRooms": { "bedrooms": 4, "bathrooms": 4 },
-      "initialCleaning": 780,
-      "minimum": 325,
-      "priceAdjust": 1
+      "sqftRange": "3200-3399",
+      "includedRooms": { "bedrooms": 4, "bathrooms": 4, "halfBathrooms": 0 },
+      "priceAdjust": 0.5364
     }
   ],
   "globalExtras": {
