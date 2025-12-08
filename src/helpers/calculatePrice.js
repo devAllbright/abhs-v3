@@ -31,6 +31,9 @@ export function calculatePrice(cart) {
   else if (selectedFrequency === "Bi-Weekly") frequencyRate = 0.10;
   else if (selectedFrequency === "Monthly") frequencyRate = 0.05;
 
+  // Helper to round values
+  const R = (v) => Math.round(v);
+
   // ---------------------------------------------------------
   // MAID SERVICES
   // ---------------------------------------------------------
@@ -50,89 +53,90 @@ export function calculatePrice(cart) {
     const perRoom = maidData.globalExtras;
 
     // ---------------------------
-    // EXTRAS (Recurring)
+    // EXTRAS (Recurring — ROUND EACH)
     // ---------------------------
+    const pushExtra = (label, qty, unitPrice) => {
+      const raw = qty * unitPrice;
+      const rounded = R(raw);
+      extrasList.push({ name: `${label}${qty > 1 ? " ×" + qty : ""}`, price: rounded });
+      extrasTotal += rounded;
+    };
+
     if (extras.changeLinens > 0) {
-      const price = extras.changeLinens * perRoom.changeLinensPrice;
-      extrasList.push({ name: `Change Linens ×${extras.changeLinens}`, price });
-      extrasTotal += price;
+      pushExtra("Change Linens", extras.changeLinens, perRoom.changeLinensPrice);
     }
-
     if (extras.furryPets) {
-      extrasList.push({ name: "Furry Pets", price: perRoom.furryPetsPrice });
-      extrasTotal += perRoom.furryPetsPrice;
+      pushExtra("Furry Pets", 1, perRoom.furryPetsPrice);
     }
-
     if (extras.shuttersAndBlinds > 0) {
-      const qty = extras.shuttersAndBlinds;
-      const price = qty * perRoom.shuttersAndBlindsPrice;
-      extrasList.push({ name: `Shutters & Blinds ×${qty}`, price });
-      extrasTotal += price;
+      pushExtra("Shutters & Blinds", extras.shuttersAndBlinds, perRoom.shuttersAndBlindsPrice);
     }
 
     // ---------------------------------------------------------
     // GOOD CONDITION FORMULA
     // ---------------------------------------------------------
+    const roomFactorGood =
+      sqft / 400 +
+      extraBedrooms * 0.5 +
+      extraBathrooms * 0.5 +
+      extraHalfBaths * 0.5;
+
     const conditionMultiplierGood = 1.25;
 
-    const roomFactorGood =
-      (sqft / 400) +
-      (extraBedrooms * 0.5) +
-      (extraBathrooms * 0.5) +
-      (extraHalfBaths * 0.5);
-
-    const serviceBaseBeforeDiscount =
+    const rawBase =
       roomFactorGood *
       priceAdjust *
       conditionMultiplierGood *
       55;
 
-    const serviceAfterDiscount =
-      serviceBaseBeforeDiscount * (1 - frequencyRate);
+    // ROUND BASE BEFORE DISCOUNT
+    const roundedBase = R(rawBase);
 
-    const maidServiceFinal = serviceAfterDiscount;
+    // DISCOUNT — ROUND BEFORE SUBTRACTING
+    const rawDiscount = roundedBase * frequencyRate;
+    const roundedDiscount = R(rawDiscount);
 
-    discountAmount =
-      serviceBaseBeforeDiscount - serviceAfterDiscount;
+    const recurringAfterDiscount = roundedBase - roundedDiscount;
+
+    discountAmount = roundedDiscount;
 
     // ---------------------------------------------------------
-    // INITIAL CLEANING (NEW FORMULA)
-    // Initial Cleaning = Normal Base × (2.6 / 1.25)
+    // INITIAL CLEANING (NEW FORMULA + ROUNDING)
+    // Initial Cleaning Base = baseBeforeDiscount × 2.6
     // ---------------------------------------------------------
     if (condition === "bad") {
-      const initialMultiplier = 2.6 / 1.25; // ≈ 2.08
+      const initialRawBase = rawBase * 2.6;
+      const initialBase = R(initialRawBase);
 
-      const initialBase = serviceBaseBeforeDiscount * initialMultiplier;
-
-      let initialExtrasTotal = 0;
       let initialExtrasList = [];
+      let initialExtrasTotal = 0;
+
+      const addInitialExtra = (label, price) => {
+        const rounded = R(price);
+        initialExtrasList.push({ name: label, price: rounded });
+        initialExtrasTotal += rounded;
+      };
 
       if (extras.insideOven) {
-        initialExtrasList.push({
-          name: "Inside Oven",
-          price: perRoom.insideOvenPrice
-        });
-        initialExtrasTotal += perRoom.insideOvenPrice;
+        addInitialExtra("Inside Oven", perRoom.insideOvenPrice);
       }
 
       if (extras.insideRefrigerator) {
-        initialExtrasList.push({
-          name: "Inside Refrigerator",
-          price: perRoom.insideRefrigeratorPrice
-        });
-        initialExtrasTotal += perRoom.insideRefrigeratorPrice;
+        addInitialExtra("Inside Refrigerator", perRoom.insideRefrigeratorPrice);
       }
+
+      const initialFinal = R(initialBase + initialExtrasTotal);
 
       additionalBlocks.push({
         label: "Initial Cleaning",
         base: initialBase,
         extrasList: initialExtrasList,
-        final: initialBase + initialExtrasTotal
+        final: initialFinal
       });
     }
 
-    base = serviceBaseBeforeDiscount;
-    final = maidServiceFinal + extrasTotal;
+    base = roundedBase;
+    final = R(recurringAfterDiscount + extrasTotal);
   }
 
   // ---------------------------------------------------------
@@ -158,11 +162,13 @@ export function calculatePrice(cart) {
       extraBathrooms * 0.5 +
       extraHalfBaths * 0.5;
 
-    base =
+    const rawBase =
       factor *
       priceAdjust *
       multiplier *
       55;
+
+    base = R(rawBase);
 
     const perRoom = proData.globalExtras;
 
@@ -176,22 +182,22 @@ export function calculatePrice(cart) {
 
     extrasConfig.forEach((e) => {
       const value = extras[e.key];
-
       if (!value) return;
 
       if (e.type === "count" && value > 0) {
-        const total = value * e.price;
-        extrasList.push({ name: `${e.label} ×${value}`, price: total });
-        extrasTotal += total;
+        const rounded = R(value * e.price);
+        extrasList.push({ name: `${e.label} ×${value}`, price: rounded });
+        extrasTotal += rounded;
       }
 
       if (e.type === "boolean" && value === true) {
-        extrasList.push({ name: e.label, price: e.price });
-        extrasTotal += e.price;
+        const rounded = R(e.price);
+        extrasList.push({ name: e.label, price: rounded });
+        extrasTotal += rounded;
       }
     });
 
-    final = base + extrasTotal;
+    final = R(base + extrasTotal);
     discountAmount = 0;
   }
 
@@ -207,25 +213,25 @@ export function calculatePrice(cart) {
         ? carpetData.pricing.badConditionPerSqft
         : carpetData.pricing.normalConditionPerSqft;
 
-    base = carpetSqft * rate;
+    base = R(carpetSqft * rate);
 
     if (extras.deodorize) {
-      extrasList.push({ name: "Deodorize", price: carpetData.extras.deodorize });
-      extrasTotal += carpetData.extras.deodorize;
+      const rounded = R(carpetData.extras.deodorize);
+      extrasList.push({ name: "Deodorize", price: rounded });
+      extrasTotal += rounded;
     }
     if (extras.stainsRemove) {
-      extrasList.push({ name: "Stains Removal", price: carpetData.extras.stainsRemove });
-      extrasTotal += carpetData.extras.stainsRemove;
+      const rounded = R(carpetData.extras.stainsRemove);
+      extrasList.push({ name: "Stains Removal", price: rounded });
+      extrasTotal += rounded;
     }
     if (extras.petUrineTreatment) {
-      extrasList.push({
-        name: "Pet Urine Treatment",
-        price: carpetData.extras.petUrineTreatment
-      });
-      extrasTotal += carpetData.extras.petUrineTreatment;
+      const rounded = R(carpetData.extras.petUrineTreatment);
+      extrasList.push({ name: "Pet Urine Treatment", price: rounded });
+      extrasTotal += rounded;
     }
 
-    final = base + extrasTotal;
+    final = R(base + extrasTotal);
     discountAmount = 0;
   }
 

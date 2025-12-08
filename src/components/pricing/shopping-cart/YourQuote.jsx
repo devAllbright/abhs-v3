@@ -24,12 +24,22 @@ export default function YourQuote() {
     additionalBlocks
   } = priceBreakdown;
 
-  const renderBlock = (label, basePrice, extrasList, discountAmount, finalPrice, frequencyLabel) => (
+  // A helper to ensure formatting is uniform across all values
+  const format = (value) => `$${Number(value)}`;
+
+  const renderBlock = (
+    label,
+    basePrice,
+    extrasList,
+    discountAmount,
+    finalPrice,
+    frequencyLabel
+  ) => (
     <>
       <div className="quote-line service-line">
         <div className="quote-service">
           <p>{label}</p>
-          <p>${Number(basePrice).toFixed(2)}</p>
+          <p>{format(basePrice)}</p>
         </div>
       </div>
 
@@ -37,7 +47,7 @@ export default function YourQuote() {
         <div key={ex.name} className="quote-line discount-line">
           <div className="quote-service extras-line">
             <p className="extra-text">+ {ex.name}</p>
-            <p className="extra-text">${Number(ex.price).toFixed(2)}</p>
+            <p className="extra-text">{format(ex.price)}</p>
           </div>
         </div>
       ))}
@@ -46,7 +56,7 @@ export default function YourQuote() {
         <div className="quote-line discount-line">
           <div className="quote-service extras-line">
             <p className="extra-text">- {frequencyLabel} Discount</p>
-            <p className="extra-text">-${Number(discountAmount).toFixed(2)}</p>
+            <p className="extra-text">-${discountAmount}</p>
           </div>
         </div>
       )}
@@ -54,7 +64,7 @@ export default function YourQuote() {
       <div className="quote-line subtotal-line">
         <div className="quote-total">
           <p>Estimated Total</p>
-          <p>${Number(finalPrice).toFixed(2)}</p>
+          <p>{format(finalPrice)}</p>
         </div>
       </div>
     </>
