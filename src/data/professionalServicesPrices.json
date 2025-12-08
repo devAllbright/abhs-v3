@@ -3,113 +3,124 @@
   "priceTiers": [
     {
       "sqftRange": "800-950",
-      "basicPrice": 100,
-      "includedRooms": { "bedrooms": 1, "bathrooms": 1 },
-      "minimum": 165,
-      "badCondition": 185,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 1,
+        "bathrooms": 1,
+        "halfBathrooms": 0
+      },
+      "priceAdjust": 1.0
     },
     {
       "sqftRange": "951-1200",
-      "basicPrice": 100,
-      "includedRooms": { "bedrooms": 2, "bathrooms": 1 },
-      "minimum": 175,
-      "badCondition": 195,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "halfBathrooms": 0
+      },
+      "priceAdjust": 1.0
     },
     {
       "sqftRange": "1201-1400",
-      "basicPrice": 120,
-      "includedRooms": { "bedrooms": 2, "bathrooms": 1 },
-      "minimum": 195,
-      "badCondition": 215,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 2,
+        "bathrooms": 1,
+        "halfBathrooms": 0
+      },
+      "priceAdjust": 1.0
     },
     {
       "sqftRange": "1401-1600",
-      "basicPrice": 80,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
-      "minimum": 205,
-      "badCondition": 225,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "halfBathrooms": 0
+      },
+      "priceAdjust": 1.0
     },
     {
       "sqftRange": "1601-1800",
-      "basicPrice": 90,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
-      "minimum": 215,
-      "badCondition": 235,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 1.05
     },
     {
       "sqftRange": "1801-2000",
-      "basicPrice": 100,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 2 },
-      "minimum": 225,
-      "badCondition": 245,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 1.10
     },
     {
       "sqftRange": "2001-2200",
-      "basicPrice": 95,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
-      "minimum": 235,
-      "badCondition": 255,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 4,
+        "bathrooms": 2,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 1.15
     },
     {
       "sqftRange": "2201-2400",
-      "basicPrice": 95,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
-      "minimum": 245,
-      "badCondition": 265,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 4,
+        "bathrooms": 2,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 1.20
     },
     {
       "sqftRange": "2401-2800",
-      "basicPrice": 90,
-      "includedRooms": { "bedrooms": 4, "bathrooms": 3 },
-      "minimum": 265,
-      "badCondition": 285,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 1.25
     },
     {
       "sqftRange": "2801-3000",
-      "basicPrice": 135,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
-      "minimum": 285,
-      "badCondition": 295,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 4,
+        "bathrooms": 3,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 1.30
     },
     {
       "sqftRange": "3001-3200",
-      "basicPrice": 145,
-      "includedRooms": { "bedrooms": 3, "bathrooms": 3 },
-      "minimum": 295,
-      "badCondition": 315,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 5,
+        "bathrooms": 3,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 1.35
     },
     {
       "sqftRange": "3201-3400",
-      "basicPrice": 130,
-      "includedRooms": { "bedrooms": 4, "bathrooms": 3 },
-      "minimum": 305,
-      "badCondition": 325,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 5,
+        "bathrooms": 3,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 1.40
     },
     {
       "sqftRange": "3401-3600",
-      "basicPrice": 125,
-      "includedRooms": { "bedrooms": 4, "bathrooms": 4 },
-      "minimum": 325,
-      "badCondition": 345,
-      "priceAdjust": 1
+      "includedRooms": {
+        "bedrooms": 5,
+        "bathrooms": 4,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 1.45
     }
   ],
+
   "globalExtras": {
-    "bedroomPrice": 25,
-    "bathroomPrice": 25,
-    "halfBathroomPrice": 25,
     "changeLinensPrice": 15,
     "furryPetsPrice": 15,
     "shuttersAndBlindsPrice": 15,

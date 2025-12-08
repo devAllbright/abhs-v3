@@ -52,9 +52,7 @@ export function calculatePrice(cart) {
 
     const perRoom = maidData.globalExtras;
 
-    // ---------------------------
-    // EXTRAS (Recurring — ROUND EACH)
-    // ---------------------------
+    // EXTRAS (round each)
     const pushExtra = (label, qty, unitPrice) => {
       const raw = qty * unitPrice;
       const rounded = R(raw);
@@ -72,27 +70,24 @@ export function calculatePrice(cart) {
       pushExtra("Shutters & Blinds", extras.shuttersAndBlinds, perRoom.shuttersAndBlindsPrice);
     }
 
-    // ---------------------------------------------------------
     // GOOD CONDITION FORMULA
-    // ---------------------------------------------------------
-    const roomFactorGood =
+    const roomFactor =
       sqft / 400 +
       extraBedrooms * 0.5 +
       extraBathrooms * 0.5 +
       extraHalfBaths * 0.5;
 
-    const conditionMultiplierGood = 1.25;
+    const conditionMultiplier = 1.25;
 
     const rawBase =
-      roomFactorGood *
+      roomFactor *
       priceAdjust *
-      conditionMultiplierGood *
+      conditionMultiplier *
       55;
 
-    // ROUND BASE BEFORE DISCOUNT
     const roundedBase = R(rawBase);
 
-    // DISCOUNT — ROUND BEFORE SUBTRACTING
+    // DISCOUNT
     const rawDiscount = roundedBase * frequencyRate;
     const roundedDiscount = R(rawDiscount);
 
@@ -100,10 +95,7 @@ export function calculatePrice(cart) {
 
     discountAmount = roundedDiscount;
 
-    // ---------------------------------------------------------
-    // INITIAL CLEANING (NEW FORMULA + ROUNDING)
-    // Initial Cleaning Base = baseBeforeDiscount × 2.6
-    // ---------------------------------------------------------
+    // INITIAL CLEANING
     if (condition === "bad") {
       const initialRawBase = rawBase * 2.6;
       const initialBase = R(initialRawBase);
@@ -140,7 +132,7 @@ export function calculatePrice(cart) {
   }
 
   // ---------------------------------------------------------
-  // PROFESSIONAL SERVICES
+  // PROFESSIONAL SERVICES (UPDATED)
   // ---------------------------------------------------------
   if (selectedService === "Professional Services") {
     const tier = findTier(proData.priceTiers, sqft);
@@ -148,30 +140,34 @@ export function calculatePrice(cart) {
 
     const includedBeds = tier.includedRooms.bedrooms;
     const includedBaths = tier.includedRooms.bathrooms;
+    const includedHalfBaths = tier.includedRooms.halfBathrooms;
     const priceAdjust = tier.priceAdjust ?? 1;
 
     const extraBedrooms = Math.max(0, bedroomNumber - includedBeds);
     const extraBathrooms = Math.max(0, bathroomNumber - includedBaths);
-    const extraHalfBaths = Math.max(0, halfBathroomNumber);
+    const extraHalfBaths = Math.max(0, halfBathroomNumber - includedHalfBaths);
 
-    const multiplier = condition === "bad" ? 2.6 : 1.25;
+    const perRoom = proData.globalExtras;
 
-    const factor =
+    // SAME ROOM FACTOR AS MAID SERVICES
+    const roomFactor =
       sqft / 400 +
       extraBedrooms * 0.5 +
       extraBathrooms * 0.5 +
       extraHalfBaths * 0.5;
 
+    // SAME CONDITION MULTIPLIERS
+    const conditionMultiplier = condition === "bad" ? 2.6 : 1.25;
+
     const rawBase =
-      factor *
+      roomFactor *
       priceAdjust *
-      multiplier *
+      conditionMultiplier *
       55;
 
     base = R(rawBase);
 
-    const perRoom = proData.globalExtras;
-
+    // EXTRAS (round each)
     const extrasConfig = [
       { key: "changeLinens", label: "Change Linens", type: "count", price: perRoom.changeLinensPrice },
       { key: "furryPets", label: "Furry Pets", type: "boolean", price: perRoom.furryPetsPrice },
@@ -198,7 +194,7 @@ export function calculatePrice(cart) {
     });
 
     final = R(base + extrasTotal);
-    discountAmount = 0;
+    discountAmount = 0; // Pro services do not use frequency discounts
   }
 
   // ---------------------------------------------------------
