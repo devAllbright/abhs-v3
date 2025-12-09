@@ -31,11 +31,10 @@ export function calculatePrice(cart) {
   else if (selectedFrequency === "Bi-Weekly") frequencyRate = 0.10;
   else if (selectedFrequency === "Monthly") frequencyRate = 0.05;
 
-  // Helper to round values
   const R = (v) => Math.round(v);
 
   // ---------------------------------------------------------
-  // MAID SERVICES
+  // MAID SERVICES (UNCHANGED)
   // ---------------------------------------------------------
   if (selectedService === "Maid Services") {
     const tier = findTier(maidData.priceTiers, sqft);
@@ -52,25 +51,16 @@ export function calculatePrice(cart) {
 
     const perRoom = maidData.globalExtras;
 
-    // EXTRAS (round each)
     const pushExtra = (label, qty, unitPrice) => {
-      const raw = qty * unitPrice;
-      const rounded = R(raw);
+      const rounded = R(qty * unitPrice);
       extrasList.push({ name: `${label}${qty > 1 ? " ×" + qty : ""}`, price: rounded });
       extrasTotal += rounded;
     };
 
-    if (extras.changeLinens > 0) {
-      pushExtra("Change Linens", extras.changeLinens, perRoom.changeLinensPrice);
-    }
-    if (extras.furryPets) {
-      pushExtra("Furry Pets", 1, perRoom.furryPetsPrice);
-    }
-    if (extras.shuttersAndBlinds > 0) {
-      pushExtra("Shutters & Blinds", extras.shuttersAndBlinds, perRoom.shuttersAndBlindsPrice);
-    }
+    if (extras.changeLinens > 0) pushExtra("Change Linens", extras.changeLinens, perRoom.changeLinensPrice);
+    if (extras.furryPets) pushExtra("Furry Pets", 1, perRoom.furryPetsPrice);
+    if (extras.shuttersAndBlinds > 0) pushExtra("Shutters & Blinds", extras.shuttersAndBlinds, perRoom.shuttersAndBlindsPrice);
 
-    // GOOD CONDITION FORMULA
     const roomFactor =
       sqft / 400 +
       extraBedrooms * 0.5 +
@@ -87,7 +77,6 @@ export function calculatePrice(cart) {
 
     const roundedBase = R(rawBase);
 
-    // DISCOUNT
     const rawDiscount = roundedBase * frequencyRate;
     const roundedDiscount = R(rawDiscount);
 
@@ -95,7 +84,6 @@ export function calculatePrice(cart) {
 
     discountAmount = roundedDiscount;
 
-    // INITIAL CLEANING
     if (condition === "bad") {
       const initialRawBase = rawBase * 2.6;
       const initialBase = R(initialRawBase);
@@ -109,13 +97,8 @@ export function calculatePrice(cart) {
         initialExtrasTotal += rounded;
       };
 
-      if (extras.insideOven) {
-        addInitialExtra("Inside Oven", perRoom.insideOvenPrice);
-      }
-
-      if (extras.insideRefrigerator) {
-        addInitialExtra("Inside Refrigerator", perRoom.insideRefrigeratorPrice);
-      }
+      if (extras.insideOven) addInitialExtra("Inside Oven", perRoom.insideOvenPrice);
+      if (extras.insideRefrigerator) addInitialExtra("Inside Refrigerator", perRoom.insideRefrigeratorPrice);
 
       const initialFinal = R(initialBase + initialExtrasTotal);
 
@@ -132,7 +115,7 @@ export function calculatePrice(cart) {
   }
 
   // ---------------------------------------------------------
-  // PROFESSIONAL SERVICES (UPDATED)
+  // PROFESSIONAL SERVICES (UPDATED BAD CONDITION MULTIPLIER ONLY)
   // ---------------------------------------------------------
   if (selectedService === "Professional Services") {
     const tier = findTier(proData.priceTiers, sqft);
@@ -149,25 +132,24 @@ export function calculatePrice(cart) {
 
     const perRoom = proData.globalExtras;
 
-    // SAME ROOM FACTOR AS MAID SERVICES
     const roomFactor =
       sqft / 400 +
       extraBedrooms * 0.5 +
       extraBathrooms * 0.5 +
       extraHalfBaths * 0.5;
 
-    // SAME CONDITION MULTIPLIERS
-    const conditionMultiplier = condition === "bad" ? 2.6 : 1.25;
-
-    const rawBase =
+    // NORMAL PRICE (exact same formula as before)
+    const normalBase =
       roomFactor *
       priceAdjust *
-      conditionMultiplier *
+      1.25 *
       55;
 
-    base = R(rawBase);
+    // UPDATED → BAD CONDITION = normal × 2.6
+    const conditionMultiplier = condition === "bad" ? 2.6 : 1;
 
-    // EXTRAS (round each)
+    base = R(normalBase * conditionMultiplier);
+
     const extrasConfig = [
       { key: "changeLinens", label: "Change Linens", type: "count", price: perRoom.changeLinensPrice },
       { key: "furryPets", label: "Furry Pets", type: "boolean", price: perRoom.furryPetsPrice },
@@ -180,25 +162,23 @@ export function calculatePrice(cart) {
       const value = extras[e.key];
       if (!value) return;
 
-      if (e.type === "count" && value > 0) {
-        const rounded = R(value * e.price);
-        extrasList.push({ name: `${e.label} ×${value}`, price: rounded });
-        extrasTotal += rounded;
-      }
+      const rounded =
+        e.type === "count" ? R(value * e.price) : R(e.price);
 
-      if (e.type === "boolean" && value === true) {
-        const rounded = R(e.price);
-        extrasList.push({ name: e.label, price: rounded });
-        extrasTotal += rounded;
-      }
+      extrasList.push({
+        name: e.type === "count" ? `${e.label} ×${value}` : e.label,
+        price: rounded
+      });
+
+      extrasTotal += rounded;
     });
 
     final = R(base + extrasTotal);
-    discountAmount = 0; // Pro services do not use frequency discounts
+    discountAmount = 0;
   }
 
   // ---------------------------------------------------------
-  // CARPET CLEANING
+  // CARPET CLEANING (UNCHANGED)
   // ---------------------------------------------------------
   if (selectedService === "Carpet Cleaning") {
     const carpetSqft = carpetSquareFootage ?? sqft;
@@ -247,7 +227,6 @@ export function calculatePrice(cart) {
   };
 }
 
-// ---------------------------------------------------------
 function findTier(tiers, sqft) {
   if (!tiers || !sqft) return null;
 

@@ -2,121 +2,130 @@
   "serviceName": "Professional Cleaning",
   "priceTiers": [
     {
-      "sqftRange": "800-950",
+      "sqftRange": "800-949",
       "includedRooms": {
         "bedrooms": 1,
         "bathrooms": 1,
         "halfBathrooms": 0
       },
-      "priceAdjust": 1.0
+      "priceAdjust": 1.2
     },
     {
-      "sqftRange": "951-1200",
+      "sqftRange": "950-1199",
       "includedRooms": {
         "bedrooms": 2,
         "bathrooms": 1,
         "halfBathrooms": 0
       },
-      "priceAdjust": 1.0
+      "priceAdjust": 1.1345454545
     },
     {
-      "sqftRange": "1201-1400",
+      "sqftRange": "1200-1399",
       "includedRooms": {
         "bedrooms": 2,
         "bathrooms": 1,
-        "halfBathrooms": 0
+        "halfBathrooms": 1
       },
-      "priceAdjust": 1.0
+      "priceAdjust": 0.9454545455
     },
     {
-      "sqftRange": "1401-1600",
+      "sqftRange": "1400-1599",
       "includedRooms": {
         "bedrooms": 3,
         "bathrooms": 2,
         "halfBathrooms": 0
       },
-      "priceAdjust": 1.0
+      "priceAdjust": 0.8103896104
     },
     {
-      "sqftRange": "1601-1800",
+      "sqftRange": "1600-1799",
       "includedRooms": {
         "bedrooms": 3,
         "bathrooms": 2,
         "halfBathrooms": 1
       },
-      "priceAdjust": 1.05
+      "priceAdjust": 0.7090909091
     },
     {
-      "sqftRange": "1801-2000",
+      "sqftRange": "1800-1999",
       "includedRooms": {
         "bedrooms": 3,
         "bathrooms": 2,
         "halfBathrooms": 1
       },
-      "priceAdjust": 1.10
+      "priceAdjust": 0.6303030303
     },
     {
-      "sqftRange": "2001-2200",
+      "sqftRange": "2000-2199",
+      "includedRooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 0.6254545455
+    },
+    {
+      "sqftRange": "2200-2399",
+      "includedRooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 0.5685950413
+    },
+    {
+      "sqftRange": "2400-2599",
+      "includedRooms": {
+        "bedrooms": 3,
+        "bathrooms": 2,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 0.5939393939
+    },
+    {
+      "sqftRange": "2600-2799",
       "includedRooms": {
         "bedrooms": 4,
         "bathrooms": 2,
         "halfBathrooms": 1
       },
-      "priceAdjust": 1.15
+      "priceAdjust": 0.6153846154
     },
     {
-      "sqftRange": "2201-2400",
+      "sqftRange": "2800-2999",
       "includedRooms": {
         "bedrooms": 4,
         "bathrooms": 2,
         "halfBathrooms": 1
       },
-      "priceAdjust": 1.20
+      "priceAdjust": 0.5714285714
     },
     {
-      "sqftRange": "2401-2800",
+      "sqftRange": "3000-3199",
+      "includedRooms": {
+        "bedrooms": 4,
+        "bathrooms": 2,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 0.5527272727
+    },
+    {
+      "sqftRange": "3200-3399",
+      "includedRooms": {
+        "bedrooms": 4,
+        "bathrooms": 2,
+        "halfBathrooms": 1
+      },
+      "priceAdjust": 0.5363636364
+    },
+    {
+      "sqftRange": "3400-3599",
       "includedRooms": {
         "bedrooms": 4,
         "bathrooms": 3,
         "halfBathrooms": 1
       },
-      "priceAdjust": 1.25
-    },
-    {
-      "sqftRange": "2801-3000",
-      "includedRooms": {
-        "bedrooms": 4,
-        "bathrooms": 3,
-        "halfBathrooms": 1
-      },
-      "priceAdjust": 1.30
-    },
-    {
-      "sqftRange": "3001-3200",
-      "includedRooms": {
-        "bedrooms": 5,
-        "bathrooms": 3,
-        "halfBathrooms": 1
-      },
-      "priceAdjust": 1.35
-    },
-    {
-      "sqftRange": "3201-3400",
-      "includedRooms": {
-        "bedrooms": 5,
-        "bathrooms": 3,
-        "halfBathrooms": 1
-      },
-      "priceAdjust": 1.40
-    },
-    {
-      "sqftRange": "3401-3600",
-      "includedRooms": {
-        "bedrooms": 5,
-        "bathrooms": 4,
-        "halfBathrooms": 1
-      },
-      "priceAdjust": 1.45
+      "priceAdjust": 0.5219251337
     }
   ],
 
