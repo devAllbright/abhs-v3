@@ -215,7 +215,7 @@
     align-items: center;
     height: 60vh;
     padding: 0 $spacing-24;
-    text-align: left;
+    text-align: center;
 
     &__content {
       flex: 1 1 50%;
@@ -224,10 +224,13 @@
       > div {
         width: 100%;
         max-width: 35rem;
+        margin: 0 auto;
       }
     }
 
     &__reviews {
+      display: flex;
+      justify-content: center;
       &-icon {
         height: 2rem;
       }
@@ -240,21 +243,25 @@
     &__title {
       font-size: $font-size-28;
       line-height: $line-height-15;
+      text-align: center;
     }
 
     &__description {
       font-size: $font-size-16;
       margin-top: $spacing-16;
       width: 100%;
+      text-align: center;
     }
 
     &__social-proof {
       width: 30rem !important;
-      margin-top: $spacing-16;
+      margin: $spacing-16 auto 0 !important;
 
       &-item {
-        width: 30rem !important;
+        width: 100% !important;
         margin-top: $spacing-8;
+        display: flex;
+        justify-content: center;
       }
 
       &-icon {
@@ -268,6 +275,8 @@
 
     &__cta {
       margin-top: $spacing-24;
+      display: flex;
+      justify-content: center;
     }
 
     &__collage {
