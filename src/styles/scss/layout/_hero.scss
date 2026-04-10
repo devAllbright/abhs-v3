@@ -13,7 +13,7 @@
     margin-right: $spacing-64;
 
     div {
-      width: 50rem;
+      width: 60rem;
     }
   }
 
@@ -46,7 +46,8 @@
   }
 
   &__description {
-    width: 40rem;
+    width: 100%;
+    max-width: 60rem;
     font-size: $font-size-24;
     font-weight: $font-weight-bold;
     line-height: $line-height-13;
