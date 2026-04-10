@@ -4,50 +4,35 @@ import SectionHeading from "../../SectionHeading";
 const benefits = [
   {
     id: 1,
-    title: "Time-Saving Convenience",
+    title: "Immediate Booking",
     description:
-      "With AllBright, home care starts with a free consultation you can book online in seconds—or a quick call to get everything started. From there, we handle the details.",
+      "High-authority deep cleaning to reset your home to baseline.",
     icon: "/benefits/convenience-icon.png",
     image: "/benefits/convenience.png",
   },
   {
     id: 2,
-    title: "Consistent, High-Quality Service",
+    title: "Habitual Care",
     description:
-      "Our background-checked, experienced professionals ensure top-tier results every time.",
+      "Consistent, high-quality recurring services that become your home’s default behavior.",
     icon: "/benefits/quality-icon.png",
     image: "/benefits/quality.png",
   },
   {
     id: 3,
-    title: "Eco-Friendly Cleaning",
+    title: "Total Maintenance",
     description:
-      "We use safe, non-toxic products to protect your home, family, and the planet.",
-    icon: "/benefits/eco-icon.png",
-    image: "/benefits/eco.png",
-  },
-  {
-    id: 4,
-    title: "Custom Plans for Every Home",
-    description:
-      "Enjoy the flexibility of cleaning on your terms—from quick, routine visits to concierge-level yearly maintenance plans that cover every detail. Our services are designed to adapt to your home and lifestyle.",
+      "The end-state for our best clients: a fully managed residential system.",
     icon: "/benefits/customization-icon.png",
     image: "/benefits/customization.png",
   },
   {
-    id: 5,
-    title: "24/7 AI Assistant Support",
+    id: 4,
+    title: "Eco-Friendly Heritage",
     description:
-      "Need help? Our smart AI assistant Sofia is always available to understand your needs and connect you with the right service—anytime, anywhere.",
-    icon: "/benefits/assistant-icon.png",
-    image: "/benefits/ai-assistant.png",
-  },
-  {
-    id: 6,
-    title: "100% Satisfaction Guarantee",
-    description: "",
-    icon: "/benefits/guarantee-icon.png",
-    image: "/benefits/guarantee.png",
+      "Sustainable home care solutions protecting your family.",
+    icon: "/benefits/eco-icon.png",
+    image: "/benefits/eco.png",
   },
 ];
 

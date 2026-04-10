@@ -85,7 +85,6 @@ export default function ServiceFinderSection() {
   const buttons = [
     { label: "Maid Services", icon: "/searchbar-icons/maid-services.png" },
     { label: "Home Maintenance Services", icon: "/searchbar-icons/maintenance-services.png" },
-    { label: "Yearly Maintenance Plans", icon: "/searchbar-icons/maintenance-plans.png" },
     { label: "Bundles", icon: "/searchbar-icons/bundles.png" }
   ];
 
