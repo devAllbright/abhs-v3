@@ -7,7 +7,7 @@
   align-items: center;
   width: 100%;
   min-height: 55vh;
-  padding: $spacing-48 0;
+  padding: $spacing-16 0;
   position: relative;
   overflow: visible;
 }
@@ -27,7 +27,7 @@
 }
 
 .service-finder__title {
-  font-size: $font-size-36;
+  font-size: $font-size-48;
   font-weight: $font-weight-bold;
   color: $primary-text;
 }
@@ -153,22 +153,23 @@
   align-items: center;
   justify-content: center;
   gap: $spacing-8;
-  padding: $spacing-12 $spacing-12;
-  border: 1px solid #d9d9d9;
-  background: #f0f0f0;
+  padding: $spacing-12 $spacing-24;
+  border: 1px solid darken($background-positive-b, 5%);
+  background: $background-positive-b;
   border-radius: 6px;
   cursor: pointer;
   font-size: $font-size-16;
   font-weight: $font-weight-bold;
-  color: $primary-text;
+  color: white;
   transition: 0.25s ease;
 
   &:hover {
-    background-color: $primary-color-light;
+    background-color: darken($background-positive-b, 10%);
+    color: white;
   }
 
   &--active {
-    background-color: $primary-color-dark;
+    background-color: darken($background-positive-b, 15%);
     color: white;
   }
 }
@@ -178,6 +179,7 @@
   height: 15px;
   flex-shrink: 0;
   object-fit: contain;
+  filter: brightness(0) invert(1);
 }
 
 .service-finder__button-text {

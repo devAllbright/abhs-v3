@@ -83,8 +83,8 @@ export default function ServiceFinderSection() {
   useEffect(() => setActiveIndex(-1), [results]);
 
   const buttons = [
-    { label: "Maid Services", icon: "/searchbar-icons/maid-services.png" },
-    { label: "Home Maintenance Services", icon: "/searchbar-icons/maintenance-services.png" },
+    { label: "Recurring Services", icon: "/searchbar-icons/maid-services.png" },
+    { label: "On-Demand Services", icon: "/searchbar-icons/maintenance-services.png" },
     { label: "Bundles", icon: "/searchbar-icons/bundles.png" }
   ];
 

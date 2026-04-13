@@ -44,10 +44,10 @@ export default function ServiceType() {
           onClick={() => handleClick('oneTime')}
         >
           <div className="service-type-img">
-            <img src="/shopping-cart/one-time-services.png" alt="One Time Services" />
+            <img src="/shopping-cart/one-time-services.png" alt="On-Demand Services" />
           </div>
           <div className="service-type-title">
-            <p>One Time Services</p>
+            <p>On-Demand Services</p>
           </div>
         </div>
       </div>

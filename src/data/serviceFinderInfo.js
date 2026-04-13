@@ -1,6 +1,6 @@
 export const serviceFinderInfo = {
-  "Maid Services": {
-    title: "Maid Services",
+  "Recurring Services": {
+    title: "Recurring Services",
     sections: [
       {
         label: "✨ What we do",
@@ -70,8 +70,8 @@ export const serviceFinderInfo = {
     ]
   },
 
-  "Home Maintenance Services": {
-    title: "Home Maintenance Services",
+  "On-Demand Services": {
+    title: "On-Demand Services",
     sections: [
       {
         label: "✨ What we do",
