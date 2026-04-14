@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import SearchBar from "../components/pages/our-services/SearchBar";
+import SearchBar from "../components/pages/our-services/ServiceSearchHero.jsx";
 import ServiceSection from "../components/pages/home/ServiceSection.astro";
 import ReviewsWidget from "../components/pages/ReviewsWidget.astro";
 import FAQSection from "../components/pages/home/FAQSection.astro"
@@ -26,7 +26,7 @@ const faqs = [
 ---
 
 <BaseLayout>
-  <SearchBar client:only="react"/>
+  <SearchBar isHero={true} client:only="react"/>
   <ServiceSection />
   <ReviewsWidget />
   <FAQSection faqs={ faqs } />

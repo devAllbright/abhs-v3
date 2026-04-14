@@ -1,5 +1,5 @@
+@use '../abstracts/variables' as *;
 @use "sass:color";
-@use "../abstracts/variables" as *;
 
 .service-finder-wrapper {
   display: flex;
@@ -41,103 +41,6 @@
   z-index: 500;
 }
 
-.search-bar__input-group {
-  width: 100%;
-  position: relative;
-}
-
-.search-bar__input-wrapper {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: $spacing-16;
-  padding: 0rem 2rem;
-  border-radius: 6px;
-  border: 1px solid rgba(0, 0, 0, 0.31);
-  background: $background-light;
-  position: relative;
-}
-
-.search-bar__icon {
-  flex-shrink: 0;
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-
-  svg {
-    width: 22px;
-    height: 22px;
-  }
-}
-
-.search-bar__input {
-  all: unset;
-  flex: 1;
-  font-size: 1.25rem;
-  color: $primary-text;
-  text-align: left;
-
-  &::placeholder {
-    color: $neutral-text;
-    text-align: left;
-  }
-}
-
-.search-bar__logo {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-.search-bar__results {
-  position: absolute;
-  top: calc(100% + $spacing-8);
-  left: 0;
-  right: 0;
-  z-index: 99999;
-  max-height: 19rem;
-  overflow-y: auto;
-  background-color: $background-light;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.1);
-}
-
-.search-bar__result-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: $spacing-16 $spacing-24;
-  font-size: 1.15rem;
-  text-decoration: none;
-  color: $primary-text;
-  cursor: pointer;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.05);
-  }
-
-  &.active {
-    background: #f3f3f3;
-  }
-
-  mark {
-    background: transparent;
-    color: $highlight-text;
-    font-weight: bold;
-  }
-}
-
-.search-bar__result-price {
-  font-style: italic;
-  color: $neutral-text;
-}
-
-.search-bar__no-results {
-  padding: $spacing-16 $spacing-24;
-  color: $neutral-text;
-}
 
 .service-finder__button-group {
   display: flex;

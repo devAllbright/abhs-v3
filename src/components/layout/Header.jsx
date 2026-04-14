@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import MegaMenu from './MegaMenu';
 import SearchIcon from '../pages/our-services/SearchIcon';
-import SearchBar from '../pages/our-services/SearchBar';
+import SearchBar from '../pages/our-services/ServiceSearchHero.jsx';
 import CTAButton from '../buttons/CTAButton';
 //import ModalCTA from '../buttons/ModalCTA';
 import HCPButton from '../buttons/HCPButton';

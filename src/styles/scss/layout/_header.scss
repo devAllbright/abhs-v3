@@ -5,9 +5,11 @@
   justify-content: space-between;
   align-items: center;
   height: 10vh;
+  min-height: 80px; 
   position: sticky;
   top: 0;
   z-index: 1000;
+  flex-shrink: 0;
   padding: 0 $spacing-64;
   box-shadow: 0 $spacing-4 $spacing-12 rgba(0, 0, 0, 0.1);
   background-color: $background-light;

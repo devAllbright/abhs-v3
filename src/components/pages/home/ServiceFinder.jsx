@@ -98,62 +98,6 @@ export default function ServiceFinderSection() {
           </h2>
         </div>
 
-        <div className="service-finder__search">
-          <div className="search-bar__input-group">
-            <div className="search-bar__input-wrapper">
-
-              <SearchIconTest className="search-bar__icon" size={22} />
-
-              <input
-                type="text"
-                ref={inputRef}
-                className="search-bar__input"
-                placeholder="What do you need help with?"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={handleKeyDown}
-                autoComplete="off"
-              />
-
-              <img
-                src="/abhs-logo.png"
-                alt="Allbright Logo"
-                className="search-bar__logo"
-              />
-            </div>
-
-            {query.trim() && (
-              <ul className="search-bar__results">
-                {results.length ? (
-                  results.map((service, i) => (
-                    <li key={service.slug}>
-                      <a
-                        href={service.url}
-                        className={`search-bar__result-item ${
-                          i === activeIndex ? "active" : ""
-                        }`}
-                      >
-                        <span
-                          dangerouslySetInnerHTML={{
-                            __html: highlightMatch(service.name, service.match)
-                          }}
-                        />
-                        <span className="search-bar__result-price">
-                          {formatPrice(service.price, service.type)}
-                        </span>
-                      </a>
-                    </li>
-                  ))
-                ) : (
-                  <li className="search-bar__no-results">
-                    No results found for "{query}"
-                  </li>
-                )}
-              </ul>
-            )}
-          </div>
-        </div>
-
         <div className="service-finder__button-group">
           {buttons.map((btn) => (
             <button

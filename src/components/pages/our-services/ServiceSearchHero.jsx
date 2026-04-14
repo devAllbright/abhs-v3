@@ -1,5 +1,6 @@
 import { useState, useMemo, useRef, useEffect } from "react";
 import Fuse from "fuse.js";
+import SearchIconTest from "../../SearchIconTest";
 import serviceTypes from "../../../data/serviceTypes.json";
 
 function extractServices(json) {
@@ -43,7 +44,7 @@ function formatPrice(price, type) {
   return String(price);
 }
 
-export default function SearchBar() {
+export default function SearchBar({ isHero = false }) {
   const [query, setQuery] = useState("");
   const [activeIndex, setActiveIndex] = useState(-1);
   const inputRef = useRef(null);
@@ -99,24 +100,34 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="search-bar">
+    <div className={`search-bar ${isHero ? "search-bar--hero" : ""}`}>
       <section className="search-bar__section">
         <h1 className="search-bar__title">How can we help you today?</h1>
 
         <form className="search-bar__form" onSubmit={(e) => e.preventDefault()}>
           <div className="search-bar__input-group">
-            <input
-              id="service-search"
-              type="text"
-              ref={inputRef}
-              className="search-bar__input"
-              placeholder="Search services..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
-              aria-label="Search services"
-              autoComplete="off"
-            />
+            <div className="search-bar__input-wrapper">
+              <SearchIconTest className="search-bar__icon" size={22} />
+              
+              <input
+                id="service-search"
+                type="text"
+                ref={inputRef}
+                className="search-bar__input"
+                placeholder="What do you need help with?"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onKeyDown={handleKeyDown}
+                aria-label="Search services"
+                autoComplete="off"
+              />
+
+              <img
+                src="/abhs-logo.png"
+                alt="Allbright Logo"
+                className="search-bar__logo"
+              />
+            </div>
 
             {query.trim() !== "" && (
               <ul className="search-bar__results">
