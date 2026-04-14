@@ -47,7 +47,7 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: $spacing-16;
-  margin-bottom: $spacing-32;
+  margin-bottom: $spacing-64; // Increased even further for better visual separation
   position: relative;
   z-index: 10;
 }
@@ -58,23 +58,23 @@
   justify-content: center;
   gap: $spacing-8;
   padding: $spacing-12 $spacing-24;
-  border: 1px solid color.adjust($background-positive-b, $lightness: -5%);
-  background: $background-positive-b;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: $background-neutral;
   border-radius: 6px;
   cursor: pointer;
   font-size: $font-size-16;
   font-weight: $font-weight-bold;
-  color: white;
-  transition: 0.25s ease;
+  color: $primary-text;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover {
-    background-color: color.adjust($background-positive-b, $lightness: -10%);
+  &:hover, &--active {
+    background-color: $background-positive-b;
+    border-color: $background-positive-b;
     color: white;
-  }
 
-  &--active {
-    background-color: color.adjust($background-positive-b, $lightness: -15%);
-    color: white;
+    .service-finder__button-icon {
+      filter: brightness(0) invert(1);
+    }
   }
 }
 
@@ -83,15 +83,21 @@
   height: 15px;
   flex-shrink: 0;
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
 }
 
-.service-finder__button-text {
-  display: inline-block;
+.service-finder__button-arrow {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.3s ease;
+  
+  &--active {
+    transform: rotate(180deg);
+  }
 }
 
 .service-finder__dropdown {
-  width: min(700px, 95%);
+  width: min(900px, 95%);
   margin: 0 auto;
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.12);
@@ -100,21 +106,22 @@
   text-align: left;
   position: relative;
   z-index: 5;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
-/* CLOSE BUTTON */
 .service-finder__close {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 15px;
   background: transparent;
   border: none;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: bold;
   color: $primary-text;
   cursor: pointer;
   line-height: 1;
   padding: 4px;
+  z-index: 10;
   transition: opacity 0.2s ease;
 
   &:hover {
@@ -122,35 +129,84 @@
   }
 }
 
-.service-finder__dropdown-title {
-  font-size: $font-size-24;
-  font-weight: $font-weight-bold;
-  margin-bottom: $spacing-24;
-  color: $primary-text;
+.service-finder__card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-16;
+  min-height: 380px;
+  margin-top: $spacing-24; // Increased margin to avoid collision with close button
 }
 
-.service-finder__dropdown-section {
-  margin-bottom: $spacing-24;
+.service-finder__card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3.2;
+  display: block;
+  text-decoration: none;
+  background: #f1f1f1;
+
+  &-bg {
+    width: 100%;
+    height: 100%;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+  }
+
+  &-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 40%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+  }
+
+  &-content {
+    position: absolute;
+    bottom: $spacing-16;
+    left: $spacing-16;
+    right: $spacing-16;
+    z-index: 2;
+  }
+
+  &-title {
+    color: white;
+    font-size: $font-size-16;
+    font-weight: $font-weight-bold;
+    margin: 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  &:hover {
+    .service-finder__card-bg img {
+      transform: scale(1.1);
+    }
+  }
 }
 
-.service-finder__dropdown-label {
-  font-size: $font-size-18;
-  font-weight: $font-weight-bold;
-  margin-bottom: $spacing-8;
-  color: $primary-text;
+@media (max-width: 900px) {
+  .service-finder__card-grid {
+    grid-template-columns: repeat(2, 1fr);
+    min-height: auto;
+  }
 }
 
-.service-finder__dropdown-text {
-  color: $neutral-text;
-  font-size: $font-size-16;
-  line-height: $line-height-18;
-}
-
-.service-finder__dropdown-text ul,
-.service-finder__dropdown-text li {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
+@media (max-width: 600px) {
+  .service-finder__card-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-finder__dropdown {
+    padding: $spacing-16;
+  }
 }
 
 .desktop-version {

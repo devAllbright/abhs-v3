@@ -11,18 +11,20 @@ import FinalCTASection from "../components/pages/home/FinalCTASection.astro";
 
 const bannerData = {
   ratingText: "4.9 AVERAGE RATING",
-  title: "House Cleaning and Home Maintenance for better living in the South Bay since 1976.",
+  title:
+    "House Cleaning and Home Maintenance for better living in the South Bay since 1976.",
   subtitle: "See Prices & Schedule Services",
-  description: "From one-time cleaning to full-scale residential maintenance plans, we provide the framework for a high-performance home.",
+  description:
+    "From one-time cleaning to full-scale residential maintenance plans, we provide the framework for a high-performance home.",
   socialProof: [
     "5,000+ customers trust in Allbright Home Services",
-    "200,000+ services completed"
+    "200,000+ services completed",
   ],
   images: {
     googleLogo: "/google-logo.png",
     ratingStars: "rating-stars.svg",
     checkIcon: "/check.png",
-    heroImage: "/hero-img.png"
+    heroImage: "/hero-img.png",
   },
   uiImages: [
     { type: "a", src: "/banner-list/index/img-1.png" },
@@ -40,7 +42,7 @@ const bannerData = {
     { type: "b", src: "/banner-list/index/img-6.png" },
     { type: "a", src: "/banner-list/index/img-13.png" },
     { type: "b", src: "/banner-list/index/img-8.png" },
-    { type: "a", src: "/banner-list/index/img-15.png" }
+    { type: "a", src: "/banner-list/index/img-15.png" },
   ],
 
   imgClass: "--main",
@@ -50,66 +52,76 @@ const blogPosts = [
   {
     image: "/blog/post-1.png",
     title: "House Cleaning",
-    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
-    link: "#"
+    brief:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#",
   },
   {
     image: "/blog/post-2.png",
     title: "Carpet Cleaning",
-    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
-    link: "#"
+    brief:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#",
   },
   {
     image: "/blog/post-3.png",
     title: "Window Washing",
-    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
-    link: "#"
+    brief:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#",
   },
   {
     image: "/blog/post-4.png",
     title: "Gutter Cleaning",
-    brief: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
-    link: "#"
-  }
+    brief:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut",
+    link: "#",
+  },
 ];
 
 const finalCTAData = {
   imgSrc: "/final-cta.png",
   imgAlt: "Final Call to Action",
   title: "A cleaner home, a better life!",
-  brief: "Everything we do is designed to make your life easier, your home fresher, and your time more enjoyable.",
+  brief:
+    "Everything we do is designed to make your life easier, your home fresher, and your time more enjoyable.",
   callToActionText: "Ready to experience the difference?",
-  contactText: "Contact us today!"
+  contactText: "Contact us today!",
 };
 
 const faqs = [
   {
     question: "What types of cleaning and maintenance services do you offer?",
-    answer: "We provide a complete range of residential cleaning and home maintenance services. This includes recurring house cleaning, deep/detail cleaning, carpet and tile cleaning, and move-in/move-out cleaning. We also offer exterior upkeep such as window washing, pressure washing, outdoor kitchen cleaning, gutter cleaning, and seasonal home maintenance plans."
+    answer:
+      "We provide a complete range of residential cleaning and home maintenance services. This includes recurring house cleaning, deep/detail cleaning, carpet and tile cleaning, and move-in/move-out cleaning. We also offer exterior upkeep such as window washing, pressure washing, outdoor kitchen cleaning, gutter cleaning, and seasonal home maintenance plans.",
   },
   {
     question: "How do I schedule a service?",
-    answer: "Booking is simple! Call us directly to schedule your service with one of our experts, or request a free consultation to create a personalized plan that fits your home and lifestyle. We’ll help you choose the right service, pick a convenient time, and take care of the rest."
+    answer:
+      "Booking is simple! Call us directly to schedule your service with one of our experts, or request a free consultation to create a personalized plan that fits your home and lifestyle. We’ll help you choose the right service, pick a convenient time, and take care of the rest.",
   },
   {
     question: "Are your cleaners and technicians background-checked?",
-    answer: "Absolutely. All of our team members undergo background checks and professional training to ensure quality service and peace of mind."
+    answer:
+      "Absolutely. All of our team members undergo background checks and professional training to ensure quality service and peace of mind.",
   },
   {
     question: "Do I need to be home during the cleaning?",
-    answer: "Not necessarily. Many of our clients prefer to provide access and go about their day while we take care of the cleaning. You are also welcome to stay home if you prefer. Either way, you can trust our team to respect your space and follow any special instructions you provide."
+    answer:
+      "Not necessarily. Many of our clients prefer to provide access and go about their day while we take care of the cleaning. You are also welcome to stay home if you prefer. Either way, you can trust our team to respect your space and follow any special instructions you provide.",
   },
   {
     question: "What areas do you serve?",
-    answer: "We proudly serve the Greater Silicon Valley and South Bay area. Our service areas include Atherton, Hillsborough, Palo Alto, Los Altos, Mountain View, Sunnyvale, Santa Clara, San Jose, Saratoga, Los Gatos, and surrounding neighborhoods."
-  }
+    answer:
+      "We proudly serve the Greater Silicon Valley and South Bay area. Our service areas include Atherton, Hillsborough, Palo Alto, Los Altos, Mountain View, Sunnyvale, Santa Clara, San Jose, Saratoga, Los Gatos, and surrounding neighborhoods.",
+  },
 ];
 ---
 
 <BaseLayout>
-  <Hero bannerData={bannerData} client:only="react"/>
-  <ServiceFinder client:only="react"/>
-  <BenefitSection client:only="react"/>
+  <Hero bannerData={bannerData} client:only="react" />
+  <ServiceFinder client:only="react" />
+  <BenefitSection client:only="react" />
   <WhyChooseUsSection />
   <ReviewsWidget />
   <PostCarousel posts={blogPosts} client:only="react" />
@@ -119,6 +131,6 @@ const faqs = [
 
 <script>
   sessionStorage.clear();
-  sessionStorage.setItem('selectedService', 'Maid Services');
-  sessionStorage.setItem('primaryCta', 'Maid Services - Prices & Schedule');
+  sessionStorage.setItem("selectedService", "Maid Services");
+  sessionStorage.setItem("primaryCta", "Maid Services - Prices & Schedule");
 </script>

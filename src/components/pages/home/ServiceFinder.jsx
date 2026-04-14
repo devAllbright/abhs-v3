@@ -1,92 +1,58 @@
-import { useState, useMemo, useRef, useEffect } from "react";
-import Fuse from "fuse.js";
-import SearchIconTest from "../../SearchIconTest";
-import { serviceFinderInfo } from "../../../data/serviceFinderInfo.js";
+import { useState, useMemo } from "react";
 import serviceTypes from "../../../data/serviceTypes.json";
 
-function extractServices(json) {
-  const services = [];
-  Object.entries(json).forEach(([typeName, typeData]) => {
-    (typeData.categories || []).forEach((category) => {
-      (category.services || []).forEach((service) => {
-        services.push({
-          type: typeName,
-          name: service.name,
-          slug: service.url.replace("/our-services/", ""),
-          url: service.url,
-          price: service.price,
-          keywords: [service.name, category.title, typeName]
-        });
-      });
-    });
-  });
-  return services;
-}
+const buttons = [
+  { label: "Recurring Services", icon: "/searchbar-icons/maid-services.png" },
+  { label: "On-Demand Services", icon: "/searchbar-icons/maintenance-services.png" },
+  { label: "Bundles", icon: "/searchbar-icons/bundles.png" },
+  { label: "Maintenance Plans", icon: "/searchbar-icons/maid-services.png" } // Reusing icon for now
+];
 
-const fuse = new Fuse(extractServices(serviceTypes), {
-  keys: ["name", "keywords"],
-  threshold: 0.4,
-  includeMatches: true
-});
+const CATEGORY_FILTERS = {
+  "Recurring Services": ["Weekly Maid Services", "Bi-monthly Maid Services", "Monthly Maid Services"],
+  "On-Demand Services": ["House Cleaning", "Carpet Cleaning", "Window Washing", "Move in Ready"],
+  "Maintenance Plans": ["Care Plan", "Pristine Plan", "Refresh Plan", "Signature Plan"],
+  "Bundles": ["Full Bundle", "Carpet Bundle", "Window Bundle", "Carpet and Window"]
+};
 
-function formatPrice(price, type) {
-  if (price == null) return "";
-  const num = Number(price);
-  if (!Number.isNaN(num)) {
-    if (type === "Maintenance Plans" || type === "Bundles") {
-      return `$${num.toLocaleString("en-US")}`;
-    }
-    return `Starting at $${num.toLocaleString("en-US")}`;
-  }
-  return String(price);
+function ServiceCard({ service }) {
+  return (
+    <a href={service.url} className="service-finder__card">
+      <div className="service-finder__card-bg">
+        <img src={service.img} alt={service.name} loading="lazy" />
+        <div className="service-finder__card-overlay" />
+      </div>
+      <div className="service-finder__card-content">
+        <h5 className="service-finder__card-title">{service.name}</h5>
+      </div>
+    </a>
+  );
 }
 
 export default function ServiceFinderSection() {
   const [active, setActive] = useState(null);
-  const [query, setQuery] = useState("");
-  const [activeIndex, setActiveIndex] = useState(-1);
-  const inputRef = useRef(null);
 
-  const results = useMemo(() => {
-    if (!query.trim()) return [];
-    return fuse.search(query.trim()).map(({ item, matches }) => ({
-      ...item,
-      match: matches?.find((m) => m.key === "name" || m.key === "keywords")
-    }));
-  }, [query]);
+  // Filter services based on active button and specific requested lists
+  const activeServices = useMemo(() => {
+    if (!active) return [];
+    
+    const typeData = serviceTypes[active];
+    if (!typeData) return [];
+    
+    const allowedNames = CATEGORY_FILTERS[active];
+    const allServices = [];
 
-  const highlightMatch = (text, match) => {
-    if (!match?.indices?.length) return text;
-    let result = "";
-    let last = 0;
-    match.indices.forEach(([start, end]) => {
-      result += text.slice(last, start);
-      result += `<mark>${text.slice(start, end + 1)}</mark>`;
-      last = end + 1;
+    typeData.categories.forEach(cat => {
+      cat.services.forEach(s => {
+        // Only include if it's in the allowed names list for this category
+        if (allowedNames.includes(s.name)) {
+          allServices.push({ ...s, type: active });
+        }
+      });
     });
-    return result + text.slice(last);
-  };
 
-  const handleKeyDown = (e) => {
-    if (!results.length) return;
-    if (e.key === "ArrowDown") {
-      e.preventDefault();
-      setActiveIndex((p) => (p + 1) % results.length);
-    } else if (e.key === "ArrowUp") {
-      e.preventDefault();
-      setActiveIndex((p) => (p <= 0 ? results.length - 1 : p - 1));
-    } else if (e.key === "Enter" && activeIndex >= 0) {
-      window.location.href = results[activeIndex].url;
-    }
-  };
-
-  useEffect(() => setActiveIndex(-1), [results]);
-
-  const buttons = [
-    { label: "Recurring Services", icon: "/searchbar-icons/maid-services.png" },
-    { label: "On-Demand Services", icon: "/searchbar-icons/maintenance-services.png" },
-    { label: "Bundles", icon: "/searchbar-icons/bundles.png" }
-  ];
+    return allServices;
+  }, [active]);
 
   return (
     <div className="service-finder-wrapper">
@@ -117,21 +83,17 @@ export default function ServiceFinderSection() {
 
               <span className="service-finder__button-text">{btn.label}</span>
 
-              {active !== btn.label && (
-                <img
-                  src="/searchbar-icons/down-arrow.png"
-                  alt=""
-                  className="service-finder__button-icon"
-                />
-              )}
+              <img
+                src="/searchbar-icons/down-arrow.png"
+                alt=""
+                className={`service-finder__button-arrow ${active === btn.label ? 'service-finder__button-arrow--active' : ''}`}
+              />
             </button>
           ))}
         </div>
 
         {active && (
           <div className="service-finder__dropdown">
-
-            {/* CLOSE BUTTON */}
             <button
               className="service-finder__close"
               onClick={() => setActive(null)}
@@ -140,25 +102,11 @@ export default function ServiceFinderSection() {
               ✕
             </button>
 
-            <h3 className="service-finder__dropdown-title">
-              {serviceFinderInfo[active].title}
-            </h3>
-
-            {serviceFinderInfo[active].sections.map((section, i) => (
-              <div key={i} className="service-finder__dropdown-section">
-                <h4 className="service-finder__dropdown-label">{section.label}</h4>
-
-                <div
-                  className="service-finder__dropdown-text desktop-version"
-                  dangerouslySetInnerHTML={{ __html: section.htmlDesktop }}
-                />
-
-                <div
-                  className="service-finder__dropdown-text mobile-version"
-                  dangerouslySetInnerHTML={{ __html: section.htmlMobile }}
-                />
-              </div>
-            ))}
+            <div className="service-finder__card-grid">
+              {activeServices.map((service, idx) => (
+                <ServiceCard key={idx} service={service} />
+              ))}
+            </div>
           </div>
         )}
 
