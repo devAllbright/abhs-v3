@@ -1,3 +1,4 @@
+@use "sass:color";
 @use "../abstracts/variables" as *;
 
 .service-finder-wrapper {
@@ -154,7 +155,7 @@
   justify-content: center;
   gap: $spacing-8;
   padding: $spacing-12 $spacing-24;
-  border: 1px solid darken($background-positive-b, 5%);
+  border: 1px solid color.adjust($background-positive-b, $lightness: -5%);
   background: $background-positive-b;
   border-radius: 6px;
   cursor: pointer;
@@ -164,12 +165,12 @@
   transition: 0.25s ease;
 
   &:hover {
-    background-color: darken($background-positive-b, 10%);
+    background-color: color.adjust($background-positive-b, $lightness: -10%);
     color: white;
   }
 
   &--active {
-    background-color: darken($background-positive-b, 15%);
+    background-color: color.adjust($background-positive-b, $lightness: -15%);
     color: white;
   }
 }
