@@ -1,17 +1,9 @@
 ---
-import SectionHeading from "../../SectionHeading";
-import ServiceFilter from "./ServiceFilter"
+import ServiceFinder from "./ServiceFinder"
 
-
-
-const title = `Our Services`
-const subtitle = `Easy as 1,2,3 — CHOOSE,  REQUEST & ENJOY With efforteless, 
-                  scheduling,  flawless results, and lasting satisfaction—so 
-                  you can focus on what  matters most.`
 ---
 
 <div class="service-section">
-  <SectionHeading title={title} subtitle={subtitle} />
-   <ServiceFilter client:only="react">
+   <ServiceFinder client:only="react" />
 
 </div>

@@ -5,9 +5,9 @@
       {
         "title": "Routine Cleaning",
         "services": [
-          { "name": "Weekly Maid Services", "img": "/mega-menu/maid-weekly.png", "price": "170", "url": "/our-services/recurring-services/weekly-maid-services" },
-          { "name": "Bi-monthly Maid Services", "img": "/mega-menu/maid-bi.png", "price": "180", "url": "/our-services/recurring-services/bi-monthly-maid-services" },
-          { "name": "Monthly Maid Services", "img": "/mega-menu/maid-monthly.png", "price": "200", "url": "/our-services/recurring-services/monthly-maid-services" }
+          { "name": "Weekly Maid Services", "summary": "Reclaim your time while we handle the weekly chores.", "img": "/mega-menu/maid-weekly.png", "price": "170", "url": "/our-services/recurring-services/weekly-maid-services" },
+          { "name": "Bi-monthly Maid Services", "summary": "A perfect balance of value and consistent freshness.", "img": "/mega-menu/maid-bi.png", "price": "180", "url": "/our-services/recurring-services/bi-monthly-maid-services" },
+          { "name": "Monthly Maid Services", "summary": "A deep reset to keep your home healthy every month.", "img": "/mega-menu/maid-monthly.png", "price": "200", "url": "/our-services/recurring-services/monthly-maid-services" }
         ]
       }
     ]
@@ -18,22 +18,22 @@
       {
         "title": "Interior Cleaning",
         "services": [
-          { "name": "House Cleaning", "img": "/mega-menu/one-time-maid-services.png", "price": "195", "url": "/our-services/one-time-services/one-time-maid-services" },
-          { "name": "Home Detailing Cleaning", "img": "/mega-menu/home-detailing-cleaning.png", "price": "395", "url": "/our-services/one-time-services/home-detailing-cleaning" },
-          { "name": "Move in Ready", "img": "/mega-menu/move-in-ready.png", "price": "795", "url": "/our-services/one-time-services/move-in-ready" },
-          { "name": "Deep Cleaning", "img": "/mega-menu/deep-cleaning.png", "price": "390", "url": "/our-services/one-time-services/deep-cleaning" }
+          { "name": "House Cleaning", "summary": "Professional care for when your home needs extra love.", "img": "/mega-menu/one-time-maid-services.png", "price": "195", "url": "/our-services/one-time-services/one-time-maid-services" },
+          { "name": "Home Detailing Cleaning", "summary": "Showroom-quality detail for Every corner of your home.", "img": "/mega-menu/home-detailing-cleaning.png", "price": "395", "url": "/our-services/home-detailing-cleaning" },
+          { "name": "Move in Ready", "summary": "Start fresh in your new space with a spotless clean.", "img": "/mega-menu/move-in-ready.png", "price": "795", "url": "/our-services/one-time-services/move-in-ready" },
+          { "name": "Deep Cleaning", "summary": "Targeting hidden dirt for a healthier, refreshed home.", "img": "/mega-menu/deep-cleaning.png", "price": "390", "url": "/our-services/deep-cleaning" }
         ]
       },
       {
         "title": "Floors & Restoration",
         "services": [
-          { "name": "Carpet Cleaning", "img": "/mega-menu/carpet-cleaning.png", "price": "169", "url": "/our-services/one-time-services/carpet-cleaning" }
+          { "name": "Carpet Cleaning", "summary": "Revitalize your floors and remove deep-seated allergens.", "img": "/mega-menu/carpet-cleaning.png", "price": "169", "url": "/our-services/one-time-services/carpet-cleaning" }
         ]
       },
       {
         "title": "Windows & Exteriors",
         "services": [
-          { "name": "Window Washing", "img": "/mega-menu/window-washing.png", "price": "395", "url": "/our-services/one-time-services/window-washing" }
+          { "name": "Window Washing", "summary": "Crystal clear views and restored curb appeal today.", "img": "/mega-menu/window-washing.png", "price": "395", "url": "/our-services/one-time-services/window-washing" }
         ]
       }
     ]
@@ -44,10 +44,10 @@
       {
         "title": "Bundles",
         "services": [
-          { "name": "Full Bundle", "img": "/mega-menu/full-bundle.png", "price": "Save $100", "url": "/our-services/packages/full-bundle" },
-          { "name": "Carpet Bundle", "img": "/mega-menu/carpet-bundle.png", "price": "Save $75", "url": "/our-services/packages/carpet-bundle" },
-          { "name": "Window Bundle", "img": "/mega-menu/window-bundle.png", "price": "Save $75", "url": "/our-services/packages/window-bundle" },
-          { "name": "Carpet and Window", "img": "/mega-menu/carpet-and-window-bundle.png", "price": "Save $50", "url": "/our-services/packages/carpet-and-window-bundle" }
+          { "name": "Full Bundle", "summary": "The ultimate home care package with maximum savings.", "img": "/mega-menu/full-bundle.png", "price": "Save $100", "url": "/our-services/packages/full-bundle" },
+          { "name": "Carpet Bundle", "summary": "Soft floors and fresh air in one discounted service.", "img": "/mega-menu/carpet-bundle.png", "price": "Save $75", "url": "/our-services/packages/carpet-bundle" },
+          { "name": "Window Bundle", "summary": "Sparkling windows and gutters in one powerful combo.", "img": "/mega-menu/window-bundle.png", "price": "Save $75", "url": "/our-services/packages/window-bundle" },
+          { "name": "Carpet and Window", "summary": "The perfect interior/exterior refresh for your home.", "img": "/mega-menu/carpet-and-window-bundle.png", "price": "Save $50", "url": "/our-services/packages/carpet-and-window-bundle" }
         ]
       }
     ]
@@ -58,10 +58,10 @@
       {
         "title": "Plans",
         "services": [
-          { "name": "Care Plan", "img": "/mega-menu/care-plan.png", "price": "349", "url": "/maintenance-plans/care-plan" },
-          { "name": "Pristine Plan", "img": "/mega-menu/pristine-plan.png", "price": "549", "url": "/maintenance-plans/pristine-plan" },
-          { "name": "Refresh Plan", "img": "/mega-menu/refresh-plan.png", "price": "199", "url": "/maintenance-plans/refresh-plan" },
-          { "name": "Signature Plan", "img": "/mega-menu/signature-plan.png", "price": "749", "url": "/maintenance-plans/signature-plan" }
+          { "name": "Care Plan", "summary": "Essential protection to keep your home systems running.", "img": "/mega-menu/care-plan.png", "price": "349", "url": "/maintenance-plans/care-plan" },
+          { "name": "Pristine Plan", "summary": "Constant management for a worry-free home experience.", "img": "/mega-menu/pristine-plan.png", "price": "549", "url": "/maintenance-plans/pristine-plan" },
+          { "name": "Refresh Plan", "summary": "Quick seasonal updates to keep your home in top shape.", "img": "/mega-menu/refresh-plan.png", "price": "199", "url": "/maintenance-plans/refresh-plan" },
+          { "name": "Signature Plan", "summary": "White-glove service for the most discerning homeowners.", "img": "/mega-menu/signature-plan.png", "price": "749", "url": "/maintenance-plans/signature-plan" }
         ]
       }
     ]

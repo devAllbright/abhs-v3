@@ -10,22 +10,27 @@ const buttons = [
 
 const CATEGORY_FILTERS = {
   "Recurring Services": ["Weekly Maid Services", "Bi-monthly Maid Services", "Monthly Maid Services"],
-  "On-Demand Services": ["House Cleaning", "Carpet Cleaning", "Window Washing", "Move in Ready"],
+  "On-Demand Services": ["House Cleaning", "Carpet Cleaning", "Window Washing", "Move in Ready", "Home Detailing Cleaning", "Deep Cleaning"],
   "Maintenance Plans": ["Care Plan", "Pristine Plan", "Refresh Plan", "Signature Plan"],
   "Bundles": ["Full Bundle", "Carpet Bundle", "Window Bundle", "Carpet and Window"]
 };
 
 function ServiceCard({ service }) {
   return (
-    <a href={service.url} className="service-finder__card">
-      <div className="service-finder__card-bg">
-        <img src={service.img} alt={service.name} loading="lazy" />
-        <div className="service-finder__card-overlay" />
-      </div>
-      <div className="service-finder__card-content">
-        <h5 className="service-finder__card-title">{service.name}</h5>
-      </div>
-    </a>
+    <div className="service-finder__item">
+      <a href={service.url} className="service-finder__card">
+        <div className="service-finder__card-bg">
+          <img src={service.img} alt={service.name} loading="lazy" />
+          <div className="service-finder__card-overlay" />
+        </div>
+        <div className="service-finder__card-content">
+          <h5 className="service-finder__card-title">{service.name}</h5>
+        </div>
+      </a>
+      {service.summary && (
+        <p className="service-finder__card-summary">{service.summary}</p>
+      )}
+    </div>
   );
 }
 
