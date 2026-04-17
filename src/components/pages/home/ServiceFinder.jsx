@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import serviceTypes from "../../../data/serviceTypes.json";
+import HCPButton from "../../buttons/HCPButton";
 
 const buttons = [
   { label: "Recurring Services", icon: "/searchbar-icons/maid-services.png" },
@@ -111,6 +112,13 @@ export default function ServiceFinderSection() {
               {activeServices.map((service, idx) => (
                 <ServiceCard key={idx} service={service} />
               ))}
+            </div>
+
+            <div className="service-finder__cta-container">
+              <HCPButton
+                secondaryCta="Book a FREE Consultation"
+                buttonClass={'primary-cta'}
+              />
             </div>
           </div>
         )}

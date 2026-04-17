@@ -18,7 +18,7 @@
       {
         "title": "Interior Cleaning",
         "services": [
-          { "name": "House Cleaning", "summary": "Professional care for when your home needs extra love.", "img": "/mega-menu/one-time-maid-services.png", "price": "195", "url": "/our-services/one-time-services/one-time-maid-services" },
+          { "name": "House Cleaning", "summary": "Professional care for when your home needs extra love.", "img": "/mega-menu/house-cleaning.png", "price": "195", "url": "/our-services/one-time-services/one-time-maid-services" },
           { "name": "Home Detailing Cleaning", "summary": "Showroom-quality detail for Every corner of your home.", "img": "/mega-menu/home-detailing-cleaning.png", "price": "395", "url": "/our-services/home-detailing-cleaning" },
           { "name": "Move in Ready", "summary": "Start fresh in your new space with a spotless clean.", "img": "/mega-menu/move-in-ready.png", "price": "795", "url": "/our-services/one-time-services/move-in-ready" },
           { "name": "Deep Cleaning", "summary": "Targeting hidden dirt for a healthier, refreshed home.", "img": "/mega-menu/deep-cleaning.png", "price": "390", "url": "/our-services/deep-cleaning" }

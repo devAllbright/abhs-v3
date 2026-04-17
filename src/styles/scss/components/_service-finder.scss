@@ -109,6 +109,13 @@
   box-shadow: 0 20px 40px rgba(0,0,0,0.08);
 }
 
+.service-finder__cta-container {
+  margin-top: $spacing-32;
+  margin-bottom: $spacing-8;
+  display: flex;
+  justify-content: flex-start;
+}
+
 .service-finder__close {
   position: absolute;
   top: 10px;
