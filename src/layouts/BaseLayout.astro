@@ -3,11 +3,15 @@ import Head from "../components/layout/Head.astro";
 import ResponsiveHeader from "../components/layout/ResponsiveHeader";
 import Footer from "../components/layout/Footer.astro";
 import "../styles/main.scss";
+
+const { title } = Astro.props;
+const baseTitle = "Allbright Home Services";
+const fullTitle = title ? `${title} - ${baseTitle}` : baseTitle;
 ---
 
 <html lang="en">
   <head>
-    <Head title="Allbright Home Services" />
+    <Head title={fullTitle} />
 
     <script is:inline>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

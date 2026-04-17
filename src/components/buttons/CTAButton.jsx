@@ -1,5 +1,5 @@
-export default function CTAButton({ buttonClass }) {
-  const primaryCTA = sessionStorage.getItem("primaryCta") || "Book Now";
+export default function CTAButton({ buttonClass, label }) {
+  const primaryCTA = label || sessionStorage.getItem("primaryCta") || "Book Now";
 
   const handleClick = (e) => {
     e.preventDefault();

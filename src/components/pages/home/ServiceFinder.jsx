@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import serviceTypes from "../../../data/serviceTypes.json";
-import HCPButton from "../../buttons/HCPButton";
+import SmartCTA from "../../buttons/SmartCTA";
 
 const buttons = [
   { label: "Recurring Services", icon: "/searchbar-icons/maid-services.png" },
@@ -115,7 +115,8 @@ export default function ServiceFinderSection() {
             </div>
 
             <div className="service-finder__cta-container">
-              <HCPButton
+              <SmartCTA
+                forceType={active === 'Recurring Services' ? 'internal' : 'external'}
                 secondaryCta="Book a FREE Consultation"
                 buttonClass={'primary-cta'}
               />

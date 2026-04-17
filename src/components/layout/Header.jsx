@@ -2,7 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import MegaMenu from './MegaMenu';
 import SearchIcon from '../pages/our-services/SearchIcon';
 import SearchBar from '../pages/our-services/ServiceSearchHero.jsx';
-import CTAButton from '../buttons/CTAButton';
+import SmartCTA from '../buttons/SmartCTA';
+//import CTAButton from '../buttons/CTAButton';
 //import ModalCTA from '../buttons/ModalCTA';
 import HCPButton from '../buttons/HCPButton';
 
@@ -153,15 +154,7 @@ export default function Header() {
               setShowSearch(false);
             }}
           >
-            {/* 
-            {serviceType === 'recurring' || serviceType === 'onDemand' ? (
-              <CTAButton buttonClass={'primary-cta'} />
-            ) : (
-              <HCPButton secondaryCta="Book a FREE Consultation" buttonClass={'primary-cta'} />
-            )}
-            */}
-
-            <HCPButton
+            <SmartCTA 
               secondaryCta="Book a FREE Consultation"
               buttonClass={'primary-cta'}
             />

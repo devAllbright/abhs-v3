@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 /* import CTAButton from "./buttons/CTAButton"; */
 //import ModalCTA from "./buttons/ModalCTA";
+import SmartCTA from "./buttons/SmartCTA";
 import HCPButton from "./buttons/HCPButton";
 
 const StaticColumn = ({ images }) => (
@@ -83,18 +84,7 @@ export default function Hero({ bannerData }) {
           </div>
 
           <div className="primary-banner__cta">
-            {/* 
-            {serviceType === "recurring" || serviceType === "oneTime" ? (
-              <div>
-                <CTAButton buttonClass="primary-cta banner-cta" />
-                <HCPButton secondaryCta="Book a FREE Consultation" buttonClass="primary-cta banner-cta" />
-              </div>
-            ) : (
-              <HCPButton secondaryCta="Book a FREE Consultation" buttonClass="primary-cta" />
-            )}
-            */}
-
-            <HCPButton
+            <SmartCTA
               secondaryCta="Book a FREE Consultation"
               buttonClass="primary-cta banner-cta"
             />

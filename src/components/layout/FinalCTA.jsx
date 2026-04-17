@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CTAButton from "../buttons/CTAButton";
+import SmartCTA from "../buttons/SmartCTA";
 import HCPButton from "../buttons/HCPButton";
 
 export default function FinalCTA({ secondaryCta, buttonClass }) {
@@ -12,15 +12,10 @@ export default function FinalCTA({ secondaryCta, buttonClass }) {
 
   return (
     <>
-      {/* 
-      {(serviceType === "recurring" || serviceType === "oneTime") ? (
-        <CTAButton buttonClass={ buttonClass } />
-      ) : (
-        <HCPButton secondaryCta={ secondaryCta } buttonClass={ buttonClass } />
-      )}
-      */}
-
-      <HCPButton secondaryCta={ secondaryCta } buttonClass={ buttonClass } />
+      <SmartCTA 
+        secondaryCta={ secondaryCta } 
+        buttonClass={ buttonClass } 
+      />
     </>
   );
 }
