@@ -13,6 +13,7 @@ const StaticColumn = ({ images }) => (
           src={item.src}
           alt={`Image ${i + 1}`}
           className={`primary-banner__collage-image primary-banner__collage-image--type-${item.type}`}
+          style={item.style}
           loading="lazy"
         />
       ))}

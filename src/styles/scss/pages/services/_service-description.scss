@@ -10,10 +10,22 @@
     align-items: center;
     margin-right: $spacing-64;
 
-    img{
+    img, video {
       width: 40rem;
       height: 65rem;
       border-radius: $spacing-12;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Transition state */
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+
+    &.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 

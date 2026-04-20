@@ -2,8 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro"
 import Hero from '../../../components/Hero'
 import ServiceDescription from '../../../components/pages/services/ServiceDescription'
-// import ServiceDetails from '../../../components/pages/services/ServiceDetails'
-import SectionHeading from "../../../components/SectionHeading"
+import ServiceDetails from '../../../components/pages/services/ServiceDetails'
 import HowItWorks from "../../../components/pages/services/HowItWorks.astro"
 import BundleAndSave from '../../../components/pages/services/BundleAndSave'
 import ReviewsWidget from "../../../components/pages/ReviewsWidget.astro"
@@ -31,7 +30,7 @@ const bannerData = {
   },
 
   uiImages: [
-    { type: "a", src: "/banner-list/carpet-cleaning/img-1.png" },
+    { type: "a", src: "/banner-list/carpet-cleaning/img-1.png", style: { transform: 'rotate(180deg)' } },
     { type: "b", src: "/banner-list/carpet-cleaning/img-10.png" },
     { type: "a", src: "/banner-list/carpet-cleaning/img-3.png" },
     { type: "b", src: "/banner-list/carpet-cleaning/img-12.png" },
@@ -57,6 +56,7 @@ const bannerData = {
 const descriptionData = {
   title: "Restore Your Carpets to Their Prime",
   imageUrl: "/services/carpet-cleaning/description-img.png",
+  videoUrl: "/services/carpet-cleaning/carpet-cleaning.mp4",
   paragraphs: [
     {
       subtitle: "Deep Cleaning for a Fresh Start",
@@ -165,32 +165,7 @@ const faqs = [
 <BaseLayout title="Carpet Cleaning">
   <Hero bannerData={ bannerData } client:only="react"/>
   <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
-  <!-- <ServiceDetails serviceName= "Carpet Cleaning" client:only="react"/> -->
-
-  <section class="video-preview-section">
-    <SectionHeading 
-      title="A Closer Look" 
-      subtitle="Watch our expert process in action as we restore freshness to every fiber."
-      client:only="react"
-    />
-    
-    <div class="video-container-wrapper">
-      <div class="video-container">
-        <video 
-          autoplay 
-          loop 
-          muted 
-          playsinline 
-          controls
-          poster="/services/carpet-cleaning/video-poster.png"
-        >
-          <source src="/services/carpet-cleaning/carpet-cleaning.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div class="video-overlay-effect"></div>
-      </div>
-    </div>
-  </section>
+  <ServiceDetails serviceName= "Carpet Cleaning" client:only="react"/>
 
   <HowItWorks reasons={ reasonsData }/>
   <BundleAndSave bundleData={ bundleData } client:only="react"/>
@@ -201,109 +176,8 @@ const faqs = [
 
 </BaseLayout>
 
-<style>
-  .video-preview-section {
-    padding: 80px 20px;
-    background: linear-gradient(to bottom, #fff, #f9f9f9);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  .video-container-wrapper {
-    width: 100%;
-    max-width: 320px; /* Smaller desktop default */
-    margin-top: 40px;
-    perspective: 1000px;
-  }
-
-  .video-container {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    background: #000;
-    border-radius: 32px;
-    overflow: hidden;
-    box-shadow: 
-      0 20px 50px rgba(0,0,0,0.15),
-      0 0 0 8px #fff;
-    
-    /* Starting state for transition */
-    opacity: 0;
-    transform: translateY(60px) rotateX(15deg);
-    transition: 
-      opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-      transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-      box-shadow 0.5s ease;
-  }
-
-  .video-container.is-visible {
-    opacity: 1;
-    transform: translateY(0) rotateX(0);
-  }
-
-  video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .video-overlay-effect {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.2) 100%);
-    z-index: 1;
-  }
-
-  @media (max-width: 1024px) {
-    .video-container-wrapper {
-      max-width: 380px; /* Slightly larger on tablet */
-    }
-  }
-
-  @media (max-width: 768px) {
-    .video-preview-section {
-      padding: 60px 15px;
-    }
-    
-    .video-container-wrapper {
-      max-width: min(350px, 90%);
-    }
-
-    .video-container {
-      border-radius: 24px;
-      box-shadow: 
-        0 15px 30px rgba(0,0,0,0.15),
-        0 0 0 6px #fff;
-    }
-  }
-</style>
-
 <script>
   sessionStorage.clear();
   sessionStorage.setItem('selectedService', 'Carpet Cleaning');
   sessionStorage.setItem('primaryCta', 'Carpet Cleaning - Request a Booking');
-
-  // Intersection Observer for scroll-triggered transition
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -50px 0px',
-    threshold: 0.5
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.video-container').forEach(el => {
-    observer.observe(el);
-  });
 </script>
