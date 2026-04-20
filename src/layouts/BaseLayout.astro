@@ -4,14 +4,18 @@ import ResponsiveHeader from "../components/layout/ResponsiveHeader";
 import Footer from "../components/layout/Footer.astro";
 import "../styles/main.scss";
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
+
 const baseTitle = "Allbright Home Services";
+const baseDescription = "Allbright Home Services provides premium house cleaning and residential maintenance in the California South Bay since 1976.";
+
 const fullTitle = title ? `${title} - ${baseTitle}` : baseTitle;
+const fullDescription = description || baseDescription;
 ---
 
 <html lang="en">
   <head>
-    <Head title={fullTitle} />
+    <Head title={fullTitle} description={fullDescription} />
 
     <script is:inline>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

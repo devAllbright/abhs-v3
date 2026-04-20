@@ -4,11 +4,11 @@
 .service-finder-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   min-height: 55vh;
-  padding: $spacing-16 0;
+  padding: $spacing-64 0;
   position: relative;
   overflow: visible;
 }
@@ -31,6 +31,14 @@
   font-size: $font-size-48;
   font-weight: $font-weight-bold;
   color: $primary-text;
+
+  @media (max-width: 1024px) {
+    font-size: $font-size-28;
+  }
+
+  @media (max-width: 768px) {
+    font-size: $font-size-20;
+  }
 }
 
 .service-finder__search {
@@ -240,20 +248,36 @@
   overflow: hidden;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .service-finder__card-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     min-height: auto;
+    gap: $spacing-16;
+  }
+
+  .service-finder-wrapper {
+    padding: $spacing-40 0;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .service-finder__card-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-12;
   }
   
   .service-finder__dropdown {
     padding: $spacing-16;
+    width: 95%;
+  }
+
+  .service-finder__card-title {
+    font-size: $font-size-16;
+  }
+
+  .service-finder__card-summary {
+    font-size: $font-size-14;
+    margin-top: $spacing-8;
   }
 }
 
