@@ -44,10 +44,10 @@
       {
         "title": "Bundles",
         "services": [
-          { "name": "Full Bundle", "summary": "The ultimate home care package with maximum savings.", "img": "/mega-menu/full-bundle.png", "price": "Save $100", "url": "/our-services/packages/full-bundle" },
-          { "name": "Carpet Bundle", "summary": "Soft floors and fresh air in one discounted service.", "img": "/mega-menu/carpet-bundle.png", "price": "Save $75", "url": "/our-services/packages/carpet-bundle" },
-          { "name": "Window Bundle", "summary": "Sparkling windows and gutters in one powerful combo.", "img": "/mega-menu/window-bundle.png", "price": "Save $75", "url": "/our-services/packages/window-bundle" },
-          { "name": "Carpet and Window", "summary": "The perfect interior/exterior refresh for your home.", "img": "/mega-menu/carpet-and-window-bundle.png", "price": "Save $50", "url": "/our-services/packages/carpet-and-window-bundle" }
+          { "name": "Full Bundle", "summary": "The ultimate home care package.", "savings": "Save $100", "img": "/mega-menu/full-bundle.png", "price": "Save $100", "url": "/our-services/packages/full-bundle" },
+          { "name": "Carpet Bundle", "summary": "Soft floors and fresh air.", "savings": "Save $75", "img": "/mega-menu/carpet-bundle.png", "price": "Save $75", "url": "/our-services/packages/carpet-bundle" },
+          { "name": "Window Bundle", "summary": "Sparkling windows and gutters.", "savings": "Save $75", "img": "/mega-menu/window-bundle.png", "price": "Save $75", "url": "/our-services/packages/window-bundle" },
+          { "name": "Carpet and Window", "summary": "The perfect interior/exterior refresh.", "savings": "Save $50", "img": "/mega-menu/carpet-and-window-bundle.png", "price": "Save $50", "url": "/our-services/packages/carpet-and-window-bundle" }
         ]
       }
     ]

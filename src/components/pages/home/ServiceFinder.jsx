@@ -29,7 +29,10 @@ function ServiceCard({ service }) {
         </div>
       </a>
       {service.summary && (
-        <p className="service-finder__card-summary">{service.summary}</p>
+        <p className="service-finder__card-summary">
+          {service.summary}
+          {service.savings && <span className="service-finder__card-savings"> {service.savings}</span>}
+        </p>
       )}
     </div>
   );

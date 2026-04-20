@@ -249,6 +249,405 @@
       }
     }
   },
+  "Care Plan": {
+    "main": {
+      "zones": [
+        {
+          "title": "Bi-Monthly Maid Service",
+          "description": "Cleaning every other week for kitchens, bathrooms, bedrooms, and living areas. Includes dusting, sanitizing, vacuuming, mopping, and overall tidying for consistent upkeep.",
+          "image": "/service-details/care-plan/img-1.png"
+        },
+        {
+          "title": "Annual Carpet Cleaning",
+          "description": "Professional steam or low-moisture methods that remove stains, allergens, odors, and refresh carpet fibers for a healthier home.",
+          "image": "/service-details/care-plan/img-2.png"
+        },
+        {
+          "title": "Annual Window Washing",
+          "description": "Interior and exterior glass washed for a streak-free shine. Includes screens, tracks, and sills for a complete finish.",
+          "image": "/service-details/care-plan/img-3.png"
+        },
+        {
+          "title": "Annual Gutter Cleaning",
+          "description": "Clearing of leaves, debris, and buildup, plus a flush and inspection to ensure proper drainage and prevent water damage.",
+          "image": "/service-details/care-plan/img-4.png"
+        }
+      ]
+    },
+    "blocks": {
+      "topRight": {
+        "title": "Quick Facts",
+        "description": [
+          "Maid Service: Every other week (2–3 hours per visit depending on home size).",
+          "Carpet Cleaning: Once annually.",
+          "Window Washing: Once annually.",
+          "Gutter Cleaning: Once annually."
+        ],
+        "image": "/service-details/img-1.png",
+        "background": "css-bg"
+      },
+      "middleRight": {
+        "title": "Service Highlights",
+        "description": [
+          "Combines bi-monthly maid service with annual deep-clean essentials.",
+          "Perfect balance for busy families and professionals who want consistent upkeep.",
+          "Annual services automatically included for peace of mind."
+        ],
+        "image": "/service-details/img-2.png",
+        "background": "css-bg"
+      },
+      "bottomRight": {
+        "title": "What's Not Included",
+        "description": [
+          "Weekly maid visits (covered under other plans).",
+          "Upholstery, tile, or exterior surface cleaning (available as add-ons).",
+          "Structural repairs for windows, gutters, or flooring."
+        ],
+        "image": "/service-details/img-3.png",
+        "background": "css-bg"
+      },
+      "bottomMiddle": {
+        "title": "Pro Tips & Benefits",
+        "description": [
+          "Bi-monthly service keeps dust, crumbs, and clutter under control between deeper cleanings.",
+          "Schedule annual services seasonally (spring/fall) for maximum impact.",
+          "Add upholstery or tile cleaning when needed for a more complete reset."
+        ],
+        "image": "/service-details/img-4.png",
+        "background": "css-bg"
+      },
+      "bottomLeft": {
+        "title": "Optional Upgrades",
+        "description": [
+          "Upholstery cleaning for sofas and dining chairs.",
+          "Tile and grout cleaning for kitchens and bathrooms.",
+          "Exterior surface washing for siding, patios, or driveways."
+        ],
+        "image": "/service-details/img-5.png",
+        "background": "css-bg"
+      }
+    },
+    "faq": [
+      {
+        "question": "What's included in the Care Plan?",
+        "answer": "The Care Plan includes bi-monthly maid service plus one annual carpet cleaning, one window washing, and one gutter cleaning. It ensures consistent upkeep with yearly deep-clean essentials already covered."
+      },
+      {
+        "question": "Can I switch to weekly maid service?",
+        "answer": "Weekly visits aren't included in this plan, but you can upgrade to a different plan that offers weekly service. The Care Plan is designed for every-other-week upkeep."
+      },
+      {
+        "question": "How does scheduling work for the annual services?",
+        "answer": "We'll send reminders when it's time for carpet, window, or gutter cleaning. You can choose the date that works best, and we handle the scheduling."
+      },
+      {
+        "question": "Who is the Care Plan best for?",
+        "answer": "This plan is ideal for families, couples, and busy professionals who want consistent upkeep every two weeks but don't need weekly service."
+      },
+      {
+        "question": "Can I add extras like upholstery cleaning?",
+        "answer": "Yes. You can add upholstery, tile, or exterior surface cleaning to your Care Plan for a more complete reset whenever you need it."
+      }
+    ]
+  },
+  "Refresh Plan": {
+    "main": {
+      "zones": [
+        {
+          "title": "Monthly Maid Service",
+          "description": "Regular cleaning of kitchens, bathrooms, bedrooms, and living areas. Includes dusting, sanitizing, and tidying to maintain a consistently fresh home environment.",
+          "image": "/service-details/refresh-plan/img-1.png"
+        },
+        {
+          "title": "Annual Carpet Cleaning",
+          "description": "Professional steam or low-moisture cleaning that removes dirt, allergens, odors, and stains to refresh and sanitize carpets.",
+          "image": "/service-details/refresh-plan/img-2.png"
+        },
+        {
+          "title": "Annual Window Washing",
+          "description": "Interior and exterior glass cleaned for streak-free clarity. Includes screens, tracks, and sills for a complete window refresh.",
+          "image": "/service-details/refresh-plan/img-3.png"
+        },
+        {
+          "title": "Annual Gutter Cleaning",
+          "description": "Removal of leaves and debris from gutters and downspouts, plus flush and inspection to ensure proper drainage and prevent water damage.",
+          "image": "/service-details/refresh-plan/img-4.png"
+        }
+      ]
+    },
+    "blocks": {
+      "topRight": {
+        "title": "Quick Facts",
+        "description": [
+          "Maid Service: Once per month (2–4 hours per visit depending on home size).",
+          "Carpet Cleaning: Once annually.",
+          "Window Washing: Once annually.",
+          "Gutter Cleaning: Once annually."
+        ],
+        "image": "/service-details/img-1.png",
+        "background": "css-bg"
+      },
+      "middleRight": {
+        "title": "Service Highlights",
+        "description": [
+          "Combines monthly maid upkeep with annual deep-clean services.",
+          "Ensures key home maintenance tasks are covered without tracking.",
+          "Saves time and hassle by scheduling services automatically."
+        ],
+        "image": "/service-details/img-2.png",
+        "background": "css-bg"
+      },
+      "bottomRight": {
+        "title": "What's Not Included",
+        "description": [
+          "Weekly or bi-weekly maid visits (covered in other plans).",
+          "Upholstery, tile, or exterior surface cleaning (available as add-ons).",
+          "Heavy debris removal or gutter repair."
+        ],
+        "image": "/service-details/img-3.png",
+        "background": "css-bg"
+      },
+      "bottomMiddle": {
+        "title": "Pro Tips & Benefits",
+        "description": [
+          "Use monthly maid visits to maintain high-traffic areas between seasonal deep cleans.",
+          "Book annual services in spring or fall for best results.",
+          "Pair with optional add-ons like tile cleaning or exterior washing for a complete reset."
+        ],
+        "image": "/service-details/img-4.png",
+        "background": "css-bg"
+      },
+      "bottomLeft": {
+        "title": "Optional Upgrades",
+        "description": [
+          "Upholstery cleaning for furniture refresh.",
+          "Tile and grout cleaning for kitchens and bathrooms.",
+          "Exterior surface washing for siding, patios, or driveways."
+        ],
+        "image": "/service-details/img-5.png",
+        "background": "css-bg"
+      }
+    },
+    "faq": [
+      {
+        "question": "What's included in the Refresh Plan?",
+        "answer": "The Refresh Plan includes monthly maid service to keep your home neat and tidy, plus one annual carpet cleaning, one window washing, and one gutter cleaning. It's designed for consistent upkeep with the peace of mind that deep-cleaning tasks are automatically covered each year."
+      },
+      {
+        "question": "How does scheduling work for the annual services?",
+        "answer": "We'll send you reminders when it's time for carpet, window, or gutter cleaning. You choose the dates that work best for you, and we handle the scheduling and service so you never have to track them yourself."
+      },
+      {
+        "question": "Can I customize the Refresh Plan?",
+        "answer": "Yes. While the core services are fixed, you can add extras such as upholstery cleaning, tile cleaning, or exterior surface washing. If you prefer more flexibility in frequency or services, our Signature Plan may be a better fit."
+      },
+      {
+        "question": "Who is the Refresh Plan best for?",
+        "answer": "The Refresh Plan is ideal for smaller households, empty nesters, or homeowners who want consistent monthly cleaning but don't need weekly service. It's also perfect for those who prefer not to manage annual task scheduling."
+      },
+      {
+        "question": "What happens if I miss a scheduled visit?",
+        "answer": "If you need to reschedule, we'll work with you to find a new time. We ask for at least 48 hours' notice to avoid a cancellation fee, but our goal is to keep your plan on track while staying flexible with your schedule."
+      }
+    ]
+  },
+  "Pristine Plan": {
+    "main": {
+      "zones": [
+        {
+          "title": "Weekly Maid Service",
+          "description": "Full cleaning of kitchens, bathrooms, bedrooms, and living spaces. Includes dusting, vacuuming, mopping, sanitizing, and general tidying every week.",
+          "image": "/service-details/pristine-plan/img-1.png"
+        },
+        {
+          "title": "Annual Carpet Cleaning",
+          "description": "Professional deep cleaning with steam or low-moisture methods. Removes dirt, stains, odors, and allergens to keep carpets fresh year-round.",
+          "image": "/service-details/pristine-plan/img-2.png"
+        },
+        {
+          "title": "Annual Window Washing",
+          "description": "Interior and exterior glass washed streak-free. Includes tracks, screens, and sills for a polished, complete result.",
+          "image": "/service-details/pristine-plan/img-3.png"
+        },
+        {
+          "title": "Annual Gutter Cleaning",
+          "description": "Clearing of gutters and downspouts, plus flushing and inspection to ensure proper drainage and prevent costly water damage.",
+          "image": "/service-details/pristine-plan/img-4.png"
+        }
+      ]
+    },
+    "blocks": {
+      "topRight": {
+        "title": "Quick Facts",
+        "description": [
+          "Maid Service: Weekly visits (2–3 hours per visit depending on home size).",
+          "Carpet Cleaning: Once annually.",
+          "Window Washing: Once annually.",
+          "Gutter Cleaning: Once annually."
+        ],
+        "image": "/service-details/img-1.png",
+        "background": "css-bg"
+      },
+      "middleRight": {
+        "title": "Service Highlights",
+        "description": [
+          "Our most complete package with weekly upkeep plus annual deep-clean services.",
+          "Ideal for large households, busy professionals, or families wanting a spotless home year-round.",
+          "Includes priority scheduling during peak seasons for Pristine Plan clients."
+        ],
+        "image": "/service-details/img-2.png",
+        "background": "css-bg"
+      },
+      "bottomRight": {
+        "title": "What's Not Included",
+        "description": [
+          "Upholstery, tile, or exterior surface cleaning (available as add-ons).",
+          "Repairs for gutters, windows, or flooring.",
+          "Post-construction cleanup (offered separately)."
+        ],
+        "image": "/service-details/img-3.png",
+        "background": "css-bg"
+      },
+      "bottomMiddle": {
+        "title": "Pro Tips & Benefits",
+        "description": [
+          "Weekly visits ensure dust, clutter, and mess never build up.",
+          "Book annual services in spring or fall for best results.",
+          "Use add-ons like upholstery, tile, or exterior washing for a complete reset.",
+          "Enjoy priority scheduling during busy holiday or seasonal periods."
+        ],
+        "image": "/service-details/img-4.png",
+        "background": "css-bg"
+      },
+      "bottomLeft": {
+        "title": "Optional Upgrades",
+        "description": [
+          "Upholstery cleaning for sofas, chairs, and mattresses.",
+          "Tile and grout cleaning for bathrooms and kitchens.",
+          "Exterior surface washing for siding, patios, or driveways."
+        ],
+        "image": "/service-details/img-5.png",
+        "background": "css-bg"
+      }
+    },
+    "faq": [
+      {
+        "question": "What's included in the Pristine Plan?",
+        "answer": "The Pristine Plan includes weekly maid service plus one annual carpet cleaning, one window washing, and one gutter cleaning. It provides consistent upkeep and annual deep cleaning for a spotless home year-round."
+      },
+      {
+        "question": "Do I get priority scheduling?",
+        "answer": "Yes. Pristine Plan clients receive priority scheduling during peak seasons such as holidays and spring/fall cleaning periods."
+      },
+      {
+        "question": "Can I add upholstery or tile cleaning?",
+        "answer": "Yes. You can add upholstery, tile, or exterior surface cleaning as extras to your Pristine Plan for a complete reset when needed."
+      },
+      {
+        "question": "Who is the Pristine Plan best for?",
+        "answer": "The Pristine Plan is ideal for large households, families, or busy professionals who want their home consistently spotless and free of buildup."
+      },
+      {
+        "question": "How long does each visit take?",
+        "answer": "Weekly maid visits take about 2–3 hours depending on home size. Annual services take an additional 3–6 hours combined, scheduled separately."
+      }
+    ]
+  },
+  "Signature Plan": {
+    "main": {
+      "zones": [
+        {
+          "title": "Flexible Cleaning Options",
+          "description": "Choose weekly, bi-weekly, monthly, or seasonal cleaning. Kitchens, bathrooms, bedrooms, and living areas are refreshed to your preferred schedule.",
+          "image": "/service-details/signature-plan/img-1.png"
+        },
+        {
+          "title": "Specialty Add-Ons",
+          "description": "Appliance detailing, tile and grout restoration, upholstery and mattress care, garage organizing, move-in/out prep, and outdoor projects. Exterior maintenance such as gutter care and surface washing available as needed.",
+          "image": "/service-details/signature-plan/img-2.png"
+        },
+        {
+          "title": "Personalized Scheduling",
+          "description": "Scheduling tailored around your lifestyle and household needs. Seasonal or one-off specialty projects can be booked on demand.",
+          "image": "/service-details/signature-plan/img-3.png"
+        }
+      ]
+    },
+    "blocks": {
+      "topRight": {
+        "title": "Quick Facts",
+        "description": [
+          "Frequency: Fully customizable (weekly, bi-weekly, monthly, seasonal, or project-based).",
+          "Duration: Adaptable depending on chosen services (2–4 hours for standard visits; longer for seasonal or specialty projects)."
+        ],
+        "image": "/service-details/img-1.png",
+        "background": "css-bg"
+      },
+      "middleRight": {
+        "title": "Service Highlights",
+        "description": [
+          "Concierge-level flexibility tailored to your lifestyle.",
+          "Dedicated cleaning team with trained backup support.",
+          "Specialty add-ons and seasonal projects available on demand."
+        ],
+        "image": "/service-details/img-2.png",
+        "background": "css-bg"
+      },
+      "bottomRight": {
+        "title": "What's Not Included",
+        "description": [
+          "Fixed pricing—cost varies by services and frequency.",
+          "Structural repairs (gutters, flooring, windows, etc.).",
+          "Post-construction cleanup (available separately)."
+        ],
+        "image": "/service-details/img-3.png",
+        "background": "css-bg"
+      },
+      "bottomMiddle": {
+        "title": "Pro Tips & Benefits",
+        "description": [
+          "Use Signature for flexibility: weekly during busy months, seasonal resets for spring/fall.",
+          "Add specialty projects like garage organizing or appliance detailing to maximize value.",
+          "Keep one dedicated team for consistency, with backup support always ready."
+        ],
+        "image": "/service-details/img-4.png",
+        "background": "css-bg"
+      },
+      "bottomLeft": {
+        "title": "Optional Upgrades",
+        "description": [
+          "Appliance detailing (fridge, oven, microwave, etc.).",
+          "Upholstery and mattress cleaning.",
+          "Garage organizing and move-in/out preparation.",
+          "Outdoor maintenance such as gutter cleaning and surface washing."
+        ],
+        "image": "/service-details/img-5.png",
+        "background": "css-bg"
+      }
+    },
+    "faq": [
+      {
+        "question": "What's included in the Signature Plan?",
+        "answer": "The Signature Plan includes customizable cleaning options, specialty add-ons, and personalized scheduling. Services cover kitchens, bathrooms, bedrooms, living spaces, and seasonal or one-off projects."
+      },
+      {
+        "question": "How flexible is the scheduling?",
+        "answer": "The plan is fully customizable—choose weekly, bi-weekly, monthly, seasonal, or project-based scheduling depending on your lifestyle needs."
+      },
+      {
+        "question": "Can I add specialty services?",
+        "answer": "Yes. You can add specialty projects such as appliance detailing, tile and grout restoration, upholstery and mattress cleaning, garage organizing, and exterior maintenance like gutter care."
+      },
+      {
+        "question": "Who is the Signature Plan best for?",
+        "answer": "The Signature Plan is best for homeowners who want total control, concierge-level service, and the ability to adjust services as life changes. It's ideal for those who prefer consistent quality with flexible scheduling."
+      },
+      {
+        "question": "Do I have a dedicated cleaning team?",
+        "answer": "Yes. You'll have one dedicated team for consistency, with a trained backup team available if needed so you're never left without service."
+      }
+    ]
+  },
   "One-Time Maid Services": {
     "main": {
       "zones": [
@@ -446,7 +845,7 @@
         "background": "css-bg"
       },
       "bottomRight": {
-        "title": "What’s Not Included",
+        "title": "What's Not Included",
         "description": [
           "Carpet shampooing or steam cleaning.",
           "Full fridge or oven interior cleaning.",

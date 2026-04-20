@@ -248,6 +248,11 @@
   overflow: hidden;
 }
 
+.service-finder__card-savings {
+  color: $tertiary-text;
+  font-weight: $font-weight-bold;
+}
+
 @media (max-width: 1024px) {
   .service-finder__card-grid {
     grid-template-columns: repeat(3, 1fr);
