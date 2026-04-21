@@ -21,7 +21,13 @@ export default function MobileHeader() {
     <header className="mobile-header">
       <div className="mobile-header__top">
         <a href="/" className="mobile-header__logo">
-          <img src="/allbright-logo.png" alt="Allbright Logo" />
+          <img 
+            src="/allbright-logo.png" 
+            alt="Allbright Logo" 
+            width="40" 
+            height="40" 
+            loading="eager"
+          />
         </a>
 
         <button
@@ -29,7 +35,12 @@ export default function MobileHeader() {
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
-          <img src="/icons/hamburger.png" alt="Open menu" />
+          <img 
+            src="/icons/hamburger.png" 
+            alt="Open menu" 
+            width="32" 
+            height="32"
+          />
         </button>
       </div>
 
@@ -41,7 +52,12 @@ export default function MobileHeader() {
               onClick={toggleMenu}
               aria-label="Close menu"
             >
-              <img src="/icons/close.png" alt="Close menu" />
+              <img 
+                src="/icons/close.png" 
+                alt="Close menu" 
+                width="32" 
+                height="32"
+              />
             </button>
           </div>
 

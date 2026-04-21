@@ -26,7 +26,7 @@ const faqs = [
 ---
 
 <BaseLayout title="Our Services">
-  <SearchBar isHero={true} client:only="react"/>
+  <SearchBar isHero={true} client:load/>
   <ServiceSection />
   <ReviewsWidget />
   <FAQSection faqs={ faqs } />

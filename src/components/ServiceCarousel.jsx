@@ -52,32 +52,45 @@ export default function ServiceCarousel() {
 
   return (
     <div className='carousel-container'>
-			<div className="carousel">
-				<div className="carousel__sidebar">
-					{services.map((service, index) => (
-						<button
-							key={service.id}
-							className={`carousel__thumbnail ${index === activeIndex ? 'carousel__thumbnail--active' : ''}`}
-							onClick={() => handleSelect(index)}
-							aria-label={`View ${service.title}`}
-						>
-							<img src={service.image} alt={service.title} />
-							<span>{service.title}</span>
-						</button>
-					))}
-				</div>
+      <div className="carousel">
+        <div className="carousel__sidebar">
+          {services.map((service, index) => (
+            <button
+              key={service.id}
+              className={`carousel__thumbnail ${index === activeIndex ? 'carousel__thumbnail--active' : ''}`}
+              onClick={() => handleSelect(index)}
+              aria-label={`View ${service.title}`}
+            >
+              <img 
+                src={service.image} 
+                alt={service.title} 
+                loading="eager"
+              />
+              <span>{service.title}</span>
+            </button>
+          ))}
+        </div>
 
-				<div className="carousel__main">
-					<img className="carousel__image" src={services[activeIndex].image} alt={services[activeIndex].title} />
-					<div className="carousel__info">
-						<h2 className="carousel__title">{services[activeIndex].title}</h2>
-						<p className="carousel__price">{services[activeIndex].price}</p>
-						<p className="carousel__description">{services[activeIndex].description}</p>
-						<a href="#" className="carousel__link">Learn more &gt;</a>
-					</div>
-					<div ref={progressRef} className="carousel__progress-bar" />
-				</div>
-			</div>
+        <div className="carousel__main">
+          {/* Preload next image */}
+          <link rel="preload" as="image" href={services[(activeIndex + 1) % services.length].image} />
+          
+          <img 
+            className="carousel__image" 
+            src={services[activeIndex].image} 
+            alt={services[activeIndex].title} 
+            loading="eager"
+            fetchPriority="high"
+          />
+          <div className="carousel__info">
+            <h2 className="carousel__title">{services[activeIndex].title}</h2>
+            <p className="carousel__price">{services[activeIndex].price}</p>
+            <p className="carousel__description">{services[activeIndex].description}</p>
+            <a href="#" className="carousel__link">Learn more &gt;</a>
+          </div>
+          <div ref={progressRef} className="carousel__progress-bar" />
+        </div>
+      </div>
     </div>
   );
 }

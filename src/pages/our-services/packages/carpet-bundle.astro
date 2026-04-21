@@ -178,13 +178,13 @@ const faqs = [
 ---
 
 <BaseLayout title="Carpet Cleaning Bundle">
-  <Hero bannerData={ bannerData } client:only="react"/>
-  <ServiceDescription descriptionData={ descriptionData }client:only="react"/>
-  <ServiceDetails serviceName= "Carpet Bundle" client:only="react"/>
+  <Hero bannerData={ bannerData } client:load/>
+  <ServiceDescription descriptionData={ descriptionData }client:load/>
+  <ServiceDetails serviceName= "Carpet Bundle" client:load/>
   <HowItWorks reasons={ reasonsData }/>
-  <BundleAndSave bundleData={ bundleData } client:only="react"/>
+  <BundleAndSave bundleData={ bundleData } client:load/>
   <ReviewsWidget />
-  <PostCarousel posts={ blogPosts } client:only="react"/>
+  <PostCarousel posts={ blogPosts } client:load/>
   <FAQSection faqs={ faqs }/>
   <FinalCTASection finalCTAData={ finalCTAData }/>
 

@@ -103,6 +103,7 @@
       overflow: hidden;
       position: relative;
       border-radius: 10rem;
+      background-color: rgba($background-neutral, 0.4); // Add a subtle placeholder background
 
       &::before,
       &::after {
@@ -149,7 +150,7 @@
       flex-direction: column;
 
       &--animated {
-        animation: scrollUp 50s linear infinite;
+        animation: scrollUp 100s linear infinite;
       }
     }
 

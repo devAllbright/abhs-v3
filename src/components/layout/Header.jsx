@@ -80,7 +80,14 @@ export default function Header() {
         >
           <a href="/" className="header__logo-link">
             <div className="header__logo-img">
-              <img src="/allbright-logo.png" alt="Allbright Logo" />
+              <img 
+                src="/allbright-logo.png" 
+                alt="Allbright Logo" 
+                width="50" 
+                height="50" 
+                loading="eager" 
+                fetchPriority="high"
+              />
             </div>
             <div className="header__logo-text">
               <span>ALLBRIGHT HOMES SERVICES</span>
@@ -142,7 +149,13 @@ export default function Header() {
             }}
           >
             <a href="tel:4082801234" className="header__cta-number-link">
-              <img src="/phone-call.png" alt="Phone Icon" className="header__cta-number-icon" />
+              <img 
+                src="/phone-call.png" 
+                alt="Phone Icon" 
+                className="header__cta-number-icon" 
+                width="20" 
+                height="20"
+              />
               <span className="header__cta-number-text">(408) - 280 - 1234</span>
             </a>
           </div>

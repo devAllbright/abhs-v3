@@ -40,6 +40,10 @@ const MegaMenu = forwardRef(({ visible, onLeave }, ref) => {
                     <img
                       src={`/services/${type.toLowerCase().replace(/ /g, '-')}.png`}
                       alt={`${type} Icon`}
+                      loading="lazy"
+                      decoding="async"
+                      width="40"
+                      height="40"
                     />
                   </div>
                 </div>
@@ -67,21 +71,40 @@ const MegaMenu = forwardRef(({ visible, onLeave }, ref) => {
               </div>
               <div className="mega-menu__services">
                 {category.services.map((service, idx) => (
-                  <a
-                    key={idx}
-                    href={service.url}
-                    className="mega-menu__service"
-                  >
-                    <div className="mega-menu__service-img">
-                      <img src={service.img} alt={service.name} />
-                    </div>
-                    <div className="mega-menu__service-name">
-                      <p>{service.name}</p>
-                    </div>
-                    <div className="mega-menu__service-price">
-                      <p>{formatPrice(service.price, selectedType)}</p>
-                    </div>
-                  </a>
+                  <div className="mega-menu__service-item" key={idx}>
+                    <a
+                      href={service.url}
+                      className="mega-menu__service-card"
+                    >
+                      <div className="mega-menu__service-card-bg">
+                        <img 
+                          src={service.img} 
+                          alt={service.name} 
+                          loading="lazy" 
+                          decoding="async"
+                        />
+                        <div className="mega-menu__service-card-overlay" />
+                      </div>
+                      <div className="mega-menu__service-card-content">
+                        <h5 className="mega-menu__service-card-title">{service.name}</h5>
+                      </div>
+                    </a>
+                    {service.summary && (
+                      <p className="mega-menu__service-card-summary">
+                        {service.summary}
+                        {service.savings && (
+                          <span className="mega-menu__service-card-savings">
+                            {" "}{service.savings}
+                          </span>
+                        )}
+                        {!service.savings && service.price && (
+                           <span className="mega-menu__service-card-price">
+                             {" • "}{formatPrice(service.price, selectedType)}
+                           </span>
+                        )}
+                      </p>
+                    )}
+                  </div>
                 ))}
               </div>
             </div>

@@ -5,10 +5,10 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 ---
   <BaseLayout>
     <div class="shopping-logic">
-      <ShoppingLogic client:only="react" />
+      <ShoppingLogic client:load />
     </div>
     <div class="shopping-logic">
-      <OneTimeLogic client:only="react" />
+      <OneTimeLogic client:load />
     </div>
   </BaseLayout>
 </div>

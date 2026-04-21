@@ -53,11 +53,18 @@ export default function ServiceDescription({ descriptionData }) {
             playsinline 
             controls
             poster={descriptionData.imageUrl}
+            loading="eager"
+            fetchPriority="high"
           >
             <source src={descriptionData.videoUrl} type="video/mp4" />
           </video>
         ) : (
-          <img src={descriptionData.imageUrl} alt={descriptionData.title} />
+          <img 
+            src={descriptionData.imageUrl} 
+            alt={descriptionData.title} 
+            loading="eager"
+            fetchPriority="high"
+          />
         )}
       </div>
       <div className="service-description__text">

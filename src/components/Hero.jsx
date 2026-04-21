@@ -13,8 +13,11 @@ const StaticColumn = ({ images }) => (
           src={item.src}
           alt={`Image ${i + 1}`}
           className={`primary-banner__collage-image primary-banner__collage-image--type-${item.type}`}
-          style={item.style}
-          loading="lazy"
+          style={{
+            ...item.style
+          }}
+          loading="eager"
+          fetchPriority={i < 4 ? "high" : "auto"} // Prioritize the first few images in each column
         />
       ))}
     </div>
@@ -34,8 +37,14 @@ export default function Hero({ bannerData }) {
 
   const [serviceType, setServiceType] = useState(null);
 
-  const columnOneImages = uiImages.slice(0, 8);
-  const columnTwoImages = uiImages.slice(8, 16);
+  // Dynamically split uiImages into two equal-ish columns
+  const mid = Math.ceil(uiImages.length / 2);
+  const columnOneOriginal = uiImages.slice(0, mid);
+  const columnTwoOriginal = uiImages.slice(mid);
+
+  // Double each column for a seamless infinite loop with translateY(-50%)
+  const columnOneImages = [...columnOneOriginal, ...columnOneOriginal];
+  const columnTwoImages = [...columnTwoOriginal, ...columnTwoOriginal];
 
   useEffect(() => {
     const storedServiceType = sessionStorage.getItem("serviceType");

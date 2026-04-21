@@ -122,12 +122,12 @@ const faqs = [
   title="Premium House Cleaning & Home Maintenance in South Bay, CA"
   description="Expert house cleaning and residential maintenance tailored for the California South Bay. Allbright Home Services provides premium care for a spotless, high-performance home."
 >
-  <Hero bannerData={bannerData} client:only="react" />
-  <ServiceFinder client:only="react" />
-  <BenefitSection client:only="react" />
+  <Hero bannerData={bannerData} client:load />
+  <ServiceFinder client:load />
+  <BenefitSection client:load />
   <WhyChooseUsSection />
   <ReviewsWidget />
-  <PostCarousel posts={blogPosts} client:only="react" />
+  <PostCarousel posts={blogPosts} client:load />
   <FAQSection faqs={faqs} />
   <FinalCTASection finalCTAData={finalCTAData} />
 </BaseLayout>
