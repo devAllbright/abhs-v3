@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import SmartCTA from "./buttons/SmartCTA";
 import HCPButton from "./buttons/HCPButton";
 
-const StaticColumn = ({ images }) => (
+const StaticColumn = ({ images, onImageLoad }) => (
   <div className="primary-banner__collage-column-wrapper">
     <div className="primary-banner__collage-column primary-banner__collage-column--animated">
       {images.map((item, i) => (
@@ -17,6 +17,8 @@ const StaticColumn = ({ images }) => (
             ...item.style
           }}
           loading="eager"
+          onLoad={onImageLoad}
+          onError={onImageLoad}
           fetchPriority={i < 4 ? "high" : "auto"} // Prioritize the first few images in each column
         />
       ))}
@@ -36,6 +38,8 @@ export default function Hero({ bannerData }) {
   } = bannerData;
 
   const [serviceType, setServiceType] = useState(null);
+  const [loadedCount, setLoadedCount] = useState(0);
+  const [isForcedVisible, setIsForcedVisible] = useState(false);
 
   // Dynamically split uiImages into two equal-ish columns
   const mid = Math.ceil(uiImages.length / 2);
@@ -46,9 +50,35 @@ export default function Hero({ bannerData }) {
   const columnOneImages = [...columnOneOriginal, ...columnOneOriginal];
   const columnTwoImages = [...columnTwoOriginal, ...columnTwoOriginal];
 
+  const totalImages = columnOneImages.length + columnTwoImages.length;
+  // Reduced threshold: Wait for 50% of images or the unique ones, whichever is smaller, to feel "fast"
+  const loadingThreshold = Math.min(uiImages.length, 6); 
+  const allImagesLoaded = loadedCount >= loadingThreshold || isForcedVisible;
+
+  const handleImageLoad = () => {
+    setLoadedCount(prev => prev + 1);
+  };
+
   useEffect(() => {
     const storedServiceType = sessionStorage.getItem("serviceType");
     setServiceType(storedServiceType);
+
+    // Initial check for cached images
+    const imgElements = document.querySelectorAll('.primary-banner__collage-image');
+    let completed = 0;
+    imgElements.forEach(img => {
+      if (img.complete) completed++;
+    });
+    if (completed > 0) {
+      setLoadedCount(prev => prev + completed);
+    }
+
+    // Fallback: If images take too long (e.g. 1.2s), show the carousel anyway
+    const timer = setTimeout(() => {
+      setIsForcedVisible(true);
+    }, 1200);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -102,12 +132,12 @@ export default function Hero({ bannerData }) {
         </div>
       </div>
 
-      <div className="primary-banner__collage">
+      <div className={`primary-banner__collage ${allImagesLoaded ? 'primary-banner__collage--loaded' : ''}`}>
         <div className="primary-banner__collage-container">
-          <StaticColumn images={columnOneImages} />
-          <StaticColumn images={columnTwoImages} />
+          <StaticColumn images={columnOneImages} onImageLoad={handleImageLoad} />
+          <StaticColumn images={columnTwoImages} onImageLoad={handleImageLoad} />
         </div>
       </div>
     </div>
-  );
+  )
 }
