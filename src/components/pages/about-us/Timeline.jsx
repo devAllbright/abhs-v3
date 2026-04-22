@@ -1,9 +1,7 @@
 import { useRef, useState, useEffect } from 'react';
 import milestones from '../../../data/milestones.json';
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from 'react-vertical-timeline-component';
+import pkg from 'react-vertical-timeline-component';
+const { VerticalTimeline, VerticalTimelineElement } = pkg;
 import 'react-vertical-timeline-component/style.min.css';
 
 const ANIM_DURATION = 200;
