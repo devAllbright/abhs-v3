@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import '../../styles/pricing/service-type.css';
 
 export default function ServiceType() {
-  const [activeService, setActiveService] = useState(sessionStorage.getItem('serviceType') || '');
+  const [activeService, setActiveService] = useState('');
+
+  useEffect(() => {
+    const stored = sessionStorage.getItem('serviceType');
+    if (stored) setActiveService(stored);
+  }, []);
 
   useEffect(() => {
     if (activeService) {
