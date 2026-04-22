@@ -11,4 +11,9 @@ export default defineConfig({
     react(),
     sitemap(),
   ],
+  vite: {
+    ssr: {
+      noExternal: ['react-vertical-timeline-component'],
+    },
+  },
 });
