@@ -26,6 +26,12 @@ const defaultCartData = {
     stainsRemove: false,
     petUrineTreatment: false
   },
+  advancedCarpet: {
+    carpet: {},
+    upholstery: {},
+    tile: {}
+  },
+  appliedPromo: "",
   contactInfo: {
     name: "",
     phone: "",

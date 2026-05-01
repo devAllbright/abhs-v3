@@ -1,13 +1,32 @@
 {
-  "serviceName": "Carpet Cleaning",
+  "serviceName": "Advanced Carpet Cleaning",
   "pricing": {
-    "minimum": 145,
-    "normalConditionPerSqft": 0.38,
-    "badConditionPerSqft": 0.45
+    "carpet": {
+      "Room": { "clean": 50, "protect": 25, "deodorize": 15 },
+      "Bath or Laundry": { "clean": 30, "protect": 15, "deodorize": 10 },
+      "Entry or Hall": { "clean": 40, "protect": 20, "deodorize": 10 },
+      "Staircase": { "clean": 60, "protect": 30, "deodorize": 20 }
+    },
+    "upholstery": {
+      "Sofa": { "clean": 100, "protect": 40, "deodorize": 20 },
+      "Sofa (Over 7ft)": { "clean": 130, "protect": 50, "deodorize": 25 },
+      "Sectional": { "clean": 180, "protect": 70, "deodorize": 35 },
+      "Sectional (Over 12ft)": { "clean": 230, "protect": 90, "deodorize": 45 },
+      "Loveseat": { "clean": 80, "protect": 30, "deodorize": 15 },
+      "Chair": { "clean": 50, "protect": 20, "deodorize": 10 },
+      "Ottoman": { "clean": 30, "protect": 10, "deodorize": 5 },
+      "Dining Room Chair": { "clean": 25, "protect": 10, "deodorize": 5 },
+      "Chaise": { "clean": 60, "protect": 25, "deodorize": 15 }
+    },
+    "tile": {
+      "Room": { "clean": 60, "seal": 30 },
+      "Bath or Laundry": { "clean": 40, "seal": 20 },
+      "Entry or Hall": { "clean": 50, "seal": 25 },
+      "Staircase": { "clean": 70, "seal": 35 }
+    }
   },
-  "extras": {
-    "deodorize": 10,
-    "stainsRemove": 20,
-    "petUrineTreatment": 30
+  "promos": {
+    "SUMMER20": { "type": "percentage", "value": 20 },
+    "SAVE50": { "type": "fixed", "value": 50 }
   }
 }

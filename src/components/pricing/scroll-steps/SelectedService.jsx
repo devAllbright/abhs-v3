@@ -122,86 +122,103 @@ function ProfessionalServicesBlock() {
 
 function CarpetCleaningBlock() {
   const { cartData, updateCartData } = useShoppingCart();
-  const { serviceName } = carpetCleaningPrices;
+  const { serviceName, pricing } = carpetCleaningPrices;
+  const [expandedSection, setExpandedSection] = useState("carpet");
 
-  const DEFAULT_SQFT = 500;
-
-    // --------------------------
-    // NEW: Initialize on mount
-    // --------------------------
-    useEffect(() => {
-      updateCartData({
-        selectedService: "Carpet Cleaning",
-        carpetSquareFootage: DEFAULT_SQFT,
-        condition: cartData.hadProServices ? "normal" : "bad",
-        selectedFrequency: "",
-        discount: 0
-      });
-    }, []);
-
-  const [carpetSqft, setCarpetSqft] = useState(DEFAULT_SQFT);
-
-  const adjustSqft = (value) => {
-    if (value < 500) return 500;
-    if (value > 2500) return 2500;
-    return value;
-  };
-
-  const updateSqft = (value) => {
-    const newValue = adjustSqft(value);
-    setCarpetSqft(newValue);
-
+  useEffect(() => {
     updateCartData({
       selectedService: "Carpet Cleaning",
-      carpetSquareFootage: newValue,
       condition: cartData.hadProServices ? "normal" : "bad",
       selectedFrequency: "",
       discount: 0
     });
+  }, []);
+
+  const handleToggle = (section) => {
+    setExpandedSection(expandedSection === section ? null : section);
   };
 
-  const handleInput = (e) => {
-    const raw = parseInt(e.target.value.replace(/\D/g, ""), 10);
-    updateSqft(raw || DEFAULT_SQFT);
+  const handleCountChange = (cat, item, service, delta) => {
+    const currentQty = cartData.advancedCarpet?.[cat]?.[item]?.[service] || 0;
+    const newQty = Math.max(0, currentQty + delta);
+    updateCartData(`advancedCarpet.${cat}.${item}.${service}`, newQty);
+  };
+
+  const renderTable = (catName, catKey) => {
+    const items = pricing[catKey] || {};
+    const itemNames = Object.keys(items);
+    if (itemNames.length === 0) return null;
+
+    const serviceColumns = Object.keys(items[itemNames[0]] || {});
+
+    return (
+      <div className="accordion-section" style={{ marginBottom: "10px", border: "1px solid #ccc", borderRadius: "4px" }}>
+        <div
+          className="accordion-header"
+          onClick={() => handleToggle(catKey)}
+          style={{ padding: "15px", backgroundColor: "#000", color: "#fff", display: "flex", justifyContent: "space-between", cursor: "pointer", fontWeight: "bold" }}
+        >
+          <span>{catName}</span>
+          <span style={{ color: "#f39c12" }}>{expandedSection === catKey ? "▲" : "▼"}</span>
+        </div>
+        {expandedSection === catKey && (
+          <div className="accordion-body" style={{ overflowX: "auto" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", textAlign: "center" }}>
+              <thead>
+                <tr style={{ backgroundColor: "#555", color: "#fff" }}>
+                  <th style={{ padding: "10px", textAlign: "left" }}>Item</th>
+                  {serviceColumns.map(svc => (
+                    <th key={svc} style={{ padding: "10px", textTransform: "uppercase" }}>{svc}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {itemNames.map((itemName, idx) => (
+                  <tr key={itemName} style={{ backgroundColor: idx % 2 === 0 ? "#f9f9f9" : "#fff", borderBottom: "1px solid #ddd" }}>
+                    <td style={{ padding: "15px 10px", textAlign: "left", fontWeight: "bold", color: "#333" }}>{itemName}</td>
+                    {serviceColumns.map(svc => {
+                      const qty = cartData.advancedCarpet?.[catKey]?.[itemName]?.[svc] || 0;
+                      return (
+                        <td key={svc} style={{ padding: "10px" }}>
+                          <div style={{ display: "inline-flex", alignItems: "center", border: "1px solid #ccc", borderRadius: "4px", backgroundColor: "#fff" }}>
+                            <button
+                              style={{ border: "none", background: "none", padding: "5px 10px", cursor: "pointer", fontSize: "16px" }}
+                              onClick={() => handleCountChange(catKey, itemName, svc, -1)}
+                            >
+                              -
+                            </button>
+                            <span style={{ minWidth: "30px" }}>{qty}</span>
+                            <button
+                              style={{ border: "none", background: "none", padding: "5px 10px", cursor: "pointer", fontSize: "16px" }}
+                              onClick={() => handleCountChange(catKey, itemName, svc, 1)}
+                            >
+                              +
+                            </button>
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </div>
+    );
   };
 
   return (
     <div className="scroll-choose-service">
-      <div className="scroll-title"><p>Choose your Service</p></div>
+      <div className="scroll-title"><p>What can we clean for you?</p></div>
+      <p style={{ fontSize: "14px", color: "#555", marginBottom: "20px" }}>
+        Please select all items and services from the drop downs below for an accurate quote.
+      </p>
 
-      <div className="services-container">
-        <button className="service active-service" disabled>
-          {serviceName}
-        </button>
-
-        <div className="service-frequency">
-          <div className="frequency-element">
-            <div className="sqft-control">
-              <button
-                className="frequency-btn"
-                onClick={() => updateSqft(carpetSqft - 100)}
-              >
-                -100
-              </button>
-
-              <input
-                type="number"
-                className="sqft-input"
-                value={carpetSqft}
-                onChange={handleInput}
-              />
-
-              <button
-                className="frequency-btn"
-                onClick={() => updateSqft(carpetSqft + 100)}
-              >
-                +100
-              </button>
-            </div>
-
-            <p className="discount-text">Enter Sq Ft (500–2500)</p>
-          </div>
-        </div>
+      <div className="services-container" style={{ display: "block" }}>
+        {renderTable("CARPET CLEANING", "carpet")}
+        {renderTable("UPHOLSTERY CLEANING", "upholstery")}
+        {renderTable("TILE & GROUT FLOOR CLEANING", "tile")}
       </div>
     </div>
   );

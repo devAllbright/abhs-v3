@@ -14,7 +14,9 @@ export function calculatePrice(cart) {
     bathroomNumber,
     halfBathroomNumber,
     extras,
-    carpetSquareFootage
+    carpetSquareFootage,
+    advancedCarpet,
+    appliedPromo
   } = cart;
 
   const sqft = Number(squareFootage) || 0;
@@ -178,37 +180,45 @@ export function calculatePrice(cart) {
   }
 
   // ---------------------------------------------------------
-  // CARPET CLEANING (UNCHANGED)
+  // ADVANCED CARPET CLEANING
   // ---------------------------------------------------------
   if (selectedService === "Carpet Cleaning") {
-    const carpetSqft = carpetSquareFootage ?? sqft;
-    if (!carpetSqft) return null;
+    let carpetBase = 0;
 
-    const rate =
-      condition === "bad"
-        ? carpetData.pricing.badConditionPerSqft
-        : carpetData.pricing.normalConditionPerSqft;
+    if (advancedCarpet) {
+      const categories = ["carpet", "upholstery", "tile"];
+      categories.forEach((cat) => {
+        const items = advancedCarpet[cat];
+        if (!items) return;
 
-    base = R(carpetSqft * rate);
-
-    if (extras.deodorize) {
-      const rounded = R(carpetData.extras.deodorize);
-      extrasList.push({ name: "Deodorize", price: rounded });
-      extrasTotal += rounded;
-    }
-    if (extras.stainsRemove) {
-      const rounded = R(carpetData.extras.stainsRemove);
-      extrasList.push({ name: "Stains Removal", price: rounded });
-      extrasTotal += rounded;
-    }
-    if (extras.petUrineTreatment) {
-      const rounded = R(carpetData.extras.petUrineTreatment);
-      extrasList.push({ name: "Pet Urine Treatment", price: rounded });
-      extrasTotal += rounded;
+        Object.entries(items).forEach(([itemName, services]) => {
+          Object.entries(services).forEach(([serviceName, qty]) => {
+            if (qty > 0) {
+              const unitPrice = carpetData.pricing[cat]?.[itemName]?.[serviceName] || 0;
+              const lineTotal = R(unitPrice * qty);
+              if (lineTotal > 0) {
+                const label = `${cat.charAt(0).toUpperCase() + cat.slice(1)}: ${itemName} (${serviceName.charAt(0).toUpperCase() + serviceName.slice(1)})`;
+                extrasList.push({ name: `${label} ×${qty}`, price: lineTotal });
+                carpetBase += lineTotal;
+              }
+            }
+          });
+        });
+      });
     }
 
-    final = R(base + extrasTotal);
-    discountAmount = 0;
+    base = carpetBase;
+
+    if (appliedPromo && carpetData.promos[appliedPromo]) {
+      const promo = carpetData.promos[appliedPromo];
+      if (promo.type === "percentage") {
+        discountAmount = R(base * (promo.value / 100));
+      } else if (promo.type === "fixed") {
+        discountAmount = promo.value;
+      }
+    }
+
+    final = Math.max(0, R(base - discountAmount));
   }
 
   return {

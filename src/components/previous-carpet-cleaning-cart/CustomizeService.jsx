@@ -79,7 +79,7 @@ export default function CustomizeService() {
   const { cartData, updateCartData } = useShoppingCart();
   const { selectedService, condition, extras } = cartData;
 
-  if (!selectedService || selectedService === "Carpet Cleaning") return null;
+  if (!selectedService) return null;
 
   const isMaid = selectedService === "Maid Services";
 

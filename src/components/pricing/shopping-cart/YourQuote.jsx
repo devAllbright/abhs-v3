@@ -94,6 +94,24 @@ export default function YourQuote() {
             ""
           )
         )}
+        
+      {serviceName === "Carpet Cleaning" && (
+        <div style={{ marginTop: "20px", padding: "15px", borderTop: "1px solid #ccc" }}>
+          <p style={{ fontWeight: "bold", marginBottom: "10px" }}>Promo Code</p>
+          <div style={{ display: "flex", gap: "10px" }}>
+            <input 
+              type="text" 
+              placeholder="Enter Code" 
+              value={cartData.appliedPromo || ""}
+              onChange={(e) => updateCartData("appliedPromo", e.target.value.toUpperCase())}
+              style={{ padding: "10px", flex: 1, border: "1px solid #ccc", borderRadius: "4px" }}
+            />
+          </div>
+          {discountAmount > 0 && cartData.appliedPromo && (
+            <p style={{ color: "green", fontSize: "12px", marginTop: "5px" }}>Promo applied!</p>
+          )}
+        </div>
+      )}
     </div>
   );
 }

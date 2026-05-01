@@ -1,61 +1,11 @@
-import { useEffect, useState } from "react";
 import { ShoppingCartProvider } from "../../context/ShoppingCartContext";
-import SelectedService from "./scroll-steps/SelectedService";
-import CustomizeService from "./scroll-steps/CustomizeService";
-import ContactInfo from "./scroll-steps/ContactInfo";
-import Disclaimer from "./shopping-cart/Disclaimer";
-import BundleDisclaimer from "./shopping-cart/BundleDisclaimer";
-import YourQuote from "./shopping-cart/YourQuote";
+import CartLayoutSwitcher from "./CartLayoutSwitcher";
 import "../../styles/pricing/shopping-cart.css";
 
 export default function ShoppingCart() {
-  const [serviceType, setServiceType] = useState("");
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const stored = sessionStorage.getItem("serviceType");
-      if (stored) setServiceType(stored);
-    }
-  }, []);
-
-  const handleNext = () => {
-    if (typeof window !== "undefined") {
-      window.location.href = "/pricing/final-summary";
-    }
-  };
-
   return (
     <ShoppingCartProvider>
-      <div className="shopping-cart-container">
-        <div className="cart-scrolling-side">
-          <SelectedService />
-          <CustomizeService />
-          <ContactInfo />
-        </div>
-
-        <div className="cart-static-side">
-          <div className="your-quote">
-            <YourQuote />
-          </div>
-
-          <div className="disclaimer">
-            {serviceType === "oneTimeMaids" ? (
-              <BundleDisclaimer />
-            ) : (
-              <Disclaimer />
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div className="navigation-buttons">
-        <a href="/pricing/pro-services">
-          <button className="nav-button">Back</button>
-        </a>
-        <button className="nav-button" onClick={handleNext}>
-          Next
-        </button>
-      </div>
+      <CartLayoutSwitcher />
     </ShoppingCartProvider>
   );
 }
