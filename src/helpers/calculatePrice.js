@@ -15,8 +15,7 @@ export function calculatePrice(cart) {
     halfBathroomNumber,
     extras,
     carpetSquareFootage,
-    advancedCarpet,
-    appliedPromo
+    advancedCarpet
   } = cart;
 
   const sqft = Number(squareFootage) || 0;
@@ -186,7 +185,9 @@ export function calculatePrice(cart) {
     let carpetBase = 0;
 
     if (advancedCarpet) {
-      const categories = ["carpet", "upholstery", "tile"];
+      const categories = ["carpet", "areaRug", "upholstery", "tile"];
+      let maxMinimum = 0;
+
       categories.forEach((cat) => {
         const items = advancedCarpet[cat];
         if (!items) return;
@@ -200,24 +201,26 @@ export function calculatePrice(cart) {
                 const label = `${cat.charAt(0).toUpperCase() + cat.slice(1)}: ${itemName} (${serviceName.charAt(0).toUpperCase() + serviceName.slice(1)})`;
                 extrasList.push({ name: `${label} ×${qty}`, price: lineTotal });
                 carpetBase += lineTotal;
+
+                const itemMin = carpetData.pricing[cat]?.[itemName]?.minimum || 0;
+                if (itemMin > maxMinimum) {
+                  maxMinimum = itemMin;
+                }
               }
             }
           });
         });
       });
-    }
 
-    base = carpetBase;
-
-    if (appliedPromo && carpetData.promos[appliedPromo]) {
-      const promo = carpetData.promos[appliedPromo];
-      if (promo.type === "percentage") {
-        discountAmount = R(base * (promo.value / 100));
-      } else if (promo.type === "fixed") {
-        discountAmount = promo.value;
+      if (carpetBase > 0 && carpetBase < maxMinimum) {
+        const diff = maxMinimum - carpetBase;
+        extrasList.push({ name: "Minimum Service Charge Adjustment", price: diff });
+        carpetBase = maxMinimum;
       }
     }
 
+    base = carpetBase;
+    
     final = Math.max(0, R(base - discountAmount));
   }
 

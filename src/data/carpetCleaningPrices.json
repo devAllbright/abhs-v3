@@ -2,21 +2,26 @@
   "serviceName": "Advanced Carpet Cleaning",
   "pricing": {
     "carpet": {
-      "Room": { "clean": 50, "protect": 25, "deodorize": 15 },
-      "Bath or Laundry": { "clean": 30, "protect": 15, "deodorize": 10 },
-      "Entry or Hall": { "clean": 40, "protect": 20, "deodorize": 10 },
-      "Staircase": { "clean": 60, "protect": 30, "deodorize": 20 }
+      "Room": { "clean normal": 65, "clean heavily soiled": 75, "protect": 45, "deodorize": 35, "minimum": 195 },
+      "Bath or Laundry": { "clean normal": 65, "clean heavily soiled": 75, "protect": 45, "deodorize": 35, "minimum": 195 },
+      "Entry or Hall": { "clean normal": 65, "clean heavily soiled": 75, "protect": 45, "deodorize": 45, "minimum": 195 },
+      "Staircase": { "clean normal": 135, "clean heavily soiled": 165, "protect": 85, "deodorize": 45, "minimum": 195 }
+    },
+    "areaRug": {
+      "Small & Medium": { "clean normal": 145, "clean heavily soiled": 185, "protect": 90, "deodorize": 45, "minimum": 195 },
+      "Large": { "clean normal": 195, "clean heavily soiled": 205, "protect": 90, "deodorize": 45, "minimum": 195 }
     },
     "upholstery": {
-      "Sofa": { "clean": 100, "protect": 40, "deodorize": 20 },
-      "Sofa (Over 7ft)": { "clean": 130, "protect": 50, "deodorize": 25 },
-      "Sectional": { "clean": 180, "protect": 70, "deodorize": 35 },
-      "Sectional (Over 12ft)": { "clean": 230, "protect": 90, "deodorize": 45 },
-      "Loveseat": { "clean": 80, "protect": 30, "deodorize": 15 },
-      "Chair": { "clean": 50, "protect": 20, "deodorize": 10 },
-      "Ottoman": { "clean": 30, "protect": 10, "deodorize": 5 },
-      "Dining Room Chair": { "clean": 25, "protect": 10, "deodorize": 5 },
-      "Chaise": { "clean": 60, "protect": 25, "deodorize": 15 }
+      "Sectional (Per Section)": { "clean normal": 135, "clean heavily soiled": 155, "protect": 95, "deodorize": 45, "minimum": 295 },
+      "Sectional (Over 12ft)": { "clean normal": 385, "clean heavily soiled": 425, "protect": 195, "deodorize": 85, "minimum": 385 },
+      "Sofa": { "clean normal": 225, "clean heavily soiled": 265, "protect": 90, "deodorize": 45, "minimum": 225 },
+      "Love Seat": { "clean normal": 195, "clean heavily soiled": 225, "protect": 90, "deodorize": 45, "minimum": 195 }
+    },
+    "_commentedOutUpholstery": {
+      "Ottoman": { "clean normal": 0, "clean heavily soiled": 0, "protect": 0, "deodorize": 0, "minimum": 0 },
+      "Dining Room Chair": { "clean normal": 0, "clean heavily soiled": 0, "protect": 0, "deodorize": 0, "minimum": 0 },
+      "Chaise": { "clean normal": 0, "clean heavily soiled": 0, "protect": 0, "deodorize": 0, "minimum": 0 },
+      "Chair": { "clean normal": 0, "clean heavily soiled": 0, "protect": 0, "deodorize": 0, "minimum": 0 }
     },
     "tile": {
       "Room": { "clean": 60, "seal": 30 },
@@ -24,9 +29,5 @@
       "Entry or Hall": { "clean": 50, "seal": 25 },
       "Staircase": { "clean": 70, "seal": 35 }
     }
-  },
-  "promos": {
-    "SUMMER20": { "type": "percentage", "value": 20 },
-    "SAVE50": { "type": "fixed", "value": 50 }
   }
 }

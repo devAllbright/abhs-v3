@@ -6,6 +6,7 @@ export default function AdvancedCarpetCart() {
   const { cartData, updateCartData } = useShoppingCart();
   const { pricing } = carpetCleaningPrices;
   const [expandedSection, setExpandedSection] = useState("carpet");
+  const [displayZip, setDisplayZip] = useState("95110");
 
   useEffect(() => {
     updateCartData({
@@ -14,6 +15,15 @@ export default function AdvancedCarpetCart() {
       selectedFrequency: "",
       discount: 0
     });
+
+    if (typeof window !== "undefined") {
+      const storedZip = sessionStorage.getItem("zipCode");
+      if (storedZip) {
+        setDisplayZip(storedZip);
+      } else if (cartData.zipCode) {
+        setDisplayZip(cartData.zipCode);
+      }
+    }
   }, []);
 
   const handleToggle = (section) => {
@@ -31,7 +41,7 @@ export default function AdvancedCarpetCart() {
     const itemNames = Object.keys(items);
     if (itemNames.length === 0) return null;
 
-    const serviceColumns = Object.keys(items[itemNames[0]] || {});
+    const serviceColumns = Object.keys(items[itemNames[0]] || {}).filter(svc => svc !== "minimum");
     
     const infoIcon = (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="#FC8551" style={{ marginLeft: "6px", verticalAlign: "middle" }}>
@@ -131,8 +141,10 @@ export default function AdvancedCarpetCart() {
   const formatPrice = (val) => `$${Number(val).toFixed(2)}`;
 
   const renderQuoteSummary = () => {
-    const categories = ["carpet", "upholstery", "tile"];
+    const categories = ["carpet", "areaRug", "upholstery", "tile"];
     const summary = [];
+    let overallSubtotal = 0;
+    let maxMinimum = 0;
 
     categories.forEach((cat) => {
       const items = cartData.advancedCarpet?.[cat];
@@ -151,11 +163,17 @@ export default function AdvancedCarpetCart() {
             catAgg[serviceName].qty += qty;
             catAgg[serviceName].price += lineTotal;
             catSubtotal += lineTotal;
+
+            const itemMin = pricing[cat]?.[itemName]?.minimum || 0;
+            if (itemMin > maxMinimum) {
+              maxMinimum = itemMin;
+            }
           }
         });
       });
 
       if (catSubtotal > 0) {
+        overallSubtotal += catSubtotal;
         summary.push({
           cat,
           services: catAgg,
@@ -166,12 +184,17 @@ export default function AdvancedCarpetCart() {
 
     if (summary.length === 0) return null;
 
+    let minimumAdjustment = 0;
+    if (overallSubtotal > 0 && overallSubtotal < maxMinimum) {
+      minimumAdjustment = maxMinimum - overallSubtotal;
+    }
+
     return (
       <div style={{ marginBottom: "15px" }}>
         {summary.map(s => (
            <div key={s.cat} style={{ marginBottom: "10px" }}>
               <div style={{ backgroundColor: "#222", color: "#fff", padding: "10px 15px", fontWeight: "700", borderRadius: "3px", fontSize: "12px", textTransform: "uppercase" }}>
-                {s.cat}
+                {s.cat.replace(/([A-Z])/g, ' $1').trim()}
               </div>
               <div style={{ padding: "10px 15px" }}>
                 {Object.entries(s.services).map(([svc, data]) => (
@@ -190,6 +213,15 @@ export default function AdvancedCarpetCart() {
               </div>
            </div>
         ))}
+
+        {minimumAdjustment > 0 && (
+           <div style={{ marginBottom: "10px" }}>
+              <div style={{ display: "flex", justifyContent: "space-between", padding: "12px 15px", backgroundColor: "#f9e5e5", border: "1px solid #f5c2c7", borderRadius: "3px", fontWeight: "700", fontSize: "13px", color: "#842029" }}>
+                <span>MINIMUM ADJUSTMENT</span>
+                <span>{formatPrice(minimumAdjustment)}</span>
+              </div>
+           </div>
+        )}
       </div>
     );
   };
@@ -210,37 +242,19 @@ export default function AdvancedCarpetCart() {
             <p style={{ margin: 0, fontWeight: "bold", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "12px" }}>
               <span style={{ display: "flex", alignItems: "center" }}>
                 <span style={{ color: "#FC8551", marginRight: "8px", fontSize: "14px" }}>📍</span> 
-                ZIP: <span style={{ marginLeft: "4px" }}>{cartData.zipCode || "95110"}</span> <span style={{ fontWeight: "normal", fontSize: "11px", marginLeft: "6px", textDecoration: "underline", cursor: "pointer" }}>Change</span>
+                ZIP: <span style={{ marginLeft: "4px" }}>{displayZip}</span>
               </span>
-              <span style={{ color: "#666", fontSize: "10px" }}>▼</span>
             </p>
           </div>
           <div style={{ backgroundColor: "#dcdcdc", padding: "12px 15px", borderRadius: "3px", textAlign: "center", fontSize: "12px", color: "#555", marginBottom: "10px" }}>
-            1-800-STEEMER / (800) 783-3637
-          </div>
-          
-          <h4 style={{ margin: "5px 0 5px 0", fontSize: "12px", fontWeight: "700" }}>ONLINE SPECIALS</h4>
-          
-          <div style={{ backgroundColor: "#f4f4f4", padding: "15px", borderRadius: "3px" }}>
-            <p style={{ fontWeight: "600", fontSize: "12px", margin: "0 0 15px 0", lineHeight: "1.4" }}>3 Rooms of Carpet Cleaned for $199</p>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <button style={{ backgroundColor: "#FC8551", border: "none", padding: "8px 20px", color: "#fff", fontWeight: "bold", borderRadius: "2px", cursor: "pointer", fontSize: "11px" }}>APPLY</button>
-              <span style={{ fontSize: "10px", textDecoration: "underline", color: "#666", cursor: "pointer" }}>Disclaimer</span>
-            </div>
-          </div>
-          
-          <div style={{ backgroundColor: "#f4f4f4", padding: "15px", borderRadius: "3px" }}>
-            <p style={{ fontWeight: "600", fontSize: "12px", margin: "0 0 15px 0" }}>$50 off Duct Cleaning</p>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <button style={{ backgroundColor: "#FC8551", border: "none", padding: "8px 20px", color: "#fff", fontWeight: "bold", borderRadius: "2px", cursor: "pointer", fontSize: "11px" }}>APPLY</button>
-              <span style={{ fontSize: "10px", textDecoration: "underline", color: "#666", cursor: "pointer" }}>Disclaimer</span>
-            </div>
+            (408) 280-1234
           </div>
         </div>
 
         {/* Middle Column */}
         <div>
           {renderTable("CARPET CLEANING", "carpet")}
+          {renderTable("AREA RUG CLEANING", "areaRug")}
           {renderTable("UPHOLSTERY CLEANING", "upholstery")}
           {renderTable("TILE & GROUT FLOOR CLEANING", "tile")}
         </div>
@@ -261,35 +275,6 @@ export default function AdvancedCarpetCart() {
             </div>
           </div>
 
-          <div style={{ backgroundColor: "#f4f4f4", padding: "15px", borderRadius: "3px" }}>
-            <h4 style={{ margin: "0 0 10px 0", fontSize: "13px", color: "#333" }}>Promo Code</h4>
-            <div style={{ display: "flex", gap: "8px" }}>
-              <input 
-                type="text" 
-                placeholder="Enter Code" 
-                value={cartData.appliedPromo || ""}
-                onChange={(e) => updateCartData("appliedPromo", e.target.value.toUpperCase())}
-                style={{ flex: 1, padding: "8px", border: "1px solid #999", borderRadius: "2px", width: "100%", fontSize: "12px" }}
-              />
-              <button style={{ backgroundColor: "#FC8551", border: "none", padding: "0 15px", color: "#fff", fontWeight: "bold", borderRadius: "2px", cursor: "pointer", fontSize: "11px" }}>APPLY</button>
-            </div>
-          </div>
-
-          <div style={{ backgroundColor: "#f4f4f4", padding: "15px", borderRadius: "3px" }}>
-            <h4 style={{ margin: "0 0 15px 0", fontSize: "12px", lineHeight: "1.4", color: "#111", fontWeight: "700" }}>For a more accurate estimate, please check all that apply:</h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <label style={{ display: "flex", alignItems: "center", fontSize: "11px", gap: "10px", cursor: "pointer", color: "#333" }}>
-                <input type="checkbox" style={{ width: "14px", height: "14px" }}/> I do not have parking nearby.
-              </label>
-              <label style={{ display: "flex", alignItems: "center", fontSize: "11px", gap: "10px", cursor: "pointer", color: "#333" }}>
-                <input type="checkbox" style={{ width: "14px", height: "14px" }}/> Area is on 3rd floor or higher.
-              </label>
-              <label style={{ display: "flex", alignItems: "center", fontSize: "11px", gap: "10px", cursor: "pointer", color: "#333" }}>
-                <input type="checkbox" style={{ width: "14px", height: "14px" }}/> I have guaranteed parking.
-              </label>
-            </div>
-          </div>
-          
           <div style={{ display: "flex", justifyContent: "space-between", marginTop: "15px" }}>
              <button 
               onClick={() => { window.location.href = "/pricing/pro-services"; }}

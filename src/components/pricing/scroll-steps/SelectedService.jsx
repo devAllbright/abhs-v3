@@ -149,7 +149,7 @@ function CarpetCleaningBlock() {
     const itemNames = Object.keys(items);
     if (itemNames.length === 0) return null;
 
-    const serviceColumns = Object.keys(items[itemNames[0]] || {});
+    const serviceColumns = Object.keys(items[itemNames[0]] || {}).filter(svc => svc !== "minimum");
 
     return (
       <div className="accordion-section" style={{ marginBottom: "10px", border: "1px solid #ccc", borderRadius: "4px" }}>
@@ -217,6 +217,7 @@ function CarpetCleaningBlock() {
 
       <div className="services-container" style={{ display: "block" }}>
         {renderTable("CARPET CLEANING", "carpet")}
+        {renderTable("AREA RUG CLEANING", "areaRug")}
         {renderTable("UPHOLSTERY CLEANING", "upholstery")}
         {renderTable("TILE & GROUT FLOOR CLEANING", "tile")}
       </div>
