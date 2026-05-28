@@ -1,0 +1,20 @@
+{
+  "city": "Saratoga",
+  "region": "Northern California",
+  "neighborhoods": [
+    "Golden Triangle",
+    "Saratoga Woods",
+    "Brookview",
+    "Blue Hills",
+    "Downtown Saratoga"
+  ],
+  "localDispatchManager": "Ernie",
+  "localPricingBaseline": {
+    "startingRate": 179,
+    "currency": "USD",
+    "discountCode": "SAR15"
+  },
+  "lat": 37.2638,
+  "lng": -122.0230,
+  "zipCodes": ["95070", "95071"]
+}

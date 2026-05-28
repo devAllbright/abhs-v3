@@ -11,11 +11,13 @@ const baseDescription = "Allbright Home Services provides premium house cleaning
 
 const fullTitle = title ? `${title} - ${baseTitle}` : baseTitle;
 const fullDescription = description || baseDescription;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site || "http://www.allbrighths.com").href;
 ---
 
 <html lang="en">
   <head>
     <Head title={fullTitle} description={fullDescription} />
+    <link rel="canonical" href={canonicalUrl} />
 
     <script is:inline>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

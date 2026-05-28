@@ -1,0 +1,20 @@
+{
+  "city": "Milpitas",
+  "region": "Northern California",
+  "neighborhoods": [
+    "Manor",
+    "Hillcrest",
+    "Pines",
+    "Midtown Milpitas",
+    "Cardoza"
+  ],
+  "localDispatchManager": "Ernie",
+  "localPricingBaseline": {
+    "startingRate": 159,
+    "currency": "USD",
+    "discountCode": "MIL15"
+  },
+  "lat": 37.4323,
+  "lng": -121.8996,
+  "zipCodes": ["95035", "95036"]
+}

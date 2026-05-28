@@ -1,0 +1,1099 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import LeadForm from "../../../components/forms/LeadForm";
+import LocalPricingChart from "../../../components/LocalPricingChart";
+import ReviewsWidget from "../../../components/pages/ReviewsWidget.astro";
+import SectionHeading from "../../../components/SectionHeading";
+
+export async function getStaticPaths() {
+  const cities = await getCollection("cities");
+  const services = await getCollection("services");
+  return cities.flatMap((cityEntry: CollectionEntry<"cities">) => {
+    const citySlug = cityEntry.id.replace(/\.[^/.]+$/, "");
+    return services.map((serviceEntry: CollectionEntry<"services">) => {
+      const serviceSlug = serviceEntry.id.replace(/\.[^/.]+$/, "");
+      return {
+        params: {
+          city: citySlug,
+          service: serviceSlug,
+        },
+        props: { cityEntry, serviceEntry },
+      };
+    });
+  });
+}
+
+export interface Props {
+  cityEntry: CollectionEntry<"cities">;
+  serviceEntry: CollectionEntry<"services">;
+}
+
+const { cityEntry, serviceEntry } = Astro.props;
+const {
+  city,
+  region,
+  neighborhoods: rawNeighborhoods,
+  localDispatchManager,
+  localPricingBaseline,
+  lat,
+  lng,
+  zipCodes,
+} = cityEntry.data;
+const neighborhoods: string[] = rawNeighborhoods;
+const {
+  name,
+  title,
+  summary,
+  description,
+  basePrice,
+  parentHubPath,
+  descriptionData,
+  reasonsData,
+  finalCTAData,
+  faqs: rawFaqs,
+} = serviceEntry.data;
+const faqs: { question: string; answer: string }[] = rawFaqs;
+
+// Generate local coordinates for Business Schema
+const streetAddress = `${city} Dispatch Center`;
+const postalCode = zipCodes[0] || "";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: "Allbright Home Services",
+  image: "https://www.allbrighths.com/allbright-logo.png",
+  telephone: "(408) 280-1234",
+  email: "contact@allbrighths.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: streetAddress,
+    addressLocality: city,
+    addressRegion: "CA",
+    postalCode: postalCode,
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: lat,
+    longitude: lng,
+  },
+  url: "https://www.allbrighths.com",
+  priceRange: "$$",
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: city,
+  },
+  description: `${title} in ${city}, CA`,
+};
+---
+
+<BaseLayout
+  title={`${title} in ${city}, CA | Allbright Home Services`}
+  description={`${summary} in ${city}, California. Restore freshness, sanitization, and cleanliness with the leading residential experts.`}
+>
+  <!-- Hardcoded LocalBusiness Schema inside the header context -->
+  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+
+  <div class="local-spoke animate-fade-in">
+    <!-- Block 1: Primary Hero Section (Service-Specific Value Prop & CTA) -->
+    <section class="local-spoke__hero">
+      <div class="hero-container">
+        <div class="hero-left">
+          <div
+            class="primary-banner__reviews"
+            style="display: flex; align-items: center; margin-bottom: 1.5rem;"
+          >
+            <img
+              src="/google-logo.png"
+              class="primary-banner__reviews-icon"
+              style="height: 2.2rem; margin-right: 0.5rem;"
+              alt="Google Logo"
+            />
+            <img
+              src="/rating-stars.svg"
+              class="primary-banner__reviews-icon"
+              style="height: 2.2rem; margin-right: 0.5rem;"
+              alt="Rating Star"
+            />
+            <p
+              class="primary-banner__reviews-text"
+              style="font-size: 1.5rem; font-weight: 700; color: #303030; font-family: 'Lato', sans-serif;"
+            >
+              4.9 AVERAGE RATING
+            </p>
+          </div>
+
+          <h1 class="hero-title">
+            Professional {title}
+            <br />
+            <span>in {city}, CA</span>
+          </h1>
+
+          <p class="hero-lead">{description}</p>
+
+          <div class="hero-proof">
+            <div class="proof-item">
+              <img class="proof-icon" src="/check.png" alt="Check Icon" />
+              <p class="proof-text">
+                <strong>Premium Experience:</strong> Nearly 50 years of award-winning
+                residential cleaning expertise.
+              </p>
+            </div>
+            <div class="proof-item">
+              <img class="proof-icon" src="/check.png" alt="Check Icon" />
+              <p class="proof-text">
+                <strong>The Allbright Promise:</strong> 100% Satisfaction Guarantee.
+                If you're not happy, we make it right.
+              </p>
+            </div>
+            <div class="proof-item">
+              <img class="proof-icon" src="/check.png" alt="Check Icon" />
+              <p class="proof-text">
+                <strong>Eco-Friendly Care:</strong> Safe, non-toxic green formulas
+                for pets, kids, and the local ecosystem.
+              </p>
+            </div>
+          </div>
+
+          <div class="hero-cta-wrapper">
+            <div class="hero-cta-buttons">
+              <a href="/contact-us" class="green-cta"
+                >Book a Free Consultation</a
+              >
+              <a href={`tel:${localDispatchManager}`} class="green-outline-cta"
+                >Talk to a {city} Coordinator</a
+              >
+            </div>
+            <p class="cta-micro-copy">
+              Quick 24-hour response window. No hidden contracts, no obligation.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-right-wrapper">
+            <!-- Lead Form to maximize conversions -->
+            <div class="hero-form-wrapper">
+              <LeadForm client:load onSuccess={() => {}} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="local-spoke__booking">
+      <div class="booking-container">
+        <SectionHeading
+          title={`Local Rates for ${city}`}
+          subtitle="Get a quick localized estimate or browse our baseline tiered pricing matrix below."
+        />
+
+        <div class="booking-grid">
+          <div class="booking-left">
+            <LocalPricingChart
+              city={city}
+              serviceTitle={title}
+              basePrice={basePrice}
+              discountCode={localPricingBaseline.discountCode || "BAY15"}
+              client:load
+            />
+          </div>
+
+          <div class="booking-right">
+            <div class="pricing-matrix-card">
+              <h3>{city} Baseline Rates</h3>
+              <p class="matrix-description">
+                Average flat-rate ranges for {title.toLowerCase()} based on standard
+                home configurations:
+              </p>
+
+              <table class="matrix-table">
+                <thead>
+                  <tr>
+                    <th>Home Layout</th>
+                    <th>Starting Rate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>1 Bed, 1 Bath</strong></td>
+                    <td class="price-cell">starting at $149</td>
+                  </tr>
+                  <tr>
+                    <td><strong>2 Bed, 1 Bath</strong></td>
+                    <td class="price-cell">starting at $179</td>
+                  </tr>
+                  <tr>
+                    <td><strong>3 Bed, 2 Bath</strong></td>
+                    <td class="price-cell">starting at $209</td>
+                  </tr>
+                  <tr>
+                    <td><strong>4 Bed, 3 Bath</strong></td>
+                    <td class="price-cell">starting at $249</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="pricing-bullets">
+                <h4>Upfront Pricing Variables</h4>
+                <ul>
+                  <li>
+                    <strong>Zero Hidden Fees:</strong> Quotes include all cleaning
+                    supplies, taxes, and labor.
+                  </li>
+                  <li>
+                    <strong>Flexible Addons:</strong> Choose eco-friendly green formulas,
+                    deep scrubbing, or window washing.
+                  </li>
+                  <li>
+                    <strong>Frequency Savings:</strong> Recurring maintenance clients
+                    receive up to 20% off future cleanings.
+                  </li>
+                  <li>
+                    <strong>Local Territory Baseline:</strong> Rates calibrated specifically
+                    to the {city} region and active zip codes.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Block 3: The "How It Works" 3-Step Micro-Funnel (New Section) -->
+    <section class="local-spoke__how-it-works">
+      <div class="how-it-works-container">
+        <h2 class="section-title">Fast, Easy & Stress-Free Scheduling</h2>
+        <p class="section-subtitle">
+          How our programmatic booking and premium local dispatch process works.
+        </p>
+
+        <div class="funnel-grid">
+          <div class="funnel-card">
+            <div class="funnel-badge">01</div>
+            <h3>Select a date online</h3>
+            <p>
+              Choose your preferred day and secure your booking in under 60
+              seconds with instant confirmation.
+            </p>
+          </div>
+
+          <div class="funnel-card">
+            <div class="funnel-badge">02</div>
+            <h3>A vetted cleaner arrives</h3>
+            <p>
+              Our background-checked, fully insured cleaner arrives on schedule
+              with premium tools and green supplies.
+            </p>
+          </div>
+
+          <div class="funnel-card">
+            <div class="funnel-badge">03</div>
+            <h3>Enjoy a spotless home</h3>
+            <p>
+              Walk into a fresh, perfectly sanitized, and spotless environment,
+              backed by our 100% satisfaction guarantee.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Block 4: Service Features & Value Proposition (Objection Handling) -->
+    <section class="local-spoke__features">
+      <div class="features-container">
+        <div class="features-header">
+          <h2>Fully Insured & Vetted South Bay Standards</h2>
+          <p>
+            We eliminate liability risks, safety concerns, and scheduling delays
+            for homeowners in {city}.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>Fully Insured & Bonded</h3>
+            <p>
+              We assume all liability. Your home, assets, and keys are protected
+              under our premium, comprehensive coverage umbrella.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <h3>100% Background Checked</h3>
+            <p>
+              Every single crew member passes rigorous federal background
+              screening, professional training, and strict sanitization checks.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🌿</div>
+            <h3>Eco-Friendly Cleaning Supplies Supplied</h3>
+            <p>
+              We use state-of-the-art, non-toxic products that are completely
+              safe for pets, infants, and the local {city} watershed.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🏆</div>
+            <h3>Legacy of Premium Care</h3>
+            <p>
+              Proudly locally operated in California since 1976. Bringing
+              decades of award-winning craftsmanship directly to your door.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Block 5: Client Reviews & Testimonials -->
+    <section class="local-spoke__reviews">
+      <ReviewsWidget />
+    </section>
+
+    <!-- Block 6: Specific Neighborhoods / Areas Covered -->
+    <section class="local-spoke__neighborhoods">
+      <div class="neighborhoods-container">
+        <h2>Hyper-Local Coverage Boundaries</h2>
+        <p>
+          Our dispatch coordinate truck fleet services all major neighborhoods,
+          streets, and blocks within {city}, CA:
+        </p>
+
+        <div class="neighborhoods-grid">
+          {
+            neighborhoods.map((n) => (
+              <div class="neighborhood-card">
+                <span class="neighborhood-dot">✦</span>
+                <span class="neighborhood-name">{n}</span>
+              </div>
+            ))
+          }
+        </div>
+        <div class="zip-list">
+          <strong>Active coverage zip codes in {city}:</strong>
+          {zipCodes.join(", ")}
+        </div>
+      </div>
+    </section>
+
+    <!-- Block 7: Local FAQ Section -->
+    <section class="local-spoke__faq">
+      <div class="faq-container">
+        <h2>Frequently Asked Questions in {city}</h2>
+        <p>
+          Common inquiries about our professional {title.toLowerCase()} services
+          in your local area.
+        </p>
+
+        <div class="faq-list">
+          {
+            faqs.map((faq) => (
+              <details class="faq-details">
+                <summary class="faq-summary">
+                  <span class="question-text">{faq.question}</span>
+                  <span class="toggle-icon">+</span>
+                </summary>
+                <div class="faq-content">
+                  <p class="faq-answer">
+                    {faq.answer.replace(/Your Home/g, `Your ${city} Home`)}
+                  </p>
+                </div>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style lang="scss">
+  .local-spoke {
+    font-family: "Lato", sans-serif;
+    color: #0f172a;
+    background: #ffffff;
+    overflow-x: hidden;
+
+    /* Hero */
+    &__hero {
+      background: #ffffff;
+      padding: 6rem 2rem;
+
+      @media (max-width: 968px) {
+        padding: 4rem 1.5rem;
+      }
+
+      .hero-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 4rem;
+        align-items: center;
+
+        @media (max-width: 968px) {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+      }
+
+      .hero-left {
+        max-width: 60rem;
+      }
+
+      .hero-title {
+        font-family: "Merriweather", serif;
+        font-size: 3.8rem;
+        font-weight: 300;
+        line-height: 1.25;
+        color: #303030;
+        margin: 0 0 1.5rem 0;
+
+        span {
+          font-weight: 700;
+          color: #299c36;
+        }
+
+        @media (max-width: 576px) {
+          font-size: 2.8rem;
+        }
+      }
+
+      .hero-lead {
+        font-family: "Lato", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1.4;
+        color: #303030;
+        margin-top: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .hero-proof {
+        margin-bottom: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+
+        .proof-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 1.2rem;
+        }
+
+        .proof-icon {
+          width: 2.2rem;
+          height: 2.2rem;
+          flex-shrink: 0;
+          margin-top: 0.2rem;
+        }
+
+        .proof-text {
+          font-family: "Lato", sans-serif;
+          font-size: 1.6rem;
+          line-height: 1.4;
+          color: #475569;
+          margin: 0;
+
+          strong {
+            color: #303030;
+            font-weight: 700;
+          }
+        }
+      }
+
+      .hero-cta-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 2.5rem;
+      }
+
+      .hero-cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .green-cta {
+        background-color: #299c36 !important;
+        color: #ffffff !important;
+        border: 1px solid #299c36 !important;
+        border-radius: 4px;
+        font-family: "Lato", sans-serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        padding: 1.2rem 2.4rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: all 0.2s ease;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #1e7a27 !important;
+          border-color: #1e7a27 !important;
+          transform: translateY(-1px);
+        }
+      }
+
+      .green-outline-cta {
+        background-color: transparent !important;
+        color: #299c36 !important;
+        border: 1px solid #299c36 !important;
+        border-radius: 4px;
+        font-family: "Lato", sans-serif;
+        font-size: 1.6rem;
+        font-weight: 700;
+        padding: 1.2rem 2.4rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: all 0.2s ease;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba(41, 156, 54, 0.05) !important;
+          transform: translateY(-1px);
+        }
+      }
+
+      .cta-micro-copy {
+        font-family: "Lato", sans-serif;
+        font-size: 1.3rem;
+        font-style: italic;
+        color: #64748b;
+        margin: 0.5rem 0 0 0;
+      }
+
+      .hero-right-wrapper {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .hero-image-placeholder {
+        width: 100%;
+        height: 200px;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e2e8f0;
+
+        .cleaner-action-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          filter: brightness(0.95);
+        }
+      }
+
+      .hero-form-wrapper {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+          0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border: 1px solid #e2e8f0;
+        overflow: hidden;
+      }
+    }
+
+    /* Booking / Pricing Grid */
+    &__booking {
+      background: #ffffff;
+      padding: 6rem 2rem;
+      border-bottom: 1px solid #e2e8f0;
+
+      .booking-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .booking-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 3.5rem;
+        align-items: stretch;
+
+        @media (max-width: 968px) {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+      }
+
+      .booking-left {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .booking-right {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .pricing-matrix-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 20px;
+        padding: 3.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+          font-size: 1.8rem;
+          font-weight: 800;
+          color: #1e293b;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin: 0 0 1rem 0;
+        }
+
+        .matrix-description {
+          font-size: 1.3rem;
+          color: #64748b;
+          line-height: 1.5;
+          margin-bottom: 2rem;
+        }
+
+        .matrix-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-bottom: 2.5rem;
+
+          th {
+            text-align: left;
+            padding: 1rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            color: #64748b;
+            font-weight: 700;
+            border-bottom: 2px solid #e2e8f0;
+          }
+
+          td {
+            padding: 1.2rem 1rem;
+            font-size: 1.35rem;
+            color: #334155;
+            border-bottom: 1px solid #e2e8f0;
+          }
+
+          .price-cell {
+            font-weight: 700;
+            color: #299c36;
+            text-align: right;
+            font-size: 1.45rem;
+          }
+
+          tr:last-child td {
+            border-bottom: none;
+          }
+        }
+
+        .pricing-bullets {
+          margin-top: auto;
+          h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin: 0 0 1.25rem 0;
+          }
+
+          ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+
+            li {
+              font-size: 1.25rem;
+              line-height: 1.5;
+              color: #475569;
+              position: relative;
+              padding-left: 1.8rem;
+
+              &::before {
+                content: "✓";
+                position: absolute;
+                left: 0;
+                color: #22c55e;
+                font-weight: bold;
+              }
+
+              strong {
+                color: #1e293b;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* How It Works Micro-Funnel */
+    &__how-it-works {
+      background: #f8fafc;
+      padding: 6rem 2rem;
+      border-bottom: 1px solid #e2e8f0;
+
+      .how-it-works-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1e293b;
+        text-align: center;
+        margin: 0 0 0.5rem 0;
+      }
+
+      .section-subtitle {
+        font-size: 1.15rem;
+        color: #64748b;
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .funnel-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .funnel-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 2.5rem;
+        position: relative;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.05);
+          border-color: #fc8551;
+        }
+      }
+
+      .funnel-badge {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: rgba(252, 133, 81, 0.15);
+        font-family: "Montserrat", sans-serif;
+      }
+
+      h3 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0 0 1rem 0;
+      }
+
+      p {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: #475569;
+        margin: 0;
+      }
+    }
+
+    /* Service Features Section */
+    &__features {
+      background: #ffffff;
+      padding: 6rem 2rem;
+      border-bottom: 1px solid #e2e8f0;
+
+      .features-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .features-header {
+        text-align: center;
+        margin-bottom: 4rem;
+
+        h2 {
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: #1e293b;
+          margin: 0 0 0.5rem 0;
+        }
+
+        p {
+          font-size: 1.15rem;
+          color: #64748b;
+          margin: 0;
+        }
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 2rem;
+      }
+
+      .feature-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 2.5rem;
+        transition: transform 0.25s ease, border-color 0.25s ease;
+
+        &:hover {
+          transform: translateY(-4px);
+          border-color: #fc8551;
+        }
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin: 0 0 0.75rem 0;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.55;
+        color: #475569;
+        margin: 0;
+      }
+    }
+
+    /* Client Reviews Section */
+    &__reviews {
+      background: #f8fafc;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 6rem 2rem;
+    }
+
+    /* Neighborhoods */
+    &__neighborhoods {
+      background: #ffffff;
+      padding: 6rem 2rem;
+      border-bottom: 1px solid #e2e8f0;
+
+      .neighborhoods-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1e293b;
+        margin: 0 0 0.5rem 0;
+      }
+
+      p {
+        font-size: 1.15rem;
+        color: #64748b;
+        margin-bottom: 3rem;
+      }
+
+      .neighborhoods-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .neighborhood-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        padding: 0.75rem 1.5rem;
+        border-radius: 9999px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: border-color 0.2s ease, transform 0.2s ease;
+
+        &:hover {
+          border-color: #fc8551;
+          transform: translateY(-2px);
+        }
+      }
+
+      .neighborhood-dot {
+        color: #fc8551;
+        font-weight: bold;
+      }
+
+      .neighborhood-name {
+        font-weight: 600;
+        color: #334155;
+      }
+
+      .zip-list {
+        font-size: 1rem;
+        color: #64748b;
+        border-top: 1px solid #e2e8f0;
+        display: inline-block;
+        padding-top: 1rem;
+      }
+    }
+
+    /* FAQ Section */
+    &__faq {
+      background: #f8fafc;
+      padding: 6rem 2rem;
+
+      .faq-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #1e293b;
+        text-align: center;
+        margin: 0 0 0.5rem 0;
+      }
+
+      p {
+        font-size: 1.15rem;
+        color: #64748b;
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+      }
+
+      .faq-details {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        overflow: hidden;
+        transition: all 0.3s ease;
+
+        &[open] {
+          border-color: #fc8551;
+          box-shadow: 0 10px 15px -3px rgba(252, 133, 81, 0.05);
+
+          .faq-summary {
+            background: rgba(252, 133, 81, 0.03);
+            border-bottom: 1px solid rgba(252, 133, 81, 0.1);
+          }
+
+          .toggle-icon {
+            transform: rotate(45deg);
+            color: #fc8551;
+          }
+        }
+      }
+
+      .faq-summary {
+        padding: 1.5rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        list-style: none;
+        outline: none;
+        transition: background-color 0.2s ease;
+
+        &::-webkit-details-marker {
+          display: none;
+        }
+
+        &:hover {
+          background-color: rgba(252, 133, 81, 0.01);
+        }
+      }
+
+      .question-text {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #1e293b;
+      }
+
+      .toggle-icon {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: #64748b;
+        transition: transform 0.25s ease, color 0.25s ease;
+        line-height: 1;
+      }
+
+      .faq-content {
+        padding: 1.5rem 2rem;
+        background: #ffffff;
+        animation: slideDown 0.2s ease-out forwards;
+      }
+
+      .faq-answer {
+        font-size: 1.05rem;
+        line-height: 1.6;
+        color: #475569;
+        margin: 0;
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>

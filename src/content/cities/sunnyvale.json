@@ -1,0 +1,20 @@
+{
+  "city": "Sunnyvale",
+  "region": "Northern California",
+  "neighborhoods": [
+    "Birdland",
+    "Cherry Chase",
+    "Heritage District",
+    "Lakewood",
+    "Ortega"
+  ],
+  "localDispatchManager": "Ernie",
+  "localPricingBaseline": {
+    "startingRate": 169,
+    "currency": "USD",
+    "discountCode": "SUN15"
+  },
+  "lat": 37.3688,
+  "lng": -122.0363,
+  "zipCodes": ["94085", "94086", "94087", "94088", "94089"]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "window-washing",
+  "title": "Window Washing",
+  "summary": "Crystal-Clear Windows for a Brighter and Beautiful Home",
+  "description": "Streaks, smudges, and dirt? We make your windows shine—fast and hassle-free! With nearly 50 years of expertise, we are your #1 choice for spotless, streak-free results.",
+  "basePrice": 395,
+  "parentHubPath": "/our-services/one-time-services/window-washing",
+  "descriptionData": {
+    "title": "Let Natural Light Shine Through with Crystal-Clear Windows",
+    "imageUrl": "/services/window-washing/description-img.png",
+    "paragraphs": [
+      {
+        "subtitle": "Effortless Window Cleaning for a Brighter Home",
+        "brief": "Owning a home is rewarding, but keeping it clean and well-maintained shouldn’t be a hassle. We make the process seamless, efficient, and stress-free."
+      },
+      {
+        "subtitle": "Say Goodbye to Streaks and Smudges",
+        "brief": "Streaked windows make your home feel less inviting. We remove dust, water stains, and buildup, leaving every pane crystal clear for a streak-free, sparkling view."
+      }
+    ]
+  },
+  "reasonsData": [
+    {
+      "icon": "/why-us/experience.png",
+      "reasonsTitle": "Nearly 50 Years of Expertise",
+      "description": "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first."
+    },
+    {
+      "icon": "/why-us/home.png",
+      "reasonsTitle": "Comprehensive Home Care",
+      "description": "From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional."
+    },
+    {
+      "icon": "/why-us/sustainability.png",
+      "reasonsTitle": "Sustainable and Precise",
+      "description": "Maintenance and Cleaning for Better living is our promise. We use eco-friendly products and expert techniques."
+    }
+  ],
+  "finalCTAData": {
+    "imgSrc": "/services/window-washing/final-cta.png",
+    "imgAlt": "Final Call to Action",
+    "title": "Sparkling Windows, Brighter Living",
+    "brief": "Say goodbye to dirt, streaks, and smudges! Our expert window washing restores clarity and shine to your home—quickly, effectively, and hassle-free.",
+    "callToActionText": "Ready to experience the difference?",
+    "contactText": "Let’s make your windows sparkle!"
+  },
+  "faqs": [
+    {
+      "question": "What does your window washing service include?",
+      "answer": "Our Window Washing Service includes interior and exterior glass cleaning, track and sill wipe-down, screen cleaning, and details on high/hard-to-reach panes."
+    },
+    {
+      "question": "Do you clean high or hard-to-reach windows?",
+      "answer": "Yes. Our team is fully equipped to safely clean high, skylight, and multi-story windows using extension poles and specialized safety tools."
+    },
+    {
+      "question": "Does screen and track cleaning come with the service?",
+      "answer": "Yes. We wipe window tracks, sills, and lightly wash screens as part of our comprehensive window washing service."
+    }
+  ]
+}

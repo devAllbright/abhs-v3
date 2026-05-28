@@ -1,0 +1,61 @@
+{
+  "name": "move-in-ready",
+  "title": "Move-In Ready",
+  "summary": "Move-In Ready Cleaning for a Fresh, Worry-Free Start",
+  "description": "Dust, grime, and leftover mess? We make your new home spotless—fast and hassle-free! With nearly 50 years of expertise, we are your #1 choice for a deep, thorough clean before you move in.",
+  "basePrice": 795,
+  "parentHubPath": "/our-services/one-time-services/move-in-ready",
+  "descriptionData": {
+    "title": "Move In with Confidence to a Fresh, Clean Home",
+    "imageUrl": "/services/move-in-ready/description-img.png",
+    "paragraphs": [
+      {
+        "subtitle": "Deep Cleaning for a Fresh Start",
+        "brief": "Moving into a new home should be exciting, not stressful. Our move-in cleaning service ensures every surface is spotless, removing dust, dirt, and grime left behind, so you can start fresh in a pristine space."
+      },
+      {
+        "subtitle": "A Complete, Top-to-Bottom Clean",
+        "brief": "From kitchens and bathrooms to bedrooms and living areas, we clean every corner with care. Our expert team tackles floors, appliances, and hard-to-reach spots, leaving your new home fresh, sanitized, and truly move-in ready."
+      }
+    ]
+  },
+  "reasonsData": [
+    {
+      "icon": "/why-us/experience.png",
+      "reasonsTitle": "Nearly 50 Years of Expertise",
+      "description": "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first."
+    },
+    {
+      "icon": "/why-us/home.png",
+      "reasonsTitle": "Comprehensive Home Care",
+      "description": "From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional."
+    },
+    {
+      "icon": "/why-us/sustainability.png",
+      "reasonsTitle": "Sustainable and Precise",
+      "description": "Maintenance and Cleaning for Better living is our promise. We use eco-friendly products and expert techniques."
+    }
+  ],
+  "finalCTAData": {
+    "imgSrc": "/services/move-in-ready/final-cta.png",
+    "imgAlt": "Final Call to Action",
+    "title": "Step Into a Home That Feels Brand New",
+    "brief": "Moving in should be exciting, not exhausting! Our expert move-in cleaning ensures every surface is fresh, sanitized, and ready for you—quickly, thoroughly, and hassle-free.",
+    "callToActionText": "Ready to experience the difference?",
+    "contactText": "Let’s make your new home move-in ready!"
+  },
+  "faqs": [
+    {
+      "question": "What’s included in a move-in ready cleaning?",
+      "answer": "Our Move-In Ready Cleaning includes kitchen cabinet detailing inside and out, oven and refrigerator interior sanitizing, deep bathroom disinfection, baseboard wiping, and edge-to-edge flooring care."
+    },
+    {
+      "question": "Do you clean inside appliances and cabinets?",
+      "answer": "Yes, interior cabinet and appliance cleaning is a standard, recommended part of our move-in package to ensure everything is fresh before you unpack."
+    },
+    {
+      "question": "Should the home be empty before move-in cleaning?",
+      "answer": "Yes. An empty home allows our team to thoroughly clean baseboards, interior closets, cabinets, and corners without obstructions."
+    }
+  ]
+}

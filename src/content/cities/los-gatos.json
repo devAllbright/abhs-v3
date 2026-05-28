@@ -1,0 +1,20 @@
+{
+  "city": "Los Gatos",
+  "region": "Northern California",
+  "neighborhoods": [
+    "Almond Grove",
+    "Shannon",
+    "Blossom Hill",
+    "Glenridge",
+    "Downtown Los Gatos"
+  ],
+  "localDispatchManager": "Ernie",
+  "localPricingBaseline": {
+    "startingRate": 179,
+    "currency": "USD",
+    "discountCode": "LOS15"
+  },
+  "lat": 37.2266,
+  "lng": -121.9747,
+  "zipCodes": ["95030", "95031", "95032", "95033"]
+}

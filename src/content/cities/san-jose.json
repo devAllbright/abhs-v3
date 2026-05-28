@@ -1,0 +1,21 @@
+{
+  "city": "San Jose",
+  "region": "Northern California",
+  "neighborhoods": [
+    "Willow Glen",
+    "Rose Garden",
+    "Almaden Valley",
+    "West San Jose",
+    "Silver Creek",
+    "Downtown San Jose"
+  ],
+  "localDispatchManager": "Ernie",
+  "localPricingBaseline": {
+    "startingRate": 169,
+    "currency": "USD",
+    "discountCode": "SJV15"
+  },
+  "lat": 37.3382,
+  "lng": -121.8863,
+  "zipCodes": ["95110", "95112", "95116", "95118", "95120", "95122", "95124", "95125"]
+}

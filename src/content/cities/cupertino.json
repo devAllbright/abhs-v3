@@ -1,0 +1,20 @@
+{
+  "city": "Cupertino",
+  "region": "Northern California",
+  "neighborhoods": [
+    "Rancho Rinconada",
+    "Monta Vista",
+    "Oak Valley",
+    "Seven Springs",
+    "Downtown Cupertino"
+  ],
+  "localDispatchManager": "Ernie",
+  "localPricingBaseline": {
+    "startingRate": 179,
+    "currency": "USD",
+    "discountCode": "CUP15"
+  },
+  "lat": 37.3230,
+  "lng": -122.0322,
+  "zipCodes": ["95014", "95015"]
+}

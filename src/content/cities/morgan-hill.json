@@ -1,0 +1,20 @@
+{
+  "city": "Morgan Hill",
+  "region": "Northern California",
+  "neighborhoods": [
+    "Jackson Meadows",
+    "Llagas Valley",
+    "Paradise Valley",
+    "Holiday Lake Estates",
+    "Downtown Morgan Hill"
+  ],
+  "localDispatchManager": "Ernie",
+  "localPricingBaseline": {
+    "startingRate": 169,
+    "currency": "USD",
+    "discountCode": "MOR15"
+  },
+  "lat": 37.1305,
+  "lng": -121.6544,
+  "zipCodes": ["95037", "95038"]
+}

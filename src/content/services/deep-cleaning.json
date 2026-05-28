@@ -1,0 +1,61 @@
+{
+  "name": "deep-cleaning",
+  "title": "Deep Cleaning",
+  "summary": "Deep Cleaning for a Healthier, Fresher, and Spotless Home",
+  "description": "Dust, grime, and buildup? We tackle the toughest messes—fast and hassle-free! With nearly 50 years of expertise, we are your #1 choice for a thorough, top-to-bottom clean.",
+  "basePrice": 390,
+  "parentHubPath": "/our-services/one-time-services/deep-cleaning",
+  "descriptionData": {
+    "title": "A Deeper Clean for a Healthier Home",
+    "imageUrl": "/services/deep-cleaning/description-img.png",
+    "paragraphs": [
+      {
+        "subtitle": "Comprehensive Cleaning for Every Corner",
+        "brief": "Regular cleaning only goes so far—dust, grime, and buildup can settle into hard-to-reach places. Our deep cleaning service goes beyond the surface, ensuring every room is thoroughly scrubbed, sanitized, and refreshed."
+      },
+      {
+        "subtitle": "Tough on Dirt, Gentle on Your Home",
+        "brief": "From baseboards and appliances to hidden nooks and high-touch surfaces, we remove built-up dirt, allergens, and bacteria. With our expert team and professional-grade products, we leave your home spotless, fresh, and healthier for your family."
+      }
+    ]
+  },
+  "reasonsData": [
+    {
+      "icon": "/why-us/experience.png",
+      "reasonsTitle": "Nearly 50 Years of Expertise",
+      "description": "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first."
+    },
+    {
+      "icon": "/why-us/home.png",
+      "reasonsTitle": "Comprehensive Home Care",
+      "description": "From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional."
+    },
+    {
+      "icon": "/why-us/sustainability.png",
+      "reasonsTitle": "Sustainable and Precise",
+      "description": "Maintenance and Cleaning for Better living is our promise. We use eco-friendly products and expert techniques."
+    }
+  ],
+  "finalCTAData": {
+    "imgSrc": "/services/deep-cleaning/final-cta.png",
+    "imgAlt": "Final Call to Action",
+    "title": "Experience a Deeper Clean, Feel the Difference",
+    "brief": "Say goodbye to hidden dirt and built-up grime! Our expert deep cleaning service restores freshness and comfort to your home—thoroughly, efficiently, and hassle-free.",
+    "callToActionText": "Ready to experience the difference?",
+    "contactText": "Let’s make your home spotless!"
+  },
+  "faqs": [
+    {
+      "question": "What’s included in a deep cleaning service?",
+      "answer": "Our Deep Cleaning Service goes beyond routine upkeep to give your home a complete reset. It includes detailed kitchen degreasing, bathroom disinfecting, detailed furniture/baseboard dusting, and sanitization."
+    },
+    {
+      "question": "How is deep cleaning different from regular cleaning?",
+      "answer": "Regular cleaning maintains your home, while deep cleaning resets it—leaving every corner spotless and refreshed by targeting built-up dirt, grime, and hidden areas."
+    },
+    {
+      "question": "How long does a deep cleaning take?",
+      "answer": "On average, most deep cleanings take anywhere from 4 to 8 hours depending on the size of your home and its current condition."
+    }
+  ]
+}

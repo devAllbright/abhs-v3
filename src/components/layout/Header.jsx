@@ -7,9 +7,25 @@ import SmartCTA from '../buttons/SmartCTA';
 //import ModalCTA from '../buttons/ModalCTA';
 import HCPButton from '../buttons/HCPButton';
 
+const CITIES = [
+  { name: "San Jose", slug: "san-jose" },
+  { name: "Campbell", slug: "campbell" },
+  { name: "Saratoga", slug: "saratoga" },
+  { name: "Los Gatos", slug: "los-gatos" },
+  { name: "Morgan Hill", slug: "morgan-hill" },
+  { name: "Sunnyvale", slug: "sunnyvale" },
+  { name: "Cupertino", slug: "cupertino" },
+  { name: "Santa Clara", slug: "santa-clara" },
+  { name: "Milpitas", slug: "milpitas" },
+  { name: "Mountain View", slug: "mountain-view" },
+  { name: "Los Altos", slug: "los-altos" },
+  { name: "Palo Alto", slug: "palo-alto" }
+];
+
 export default function Header() {
   const [isVisible, setIsVisible] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [showLocations, setShowLocations] = useState(false);
   const [serviceType, setServiceType] = useState(null);
   const popoverRef = useRef(null);
 
@@ -20,6 +36,7 @@ export default function Header() {
 
   const handleMouseEnterServices = () => {
     setShowSearch(false);
+    setShowLocations(false);
     setIsVisible(true);
   };
 
@@ -76,6 +93,7 @@ export default function Header() {
           onMouseEnter={() => {
             setIsVisible(false);
             setShowSearch(false);
+            setShowLocations(false);
           }}
         >
           <a href="/" className="header__logo-link">
@@ -101,6 +119,7 @@ export default function Header() {
             onMouseEnter={() => {
               setIsVisible(false);
               setShowSearch(false);
+              setShowLocations(false);
             }}
           >
             <a href="/about-us">About Us</a>
@@ -118,6 +137,32 @@ export default function Header() {
             onMouseEnter={() => {
               setIsVisible(false);
               setShowSearch(false);
+              setShowLocations(true);
+            }}
+            onMouseLeave={() => setShowLocations(false)}
+          >
+            <a href="#" onClick={(e) => e.preventDefault()} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              Locations <span style={{ fontSize: '0.8rem', transform: showLocations ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }}>▼</span>
+            </a>
+            {showLocations && (
+              <div className="header__locations-dropdown">
+                <div className="locations-grid">
+                  {CITIES.map((c) => (
+                    <a key={c.slug} href={`/locations/${c.slug}/`} className="locations-item">
+                      <span className="pin">📍</span> {c.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div
+            className="header__nav-item"
+            onMouseEnter={() => {
+              setIsVisible(false);
+              setShowSearch(false);
+              setShowLocations(false);
             }}
           >
             <a href="/contact-us">Contact Us</a>
@@ -146,6 +191,7 @@ export default function Header() {
             onMouseEnter={() => {
               setIsVisible(false);
               setShowSearch(false);
+              setShowLocations(false);
             }}
           >
             <a href="tel:4082801234" className="header__cta-number-link">
@@ -165,6 +211,7 @@ export default function Header() {
             onMouseEnter={() => {
               setIsVisible(false);
               setShowSearch(false);
+              setShowLocations(false);
             }}
           >
             <SmartCTA 

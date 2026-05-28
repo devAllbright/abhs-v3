@@ -1,0 +1,20 @@
+{
+  "city": "Mountain View",
+  "region": "Northern California",
+  "neighborhoods": [
+    "Old Mountain View",
+    "Cuesta Park",
+    "Monta Loma",
+    "Waverly Park",
+    "Rex Manor"
+  ],
+  "localDispatchManager": "Ernie",
+  "localPricingBaseline": {
+    "startingRate": 169,
+    "currency": "USD",
+    "discountCode": "MTV15"
+  },
+  "lat": 37.3861,
+  "lng": -122.0839,
+  "zipCodes": ["94035", "94039", "94040", "94041", "94042", "94043"]
+}

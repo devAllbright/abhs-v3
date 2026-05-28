@@ -1,0 +1,20 @@
+{
+  "city": "Campbell",
+  "region": "Northern California",
+  "neighborhoods": [
+    "Pruneyard",
+    "Dry Creek",
+    "San Tomas",
+    "Downtown Campbell",
+    "Campbell West"
+  ],
+  "localDispatchManager": "Ernie",
+  "localPricingBaseline": {
+    "startingRate": 159,
+    "currency": "USD",
+    "discountCode": "CAM15"
+  },
+  "lat": 37.2872,
+  "lng": -121.9500,
+  "zipCodes": ["95008", "95009", "95011"]
+}

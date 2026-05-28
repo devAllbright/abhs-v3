@@ -1,0 +1,20 @@
+{
+  "city": "Los Altos",
+  "region": "Northern California",
+  "neighborhoods": [
+    "Country Club",
+    "North Los Altos",
+    "South Los Altos",
+    "Highlands",
+    "Loyola"
+  ],
+  "localDispatchManager": "Ernie",
+  "localPricingBaseline": {
+    "startingRate": 179,
+    "currency": "USD",
+    "discountCode": "LAL15"
+  },
+  "lat": 37.3852,
+  "lng": -122.1141,
+  "zipCodes": ["94022", "94023", "94024"]
+}

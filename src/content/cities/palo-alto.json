@@ -1,0 +1,20 @@
+{
+  "city": "Palo Alto",
+  "region": "Northern California",
+  "neighborhoods": [
+    "Crescent Park",
+    "Midtown Palo Alto",
+    "Barron Park",
+    "College Terrace",
+    "Palo Alto Hills"
+  ],
+  "localDispatchManager": "Ernie",
+  "localPricingBaseline": {
+    "startingRate": 179,
+    "currency": "USD",
+    "discountCode": "PAL15"
+  },
+  "lat": 37.4419,
+  "lng": -122.1430,
+  "zipCodes": ["94301", "94302", "94303", "94304", "94305", "94306"]
+}

@@ -1,0 +1,61 @@
+{
+  "name": "carpet-cleaning",
+  "title": "Carpet Cleaning",
+  "summary": "Deep Carpet Cleaning for a Fresher, Healthier Home",
+  "description": "Stubborn stains? Lingering odors? We restore carpets to their best—fast and hassle-free! With nearly 50 years of expertise, we’re your #1 choice for deep cleaning and lasting freshness.",
+  "basePrice": 169,
+  "parentHubPath": "/our-services/one-time-services/carpet-cleaning",
+  "descriptionData": {
+    "title": "Restore Your Carpets to Their Prime",
+    "imageUrl": "/services/carpet-cleaning/description-img.png",
+    "paragraphs": [
+      {
+        "subtitle": "Deep Cleaning for a Fresh Start",
+        "brief": "Owning a home is rewarding, but keeping it clean and well-maintained shouldn’t be a hassle. We make the process seamless, efficient, and stress-free."
+      },
+      {
+        "subtitle": "Eliminate Stains and Odors",
+        "brief": "Our expert cleaning process removes tough stains and lingering odors, leaving your carpets looking and smelling like new."
+      }
+    ]
+  },
+  "reasonsData": [
+    {
+      "icon": "/why-us/experience.png",
+      "reasonsTitle": "Nearly 50 Years of Expertise",
+      "description": "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first."
+    },
+    {
+      "icon": "/why-us/home.png",
+      "reasonsTitle": "Comprehensive Home Care",
+      "description": "From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional."
+    },
+    {
+      "icon": "/why-us/sustainability.png",
+      "reasonsTitle": "Sustainable and Precise",
+      "description": "Maintenance and Cleaning for Better living is our promise. We use eco-friendly products and expert techniques."
+    }
+  ],
+  "finalCTAData": {
+    "imgSrc": "/services/carpet-cleaning/final-cta.png",
+    "imgAlt": "Final Call to Action",
+    "title": "Cleaner Carpets, Healthier Living",
+    "brief": "Say goodbye to dirt, stains, and allergens! Our expert carpet cleaning restores freshness and comfort to your home—quickly, effectively, and hassle-free.",
+    "callToActionText": "Ready to experience the difference?",
+    "contactText": "Contact us today!"
+  },
+  "faqs": [
+    {
+      "question": "What carpet cleaning methods do you use?",
+      "answer": "We use industry-leading carpet cleaning methods tailored to your home’s needs: Steam Cleaning (Hot Water Extraction) for deep cleaning and Low-Moisture Cleaning for faster drying."
+    },
+    {
+      "question": "How long does it take for carpets to dry after cleaning?",
+      "answer": "Drying time depends on the cleaning method: Steam Cleaning takes 6–12 hours, while Low-Moisture Cleaning takes 2–4 hours."
+    },
+    {
+      "question": "Can you remove pet stains and odors?",
+      "answer": "Yes. We use specialized cleaning solutions and techniques designed to neutralize pet odors and remove stains at the source, not just cover them up."
+    }
+  ]
+}

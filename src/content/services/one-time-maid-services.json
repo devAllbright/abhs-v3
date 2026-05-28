@@ -1,0 +1,61 @@
+{
+  "name": "one-time-maid-services",
+  "title": "One-Time Maid Services",
+  "summary": "One-Time Maid Services for a Spotless Home—Fast",
+  "description": "Hosting guests? Moving out? Just need a break? Our one-time maid services deliver a sparkling clean home without the commitment. With nearly 50 years of experience, we make clean effortless.",
+  "basePrice": 195,
+  "parentHubPath": "/our-services/one-time-services/one-time-maid-services",
+  "descriptionData": {
+    "title": "Get Your Home Guest-Ready—Anytime",
+    "imageUrl": "/services/one-time-maid-services/description-img.png",
+    "paragraphs": [
+      {
+        "subtitle": "Perfect Clean, No Strings Attached",
+        "brief": "Life gets busy. Whether you're preparing for a special event or just need help catching up, our one-time maid service delivers a professional, top-to-bottom clean—on your terms and your schedule."
+      },
+      {
+        "subtitle": "Thorough, Reliable, and Stress-Free",
+        "brief": "From kitchens to bathrooms, bedrooms to baseboards, our expert team handles it all with care and precision. We use eco-friendly products and proven techniques to ensure your home feels truly refreshed."
+      }
+    ]
+  },
+  "reasonsData": [
+    {
+      "icon": "/why-us/experience.png",
+      "reasonsTitle": "Nearly 50 Years of Expertise",
+      "description": "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first."
+    },
+    {
+      "icon": "/why-us/home.png",
+      "reasonsTitle": "Comprehensive Home Care",
+      "description": "From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional."
+    },
+    {
+      "icon": "/why-us/sustainability.png",
+      "reasonsTitle": "Sustainable and Precise",
+      "description": "Maintenance and Cleaning for Better living is our promise. We use eco-friendly products and expert techniques."
+    }
+  ],
+  "finalCTAData": {
+    "imgSrc": "/services/one-time-maid-services/final-cta.png",
+    "imgAlt": "Final Call to Action",
+    "title": "A Spotless Space, Just One Call Away",
+    "brief": "Skip the stress of cleaning and enjoy a professionally cleaned home—fast, efficient, and commitment-free. Whether it’s a one-time deep clean or a quick refresh, we’ve got you covered. Ready to reclaim your time?",
+    "callToActionText": "Ready to experience the difference?",
+    "contactText": "Let’s make your home shine!"
+  },
+  "faqs": [
+    {
+      "question": "What does a one-time maid service include?",
+      "answer": "Our One-Time Freshen-Up Service includes kitchen and bathroom sanitization, light furniture dusting, mopping and vacuuming of floors, and minor surface touchups."
+    },
+    {
+      "question": "Is one-time cleaning good for special occasions?",
+      "answer": "Yes! It is ideal for pre-event preparation or post-event cleanup to quickly restore freshness and tidiness."
+    },
+    {
+      "question": "Do I need to be home during the cleaning?",
+      "answer": "No. Many clients provide access instructions so they can run errands or work while our professional team cleans."
+    }
+  ]
+}

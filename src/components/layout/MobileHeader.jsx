@@ -1,8 +1,24 @@
 import { useState, useEffect } from 'react';
 
+const CITIES = [
+  { name: "San Jose", slug: "san-jose" },
+  { name: "Campbell", slug: "campbell" },
+  { name: "Saratoga", slug: "saratoga" },
+  { name: "Los Gatos", slug: "los-gatos" },
+  { name: "Morgan Hill", slug: "morgan-hill" },
+  { name: "Sunnyvale", slug: "sunnyvale" },
+  { name: "Cupertino", slug: "cupertino" },
+  { name: "Santa Clara", slug: "santa-clara" },
+  { name: "Milpitas", slug: "milpitas" },
+  { name: "Mountain View", slug: "mountain-view" },
+  { name: "Los Altos", slug: "los-altos" },
+  { name: "Palo Alto", slug: "palo-alto" }
+];
+
 export default function MobileHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isLocationsOpen, setIsLocationsOpen] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
@@ -11,6 +27,7 @@ export default function MobileHeader() {
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
     setIsServicesOpen(false);
+    setIsLocationsOpen(false);
   };
 
   const toggleServices = () => {
@@ -102,6 +119,41 @@ export default function MobileHeader() {
                     <li><a href="/our-services/one-time-services/move-in-ready">Move in Ready</a></li>
                     <li><a href="/our-services/one-time-services/carpet-cleaning">Carpet Cleaning</a></li>
                     <li><a href="/our-services/one-time-services/window-washing">Window Washing</a></li>
+                  </ul>
+                )}
+              </li>
+
+              <li className="mobile-header__menu-item">
+                <a
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsLocationsOpen((prev) => !prev);
+                  }}
+                  aria-expanded={isLocationsOpen}
+                  aria-controls="mobile-locations-submenu"
+                  className="mobile-header__expand-link"
+                >
+                  Our Locations
+                  <img
+                    src={isLocationsOpen ? '/icons/minus.png' : '/icons/plus.png'}
+                    alt={isLocationsOpen ? 'Collapse locations' : 'Expand locations'}
+                    className="mobile-header__icon"
+                  />
+                </a>
+
+                {isLocationsOpen && (
+                  <ul
+                    className="mobile-header__submenu"
+                    id="mobile-locations-submenu"
+                  >
+                    {CITIES.map((c) => (
+                      <li key={c.slug}>
+                        <a href={`/locations/${c.slug}/`} onClick={toggleMenu}>
+                          {c.name}, CA
+                        </a>
+                      </li>
+                    ))}
                   </ul>
                 )}
               </li>

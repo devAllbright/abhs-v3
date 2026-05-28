@@ -1,0 +1,61 @@
+{
+  "name": "home-detailing-cleaning",
+  "title": "Home Detailing",
+  "summary": "More than clean — a complete refresh",
+  "description": "Like a luxury car detail, but for your home: precision dusting, deep sanitizing, and restored shine in every corner. Perfect for seasonal resets or special occasions.",
+  "basePrice": 395,
+  "parentHubPath": "/our-services/one-time-services/home-detailing-cleaning",
+  "descriptionData": {
+    "title": "Give Your Home the VIP Treatment",
+    "imageUrl": "/services/home-detailing-cleaning/description-img.png",
+    "paragraphs": [
+      {
+        "subtitle": "Detailing for Your Living Space",
+        "brief": "Just like car detailing restores a vehicle’s shine, our Home Detailing service revitalizes your living space. We target forgotten corners, stubborn grime, and high-touch surfaces that standard cleaning often misses."
+      },
+      {
+        "subtitle": "A Luxury Clean for Everyday Living",
+        "brief": "From polished fixtures to refreshed floors, our team delivers a meticulous clean that makes your home feel brand new. Perfect for seasonal resets, special occasions, or simply treating your home to the VIP care it deserves."
+      }
+    ]
+  },
+  "reasonsData": [
+    {
+      "icon": "/why-us/experience.png",
+      "reasonsTitle": "Nearly 50 Years of Expertise",
+      "description": "Since 1976, we've built a reputation for top-quality maintenance and home cleaning, always putting customers first."
+    },
+    {
+      "icon": "/why-us/home.png",
+      "reasonsTitle": "Comprehensive Home Care",
+      "description": "From Deep Cleaning to full maintenance, we offer tailored solutions to keep your home spotless and functional."
+    },
+    {
+      "icon": "/why-us/sustainability.png",
+      "reasonsTitle": "Sustainable and Precise",
+      "description": "Maintenance and Cleaning for Better living is our promise. We use eco-friendly products and expert techniques."
+    }
+  ],
+  "finalCTAData": {
+    "imgSrc": "/services/home-detailing-cleaning/final-cta.png",
+    "imgAlt": "Final Call to Action",
+    "title": "Transform Your Home with Detailing Care",
+    "brief": "Give your home more than just a clean—give it a full refresh. Our meticulous Home Detailing service restores shine, sanitizes high-touch areas, and leaves every room feeling polished and revitalized.",
+    "callToActionText": "Ready to experience the difference?",
+    "contactText": "Book your Home Detailing today!"
+  },
+  "faqs": [
+    {
+      "question": "What’s included in a Home Detailing service?",
+      "answer": "Our Home Detailing service includes deep dusting and polishing of baseboards, trim, vents, doors, and molding, kitchen detail (degreasing and polishing), bathroom refresh (hard water removal), and floor-edge care."
+    },
+    {
+      "question": "How is Home Detailing different from Deep Cleaning?",
+      "answer": "Deep Cleaning is a standard top-to-bottom reset focusing on dirt removal. Home Detailing goes a step further by including specialized polishing, precision dusting of architectural details, and restorative finishes."
+    },
+    {
+      "question": "How long does a Home Detailing visit take?",
+      "answer": "Given the level of precision involved, a Home Detailing visit typically takes 5–8 hours depending on home size."
+    }
+  ]
+}
