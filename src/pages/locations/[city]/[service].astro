@@ -6,6 +6,7 @@ import LeadForm from "../../../components/forms/LeadForm";
 import LocalPricingChart from "../../../components/LocalPricingChart";
 import ReviewsWidget from "../../../components/pages/ReviewsWidget.astro";
 import SectionHeading from "../../../components/SectionHeading";
+import FAQSection from "../../../components/pages/home/FAQSection.astro";
 
 export async function getStaticPaths() {
   const cities = await getCollection("cities");
@@ -55,6 +56,10 @@ const {
   faqs: rawFaqs,
 } = serviceEntry.data;
 const faqs: { question: string; answer: string }[] = rawFaqs;
+const localizedFaqs = faqs.map(faq => ({
+  question: faq.question,
+  answer: faq.answer.replace(/Your Home/g, `Your ${city} Home`),
+}));
 
 // Generate local coordinates for Business Schema
 const streetAddress = `${city} Dispatch Center`;
@@ -95,7 +100,7 @@ const schema = {
   description={`${summary} in ${city}, California. Restore freshness, sanitization, and cleanliness with the leading residential experts.`}
 >
   <!-- Hardcoded LocalBusiness Schema inside the header context -->
-  <script type="application/ld+json" set:html={JSON.stringify(schema)}></script>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
 
   <div class="local-spoke animate-fade-in">
     <!-- Block 1: Primary Hero Section (Service-Specific Value Prop & CTA) -->
@@ -267,36 +272,49 @@ const schema = {
     <!-- Block 3: The "How It Works" 3-Step Micro-Funnel (New Section) -->
     <section class="local-spoke__how-it-works">
       <div class="how-it-works-container">
-        <h2 class="section-title">Fast, Easy & Stress-Free Scheduling</h2>
-        <p class="section-subtitle">
-          How our programmatic booking and premium local dispatch process works.
-        </p>
+        <SectionHeading
+          title={`How Our ${city} ${title} Service Works`}
+          subtitle={`Under ${localDispatchManager}, our regional hub handles the logistics so you can easily schedule a cleaner in ${city}, CA.`}
+        />
+
+        <div class="guarantee-header">
+          <h3 class="guarantee-title">
+            Our Step-by-Step Local Service Guarantee
+          </h3>
+        </div>
 
         <div class="funnel-grid">
           <div class="funnel-card">
             <div class="funnel-badge">01</div>
-            <h3>Select a date online</h3>
+            <span class="funnel-step">Step 01</span>
+            <h3>Secure Your Pricing & Spot Online</h3>
             <p>
-              Choose your preferred day and secure your booking in under 60
-              seconds with instant confirmation.
+              Pick your preferred day and secure your local consultation in
+              under 60 seconds with instant booking confirmation. No hidden
+              fees, no estimation stress.
             </p>
           </div>
 
           <div class="funnel-card">
             <div class="funnel-badge">02</div>
-            <h3>A vetted cleaner arrives</h3>
+            <span class="funnel-step">Step 02</span>
+            <h3>A Trusted, Vetted Local Cleaner Arrives</h3>
             <p>
-              Our background-checked, fully insured cleaner arrives on schedule
-              with premium tools and green supplies.
+              {localDispatchManager} syncs with our background-checked, fully insured
+              {city} crews to ensure your cleaner arrives exactly on time, equipped
+              with premium eco-friendly green formulas and advanced tools.
             </p>
           </div>
 
           <div class="funnel-card">
             <div class="funnel-badge">03</div>
-            <h3>Enjoy a spotless home</h3>
+            <span class="funnel-step">Step 03</span>
+            <h3>Walk Into a Spotless, Sanitized Home</h3>
             <p>
-              Walk into a fresh, perfectly sanitized, and spotless environment,
-              backed by our 100% satisfaction guarantee.
+              Enjoy a completely fresh, perfectly sanitized, and spotless
+              environment. Every single {title.toLowerCase()} service is backed by
+              our strict 100% Satisfaction Guarantee—if it isn't perfect, we make
+              it right.
             </p>
           </div>
         </div>
@@ -306,49 +324,59 @@ const schema = {
     <!-- Block 4: Service Features & Value Proposition (Objection Handling) -->
     <section class="local-spoke__features">
       <div class="features-container">
-        <div class="features-header">
-          <h2>Fully Insured & Vetted South Bay Standards</h2>
-          <p>
-            We eliminate liability risks, safety concerns, and scheduling delays
-            for homeowners in {city}.
-          </p>
-        </div>
+        <SectionHeading
+          title={`Vetted & Fully Insured ${title} in ${city}, CA`}
+          subtitle={`We eliminate liability risks, safety concerns, and scheduling delays for homeowners in ${city}.`}
+        />
 
         <div class="features-grid">
           <div class="feature-card">
             <div class="feature-icon">🛡️</div>
-            <h3>Fully Insured & Bonded</h3>
-            <p>
-              We assume all liability. Your home, assets, and keys are protected
-              under our premium, comprehensive coverage umbrella.
-            </p>
+            <h3>Fully Insured & Bonded Protection</h3>
+            <ul class="feature-bullets">
+              <li>
+                <strong>Total Liability Coverage:</strong> We assume 100% of the liability for your home, assets, and keys.
+              </li>
+              <li>
+                <strong>Premium Umbrella Security:</strong> Every cleanup is executed under our comprehensive, zero-risk safety umbrella.
+              </li>
+            </ul>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">👥</div>
-            <h3>100% Background Checked</h3>
-            <p>
-              Every single crew member passes rigorous federal background
-              screening, professional training, and strict sanitization checks.
-            </p>
+            <h3>100% Background-Checked Crews</h3>
+            <ul class="feature-bullets">
+              <li>
+                <strong>Rigorous Federal Screening:</strong> Every neighborhood service crew member passes strict federal background checks.
+              </li>
+              <li>
+                <strong>Sanitization Standards:</strong> Certified local teams complete mandatory professional training and strict sanitization checks.
+              </li>
+            </ul>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">🌿</div>
             <h3>Eco-Friendly Cleaning Supplies Supplied</h3>
-            <p>
-              We use state-of-the-art, non-toxic products that are completely
-              safe for pets, infants, and the local {city} watershed.
-            </p>
+            <ul class="feature-bullets">
+              <li>
+                <strong>State-of-the-Art Green Formulas:</strong> We strictly deploy non-toxic, premium formulas on every project.
+              </li>
+              <li>
+                <strong>{city} Environmental Safety:</strong> Formulations are safe for pets, infants, and the local {city} watershed.
+              </li>
+            </ul>
           </div>
 
           <div class="feature-card">
             <div class="feature-icon">🏆</div>
-            <h3>Legacy of Premium Care</h3>
-            <p>
-              Proudly locally operated in California since 1976. Bringing
-              decades of award-winning craftsmanship directly to your door.
-            </p>
+            <h3>Legacy of Premium Care Since 1976</h3>
+            <ul class="feature-bullets">
+              <li>
+                <strong>Decades of Local Craftsmanship:</strong> Bringing 50 years of award-winning, local California expertise directly to your door.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -362,11 +390,10 @@ const schema = {
     <!-- Block 6: Specific Neighborhoods / Areas Covered -->
     <section class="local-spoke__neighborhoods">
       <div class="neighborhoods-container">
-        <h2>Hyper-Local Coverage Boundaries</h2>
-        <p>
-          Our dispatch coordinate truck fleet services all major neighborhoods,
-          streets, and blocks within {city}, CA:
-        </p>
+        <SectionHeading
+          title="Hyper-Local Coverage Boundaries"
+          subtitle={`Our dispatch coordinate truck fleet services all major neighborhoods, streets, and blocks within ${city}, CA:`}
+        />
 
         <div class="neighborhoods-grid">
           {
@@ -379,40 +406,14 @@ const schema = {
           }
         </div>
         <div class="zip-list">
-          <strong>Active coverage zip codes in {city}:</strong>
+          <strong>Active coverage zip codes in {city}:</strong>{" "}
           {zipCodes.join(", ")}
         </div>
       </div>
     </section>
 
     <!-- Block 7: Local FAQ Section -->
-    <section class="local-spoke__faq">
-      <div class="faq-container">
-        <h2>Frequently Asked Questions in {city}</h2>
-        <p>
-          Common inquiries about our professional {title.toLowerCase()} services
-          in your local area.
-        </p>
-
-        <div class="faq-list">
-          {
-            faqs.map((faq) => (
-              <details class="faq-details">
-                <summary class="faq-summary">
-                  <span class="question-text">{faq.question}</span>
-                  <span class="toggle-icon">+</span>
-                </summary>
-                <div class="faq-content">
-                  <p class="faq-answer">
-                    {faq.answer.replace(/Your Home/g, `Your ${city} Home`)}
-                  </p>
-                </div>
-              </details>
-            ))
-          }
-        </div>
-      </div>
-    </section>
+    <FAQSection faqs={localizedFaqs} />
   </div>
 </BaseLayout>
 
@@ -605,7 +606,8 @@ const schema = {
       .hero-form-wrapper {
         background: white;
         border-radius: 16px;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        box-shadow:
+          0 20px 25px -5px rgba(0, 0, 0, 0.1),
           0 10px 10px -5px rgba(0, 0, 0, 0.04);
         border: 1px solid #e2e8f0;
         overflow: hidden;
@@ -753,72 +755,152 @@ const schema = {
 
     /* How It Works Micro-Funnel */
     &__how-it-works {
-      background: #f8fafc;
-      padding: 6rem 2rem;
+      background: radial-gradient(circle at 50% 0%, #ffffff 0%, #f8fafc 100%);
+      padding: 8rem 2rem;
       border-bottom: 1px solid #e2e8f0;
 
       .how-it-works-container {
         max-width: 1200px;
         margin: 0 auto;
+
+        :global(.section-heading__subtitle) {
+          font-size: 2.2rem !important;
+          line-height: 1.65 !important;
+          max-width: 95rem !important;
+          color: #475569 !important;
+          margin-bottom: 5rem !important;
+        }
       }
 
-      .section-title {
-        font-size: 2.5rem;
+      .guarantee-header {
+        text-align: center;
+        margin: -1.5rem auto 4.5rem auto;
+      }
+
+      .guarantee-title {
+        font-family: "Lato", sans-serif;
+        font-size: 2.2rem;
         font-weight: 800;
-        color: #1e293b;
-        text-align: center;
-        margin: 0 0 0.5rem 0;
-      }
+        color: #299c36;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 0.8rem;
+        margin: 0;
 
-      .section-subtitle {
-        font-size: 1.15rem;
-        color: #64748b;
-        text-align: center;
-        margin-bottom: 4rem;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 25%;
+          width: 50%;
+          height: 3px;
+          background: linear-gradient(90deg, #299c36, #4cd05c);
+          border-radius: 99px;
+        }
+
+        @media (max-width: 768px) {
+          font-size: 1.6rem;
+        }
       }
 
       .funnel-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2.5rem;
+        gap: 3rem;
       }
 
       .funnel-card {
         background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 2.5rem;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 24px;
+        padding: 3.5rem 3rem 4rem 3rem;
         position: relative;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        box-shadow:
+          0 10px 30px -10px rgba(0, 0, 0, 0.04),
+          0 1px 3px rgba(0, 0, 0, 0.01);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
 
         &:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.05);
-          border-color: #fc8551;
+          transform: translateY(-6px);
+          box-shadow:
+            0 20px 40px -15px rgba(41, 156, 54, 0.12),
+            0 0 0 1px rgba(41, 156, 54, 0.2);
+          border-color: #299c36;
+
+          .funnel-badge {
+            color: rgba(41, 156, 54, 0.06);
+            transform: scale(1.1);
+          }
+
+          .funnel-step {
+            background: rgba(41, 156, 54, 0.1);
+            color: #299c36;
+          }
+        }
+
+        &:nth-child(2) {
+          border-color: rgba(41, 156, 54, 0.5);
+          box-shadow:
+            0 15px 35px -10px rgba(41, 156, 54, 0.08),
+            0 1px 3px rgba(41, 156, 54, 0.02);
+
+          .funnel-step {
+            background: rgba(41, 156, 54, 0.08);
+            color: #299c36;
+          }
+
+          &:hover {
+            border-color: #299c36;
+            box-shadow: 0 25px 45px -12px rgba(41, 156, 54, 0.16);
+          }
         }
       }
 
       .funnel-badge {
         position: absolute;
         top: 2rem;
-        right: 2rem;
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: rgba(252, 133, 81, 0.15);
+        right: 2.5rem;
+        font-size: 5.5rem;
+        font-weight: 900;
+        color: rgba(15, 23, 42, 0.03);
         font-family: "Montserrat", sans-serif;
+        line-height: 1;
+        pointer-events: none;
+        transition: all 0.4s ease;
+      }
+
+      .funnel-step {
+        display: inline-block;
+        font-size: 1.3rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #64748b;
+        background: #f1f5f9;
+        padding: 0.4rem 1rem;
+        border-radius: 99px;
+        margin-bottom: 1.8rem;
+        transition: all 0.3s ease;
       }
 
       h3 {
-        font-size: 1.4rem;
-        font-weight: 700;
-        color: #1e293b;
-        margin: 0 0 1rem 0;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #0f172a;
+        line-height: 1.35;
+        margin: 0 0 1.2rem 0;
+        font-family: "Lato", sans-serif;
       }
 
       p {
-        font-size: 1.05rem;
-        line-height: 1.6;
+        font-size: 1.7rem;
+        line-height: 1.75;
         color: #475569;
         margin: 0;
       }
@@ -826,69 +908,129 @@ const schema = {
 
     /* Service Features Section */
     &__features {
-      background: #ffffff;
-      padding: 6rem 2rem;
+      background: radial-gradient(circle at 50% 0%, #f8fafc 0%, #ffffff 100%);
+      padding: 8rem 2rem;
       border-bottom: 1px solid #e2e8f0;
 
       .features-container {
         max-width: 1200px;
         margin: 0 auto;
-      }
 
-      .features-header {
-        text-align: center;
-        margin-bottom: 4rem;
-
-        h2 {
-          font-size: 2.5rem;
-          font-weight: 800;
-          color: #1e293b;
-          margin: 0 0 0.5rem 0;
-        }
-
-        p {
-          font-size: 1.15rem;
-          color: #64748b;
-          margin: 0;
+        :global(.section-heading__subtitle) {
+          font-size: 2.2rem !important;
+          line-height: 1.65 !important;
+          max-width: 95rem !important;
+          color: #475569 !important;
+          margin-bottom: 5rem !important;
         }
       }
 
       .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 2rem;
+        display: flex;
+        gap: 3rem;
+        overflow-x: auto;
+        padding: 2.2rem 1.5rem 4rem 1.5rem;
+        margin: 0 -1.5rem;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        cursor: grab;
+        user-select: none;
+        -webkit-user-select: none;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
 
       .feature-card {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 2.5rem;
-        transition: transform 0.25s ease, border-color 0.25s ease;
+        flex: 0 0 440px;
+        max-width: 85vw;
+        scroll-snap-align: start;
+        background: #ffffff;
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        border-radius: 24px;
+        padding: 4.5rem 3.5rem 5rem 3.5rem;
+        position: relative;
+        box-shadow:
+          0 10px 30px -10px rgba(0, 0, 0, 0.04),
+          0 1px 3px rgba(0, 0, 0, 0.01);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
 
         &:hover {
-          transform: translateY(-4px);
-          border-color: #fc8551;
+          transform: translateY(-6px);
+          box-shadow:
+            0 20px 40px -15px rgba(41, 156, 54, 0.12),
+            0 0 0 1px rgba(41, 156, 54, 0.2);
+          border-color: #299c36;
+        }
+
+        &:nth-child(3) {
+          border-color: rgba(41, 156, 54, 0.5);
+          box-shadow:
+            0 15px 35px -10px rgba(41, 156, 54, 0.08),
+            0 1px 3px rgba(41, 156, 54, 0.02);
+
+          &:hover {
+            border-color: #299c36;
+            box-shadow: 0 25px 45px -12px rgba(41, 156, 54, 0.16);
+          }
         }
       }
 
       .feature-icon {
-        font-size: 2.5rem;
-        margin-bottom: 1.5rem;
+        font-size: 2.8rem;
+        line-height: 1;
+        margin-bottom: 1.8rem;
       }
 
       h3 {
-        font-size: 1.3rem;
-        font-weight: 700;
-        color: #1e293b;
-        margin: 0 0 0.75rem 0;
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: #0f172a;
+        line-height: 1.35;
+        margin: 0 0 2rem 0;
+        font-family: "Lato", sans-serif;
       }
 
-      p {
-        font-size: 1rem;
-        line-height: 1.55;
-        color: #475569;
+      .feature-bullets {
+        list-style: none;
+        padding: 0;
         margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%;
+
+        li {
+          font-size: 1.7rem;
+          line-height: 1.75;
+          color: #475569;
+          position: relative;
+          padding-left: 2.2rem;
+
+          &::before {
+            content: "•";
+            color: #299c36;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            position: absolute;
+            left: 0.8rem;
+            font-size: 2.2rem;
+            line-height: 1;
+          }
+
+          strong {
+            color: #1e293b;
+            font-weight: 700;
+          }
+        }
       }
     }
 
@@ -902,182 +1044,79 @@ const schema = {
     /* Neighborhoods */
     &__neighborhoods {
       background: #ffffff;
-      padding: 6rem 2rem;
+      padding: 8rem 2rem;
       border-bottom: 1px solid #e2e8f0;
 
       .neighborhoods-container {
         max-width: 1200px;
         margin: 0 auto;
         text-align: center;
-      }
 
-      h2 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #1e293b;
-        margin: 0 0 0.5rem 0;
-      }
-
-      p {
-        font-size: 1.15rem;
-        color: #64748b;
-        margin-bottom: 3rem;
+        :global(.section-heading__subtitle) {
+          font-size: 2.2rem !important;
+          line-height: 1.65 !important;
+          max-width: 95rem !important;
+          color: #475569 !important;
+          margin-bottom: 5rem !important;
+        }
       }
 
       .neighborhoods-grid {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 1rem;
-        margin-bottom: 2.5rem;
+        gap: 1.5rem;
+        margin-bottom: 3.5rem;
       }
 
       .neighborhood-card {
         background: #f8fafc;
         border: 1px solid #e2e8f0;
-        padding: 0.75rem 1.5rem;
+        padding: 1rem 2rem;
         border-radius: 9999px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        transition: border-color 0.2s ease, transform 0.2s ease;
+        gap: 0.8rem;
+        transition:
+          border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+          box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
         &:hover {
-          border-color: #fc8551;
-          transform: translateY(-2px);
+          border-color: #299c36;
+          transform: translateY(-3px);
+          box-shadow: 0 10px 20px rgba(41, 156, 54, 0.08);
         }
       }
 
       .neighborhood-dot {
-        color: #fc8551;
+        color: #299c36;
         font-weight: bold;
+        font-size: 1.8rem;
       }
 
       .neighborhood-name {
-        font-weight: 600;
+        font-size: 1.5rem;
+        font-weight: 700;
         color: #334155;
       }
 
       .zip-list {
-        font-size: 1rem;
+        font-size: 1.5rem;
         color: #64748b;
         border-top: 1px solid #e2e8f0;
         display: inline-block;
-        padding-top: 1rem;
-      }
-    }
-
-    /* FAQ Section */
-    &__faq {
-      background: #f8fafc;
-      padding: 6rem 2rem;
-
-      .faq-container {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      h2 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #1e293b;
-        text-align: center;
-        margin: 0 0 0.5rem 0;
-      }
-
-      p {
-        font-size: 1.15rem;
-        color: #64748b;
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-
-      .faq-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-      }
-
-      .faq-details {
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
-        overflow: hidden;
-        transition: all 0.3s ease;
-
-        &[open] {
-          border-color: #fc8551;
-          box-shadow: 0 10px 15px -3px rgba(252, 133, 81, 0.05);
-
-          .faq-summary {
-            background: rgba(252, 133, 81, 0.03);
-            border-bottom: 1px solid rgba(252, 133, 81, 0.1);
-          }
-
-          .toggle-icon {
-            transform: rotate(45deg);
-            color: #fc8551;
-          }
-        }
-      }
-
-      .faq-summary {
-        padding: 1.5rem 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        cursor: pointer;
-        list-style: none;
-        outline: none;
-        transition: background-color 0.2s ease;
-
-        &::-webkit-details-marker {
-          display: none;
-        }
-
-        &:hover {
-          background-color: rgba(252, 133, 81, 0.01);
-        }
-      }
-
-      .question-text {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: #1e293b;
-      }
-
-      .toggle-icon {
-        font-size: 1.5rem;
-        font-weight: 300;
-        color: #64748b;
-        transition: transform 0.25s ease, color 0.25s ease;
-        line-height: 1;
-      }
-
-      .faq-content {
-        padding: 1.5rem 2rem;
-        background: #ffffff;
-        animation: slideDown 0.2s ease-out forwards;
-      }
-
-      .faq-answer {
-        font-size: 1.05rem;
+        padding-top: 1.8rem;
+        margin-top: 1rem;
+        width: 100%;
+        max-width: 600px;
         line-height: 1.6;
-        color: #475569;
-        margin: 0;
-      }
-    }
 
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+        strong {
+          color: #334155;
+          font-weight: 700;
+        }
       }
     }
   }
@@ -1097,3 +1136,41 @@ const schema = {
     animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 </style>
+
+<script>
+  // Add desktop drag-to-scroll for features carousel
+  const carousel = document.querySelector('.features-grid');
+  if (carousel instanceof HTMLElement) {
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      carousel.style.cursor = 'grabbing';
+      carousel.style.scrollSnapType = 'none'; // Disable snapping during drag for fluid movement
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+      isDown = false;
+      carousel.style.cursor = 'grab';
+      carousel.style.scrollSnapType = 'x mandatory'; // Restore snapping
+    });
+
+    carousel.addEventListener('mouseup', () => {
+      isDown = false;
+      carousel.style.cursor = 'grab';
+      carousel.style.scrollSnapType = 'x mandatory'; // Restore snapping
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 2; // scroll speed multiplier
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+  }
+</script>
