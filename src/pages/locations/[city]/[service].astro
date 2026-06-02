@@ -7,6 +7,7 @@ import LocalPricingChart from "../../../components/LocalPricingChart";
 import ReviewsWidget from "../../../components/pages/ReviewsWidget.astro";
 import SectionHeading from "../../../components/SectionHeading";
 import FAQSection from "../../../components/pages/home/FAQSection.astro";
+import pricingJune from "../../../data/pricing-june.json";
 
 export async function getStaticPaths() {
   const cities = await getCollection("cities");
@@ -60,6 +61,19 @@ const localizedFaqs = faqs.map(faq => ({
   question: faq.question,
   answer: faq.answer.replace(/Your Home/g, `Your ${city} Home`),
 }));
+
+const serviceSlug = serviceEntry.id.replace(/\.[^/.]+$/, "");
+const serviceId = serviceSlug === "home-detailing-cleaning"
+  ? "home_detailing"
+  : serviceSlug.replace(/-/g, "_");
+
+const junePricingEntry = (pricingJune as any)["pricing-june"][serviceId];
+const perRoomPrices = junePricingEntry?.per_room || {
+  "1_bed_1_bath": 149,
+  "2_bed_1_bath": 179,
+  "3_bed_2_bath": 209,
+  "4_bed_3_bath": 249
+};
 
 // Generate local coordinates for Business Schema
 const streetAddress = `${city} Dispatch Center`;
@@ -198,16 +212,6 @@ const schema = {
 
         <div class="booking-grid">
           <div class="booking-left">
-            <LocalPricingChart
-              city={city}
-              serviceTitle={title}
-              basePrice={basePrice}
-              discountCode={localPricingBaseline.discountCode || "BAY15"}
-              client:load
-            />
-          </div>
-
-          <div class="booking-right">
             <div class="pricing-matrix-card">
               <h3>{city} Baseline Rates</h3>
               <p class="matrix-description">
@@ -225,19 +229,19 @@ const schema = {
                 <tbody>
                   <tr>
                     <td><strong>1 Bed, 1 Bath</strong></td>
-                    <td class="price-cell">starting at $149</td>
+                    <td class="price-cell">starting at ${perRoomPrices["1_bed_1_bath"]}</td>
                   </tr>
                   <tr>
                     <td><strong>2 Bed, 1 Bath</strong></td>
-                    <td class="price-cell">starting at $179</td>
+                    <td class="price-cell">starting at ${perRoomPrices["2_bed_1_bath"]}</td>
                   </tr>
                   <tr>
                     <td><strong>3 Bed, 2 Bath</strong></td>
-                    <td class="price-cell">starting at $209</td>
+                    <td class="price-cell">starting at ${perRoomPrices["3_bed_2_bath"]}</td>
                   </tr>
                   <tr>
                     <td><strong>4 Bed, 3 Bath</strong></td>
-                    <td class="price-cell">starting at $249</td>
+                    <td class="price-cell">starting at ${perRoomPrices["4_bed_3_bath"]}</td>
                   </tr>
                 </tbody>
               </table>
@@ -264,6 +268,17 @@ const schema = {
                 </ul>
               </div>
             </div>
+          </div>
+
+          <div class="booking-right">
+            <LocalPricingChart
+              city={city}
+              serviceTitle={title}
+              serviceId={serviceId}
+              basePrice={basePrice}
+              discountCode={localPricingBaseline.discountCode || "BAY15"}
+              client:load
+            />
           </div>
         </div>
       </div>
@@ -628,7 +643,7 @@ const schema = {
 
       .booking-grid {
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
+        grid-template-columns: 0.9fr 1.1fr;
         gap: 3.5rem;
         align-items: stretch;
 
@@ -691,6 +706,10 @@ const schema = {
             color: #64748b;
             font-weight: 700;
             border-bottom: 2px solid #e2e8f0;
+
+            &:last-child {
+              text-align: right;
+            }
           }
 
           td {

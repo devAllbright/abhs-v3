@@ -1,0 +1,181 @@
+{
+  "pricing-june": {
+    "carpet_cleaning": {
+      "minimum": 169,
+      "per_sqft": {
+        "conditions": {
+          "normal": 0.38,
+          "heavily_soiled": 0.42
+        }
+      },
+      "per_room": {
+        "1_bed_1_bath": 169,
+        "2_bed_1_bath": 239,
+        "3_bed_2_bath": 349,
+        "4_bed_3_bath": 469
+      }
+    },
+    "deep_cleaning": {
+      "minimum": 395,
+      "per_sqft": {
+        "ranges": [
+          {
+            "range": "Under 500",
+            "normal": 395,
+            "heavily_soiled": 580
+          },
+          {
+            "range": "501 - 800",
+            "normal": 595,
+            "heavily_soiled": 695
+          },
+          {
+            "range": "801 - 1200",
+            "normal": 595,
+            "heavily_soiled": 785
+          },
+          {
+            "range": "1201 - 1700",
+            "normal": 785,
+            "heavily_soiled": 885
+          },
+          {
+            "range": "1701 - 2300",
+            "normal": 895,
+            "heavily_soiled": 975
+          }
+        ]
+      },
+      "per_room": {
+        "1_bed_1_bath": 395,
+        "2_bed_1_bath": 495,
+        "3_bed_2_bath": 685,
+        "4_bed_3_bath": 785
+      }
+    },
+    "home_detailing": {
+      "minimum": 395,
+      "per_sqft": {
+        "ranges": [
+          {
+            "range": "Under 500",
+            "normal": 395,
+            "heavily_soiled": 580
+          },
+          {
+            "range": "501 - 800",
+            "normal": 595,
+            "heavily_soiled": 695
+          },
+          {
+            "range": "801 - 1200",
+            "normal": 685,
+            "heavily_soiled": 785
+          },
+          {
+            "range": "1201 - 1700",
+            "normal": 785,
+            "heavily_soiled": 885
+          },
+          {
+            "range": "1701 - 2300",
+            "normal": 895,
+            "heavily_soiled": 975
+          }
+        ]
+      },
+      "per_room": {
+        "1_bed_1_bath": 395,
+        "2_bed_1_bath": 495,
+        "3_bed_2_bath": 595,
+        "4_bed_3_bath": 695
+      }
+    },
+    "move_in_ready": {
+      "minimum": 395,
+      "per_sqft": null,
+      "per_room": {
+        "1_bed_1_bath": 395,
+        "2_bed_1_bath": 495,
+        "3_bed_2_bath": 595,
+        "4_bed_3_bath": 695
+      }
+    },
+    "one_time_maid_services": {
+      "minimum": 155,
+      "per_sqft": {
+        "ranges": [
+          {
+            "range": "Under 500",
+            "normal": 165,
+            "heavily_soiled": 195
+          },
+          {
+            "range": "501 - 800",
+            "normal": 195,
+            "heavily_soiled": 215
+          },
+          {
+            "range": "801 - 1200",
+            "normal": 215,
+            "heavily_soiled": 245
+          },
+          {
+            "range": "1201 - 1700",
+            "normal": 265,
+            "heavily_soiled": 295
+          },
+          {
+            "range": "1701 - 2300",
+            "normal": 295,
+            "heavily_soiled": 325
+          }
+        ]
+      },
+      "per_room": {
+        "1_bed_1_bath": 155,
+        "2_bed_1_bath": 195,
+        "3_bed_2_bath": 195,
+        "4_bed_3_bath": 215
+      }
+    },
+    "window_washing": {
+      "minimum": 195,
+      "per_sqft": {
+        "ranges": [
+          {
+            "range": "Under 500",
+            "normal": 195,
+            "heavily_soiled": 225
+          },
+          {
+            "range": "501 - 800",
+            "normal": 215,
+            "heavily_soiled": 235
+          },
+          {
+            "range": "801 - 1200",
+            "normal": 295,
+            "heavily_soiled": 345
+          },
+          {
+            "range": "1201 - 1700",
+            "normal": 395,
+            "heavily_soiled": 430
+          },
+          {
+            "range": "1701 - 2300",
+            "normal": 450,
+            "heavily_soiled": 515
+          }
+        ]
+      },
+      "per_room": {
+        "1_bed_1_bath": 195,
+        "2_bed_1_bath": 195,
+        "3_bed_2_bath": 235,
+        "4_bed_3_bath": 295
+      }
+    }
+  }
+}

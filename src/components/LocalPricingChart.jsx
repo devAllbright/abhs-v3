@@ -1,29 +1,110 @@
 import React, { useState, useMemo } from 'react';
+import pricingData from '../data/pricing-june.json';
 
-const BEDROOM_INCREMENT = 25;
-const BATHROOM_INCREMENT = 25;
+const PRICING = pricingData['pricing-june'];
 
-export default function LocalPricingChart({ city, serviceTitle, basePrice, discountCode = '' }) {
-  const [sqFtRange, setSqFtRange] = useState('1500-2500');
-  const [bedrooms, setBedrooms] = useState(3);
-  const [bathrooms, setBathrooms] = useState(2);
-  const [includeEcoProducts, setIncludeEcoProducts] = useState(true);
+export default function LocalPricingChart({ city, serviceTitle, serviceId = 'carpet_cleaning', basePrice, discountCode = '' }) {
+  const servicePricing = PRICING[serviceId];
 
-  // Compute calculated rate
+  // Dynamic sqft range options
+  const sqFtOptions = useMemo(() => {
+    if (!servicePricing) return [];
+    if (serviceId === 'carpet_cleaning') {
+      return ['Under 500', '501 - 800', '801 - 1200', '1201 - 1700', '1701 - 2300'];
+    }
+    if (servicePricing.per_sqft && servicePricing.per_sqft.ranges) {
+      return servicePricing.per_sqft.ranges.map((r) => r.range);
+    }
+    return [];
+  }, [serviceId, servicePricing]);
+
+  const [sqFtRange, setSqFtRange] = useState(() => {
+    if (serviceId === 'carpet_cleaning') return '801 - 1200';
+    if (servicePricing?.per_sqft?.ranges) {
+      const len = servicePricing.per_sqft.ranges.length;
+      return servicePricing.per_sqft.ranges[Math.floor(len / 2)]?.range || '';
+    }
+    return '';
+  });
+
+  const layoutOptions = useMemo(() => {
+    if (!servicePricing) return [];
+    if (serviceId === 'move_in_ready' && servicePricing.per_room) {
+      return Object.keys(servicePricing.per_room).map((key) => {
+        const parts = key.split('_');
+        const beds = parts[0];
+        const baths = parts[2];
+        const label = `${beds} Bed${Number(beds) > 1 ? 's' : ''}, ${baths} Bath${Number(baths) > 1 ? 's' : ''}`;
+        return { key, label };
+      });
+    }
+    return [];
+  }, [serviceId, servicePricing]);
+
+  const [selectedLayout, setSelectedLayout] = useState(() => {
+    if (serviceId === 'move_in_ready' && servicePricing?.per_room) {
+      return Object.keys(servicePricing.per_room)[0] || '';
+    }
+    return '';
+  });
+
+  // Sync state if serviceId changes
+  const [prevServiceId, setPrevServiceId] = useState(serviceId);
+  if (serviceId !== prevServiceId) {
+    setPrevServiceId(serviceId);
+    if (serviceId === 'carpet_cleaning') {
+      setSqFtRange('801 - 1200');
+      setSelectedLayout('');
+    } else if (servicePricing?.per_sqft?.ranges) {
+      const len = servicePricing.per_sqft.ranges.length;
+      setSqFtRange(servicePricing.per_sqft.ranges[Math.floor(len / 2)]?.range || '');
+      setSelectedLayout('');
+    } else if (serviceId === 'move_in_ready' && servicePricing?.per_room) {
+      setSqFtRange('');
+      setSelectedLayout(Object.keys(servicePricing.per_room)[0] || '');
+    } else {
+      setSqFtRange('');
+      setSelectedLayout('');
+    }
+  }
+
+  // Compute calculated rate based on pricing-june.json
   const total = useMemo(() => {
-    // Base adjustment by sq ft range
-    let sqFtAdjustment = 0;
-    if (sqFtRange === '900-1500') sqFtAdjustment = -30;
-    if (sqFtRange === '2500-3500') sqFtAdjustment = 60;
-    if (sqFtRange === '3500+') sqFtAdjustment = 120;
+    if (!servicePricing) return basePrice;
 
-    const extraBedrooms = Math.max(0, bedrooms - 2) * BEDROOM_INCREMENT;
-    const extraBathrooms = Math.max(0, bathrooms - 1.5) * BATHROOM_INCREMENT;
-    const ecoFee = includeEcoProducts ? 0 : -10; // eco products are default and free/discounted
+    const minPrice = servicePricing.minimum;
 
-    const calculated = basePrice + sqFtAdjustment + extraBedrooms + extraBathrooms + ecoFee;
-    return Math.max(basePrice - 40, calculated);
-  }, [basePrice, sqFtRange, bedrooms, bathrooms, includeEcoProducts]);
+    // 1. If service has per_sqft ranges (deep_cleaning, home_detailing, one_time_maid_services, window_washing)
+    if (servicePricing.per_sqft && servicePricing.per_sqft.ranges) {
+      const rangeObj = servicePricing.per_sqft.ranges.find((r) => r.range === sqFtRange)
+        || servicePricing.per_sqft.ranges[0];
+      
+      const baseRangePrice = rangeObj ? rangeObj.normal : minPrice;
+      return Math.max(minPrice, baseRangePrice);
+    }
+
+    // 2. If service is carpet_cleaning
+    if (serviceId === 'carpet_cleaning') {
+      let sqft = 1000;
+      if (sqFtRange === 'Under 500') sqft = 400;
+      else if (sqFtRange === '501 - 800') sqft = 650;
+      else if (sqFtRange === '801 - 1200') sqft = 1000;
+      else if (sqFtRange === '1201 - 1700') sqft = 1450;
+      else if (sqFtRange === '1701 - 2300') sqft = 2000;
+
+      const rate = servicePricing.per_sqft?.conditions?.normal || 0.38;
+      const calculated = sqft * rate;
+      return Math.max(minPrice, calculated);
+    }
+
+    // 3. If service is move_in_ready
+    if (serviceId === 'move_in_ready') {
+      const baseRoomPrice = servicePricing.per_room?.[selectedLayout] || minPrice;
+      return Math.max(minPrice, baseRoomPrice);
+    }
+
+    return basePrice;
+  }, [serviceId, servicePricing, sqFtRange, selectedLayout, basePrice]);
 
   return (
     <div className="local-pricing-chart">
@@ -36,78 +117,63 @@ export default function LocalPricingChart({ city, serviceTitle, basePrice, disco
         </p>
 
         {/* Home Size Selector */}
-        <div className="calculator-group">
-          <label>Estimated Home Size (Sq. Ft.)</label>
-          <div className="calculator-selector">
-            {['900-1500', '1500-2500', '2500-3500', '3500+'].map((range) => (
-              <button
-                key={range}
-                type="button"
-                className={`selector-btn ${sqFtRange === range ? 'is-active' : ''}`}
-                onClick={() => setSqFtRange(range)}
-              >
-                {range}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Bedrooms & Bathrooms */}
-        <div className="calculator-row">
+        {sqFtOptions.length > 0 && (
           <div className="calculator-group">
-            <label>Bedrooms</label>
-            <select
-              value={bedrooms}
-              onChange={(e) => setBedrooms(Number(e.target.value))}
-              className="calculator-select"
-            >
-              {[1, 2, 3, 4, 5, 6].map((num) => (
-                <option key={num} value={num}>
-                  {num} Bed{num > 1 ? 's' : ''}
-                </option>
+            <label>Estimated Home Size (Sq. Ft.)</label>
+            <div className="calculator-selector" style={{ gridTemplateColumns: `repeat(${sqFtOptions.length}, 1fr)` }}>
+              {sqFtOptions.map((range) => (
+                <button
+                  key={range}
+                  type="button"
+                  className={`selector-btn ${sqFtRange === range ? 'is-active' : ''}`}
+                  onClick={() => setSqFtRange(range)}
+                >
+                  {range}
+                </button>
               ))}
-            </select>
+            </div>
           </div>
+        )}
 
+        {/* Room Layout configurations (Move In Ready) */}
+        {layoutOptions.length > 0 && (
           <div className="calculator-group">
-            <label>Bathrooms</label>
-            <select
-              value={bathrooms}
-              onChange={(e) => setBathrooms(Number(e.target.value))}
-              className="calculator-select"
-            >
-              {[1, 1.5, 2, 2.5, 3, 3.5, 4].map((num) => (
-                <option key={num} value={num}>
-                  {num} Bath{num > 1 ? 's' : ''}
-                </option>
+            <label>Select Home Layout</label>
+            <div className="calculator-selector" style={{ gridTemplateColumns: `repeat(${layoutOptions.length}, 1fr)` }}>
+              {layoutOptions.map((layout) => (
+                <button
+                  key={layout.key}
+                  type="button"
+                  className={`selector-btn ${selectedLayout === layout.key ? 'is-active' : ''}`}
+                  onClick={() => setSelectedLayout(layout.key)}
+                >
+                  {layout.label}
+                </button>
               ))}
-            </select>
+            </div>
           </div>
-        </div>
-
-        {/* Addons */}
-        <div className="calculator-checkbox-group">
-          <label className="checkbox-label">
-            <input
-              type="checkbox"
-              checked={includeEcoProducts}
-              onChange={(e) => setIncludeEcoProducts(e.target.checked)}
-            />
-            <span>Use Eco-Friendly green cleaning formulas (Recommended)</span>
-          </label>
-        </div>
+        )}
 
         {/* Result Area */}
-        <div className="local-pricing-chart__result">
-          <div className="result-price">
-            <span className="price-tag">${total}</span>
-            <span className="price-period">Est. Total</span>
-          </div>
-          {discountCode && (
-            <div className="discount-notice">
-              🎉 Use code <strong>{discountCode}</strong> at booking for local savings!
+        <div className="local-pricing-chart__result-container" style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%', margin: '1.5rem 0' }}>
+          <div className="local-pricing-chart__result" style={{ width: '100%' }}>
+            <div className="result-price">
+              <span className="price-tag">${total}</span>
+              <span className="price-period">Est. Total</span>
             </div>
-          )}
+            {discountCode && (
+              <div className="discount-notice">
+                🎉 Use code <strong>{discountCode}</strong> at booking for local savings!
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Disclaimer Area */}
+        <div className="local-pricing-chart__disclaimer">
+          <p>
+            *Disclaimer: This is an estimated price based on standard conditions and is not an exact quote. Actual pricing may vary depending on soil level, layout complexities, and service details. You must call us or submit a service request for a final, firm quote.
+          </p>
         </div>
       </div>
 
@@ -240,7 +306,21 @@ export default function LocalPricingChart({ city, serviceTitle, basePrice, disco
           padding: 2rem;
           border: 1px solid #f1f5f9;
           text-align: center;
+        }
+
+        .local-pricing-chart__disclaimer {
           margin-top: auto;
+          padding-top: 1.5rem;
+          border-top: 1px dashed #cbd5e1;
+        }
+
+        .local-pricing-chart__disclaimer p {
+          margin: 0;
+          font-size: 1.25rem;
+          line-height: 1.6;
+          color: #64748b;
+          font-style: italic;
+          text-align: left;
         }
 
         .result-price {
